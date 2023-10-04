@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Access views by name (for development only)
+Route::get('/view/{view}', function ($view) {
+    return view($view);
+});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('client.home');
 });
