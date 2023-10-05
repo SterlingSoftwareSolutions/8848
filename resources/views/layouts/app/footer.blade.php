@@ -11,8 +11,8 @@
             </div>
             <div class="grid grid-cols-1 gap-3 ml-8 sm:grid-cols-3 sm:gap-3 md:ml-20">
                 <div class="w-1/2">
-                    <h2 class="mb-6 text-lg font-semibold text-black uppercase dark:text-blue-900">Buyer Central</h2>
-                    <ul class="font-medium text-white dark:text-gray-400">
+                    <h2 class="mb-6 text-lg font-semibold text-blue-900 uppercase">Buyer Central</h2>
+                    <ul class="font-medium text-gray-500">
                         <li>
                             <a href="#" class="hover:underline">Home</a>
                         </li>
@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="w-1/2">
-                    <h2 class="mb-6 text-lg font-semibold text-black uppercase dark:text-blue-900">Information</h2>
-                    <ul class="font-medium text-white dark:text-gray-400">
+                    <h2 class="mb-6 text-lg font-semibold text-blue-900 uppercase">Information</h2>
+                    <ul class="font-medium text-gray-500">
                         <li>
                             <a href="#" class="hover:underline">My Wishlist</a>
                         </li>
@@ -46,8 +46,8 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-6 text-lg font-semibold text-black uppercase dark:text-blue-900">Contact Info</h2>
-                    <ul class="font-medium text-black dark:text-gray-400">
+                    <h2 class="mb-6 text-lg font-semibold text-blue-900 uppercase">Contact Info</h2>
+                    <ul class="font-medium text-gray-500">
                         <li class="flex mb-4">
                             <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="flex hover:underline "><img class="w-5 h-5" src="{{ URL('images/location.png')}}">&nbsp; 1789 Street Name,
                                 City Name, United States</a>
