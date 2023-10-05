@@ -1,8 +1,7 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "@fortawesome/fontawesome-free/css/all.css";
-
 
 .horizontal-line {
     flex-grow: 1;
@@ -10,6 +9,7 @@
     margin-top: 8px; /* Adjust the margin-top value as needed */
     background-color: #166EB6;
 }
+
 .horizontal-line-2 {
     flex-grow: 1;
     height: 2px;
