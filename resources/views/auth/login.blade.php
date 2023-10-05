@@ -33,14 +33,14 @@
 
                     <!-- Email Address -->
                     <div>
-                        <label for="email" :value="__('Email')" class="block text-sm font-medium text-gray-900">Email</label>
+                        <label for="email" :value="__('Email')" class="block text-sm font-medium text-[#d9d9d9]">Email</label>
                         <input id="email" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
                     <!-- Password -->
                     <div class="mt-4">
-                        <label for="password" :value="__('Password')" class="block text-sm font-medium text-gray-900">Password</label>
+                        <label for="password" :value="__('Password')" class="block text-sm font-medium text-[#d9d9d9]">Password</label>
 
                         <input id="password" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         type="password"
@@ -55,12 +55,12 @@
                     <div class="block mt-4">
                         <label for="remember_me" class="inline-flex items-center">
                             <input id="remember_me" type="checkbox" class="text-indigo-600 border-gray-300 rounded shadow-sm focus:ring-indigo-500" name="remember">
-                            <span class="ml-2 text-sm text-black">{{ __('Remember me') }}</span>
+                            <span class="ml-2 text-sm text-[#d9d9d9]">{{ __('Remember me') }}</span>
                         </label>
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                            <a class="text-sm text-black underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="#">
+                            <a class="text-sm text-[#d9d9d9] underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="#">
                                 {{ __('Forgot your password?') }}
                             </a>
                     </div>
