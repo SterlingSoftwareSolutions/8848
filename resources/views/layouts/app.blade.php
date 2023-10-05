@@ -6,8 +6,14 @@
 </head>
 
 <body>
+    <!-- HEADER -->
+    @include('layouts.app.header')
+
     <div>
         @yield('content')
     </div>
+
+    <!-- FOOTER -->
+    @include('layouts.app.footer')
 </body>
 </html
