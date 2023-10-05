@@ -2,3 +2,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.horizontal-line {
+    flex-grow: 1;
+    height: 1px;
+    margin-top: 8px; /* Adjust the margin-top value as needed */
+    background-color: #166EB6;
+}
+
+.horizontal-line-2 {
+    flex-grow: 1;
+    height: 2px;
+    width: 40px;
+    margin-top: 32px; /* Adjust the margin-top value as needed */
+    background-color: #166EB6;
+    border-color:  #166EB6;
+    
+}
+
+@media (max-width: 768px) {
+    .horizontal-line-2 {
+        margin-top: 13px; /* Adjust the margin-top for smaller screens */
+    }
+}
