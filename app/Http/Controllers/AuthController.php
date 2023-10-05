@@ -15,10 +15,61 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+
     public function login_form()
     {
         return view('auth.login');
     }
+
+
+    public function profile(Request $request)
+    {
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'user' => $request->user(),
+            ], 200);
+        }
+
+        return view('auth.profile');
+    }
+
+
+    public function profile_update(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users,email,' . $user->id,
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        if($request->password){
+            $request->validate([
+                'current_password' => 'required|string|current_password',
+                'password' => 'required|string|min:8|confirmed',
+            ]);
+
+            $request->user()->forceFill([
+                'password' => Hash::make($request->password)
+            ])->save();
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'user' => $user,
+            ], 200);
+        } else {
+            return back();
+        }
+    }
+
 
     public function register(Request $request)
     {
@@ -61,6 +112,7 @@ class AuthController extends Controller
         }
     }
 
+
     public function login(Request $request)
     {
         $request->validate([
@@ -95,6 +147,7 @@ class AuthController extends Controller
             ]);
         }
     }
+
 
     public function logout(Request $request)
     {
