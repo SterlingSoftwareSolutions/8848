@@ -22,8 +22,8 @@
 
     {{-- 4 ICONS ROW  --}}
 
-    <div class="flex flex-row w-6/12 mx-auto md:mt-10 gap-4">
-        <div class="w-3/12">
+    <div class="flex flex-col md:flex-row w-6/12 mx-auto mt-10 gap-4">
+        <div class="md:w-3/12 w-full">
             <img
                 class="border-green-500 mx-auto"
                 src="{{ asset('images/Group 204.png') }}"
@@ -33,7 +33,7 @@
             </p>
         </div>
 
-        <div class="w-3/12">
+        <div class="md:w-3/12 w-full">
             <img
                 class="border-green-500 mx-auto"
                 src="{{ asset('images/Group 205.png') }}"
@@ -43,7 +43,7 @@
             </p>
         </div>
 
-        <div class="w-3/12">
+        <div class="md:w-3/12 w-full">
             <img
                 class="border-green-500 mx-auto"
                 src="{{ asset('images/Group 206.png') }}"
@@ -53,7 +53,7 @@
             </p>
         </div>
 
-        <div class="w-3/12">
+        <div class="md:w-3/12 w-full">
             <img
                 class="border-green-500 mx-auto"
                 src="{{ asset('images/Group 206.png') }}"
@@ -66,11 +66,32 @@
 
     {{-- END 4 ICONS ROw  --}}
 
-    <div class="flex flex-row gap-5 w-8/12 mx-auto md:mt-10">
+
+
+
+    {{-- Map --}}
+
+<!-- component -->
+
+
+<section class="text-gray-600 body-font relative mt-10 border-2 border-red-500 mx-auto ">
+    <div class="absolute inset-0 bg-gray-300">
+      <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed" style=""></iframe>
+    </div>
+    <div class="container px-5 py-24 mx-auto flex">
+        <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+      </div>
+    </div>
+  </section>
+
+
+    {{-- End Map  --}}
+
+    <div class="lg:flex flex-row gap-5 max-w-screen-lg mx-auto md:mt-10 ">
         {{-- Frequently Asked Questions--}}
 
-        <div class="w-11/12 mx-auto mt-5 md:w-9/12">
-            <div class="w-full flex flex-row justify-center gap-5">
+        <div class="w-full mx-auto mt-5 ">
+            <div class="flex flex-row justify-center gap-5">
                 <div class="horizontal-line-2"></div>
                 <p class="text-center text-blue-800 font-bold md:mt-5">
                     Frequently Asked Questions
@@ -183,28 +204,14 @@
 	</div>
 </div>
 
-<script>
-	...
-	extend: {
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 100 },
-        },
-      },
-      animation: {
-        fadeIn: "fadeIn 0.2s ease-in-out forwards",
-      },
-    },
-    ...
-</script>
+
             {{-- END ACCORDIAN --}}
         </div>
         {{-- END  Frequently Asked Questions--}}
 
         {{-- GET IN TOUCH FORM --}}
 
-        <div class="w-10/12 mx-auto mt-5 md:w-9/12">
+        <div class="w-10/12 mx-auto mt-5">
             <div class="w-full flex flex-row justify-center gap-5">
                 <div class="horizontal-line-2"></div>
                 <p class="text-center text-blue-800 font-bold md:mt-5">
@@ -283,13 +290,29 @@
                     </div>
                 </div>
 
-                <div class="md:mt-10 ">
-                    <button class="bg-gradient-to-b from-[#166EB6] to-[#284297] text-white w-32 md:px-2 md:py-2">Submit</button>
+                <div class="md:mt-10 md:text-left text-center mt-5">
+                    <button class="bg-gradient-to-b from-[#166EB6] to-[#284297] text-white w-32 md:px-2 md:py-2 ">Submit</button>
                 </div>
             </form>
         </div>
         {{-- END GET IN TOUCH FORM --}}
     </div>
 </div>
+
+<script>
+	...
+	extend: {
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 100 },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.2s ease-in-out forwards",
+      },
+    },
+    ...
+</script>
 
 @endsection
