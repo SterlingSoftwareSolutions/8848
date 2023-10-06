@@ -13,11 +13,6 @@
         @yield('content')
     </div>
 
-
-
-
-
-    
     <!-- FOOTER -->
     @include('layouts.app.footer')
 </body>
