@@ -8,12 +8,6 @@
 <body>
     <!-- HEADER -->
     @include('layouts.app.header')
-    
-    {{-- <div>
-        <div class="grid grid-cols-8 gap-4">
-            <div class="w-full col-span-2 p-4 mt-6 ml-4 border border-gray-200 rounded">Returning customer? <span class="text-blue-400">Click here to login</span></div>
-        </div>
-    </div> --}}
 
     <div class="w-full gap-3 mt-5 ml-4 md:flex">
         <div class="flex flex-col w-full">
@@ -28,30 +22,6 @@
                 </div>
                 <div class="mt-2">
                     <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
-                        {{-- <div class="flex flex-row mb-4">
-                            <div class="mb-4 md:mr-2 md:mb-0">
-                                <label class="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-                                    First Name
-                                </label>
-                                <input
-                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="firstName"
-                                    type="text"
-                                    placeholder="First Name"
-                                />
-                            </div>
-                            <div class="md:ml-2">
-                                <label class="block mb-2 text-sm font-bold text-gray-700" for="lastName">
-                                    Last Name
-                                </label>
-                                <input
-                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="lastName"
-                                    type="text"
-                                    placeholder="Last Name"
-                                />
-                            </div>
-                        </div> --}}
                         {{-- name --}}
                         <div class="flex flex-row mb-4">
                             <div class="mb-4 md:mr-2 md:mb-0">
