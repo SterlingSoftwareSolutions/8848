@@ -36,7 +36,7 @@
                         <!-- Email Address -->
                         <div>
                             <label for="email" :value="__('Email')" class="block text-sm font-medium text-[#d9d9d9]">Email</label>
-                            <input id="email" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" />
+                            <input id="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
     
@@ -44,7 +44,7 @@
                         <div class="mt-4">
                             <label for="password" :value="__('Password')" class="block text-sm font-medium text-[#d9d9d9]">Password</label>
     
-                            <input id="password" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                            <input id="password" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                             type="password"
                                             name="password"
                                             required autocomplete="current-password"
@@ -68,7 +68,7 @@
                                 </a>
                         </div>
                         
-                        <button type="submit" class="mx-[110px] inline-flex items-center px-4 py-2 bg-white border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-400 active:bg-white-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 hover:text-white">
+                        <button type="submit" class="mt-4 md:mx-[110px] mx-[80px] inline-flex items-center px-4 py-2 bg-white border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-400 active:bg-white-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 hover:text-white">
                             {{ __('Log in') }}
                         </button>
                     </form>
