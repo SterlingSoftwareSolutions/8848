@@ -20,3 +20,8 @@
     
 }
 
+@media (max-width: 768px) {
+    .horizontal-line-2 {
+        margin-top: 13px; /* Adjust the margin-top for smaller screens */
+    }
+}
