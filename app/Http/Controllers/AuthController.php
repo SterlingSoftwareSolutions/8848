@@ -12,13 +12,28 @@ class AuthController extends Controller
 {
     public function register_form()
     {
-        return view('auth.register');
+        if(!Auth::check()){
+            return view('auth.register');
+        }
+        return redirect('/');
     }
 
 
     public function login_form()
     {
-        return view('auth.login');
+        if(!Auth::check()){
+            return view('auth.login');
+        }
+        return redirect('/');
+    }
+
+
+    public function logout_form()
+    {
+        if(Auth::check()){
+            return view('auth.logout');
+        }
+        return redirect('/');
     }
 
 
