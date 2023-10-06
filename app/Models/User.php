@@ -81,7 +81,7 @@ class User extends Authenticatable
         }
     }
 
-    public function cart_update(){
+    public function cart_update($product, $quantity){
 
         if($product instanceof Product){
             $product_id = $product->id;

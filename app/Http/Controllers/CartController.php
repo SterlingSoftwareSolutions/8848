@@ -50,11 +50,17 @@ class CartController extends Controller
         ]);
 
         $user = Auth::user();
-        $user->cart_add($request->product_id, $request->quantity ?? 1);
+
+        if($user->cart_update($request->product_id, $request->quantity ?? 1)){
+            return response()->json([
+                'success' => true,
+                'message' => "Product {$request->product_id} updated in cart"
+            ]);
+        }
 
         return response()->json([
-            'success' => true,
-            'message' => "Product {$request->product_id} added to cart"
+            'success' => false,
+            'message' => "Product {$request->product_id} not found in cart"
         ]);
     }
 
