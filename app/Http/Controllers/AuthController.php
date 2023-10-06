@@ -28,6 +28,15 @@ class AuthController extends Controller
     }
 
 
+    public function logout_form()
+    {
+        if(Auth::check()){
+            return view('auth.logout');
+        }
+        return redirect('/');
+    }
+
+
     public function profile(Request $request)
     {
         if($request->wantsJson()){

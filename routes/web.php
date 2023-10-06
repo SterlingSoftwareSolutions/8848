@@ -33,5 +33,6 @@ Route::middleware('auth')->group(function () {
         return view('app.home');
     });
 
+    Route::get('/logout', [AuthController::class, 'logout_form'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
