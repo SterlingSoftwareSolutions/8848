@@ -41,7 +41,7 @@
                         </div>
                         
                         <!-- Email Address -->
-                        <div>
+                        <div class="mt-4">
                             <label for="email" :value="__('Email')" class="block text-sm font-medium text-[#d9d9d9]">Email</label>
                             <input id="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
