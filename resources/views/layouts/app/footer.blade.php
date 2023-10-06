@@ -67,7 +67,7 @@
         </div>
 
     </div>
-    <div class="h-10 text-sm text-center text-white bg-blue-200 sm:text-center dark:text-gray-400 sm:flex sm:justify-center">
+    <div class="h-10 text-center text-gray-400 bg-blue-200 text-md sm:text-center sm:flex sm:justify-center">
         <span class="mt-2">copyright © 2023 <a href="" class="hover:underline">8848 Supplies. All Rights Reserved</a></span>
     </div>
 
