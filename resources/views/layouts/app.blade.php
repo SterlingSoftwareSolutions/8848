@@ -9,10 +9,15 @@
     <!-- HEADER -->
     @include('layouts.app.header')
 
-    <div>
+    <div class="container mx-auto">
         @yield('content')
     </div>
 
+
+
+
+
+    
     <!-- FOOTER -->
     @include('layouts.app.footer')
 </body>
