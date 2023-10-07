@@ -35,7 +35,7 @@ class ProductController extends Controller
             'title' => 'required',
             'category_id' => 'required',
             'price' => 'required',
-            'sku' => 'required',
+            'sku' => 'required|unique',
             'in_stock' => 'required',
             'image_1' => 'required|file|max:4096',
             'image_2' => 'required|file|max:4096',
@@ -85,7 +85,34 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'category_id' => 'required',
+            'price' => 'required',
+            'sku' => 'required|unique:products,sku,' . $product->id,
+            'in_stock' => 'required',
+            'image_1' => 'nullable|file|max:4096',
+            'image_2' => 'nullable|file|max:4096',
+            'image_3' => 'nullable|file|max:4096',
+            'image_4' => 'nullable|file|max:4096'
+        ]);
+
+        $product->update([
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+            'sku' => $request->sku,
+            'in_stock' => $request->in_stock,
+            'image_1_url' => $request->image_1 ? $request->image_1->store('prodduct_images') : $product->image_1_url,
+            'image_2_url' => $request->image_2 ? $request->image_2->store('prodduct_images') : $product->image_2_url,
+            'image_3_url' => $request->image_3 ? $request->image_3->store('prodduct_images') : $product->image_3_url,
+            'image_4_url' => $request->image_4 ? $request->image_4->store('prodduct_images') : $product->image_4_url
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'product' => $product
+        ]);
     }
 
     /**
