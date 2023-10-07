@@ -10,11 +10,38 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Product::query();
+
+        if($request->category_id){
+            $query->where('category_id', $request->category_id);
+        }
+
+        if($request->in_stock != null){
+            $query->where('in_stock', $request->in_stock);
+        }
+
+        if($request->has('sort')){
+            switch($request->sort){
+                case 'price_asc':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'price_desc':
+                    $query->orderBy('price', 'desc');
+                    break;
+                case 'date_asc':
+                    $query->orderBy('created_at', 'asc');
+                    break;
+                case 'date_desc':
+                    $query->orderBy('created_at', 'desc');
+                    break;
+            }
+        }
+
         return response()->json([
             'success' => true,
-            'products' => Product::all()
+            'products' => $query->get()
         ]);
     }
 
