@@ -11,7 +11,7 @@
   
               Menu open: "hidden", Menu closed: "block"
             -->
-            <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" id="menu-icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
             <!--
@@ -24,11 +24,59 @@
             </svg>
           </button>
         </div>
-        <div class="items-center justify-center flex-1 sm:items-stretch sm:justify-start">
-            <div class="flex items-center flex-shrink-0">
-                <img class="w-auto h-10" src="images/Logo-white.png" alt="Company">
-            </div>
+        {{-- logo --}}
+        <div class="items-center justify-center flex-1 md:ml-0 ml-[130px] sm:items-stretch sm:justify-start">
+          <img class="w-auto h-10" src="images/Logo-white.png" alt="Company">
         </div>
+
+        {{-- search bar --}}
+        <div class="md:flex md:mr-[400px] mr-0 border border-white rounded-lg items-left md:w-1/4 hidden">
+          <div class="flex bg-white border-white rounded-l-lg">
+            <div class="w-full mx-1 my-2 text-blue-600">
+              <h1>All</h1>
+            </div>
+            <button class="p-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6 text-blue-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+          </div>
+         
+          <input
+            class="px-2 py-2 bg-transparent border-white"
+            type="text"
+            placeholder=""
+          />
+          <button class="p-2 bg-white rounded-r-lg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-blue"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35M9 15h-1"
+              />
+              <circle cx="10.5" cy="10.5" r="7.5" />
+            </svg>
+          </button>
+        </div>
+        
         <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-end">
           
           <div class="hidden sm:ml-6 sm:block">
@@ -58,15 +106,14 @@
         </div>
       </div>
     </div>
-  
+    
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        {{-- <a href="#" class="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a> --}}
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Team</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a>
+        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Home</a>
+        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Product</a>
+        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Contact</a>
       </div>
     </div>
+    
   </nav>
