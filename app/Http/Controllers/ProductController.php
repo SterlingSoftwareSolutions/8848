@@ -31,7 +31,34 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'category_id' => 'required',
+            'price' => 'required',
+            'sku' => 'required',
+            'in_stock' => 'required',
+            'image_1' => 'required|file|max:4096',
+            'image_2' => 'required|file|max:4096',
+            'image_3' => 'required|file|max:4096',
+            'image_4' => 'required|file|max:4096'
+        ]);
+
+        $product = Product::create([
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+            'sku' => $request->sku,
+            'in_stock' => $request->in_stock,
+            'image_1_url' => $request->image_1 ? $request->image_1->store('prodduct_images') : null,
+            'image_2_url' => $request->image_2 ? $request->image_2->store('prodduct_images') : null,
+            'image_3_url' => $request->image_3 ? $request->image_3->store('prodduct_images') : null,
+            'image_4_url' => $request->image_4 ? $request->image_4->store('prodduct_images') : null
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'product' => $product
+        ]);
     }
 
     /**

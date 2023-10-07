@@ -35,4 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/cart/add/', [CartController::class, 'add']);
     Route::post('/cart/remove', [CartController::class, 'remove']);
     Route::post('/cart/update', [CartController::class, 'update']);
+
+    // Product routes (TODO: ADMIN ONLY)
+    Route::resource('/products', ProductController::class)->only(['store', 'update', 'destroy']);
 });
