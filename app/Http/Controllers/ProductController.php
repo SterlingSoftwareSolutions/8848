@@ -12,7 +12,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'success' => true,
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -36,7 +39,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->json([
+            'success' => true,
+            'product' => $product
+        ]);
     }
 
     /**
