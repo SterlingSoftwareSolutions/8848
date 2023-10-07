@@ -1,7 +1,7 @@
 @extends('layouts.admin') @section('content')
     <div class="container mx-auto p-6 ">
         <div class="md:mb-5">
-            <h1 class="text-blue-700 font-medium truncate">Add Customer</h1>
+            <h1 class="text-blue-700 font-medium truncate">Edit Customer</h1>
         </div>
         <!-- Row 1 -->
         <div class="flex mb-4 gap-5">
