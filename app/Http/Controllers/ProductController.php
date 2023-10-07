@@ -120,6 +120,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if($product){
+            $product->delete();
+            return response()->json([
+                'success' => true
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Product not found'
+        ]);
     }
 }
