@@ -15,11 +15,13 @@
     <div class="w-1/12">
         <h1 class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-white text-center">Close All</h1>
     </div>
-
-
-    <div class="w-1/12">
-        <h1 class="py-2 px-2 rounded-lg mx-auto bg-blue-700 text-white text-center">Close All</h1>
+    <div class="w-10/12">
+       
     </div>
+
+    <div class="w-1/12 flex justify-end">
+        <h1 class="py-2 px-2 rounded-lg mx-auto bg-blue-900 text-white text-center ">New Order </h1>
+    </div>  
 </div>
 
 
@@ -28,7 +30,7 @@
     
         <div class="md:mt-5 flex flex-col mx-2 md:mx-10 border-2 ">
                 <!-- Box 1: Customer List -->
-                <div class=" text-blue-700 ">
+                <div class=" text-blue-900 ">
                     <div class="flex flex-row bg-gray-200 py-5">
                         <p class="w-[5%] px-2">#</p>
                         <p class="w-[10%]">Number</p>
@@ -60,7 +62,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center"><span class="ml-4 mr-4">Paid</span></label>
+                            <label class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-green-950 text-center"><span class="ml-4 mr-4">Paid</span></label>
                           </div>
 
                         <div class="w-[10%]">
@@ -75,7 +77,7 @@
                             $200.00
                           </div>
 
-                        <div class="md:flex flex-row gap-1 w-[20%]">
+                        <div class="md:flex flex-row gap-1 w-[20%] mx-1">
                             <div class="w-40">
                                 <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve </h1>
                             </div>
@@ -108,7 +110,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-white text-center"><span class="ml-2 mr-2">Unpaid</span></label>
+                            <label class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-red-950 text-center"><span class="ml-2 mr-2">Unpaid</span></label>
                         </div>
 
                         <div class="w-[10%]">
@@ -123,7 +125,7 @@
                             $200.00
                           </div>
 
-                        <div class="md:flex flex-row gap-1 w-[20%]">
+                        <div class="md:flex flex-row gap-1 w-[20%] mx-1">
                             <div class="w-40">
                                 <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve </h1>
                             </div>
@@ -155,7 +157,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-gray-800 text-white text-center"><span class="ml-3 mr-3">Partial</span></label>
+                            <label class="py-2 px-2 rounded-lg mx-auto bg-yellow-400 text-yellow-950 text-center"><span class="ml-3 mr-3">Partial</span></label>
                         </div>
 
                         <div class="w-[10%]">
@@ -170,7 +172,7 @@
                             $200.00
                           </div>
 
-                        <div class="md:flex flex-row gap-1 w-[20%]">
+                        <div class="md:flex flex-row gap-1 w-[20%] mx-1">
                             <div class="w-40">
                                 <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve </h1>
                             </div>
