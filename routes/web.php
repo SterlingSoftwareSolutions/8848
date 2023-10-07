@@ -28,6 +28,10 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'register_form'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', function () {
         return view('app.home');
