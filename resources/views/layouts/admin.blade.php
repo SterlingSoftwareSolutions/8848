@@ -30,4 +30,4 @@
         @include('layouts.admin.footer')
     </footer>
 </body>
-</html
+</html>
