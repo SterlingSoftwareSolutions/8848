@@ -23,17 +23,14 @@
     </div>
     
 
-
-
     <div class="md:mt-5 flex flex-col mx-2 md:mx-10 border-2 ">
         <!-- Box 1: Customer List -->
         <div class=" text-blue-900 ">
             <div class="flex flex-row bg-gray-200 py-5">
                 <p class="w-[5%] px-2">#</p>
-                <p class="w-[20%]"></p>
-                <p class="w-[20%]">Category Name</p>
-                <p class="w-[20%]">Sub Category</p>
-                <p class="w-[20%]">Items</p>
+                <p class="w-[25%]"></p>
+                <p class="w-[25%]">Sub Category Name</p>
+                <p class="w-[25%]">Items</p>
                 <p class="w-[15%]">Action</p>
             </div>
             <!-- Placeholder Content for Box 1 -->
@@ -45,24 +42,22 @@
                     <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
                 </div>
 
-                <div class="w-[20%]">
+                <div class="w-[25%]">
                     <img src="{{ asset('images/Rectangle 236.png') }}" alt="Image Description" class="w-full">
                 </div>
             
 
-                <div class="w-[20%] ">
+                <div class="w-[25%] ">
                     Sugarcane
                 </div>
 
-                <div class="w-[20%]">
-              4 Sub Categories
-                  </div>
-
-                  <div class="w-[20%]">
+    
+                  <div class="w-[25%]">
                     155 Items
                      </div>
             
 
+    
                 <div class="md:flex flex-row gap-1 w-[15%] justify-end mx-1">
                    
                   
@@ -77,31 +72,29 @@
             {{-- table list 2 --}}
 
         
-             {{-- Table list 1  --}}
-             <div class="flex flex-row py-5 text-gray-500 items-center border-b-2 border-gray-300">
+            {{-- Table list 1  --}}
+            <div class="flex flex-row py-5 text-gray-500 items-center border-b-2 border-gray-300">
 
                 <div class="w-[5%] py-2 px-2">
                     <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
                 </div>
 
-                <div class="w-[20%]">
+                <div class="w-[25%]">
                     <img src="{{ asset('images/Rectangle 236.png') }}" alt="Image Description" class="w-full">
                 </div>
             
 
-                <div class="w-[20%] ">
+                <div class="w-[25%] ">
                     Sugarcane
                 </div>
 
-                <div class="w-[20%]">
-              4 Sub Categories
-                  </div>
-
-                  <div class="w-[20%]">
+    
+                  <div class="w-[25%]">
                     155 Items
                      </div>
             
 
+    
                 <div class="md:flex flex-row gap-1 w-[15%] justify-end mx-1">
                    
                   
@@ -114,11 +107,10 @@
                 </div>
             </div>
             {{-- table list 2 --}}
-
+        
         </div>
 
        
-
     </div>
 </div>
 </div>
