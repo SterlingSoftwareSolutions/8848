@@ -45,7 +45,7 @@
                     <!-- Placeholder Content for Box 1 -->
 
                     {{-- Table list 1  --}}
-                    <div class="flex flex-row py-5 border-b-2 border-gray-300 text-gray-500">
+                    <div class="flex flex-row py-5   text-gray-500">
 
                         <div class="w-[5%] py-2 px-2">
                             <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
@@ -62,7 +62,8 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-green-950 text-center"><span class="ml-4 mr-4">Paid</span></label>
+                            <label class="py-2 px-2 rounded-lg mx-auto bg-green-200 text-green-600 text-center"><span class="ml-4 mr-4">Paid</span></label>
+
                           </div>
 
                         <div class="w-[10%]">
@@ -110,7 +111,8 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-red-950 text-center"><span class="ml-2 mr-2">Unpaid</span></label>
+                            <label class="py-2 px-2 rounded-lg mx-auto bg-red-200 text-red-600 text-center"><span class="ml-1 mr-1">Unpaid</span></label>
+
                         </div>
 
                         <div class="w-[10%]">
@@ -157,7 +159,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-yellow-400 text-yellow-950 text-center"><span class="ml-3 mr-3">Partial</span></label>
+                            <label class="py-2 px-2 rounded-lg mx-auto bg-yellow-200 text-yellow-600 text-center"><span class="ml-2 mr-2">Partial</span></label>
                         </div>
 
                         <div class="w-[10%]">
