@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,14 @@ class ProductController extends Controller
         $query = Product::query();
 
         if($request->category_id){
-            $query->where('category_id', $request->category_id);
+
+            $category = Category::find($request->category_id);
+
+            if($category->parent != null){
+                $query->where('category_id', $category->id);
+            } else{
+                $query->whereIn('category_id', $category->children->pluck('id'));
+            }
         }
 
         if($request->in_stock != null){

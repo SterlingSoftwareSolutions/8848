@@ -12,7 +12,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'success' => true,
+            'categories' => Category::where('parent_id', null)->get()
+        ]);
     }
 
     /**
@@ -36,7 +39,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
+        return response()->json([
+            'success' => true,
+            'category' => $category->load('parent', 'children')
+        ]);
     }
 
     /**
