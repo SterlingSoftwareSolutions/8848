@@ -40,4 +40,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Product routes (TODO: ADMIN ONLY)
     Route::resource('/products', ProductController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('/categories', CategoryController::class)->only(['store', 'update', 'destroy']);
 });
