@@ -2,6 +2,10 @@
 
 <div class="md:mb-5">
 
+
+    <div class=" text-blue-700 text-3xl md:mx-10 font-bold pt-5">
+        Parent Category: Sugercane
+    </div>
     <div class="flex flex-col md:flex-row mt-5 mx-2 md:mx-10 items-center gap-2 ">
 
         <div class="w-10 md:py-2 py-0.5 px-2">
