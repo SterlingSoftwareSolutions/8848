@@ -31,7 +31,26 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "parent_id" => 'nullable',
+            "name" => 'required',
+            "description" => 'required',
+            "icon" => 'required|file',
+            "background_image" => 'required|file'
+        ]);
+
+        $category = Category::create([
+            "parent_id" => $request->parent_id ?? null,
+            "name" => $request->name,
+            "description" => $request->description,
+            "icon_url" => $request->icon->store('category_images'),
+            "background_image_url" => $request->background_image->store('category_images')
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'category' => $category->load('parent', 'children')
+        ]);
     }
 
     /**
@@ -59,7 +78,26 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            "parent_id" => 'nullable',
+            "name" => 'required',
+            "description" => 'required',
+            "icon" => 'nullable|file',
+            "background_image" => 'nullable|file'
+        ]);
+
+        $category->update([
+            "parent_id" => $request->parent_id ?? null,
+            "name" => $request->name,
+            "description" => $request->description,
+            "icon_url" => $request->icon ? $request->icon->store('category_images') : $category->icon_url,
+            "background_image_url" => $request->background_image ? $request->background_image->store('category_images') : $category->background_image_url
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'category' => $category->load('parent', 'children')
+        ]);
     }
 
     /**
@@ -67,6 +105,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 }
