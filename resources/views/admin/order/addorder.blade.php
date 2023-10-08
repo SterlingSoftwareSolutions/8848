@@ -114,44 +114,6 @@
                         <td>Discount</td>
                         <td>Total</td>
                     </tr>
-                    
-                    <tr class="border-b-2">
-                        <td>HN215</td>
-                        <td class="flex items-center">
-                            <img src="{{ URL('images/product-ex.png')}}" alt="" class="w-10 h-10 mr-2 border rounded">
-                            8848 Test Product 01
-                        </td>                        
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        <td>$30.00</td>                       
-                    </tr>
-                    
-                    <tr class="border-b-2">
-                        <td>HN215</td>
-                        <td class="flex items-center">
-                            <img src="{{ URL('images/product-ex.png')}}" alt="" class="w-10 h-10 mr-2 border rounded">
-                            8848 Test Product 01
-                        </td>                        
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        
-                    </tr>
-                    <tr class="">
-                        <td class="">HN215</td>
-                        <td class="flex items-center">
-                            <img src="{{ URL('images/product-ex.png')}}" alt="" class="w-10 h-10 mr-2 border rounded">
-                            8848 Test Product 01
-                        </td>                        
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        <td>$30.00</td>
-                        
-                    </tr>
-                    
                 </table>
             </div>
         </div>
@@ -233,13 +195,13 @@
 
 <script>
     
-document.getElementById("showTableRow").addEventListener("click", function () {
-    var tableRow = document.querySelector("tr.hidden");
-    if (tableRow) {
-        tableRow.classList.remove("hidden");
-    }
-});
-
+    document.getElementById("showTableRow").addEventListener("click", function () {
+        var tableRow = document.querySelector("tr.hidden");
+        if (tableRow) {
+            tableRow.classList.remove("hidden");
+        }
+    });
+    
 </script>
   
 
