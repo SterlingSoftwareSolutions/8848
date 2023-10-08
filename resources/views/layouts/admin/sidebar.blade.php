@@ -1,4 +1,4 @@
-<div class="w-64 p-8 text-blue-500 shadow-inner">
+<div class="w-64 h-full p-8 text-blue-500 shadow-inner">
     <!-- Sidebar content goes here -->
     <ul>
       <li class="p-2 mb-4 bg-gray-200 rounded-md">
