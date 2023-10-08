@@ -17,7 +17,7 @@ class ProductController extends Controller
 
         if($request->category_id){
 
-            $category = Category::find($request->category_id);
+            $category = Category::findOrFail($request->category_id);
 
             if($category->parent != null){
                 $query->where('category_id', $category->id);
