@@ -47,8 +47,14 @@ class ProductController extends Controller
             }
         }
 
-        return response()->json([
-            'success' => true,
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'products' => $query->get()
+            ]);
+        }
+
+        return view('app.products.index', [
             'products' => $query->get()
         ]);
     }
@@ -84,10 +90,10 @@ class ProductController extends Controller
             'price' => $request->price,
             'sku' => $request->sku,
             'in_stock' => $request->in_stock,
-            'image_1_url' => $request->image_1 ? $request->image_1->store('prodduct_images') : null,
-            'image_2_url' => $request->image_2 ? $request->image_2->store('prodduct_images') : null,
-            'image_3_url' => $request->image_3 ? $request->image_3->store('prodduct_images') : null,
-            'image_4_url' => $request->image_4 ? $request->image_4->store('prodduct_images') : null
+            'image_1_url' => $request->image_1 ? $request->image_1->store('public/prodduct_images') : null,
+            'image_2_url' => $request->image_2 ? $request->image_2->store('public/prodduct_images') : null,
+            'image_3_url' => $request->image_3 ? $request->image_3->store('public/prodduct_images') : null,
+            'image_4_url' => $request->image_4 ? $request->image_4->store('public/prodduct_images') : null
         ]);
 
         return response()->json([
@@ -99,10 +105,16 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Product $product, Request $request)
     {
-        return response()->json([
-            'success' => true,
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'product' => $product
+            ]);
+        }
+
+        return view('app.products.show',[
             'product' => $product
         ]);
     }
@@ -138,10 +150,10 @@ class ProductController extends Controller
             'price' => $request->price,
             'sku' => $request->sku,
             'in_stock' => $request->in_stock,
-            'image_1_url' => $request->image_1 ? $request->image_1->store('prodduct_images') : $product->image_1_url,
-            'image_2_url' => $request->image_2 ? $request->image_2->store('prodduct_images') : $product->image_2_url,
-            'image_3_url' => $request->image_3 ? $request->image_3->store('prodduct_images') : $product->image_3_url,
-            'image_4_url' => $request->image_4 ? $request->image_4->store('prodduct_images') : $product->image_4_url
+            'image_1_url' => $request->image_1 ? $request->image_1->store('public/prodduct_images') : $product->image_1_url,
+            'image_2_url' => $request->image_2 ? $request->image_2->store('public/prodduct_images') : $product->image_2_url,
+            'image_3_url' => $request->image_3 ? $request->image_3->store('public/prodduct_images') : $product->image_3_url,
+            'image_4_url' => $request->image_4 ? $request->image_4->store('public/prodduct_images') : $product->image_4_url
         ]);
 
         return response()->json([
