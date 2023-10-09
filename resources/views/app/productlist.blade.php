@@ -1,29 +1,29 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="flex flex-col md:flex-row justify-center">
+<div class="flex flex-col justify-center mt-4 md:flex-row md:mt-4">
     <!-- Image Box 1 -->
-    <div class="w-full md:w-1/3 px-4 rounded-md">
+    <div class="w-full px-4 rounded-md md:w-1/3">
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[150px] object-cover rounded-md">
         <h1 class="text-center text-lg text-[#1670B7] font-semibold p-2">Containers</h1>
     </div>
 
     <!-- Image Box 2 -->
-    <div class="w-full md:w-1/3 px-4 rounded-md">
+    <div class="w-full px-4 rounded-md md:w-1/3">
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[150px] object-cover rounded-md">
         <h1 class="text-center text-lg text-[#1670B7] font-semibold p-2">Cups & Accessories</h1>
     </div>
 
     <!-- Image Box 3 -->
-    <div class="w-full md:w-1/3 px-4 rounded-md">
+    <div class="w-full px-4 rounded-md md:w-1/3">
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[150px] object-cover rounded-md">
         <h1 class="text-center text-lg text-[#1670B7] font-semibold p-2">Plates, Bowls & Trays</h1>
     </div>
 </div>
 
-<div class="flex flex-col md:flex-row justify-center gap-5 p-5">
+<div class="flex flex-col justify-center gap-5 p-5 md:flex-row">
     <!-- Product Box 1 -->
-    <div class="w-full md:w-1/3 h-full rounded-md border-[1px] border-[#707070]">
+    <div class="w-full md:w-1/4 h-full rounded-md border-[1px] border-[#707070]">
         <!-- Product Image -->
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[280px] object-cover">
         <!-- Product Title -->
@@ -48,13 +48,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -62,21 +62,17 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
-    <div class="w-full md:w-1/3 h-full rounded-md border-[1px] border-[#707070]">
+    <div class="w-full md:w-1/4 h-full rounded-md border-[1px] border-[#707070]">
         <!-- Product Image -->
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[280px] object-cover">
         <!-- Product Title -->
@@ -101,13 +97,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -115,21 +111,17 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
-    <div class="w-full md:w-1/3 h-full rounded-md border-[1px] border-[#707070]">
+    <div class="w-full md:w-1/4 h-full rounded-md border-[1px] border-[#707070]">
         <!-- Product Image -->
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[280px] object-cover">
         <!-- Product Title -->
@@ -154,13 +146,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -168,21 +160,17 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
-    <div class="w-full md:w-1/3 h-full rounded-md border-[1px] border-[#707070]">
+    <div class="w-full md:w-1/4 h-full rounded-md border-[1px] border-[#707070]">
         <!-- Product Image -->
         <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[280px] object-cover">
         <!-- Product Title -->
@@ -207,13 +195,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -221,23 +209,19 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
     <!-- Repeat similar code for other product boxes -->
 </div>
-<div class="flex flex-col md:flex-row justify-center gap-5 p-5">
+<div class="flex flex-col justify-center gap-5 p-5 md:flex-row">
     <!-- Product Box 1 -->
     <div class="w-full md:w-1/3 h-full rounded-md border-[1px] border-[#707070]">
         <!-- Product Image -->
@@ -264,13 +248,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -278,17 +262,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
@@ -317,13 +297,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -331,17 +311,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
@@ -370,13 +346,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -384,17 +360,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
@@ -423,13 +395,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -437,23 +409,19 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
     <!-- Repeat similar code for other product boxes -->
 </div>
-<div class="flex flex-col md:flex-row justify-center gap-5 p-5">
+<div class="flex flex-col justify-center gap-5 p-5 md:flex-row">
     <!-- Product Box 1 -->
     <div class="w-full md:w-1/3 h-full rounded-md border-[1px] border-[#707070]">
         <!-- Product Image -->
@@ -480,13 +448,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -494,17 +462,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
@@ -533,13 +497,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -547,17 +511,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
@@ -586,13 +546,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -600,17 +560,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>
@@ -639,13 +595,13 @@
             <div class="m-auto">
                 <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                     <!-- Decrease Button -->
-                    <button data-action="decrement" class="text-gray-600 hover:text-gray-700 h-10 md:h-full w-10 md:w-20 rounded-l cursor-pointer outline-none">
+                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">−</span>
                     </button>
                     <!-- Input Field -->
-                    <input type="number" class="focus:outline-none text-center w-16 md:w-full font-semibold text-md md:text-base cursor-default flex items-center text-gray-700 outline-none" name="custom-input-number" value="0">
+                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
                     <!-- Increase Button -->
-                    <button data-action="increment" class="text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-10 md:h-full w-10 md:w-20 rounded-r cursor-pointer">
+                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                 </div>
@@ -653,17 +609,13 @@
 
         </div>
         <!-- Product Buttons -->
-        <div class="flex flex-col md:flex-row gap-4 py-2 p-5">
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-transparent w-full md:w-48 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 md:px-6 border-[2px] border-[#1670B7] hover:border-transparent rounded">
-                    <h1 class="text-[#1670B7]">FAVORITE</h1>
-                </button>
-            </div>
-            <div class="w-full md:w-1/2">
-                <button class="mx-auto md:mx-0 bg-blue-500 w-full md:w-48 hover:bg-blue-700 text-white font-bold py-2 px-4 md:px-6 border border-blue-700 rounded">
-                    ADD TO CART
-                </button>
-            </div>
+        <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
+            <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+                Favorite
+            </button>
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
         </div>
 
     </div>

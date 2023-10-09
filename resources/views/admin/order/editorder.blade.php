@@ -121,7 +121,22 @@
                             <img src="{{ URL('images/product-ex.png')}}" alt="" class="w-10 h-10 mr-2 border rounded">
                             8848 Test Product 01
                         </td>                        
-                        <td>$30.00</td>
+                        <td>
+                            <div class="m-auto">
+                                <div class="flex flex-row w-[100px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
+                                    <!-- Decrease Button -->
+                                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">−</span>
+                                    </button>
+                                    <!-- Input Field -->
+                                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
+                                    <!-- Increase Button -->
+                                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">+</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                         <td>$30.00</td>
                         <td>$30.00</td>
                         <td>$30.00</td>                       
@@ -133,7 +148,22 @@
                             <img src="{{ URL('images/product-ex.png')}}" alt="" class="w-10 h-10 mr-2 border rounded">
                             8848 Test Product 01
                         </td>                        
-                        <td>$30.00</td>
+                        <td>
+                            <div class="m-auto">
+                                <div class="flex flex-row w-[100px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
+                                    <!-- Decrease Button -->
+                                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">−</span>
+                                    </button>
+                                    <!-- Input Field -->
+                                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
+                                    <!-- Increase Button -->
+                                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">+</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                         <td>$30.00</td>
                         <td>$30.00</td>
                         <td>$30.00</td>
@@ -145,7 +175,22 @@
                             <img src="{{ URL('images/product-ex.png')}}" alt="" class="w-10 h-10 mr-2 border rounded">
                             8848 Test Product 01
                         </td>                        
-                        <td>$30.00</td>
+                        <td>
+                            <div class="m-auto">
+                                <div class="flex flex-row w-[100px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
+                                    <!-- Decrease Button -->
+                                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">−</span>
+                                    </button>
+                                    <!-- Input Field -->
+                                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
+                                    <!-- Increase Button -->
+                                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">+</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                         <td>$30.00</td>
                         <td>$30.00</td>
                         <td>$30.00</td>

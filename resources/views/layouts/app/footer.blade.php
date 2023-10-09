@@ -1,4 +1,4 @@
-<footer class="-mt-6 bg-white md:-mt-4" style="z-index: -999;">
+<footer class="-mt-6 bg-white shadow-inner md:mt-8" style="z-index: -999;">
     <div class="w-full max-w-screen-xl p-4 py-16 mx-auto lg:py-16">
         <div class="mt-5 md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
