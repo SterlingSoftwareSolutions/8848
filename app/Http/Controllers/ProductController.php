@@ -74,6 +74,8 @@ class ProductController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'description' => 'required',
+            'short_description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
             'sku' => 'required|unique',
@@ -86,6 +88,8 @@ class ProductController extends Controller
 
         $product = Product::create([
             'title' => $request->title,
+            'description' => $request->description,
+            'short_description' => $request->description,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'sku' => $request->sku,
@@ -105,7 +109,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product, Request $request)
+    public function show(Request $request, Product $product)
     {
         if ($request->wantsJson()) {
             return response()->json([
@@ -134,6 +138,8 @@ class ProductController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'description' => 'required',
+            'short_description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
             'sku' => 'required|unique:products,sku,' . $product->id,
@@ -146,6 +152,8 @@ class ProductController extends Controller
 
         $product->update([
             'title' => $request->title,
+            'description' => $request->description,
+            'short_description' => $request->short_description,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'sku' => $request->sku,

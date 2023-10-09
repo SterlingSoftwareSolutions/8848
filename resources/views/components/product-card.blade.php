@@ -2,12 +2,14 @@
     'product' => null
 ])
 
+
 <div class="w-full h-full rounded-md border-[1px] border-[#707070]">
     <!-- Product Image -->
+    <a href="/products/{{$product->id}}">
     <img src="{{ $product->image_1_url }}" alt="Image Description" class="w-full h-[280px] object-cover">
-
     <!-- Product Title -->
     <h1 class="text-lg text-[#505050] font-semibold p-2">{{$product->title ?? '(unknown)'}}</h1>
+    </a>
 
     <div class="flex flex-row">
         <!-- Product Status and Code -->
