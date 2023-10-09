@@ -1,15 +1,8 @@
-@extends('layouts.app')
-@section('content')
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Tailwind -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Home</title>
-</head>
-<body class="md:overflow-x-hidden">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!--FONT AWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,6 +13,11 @@
 
     <!--PLUGIN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body class="md:overflow-x-hidden">
+    <!-- HEADER -->
+    @include('layouts.app.header')
 
     <style>
         
@@ -330,7 +328,7 @@
 
         .slider aside {
         position: absolute;
-            bottom: 15rem;
+            bottom: 2rem;
             left: 2rem;
             text-align: center;
             z-index: 10;
@@ -416,7 +414,7 @@
     <!--HEADER-->
     <header class="-mt-6 bg-red md:-mt-4">
         <!-- Image Slider -->
-        <div class="w-full">
+        <div class="mt-4">
             <section class="slider">
                 <ul>
                     <li>
@@ -433,99 +431,102 @@
                             <a href="#about" class="btn btn_3">lick here to view Our Range</a>
                         </article>
                     </li>
-                <li>
+                    <li>
                         <article class="center-y padding_2x">
                             <h3 class="big title">Clean, Protect, Pack</h3>
                             <p class="text-2xl font-bold">Explore Our Range Of Cleaning & Packing Solutions </p>	
-                            <a href="#about" class="btn btn_3">lick here to view Our Range</a>
+                            <a href="#about" class="btn btn_3">Click here to view Our Range</a>
                         </article>
                     </li>
-                    <aside>
-                        <a href="#"></a>
-                        <a href="#"></a>
-                    <a href="#"></a>
-                    </aside>
                 </ul>
+                <aside>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </aside>
             </section>
         </div>
         <!-- Category Section -->
-        <div class="bg-gradient-to-r from-blue-600 to-blue-800 w-full">
-            <div class="flex flex-row py-10 h-full">
+        <div class="w-full bg-gradient-to-b from-[#166EB6] to-[#284297]">
+            <div class="flex flex-row h-full py-10">
                 <!-- Mug Image -->
-                <div class="md:w-2/12 flex items-center">
-                    <img src="{{ asset('images/location.png') }}" alt="Image Description" class="w-2/12 sm:w-8/12 transform rotate-45" />
+                <div class="relative md:w-2/12">
+                    <div class="absolute inset-0 bg-opacity-50 bg-no-repeat -ml-28" style="background-image: url('{{ asset('images/jug-image.png') }}'); opacity: 0.5;"></div>
+                    {{-- <img src="{{ asset('images/jug-image.png') }}" alt="Image Description" class="w-full h-full transform rotate-35 sm:w-8/12" /> --}}
                 </div>
+                
+                
                 <!-- Text -->
-                <div class="md:w-3/12 flex flex-col items-center justify-center">
+                <div class="flex flex-col items-center justify-center md:w-3/12">
                     <div class="ml-5">
-                        <H1 class="text-white text-4xl mb-5">We Are 8848 Suppliers</H1>
-                        <p class="text-white mb-5">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Et Leo Tincidunt, Placerat Ex In, Feugiat Urna. Integer Dictum Tellus Vitae Turpis Consequa</p>
+                        <H1 class="mb-5 text-4xl text-white">We Are 8848 Suppliers</H1>
+                        <p class="mb-5 text-white">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Et Leo Tincidunt, Placerat Ex In, Feugiat Urna. Integer Dictum Tellus Vitae Turpis Consequa</p>
                         <div class="flex items-center justify-center md:items-start md:justify-start">
-                        <button type="button" class="text-blue-600 bg-white font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 uppercase flex md:justify-center md:items-center">shop now</button>
+                        <button type="button" class="text-blue-600 bg-white font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 uppercase flex md:justify-center md:items-center hover:bg-blue-300">shop now</button>
                         </div>
                         
                     </div>
                     
                 </div>
                 <!-- Categories -->
-                <div class="md:w-6/12 fex fex-col md:-mt-10 mr-3">
-                    <div class="flex flex-row mb-10 gap-10 md:ml-20 items-center justify-center">
+                <div class="mr-3 md:w-6/12 fex-col md:-mt-10">
+                    <div class="flex flex-row items-center justify-center gap-10 mb-10 md:ml-20">
                         <!-- Row 1 -->
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 1</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 1</span>
                         </div>
-                        <div class="bg-white md:h-36 md:w-1/4 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="2" data-bg-image="images/image.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 2</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:h-36 md:w-1/4 categoty-angle group category-item" data-category="2" data-bg-image="images/image.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 2</span>
                         </div>
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 3</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 3</span>
                         </div>
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 4</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 4</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-row mb-10 gap-10 md:ml-11 md:mr-9 items-center justify-center">
+                    <div class="flex flex-row items-center justify-center gap-10 mb-10 md:ml-11 md:mr-9">
                         <!-- Row 2 -->
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 5</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 5</span>
                         </div>
-                        <div class="bg-white md:h-36 md:w-1/4 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 6</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:h-36 md:w-1/4 categoty-angle group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 6</span>
                         </div>
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 7</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 7</span>
                         </div>
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 8</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 8</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-row gap-10 md:ml-4 md:mr-16 -mb-10 items-center justify-center">
+                    <div class="flex flex-row items-center justify-center gap-10 -mb-10 md:ml-4 md:mr-16">
                         <!-- Row 3 -->
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 9</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 9</span>
                         </div>
-                        <div class="bg-white md:h-36 md:w-1/4 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 10</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:h-36 md:w-1/4 categoty-angle group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 10</span>
                         </div>
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 11</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="1" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/email.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 11</span>
                         </div>
-                        <div class="bg-white md:w-1/4 md:h-36 p-5 flex items-center justify-center flex-col categoty-angle relative group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
-                            <img class="h-36 mb-2 opacity-70 transition-opacity duration-300 ease-in-out" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
-                            <span class="text-blue-700 group-hover:text-white opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out">Category 12</span>
+                        <div class="relative flex flex-col items-center justify-center p-5 bg-white md:w-1/4 md:h-36 categoty-angle group category-item" data-category="2" data-bg-image="images/su-san-lee-g3PyXO4A0yc-unsplash.jpg">
+                            <img class="mb-2 transition-opacity duration-300 ease-in-out h-36 opacity-70" src="{{ asset('images/logo.png') }}" data-image="images/location.png">
+                            <span class="text-blue-700 transition-opacity duration-300 ease-in-out group-hover:text-white opacity-70 hover:opacity-100">Category 12</span>
                     </div>
                 </div>
                 <div class="w-/12">
@@ -534,48 +535,54 @@
             </div>  
         </div>
         <!-- End Section -->
-        <div class="w-full bg-white flex flex-row py-20">
+        <div class="flex flex-row w-full py-20 bg-white">
             <div class="w-2/12"></div>
-            <div class="bg-white w-8/12">
+            <div class="w-8/12 bg-white">
                 <!-- Text -->
                 <div class="flex items-center justify-center">
                     <div class="text-center">
-                        <h1 class="text-blue-500 text-2xl my-5 tracking-wide">Secure And Organize</h1>
-                        <h1 class="text-blue-500 font-bold text-3xl my-5 tracking-wide">Explore Our Range Of Reliable And Innovative Solutions</h1>
-                        <h1 class="text-gray-600 my-5 font-light text-xl tracking-wider">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Et Leo Tincidunt, Placerat Ex In, Feugiat Urna. Integer Dictum Tellus Vitae Turpis Consequat,</h1>
+                        <h1 class="my-5 text-2xl tracking-wide text-blue-500">Secure And Organize</h1>
+                        <h1 class="my-5 text-3xl font-bold tracking-wide text-blue-500">Explore Our Range Of Reliable And Innovative Solutions</h1>
+                        <h1 class="my-5 text-xl font-light tracking-wider text-gray-600">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Et Leo Tincidunt, Placerat Ex In, Feugiat Urna. Integer Dictum Tellus Vitae Turpis Consequat,</h1>
                     </div>
                 </div>  
                 <!-- Icons -->
-                <div class="bg-blue-500 py-4">
+                <div class="py-4 bg-[#166EB6]">
                     <div class="flex flex-row md:divide-x divide-zinc-100 ">
-                        <div class="md:w-1/3 mx-5 flex flex-col items-center">
+                        <div class="flex flex-col items-center mx-5 md:w-1/3">
                             <!-- Icon -->
                             <div class="w-1/3">
-                                <img class="mb-2" src="{{ asset('images/email.png') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                </svg>                                  
                             </div>
                             <!-- Text -->
-                            <div>
-                                <h1 class="text-white text-2xl">Quick Delivery</h1>
+                            <div class="ml-4 md:ml-0">
+                                <h1 class="text-2xl text-white">Quick Delivery</h1>
                             </div>
                         </div>
-                        <div class="md:w-1/3 mx-5 flex flex-col items-center">
+                        <div class="flex flex-col items-center mx-5 md:w-1/3">
                             <!-- Icon -->
                             <div class="w-1/3">
-                                <img class="mb-2" src="{{ asset('images/email.png') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 -ml-2 md:ml-0">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                                </svg>                                  
                             </div>
                             <!-- Text -->
-                            <div>
-                                <h1 class="text-white text-2xl">Secure Payment</h1>
+                            <div class="ml-4 md:ml-0">
+                                <h1 class="text-2xl text-white">Secure Payment</h1>
                             </div>
                         </div>
-                        <div class="md:w-1/3 mx-5 flex flex-col items-center">
+                        <div class="flex flex-col items-center mx-5 md:w-1/3">
                             <!-- Icon -->
                             <div class="w-1/3">
-                                <img class="mb-2" src="{{ asset('images/email.png') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-20 w-18">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                </svg>                                  
                             </div>
                             <!-- Text -->
-                            <div>
-                                <h1 class="text-white text-2xl">Best Quality</h1>
+                            <div class="ml-8 md:ml-0">
+                                <h1 class="text-2xl text-white">Best Quality</h1>
                             </div>
                         </div>
                     </div>
@@ -585,7 +592,11 @@
         </div>
         
     </header>
-    
+
+    <!-- FOOTER -->
+    <div class="mt-20">
+        @include('layouts.app.footer')
+    </div>
 </body>
 <script>
     {
@@ -680,4 +691,3 @@ document.querySelectorAll('.category-item').forEach((categoryItem) => {
 
 </script>
 </html>
-@endsection
