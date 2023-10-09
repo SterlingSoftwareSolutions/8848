@@ -14,7 +14,7 @@ class CategoryController extends Controller
     {
         return response()->json([
             'success' => true,
-            'categories' => Category::where('parent_id', null)->get()
+            'categories' => Category::with('children')->where('parent_id', null)->get()
         ]);
     }
 
