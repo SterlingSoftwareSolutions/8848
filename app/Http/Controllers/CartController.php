@@ -13,7 +13,7 @@ class CartController extends Controller
         $user = Auth::user();
         $items = $user->cart_items;
         $total_price = $items->sum(function($cart_item){
-            return $cart_item->product->price * $cart_item->quantity;
+            return $cart_item->variant->price * $cart_item->quantity;
         });
 
         return response()->json([
@@ -29,59 +29,59 @@ class CartController extends Controller
     public function add(Request $request){
 
         $request->validate([
-            'product_id' => 'required|exists:products,id',
+            'variant_id' => 'required|exists:products,id',
             'quantity' => 'nullable|min:1'
         ]);
 
         $user = Auth::user();
-        $user->cart_add($request->product_id, $request->quantity ?? 1);
+        $user->cart_add($request->variant_id, $request->quantity ?? 1);
 
         return response()->json([
             'success' => true,
-            'message' => "Product {$request->product_id} added to cart"
+            'message' => "Variant {$request->variant_id} added to cart"
         ]);
     }
 
     public function update(Request $request){
 
         $request->validate([
-            'product_id' => 'required|exists:products,id',
+            'variant_id' => 'required|exists:variants,id',
             'quantity' => 'nullable|min:1'
         ]);
 
         $user = Auth::user();
 
-        if($user->cart_update($request->product_id, $request->quantity ?? 1)){
+        if($user->cart_update($request->variant_id, $request->quantity ?? 1)){
             return response()->json([
                 'success' => true,
-                'message' => "Product {$request->product_id} updated in cart"
+                'message' => "Variant {$request->variant_id} updated in cart"
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'message' => "Product {$request->product_id} not found in cart"
+            'message' => "Variant {$request->variant_id} not found in cart"
         ]);
     }
 
     public function remove(Request $request){
 
         $request->validate([
-            'product_id' => 'required|exists:products,id',
+            'variant_id' => 'required|exists:variants,id',
         ]);
 
         $user = Auth::user();
 
-        if($user->cart_remove($request->product_id)){
+        if($user->cart_remove($request->variant_id)){
             return response()->json([
                 'success' => true,
-                'message' => "Product {$request->product_id} removed from cart"
+                'message' => "Variant {$request->variant_id} removed from cart"
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'message' => "Product {$request->product_id} not found in cart"
+            'message' => "Variant {$request->variant_id} not found in cart"
         ]);
     }
 }
