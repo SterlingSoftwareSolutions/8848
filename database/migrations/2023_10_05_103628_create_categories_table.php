@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('icon_url')->nullable();
             $table->string('background_image_url')->nullable();
             $table->timestamps();
-
-            $table->unique(['parent_id', 'name']);
         });
     }
 
