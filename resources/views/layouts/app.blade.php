@@ -9,7 +9,7 @@
     <!-- HEADER -->
     @include('layouts.app.header')
 
-    <div class="container">
+    <div class="container mx-auto">
         @yield('content')
     </div>
 
