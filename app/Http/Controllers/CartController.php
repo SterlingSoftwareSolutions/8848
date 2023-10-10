@@ -50,7 +50,7 @@ class CartController extends Controller
                 'message' => "Variant {$request->variant_id} added to cart"
             ]);
         } else{
-            return back()->withErrors(['success' => "Item added to cart"]);
+            return back()->with(['success' => "Item added to cart"]);
         }
     }
 
@@ -70,7 +70,7 @@ class CartController extends Controller
                     'message' => "Variant {$request->variant_id} updated in cart"
                 ]);
             } else{
-                return back()->withErrors(['success' => 'Item quantity updated']);
+                return back()->with(['success' => 'Item quantity updated']);
             }
         }
 
@@ -96,7 +96,7 @@ class CartController extends Controller
                 ]);
             }
 
-            return back()->withErrors(['success' => 'removed item from cart']);
+            return back()->with(['success' => 'removed item from cart']);
         }
 
         if($request->wantsJson()){
@@ -106,6 +106,6 @@ class CartController extends Controller
             ]);  
         }
 
-        return back()->withErrors(['error' => 'failed to remove item from cart']);
+        return back()->with(['error' => 'failed to remove item from cart']);
     }
 }
