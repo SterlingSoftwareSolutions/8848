@@ -8,7 +8,7 @@
 <body>
     <!-- HEADER -->
     @include('layouts.app.header')
-
+    
     <div class="w-full gap-3 mt-5 ml-4 md:flex">
         <div class="flex flex-col w-full">
             <div class="w-full border rounded">
@@ -24,13 +24,13 @@
                     <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                         {{-- name --}}
                         <div class="flex flex-row mb-4">
-                            <div class="mb-4 md:mr-2 md:mb-0">
+                            <div class="mb-4 md:mr-2 md:mb-0" style="width: 50%">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700 after:content-['*'] after:ml-0.5 after:text-red-500" for="firstname">
                                     First Name
                                 </label>
                                 <input class="w-full px-3 py-2 mr-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="" placeholder="First name" />
                             </div>
-                            <div class="md:ml-2">
+                            <div class="md:ml-2" style="width: 50%">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700 after:content-['*'] after:ml-0.5 after:text-red-500" for="lastname">
                                     Last Name
                                 </label>
@@ -274,7 +274,21 @@
                         </tr>
                         
                         <tr>
-                            <td>8848 Test Product 01  × 1</td>
+                            <td class="flex">
+                                <label class="py-2">8848 Test Product 01</label>  
+                                <div class=" ml-2 flex flex-row w-[90px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
+                                    <!-- Decrease Button -->
+                                    <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">−</span>
+                                    </button>
+                                    <!-- Input Field -->
+                                    <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
+                                    <!-- Increase Button -->
+                                    <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
+                                        <span class="m-auto text-2xl font-thin">+</span>
+                                    </button>
+                                </div>
+                            </td>
                             <td>$30.00</td>
                         </tr>
                         <tr class="ml-2 font-semibold text-gray-500">

@@ -136,7 +136,7 @@
                         </div>
                         <div class="flex w-full mx-auto">
                             {{-- Confirm new password --}}
-                            <div class="mb-2" style="width: 50%;">
+                            <div class="mb-2" style="width: 48.5%;">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                     Confirm new password
                                 </label>
