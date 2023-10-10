@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class UserController extends Controller
 {
@@ -37,7 +38,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'email' => 'required',
             'role' => 'required',
-            'password' => 'required'
+            'password' => 'required|confirmed'
         ]);
 
         $user = User::create([
@@ -48,24 +49,37 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return response()->json([
-            'success' => true,
-            'user' => $user
-        ]);
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'user' => $user
+            ]);
+        }
+   
+        return redirect('/admin/users');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, User $user)
     {
-        //
+     if($request->wantsJson()){
+        return response()->json([
+          'success' => true,
+          'user' => $user
+        ]);
+     }
+
+     return view('admin.users.show',[
+        'user' => $user
+     ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
         //
     }
@@ -73,16 +87,42 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
+        ]);
+
+        $user ->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'role' => $request->role,
+        ]);
+
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'user' => $user
+            ]);
+        }
+   
+        return redirect('/admin/users');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request,User $user)
     {
-        //
+        $user->delete();
+
+        return response()->json([
+            'success' => true, 
+        ]);
     }
 }
