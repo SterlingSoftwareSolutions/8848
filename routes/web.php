@@ -50,6 +50,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart/checkout', [CartController::class, 'checkout']);
 
     // User CRUD
-    Route::resource('/admin/user', UserController::class);
+    Route::resource('/admin/users', UserController::class);
 
 });
