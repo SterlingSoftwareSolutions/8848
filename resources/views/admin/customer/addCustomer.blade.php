@@ -1,5 +1,6 @@
 @extends('layouts.admin') @section('content')
-    <div class="container mx-auto p-6 ">
+    <form class="container mx-auto p-6" method="post" action="/admin/users">
+        @csrf
         <div class="md:mb-5">
             <h1 class="text-blue-700 font-medium truncate">Add Customer</h1>
         </div>
@@ -14,10 +15,10 @@
         </div>
         <div class="flex mb-4 gap-5">
             <div class="w-1/2 pr-4">
-                <input type="text" id="first_name" class="w-full border p-2">
+                <input type="text" id="first_name" name="first_name" class="w-full border p-2">
             </div>
             <div class="w-1/2">
-                <input type="text" id="last_name" class="w-full border p-2">
+                <input type="text" id="last_name" name="last_name" class="w-full border p-2">
             </div>
         </div>
 
@@ -30,12 +31,12 @@
                 <label for="city_region">City/Region</label>
             </div>
         </div>
-        <div class="flex mb-3 gap-5 gap-5">
+        <div class="flex mb-3 gap-5">
             <div class="w-1/2 pr-4">
-                <input type="text" id="company" class="w-full border p-2">
+                <input type="text" id="company" name="company" class="w-full border p-2">
             </div>
             <div class="w-1/2">
-                <input type="text" id="city_region" class="w-full border p-2">
+                <input type="text" id="city_region" name="city_region" class="w-full border p-2">
             </div>
         </div>
 
@@ -50,10 +51,10 @@
         </div>
         <div class="flex mb-3 gap-5">
             <div class="w-1/2 pr-4">
-                <input type="text" id="street" class="w-full border p-2">
+                <input type="text" id="street" name="street" class="w-full border p-2">
             </div>
             <div class="w-1/2">
-                <input type="text" id="state" class="w-full border p-2">
+                <input type="text" id="state" name="street" class="w-full border p-2">
             </div>
         </div>
 
@@ -68,10 +69,10 @@
         </div>
         <div class="flex mb-3 gap-5">
             <div class="w-1/2 pr-4">
-                <input type="text" id="phone" class="w-full border p-2">
+                <input type="text" id="phone" name="iphone" class="w-full border p-2">
             </div>
             <div class="w-1/2">
-                <input type="text" id="email" class="w-full border p-2">
+                <input type="text" id="email" name="email" class="w-full border p-2">
             </div>
         </div>
 
@@ -86,13 +87,13 @@
         </div>
         <div class="flex mb-3">
             <div class="w-1/2 pr-5">
-                <select id="customer_type" class="w-full border p-2">
+                <select id="customer_type" class="w-full border p-2" name="customer_type">
                     <option value="wholesale">Wholesale Customer</option>
                     <option value="retail">Retail Customer</option>
                 </select>
             </div>
             <div class="w-1/2 pl-2">
-                <select id="priority_level" class="w-full border p-2">
+                <select id="priority_level" class="w-full border p-2" name="priority_level">
                     <option value="high">High Priority</option>
                     <option value="medium">Medium Priority</option>
                     <option value="low">Low Priority</option>
@@ -105,6 +106,6 @@
             <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded">Cancel</button>
         </div>
 
-    </div>
+    </form>
     <!-- Save and Cancel Buttons -->
 @endsection
