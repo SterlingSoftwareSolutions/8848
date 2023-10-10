@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-
-<div class="flex flex-col justify-center gap-5 p-5 md:flex-row ml-0 md:ml-20">
+  
+<div class="flex flex-col justify-center gap-5 p-5 ml-0 md:flex-row md:ml-20">
     <!-- Product Box 1 -->
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -15,7 +15,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -31,8 +31,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -40,9 +40,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -51,7 +51,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -67,8 +67,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -76,9 +76,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -87,7 +87,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -103,8 +103,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -112,9 +112,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -123,7 +123,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -139,8 +139,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -150,11 +150,11 @@
     </div>
     <!-- Repeat similar code for other product boxes -->
 </div>
-<div class="flex flex-col justify-center gap-5 p-5 md:flex-row ml-0 md:ml-5 md:mr-12">
+<div class="flex flex-col justify-center gap-5 p-5 ml-0 md:flex-row md:ml-5 md:mr-12">
     <!-- Product Box 1 -->
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -163,7 +163,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -179,8 +179,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -188,9 +188,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -199,7 +199,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -215,8 +215,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -224,9 +224,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -235,7 +235,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -251,8 +251,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -260,9 +260,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -271,7 +271,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -287,8 +287,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -298,11 +298,11 @@
     </div>
     <!-- Repeat similar code for other product boxes -->
 </div>
-<div class="flex flex-col justify-center gap-5 p-5 md:flex-row ml-0 md:-ml-8 md:mr-24">
+<div class="flex flex-col justify-center gap-5 p-5 ml-0 md:flex-row md:-ml-8 md:mr-24">
     <!-- Product Box 1 -->
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -311,7 +311,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -327,8 +327,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -336,9 +336,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -347,7 +347,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -363,8 +363,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -372,9 +372,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -383,7 +383,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -399,8 +399,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
@@ -408,9 +408,9 @@
         </div>
 
     </div>
-    <div class="w-full md:w-1/4 h-full rounded-md">
+    <div class="w-full h-full rounded-md md:w-1/4">
         <!-- Product Image -->
-        <div class="group relative categoty-angle">
+        <div class="relative group categoty-angle">
             <!-- Original image -->
             <div class="relative">
                 <!-- Original Image -->
@@ -419,7 +419,7 @@
                 <!-- Overlay Image and Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Initial) -->
-                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                     <!-- Text (You can customize this) -->
                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -435,8 +435,8 @@
                 <!-- Icon and text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                     <!-- Middle Image (Hover) -->
-                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                    <div class="category_name2 font-semibold text-xl">
+                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                    <div class="text-xl font-semibold category_name2">
                         Favorite
                     </div>
                 </div>
