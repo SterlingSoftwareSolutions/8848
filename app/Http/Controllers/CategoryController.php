@@ -41,16 +41,16 @@ class CategoryController extends Controller
             "parent_id" => 'nullable',
             "name" => 'required',
             "description" => 'required',
-            "icon" => 'required|file',
-            "background_image" => 'required|file'
+            "icon_url" => 'required|file',
+            "background_image_url" => 'required|file'
         ]);
 
         $category = Category::create([
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
             "description" => $request->description,
-            "icon_url" => $request->icon->store('category_images'),
-            "background_image_url" => $request->background_image->store('category_images')
+            "icon_url" => $request->icon_url->store('category_images'),
+            "background_image_url" => $request->background_image_url->store('category_images')
         ]);
 
         if($request->wantsJson()){
@@ -93,16 +93,16 @@ class CategoryController extends Controller
             "parent_id" => 'nullable',
             "name" => 'required',
             "description" => 'required',
-            "icon" => 'nullable|file',
-            "background_image" => 'nullable|file'
+            "icon_url" => 'nullable|file',
+            "background_image_url" => 'nullable|file'
         ]);
 
         $category->update([
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
             "description" => $request->description,
-            "icon_url" => $request->icon ? $request->icon->store('category_images') : $category->icon_url,
-            "background_image_url" => $request->background_image ? $request->background_image->store('category_images') : $category->background_image_url
+            "icon_url" => $request->icon_url ? $request->icon_url->store('category_images') : $category->icon_url,
+            "background_image_url" => $request->background_image_url ? $request->background_image_url->store('category_images') : $category->background_image_url
         ]);
 
         return response()->json([
