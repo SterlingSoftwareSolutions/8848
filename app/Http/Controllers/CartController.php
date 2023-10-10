@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CartItems;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,6 +83,44 @@ class CartController extends Controller
         return response()->json([
             'success' => false,
             'message' => "Variant {$request->variant_id} not found in cart"
+        ]);
+    }
+
+    public function checkout(Request $request)
+    {
+        $user = Auth::user();
+        $order = Order::create([
+            'user_id' => $user->id,
+            'order_type' => $user->role == 'client_wholesale' ? 'wholesole' : 'retail',
+            'status' => 'pending',
+            'discount' => 0,
+
+            'billing_first_name' => $user->address_billing->first_name,
+            'billing_last_name' => $user->address_billing->last_name,
+            'billing_company' => $user->address_billing->company,
+            'billing_address_line_1' => $user->address_billing->address_line_1,
+            'billing_address_line_2' => $user->address_billing->address_line_2,
+            'billing_city' => $user->address_billing->city,
+            'billing_zip' => $user->address_billing->zip,
+            'billing_country' => $user->address_billing->country,
+            'billing_state' => $user->address_billing->state,
+            'billing_phone' => $user->address_billing->phone,
+
+            'shipping_first_name' => $user->address_shipping->first_name,
+            'shipping_last_name' => $user->address_shipping->last_name,
+            'shipping_company' => $user->address_shipping->company,
+            'shipping_address_line_1' => $user->address_shipping->address_line_1,
+            'shipping_address_line_2' => $user->address_shipping->address_line_2,
+            'shipping_city' => $user->address_shipping->city,
+            'shipping_zip' => $user->address_shipping->zip,
+            'shipping_country' => $user->address_shipping->country,
+            'shipping_state' => $user->address_shipping->state,
+            'shipping_phone' => $user->address_shipping->phone
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'order' => $order
         ]);
     }
 }

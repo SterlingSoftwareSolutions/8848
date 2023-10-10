@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,7 +59,27 @@ class AuthController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
-            'phone' => 'required|string|email|unique:users,email,' . $user->id,
+            'phone' => 'required|string|unique:users,phone,' . $user->id,
+
+            'billing_first_name' => 'required',
+            'billing_last_name' => 'required',
+            'billing_company' => 'required',
+            'billing_address_line_1' => 'required',
+            'billing_address_line_2' => 'required',
+            'billing_city' => 'required',
+            'billing_zip' => 'required',
+            'billing_state' => 'required',
+            'billing_phone' => 'required',
+
+            'shipping_first_name' => 'required',
+            'shipping_last_name' => 'required',
+            'shipping_company' => 'required',
+            'shipping_address_line_1' => 'required',
+            'shipping_address_line_2' => 'required',
+            'shipping_city' => 'required',
+            'shipping_zip' => 'required',
+            'shipping_state' => 'required',
+            'shipping_phone' => 'required'
         ]);
 
         $user->update([
@@ -67,6 +88,50 @@ class AuthController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
         ]);
+
+        // Billing Address
+        $billing_address_data = [
+            'user_id' => $user->id,
+            'type' => 'billing',
+            'first_name' => $request->billing_first_name,
+            'last_name' => $request->billing_last_name,
+            'company' => $request->billing_company,
+            'address_line_1' => $request->billing_address_line_1,
+            'address_line_2' => $request->billing_address_line_2,
+            'city' => $request->billing_city,
+            'zip' => $request->billing_zip,
+            'state' => $request->billing_state,
+            'phone' => $request->billing_phone,
+        ];
+
+        if($user->address_billing){
+            $user->address_billing->update($billing_address_data);
+        } else{
+            Address::create($billing_address_data);
+        }
+
+
+        // Shipping Address
+        $shipping_address_data = [
+            'user_id' => $user->id,
+            'type' => 'shipping',
+            'first_name' => $request->shipping_first_name,
+            'last_name' => $request->shipping_last_name,
+            'company' => $request->shipping_company,
+            'address_line_1' => $request->shipping_address_line_1,
+            'address_line_2' => $request->shipping_address_line_2,
+            'city' => $request->shipping_city,
+            'zip' => $request->shipping_zip,
+            'state' => $request->shipping_state,
+            'phone' => $request->shipping_phone,
+        ];
+
+        if($user->address_shipping != null){
+            $user->address_shipping->update($shipping_address_data);
+        } else{
+            Address::create($shipping_address_data);
+        }
+
 
         if($request->password){
             $request->validate([
@@ -82,7 +147,7 @@ class AuthController extends Controller
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
-                'user' => $user,
+                'user' => $user->load(['address_shipping', 'address_billing']),
             ], 200);
         } else {
             return back();
@@ -97,6 +162,7 @@ class AuthController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users',
+            'phone' => 'nullable|string|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -105,6 +171,7 @@ class AuthController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
+            'phone' => 1234,
             'password' => Hash::make($request->password),
         ]);
 
