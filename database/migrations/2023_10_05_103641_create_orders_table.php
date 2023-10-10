@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('billing_address_line_2')->nullable();
             $table->string('billing_city');
             $table->string('billing_zip');
-            $table->string('billing_country');
             $table->string('billing_state');
             $table->string('billing_phone');
 
@@ -39,7 +38,6 @@ return new class extends Migration
             $table->string('shipping_address_line_2')->nullable();
             $table->string('shipping_city');
             $table->string('shipping_zip');
-            $table->string('shipping_country');
             $table->string('shipping_state');
             $table->string('shipping_phone');
 
