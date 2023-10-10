@@ -59,15 +59,21 @@
         <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
             Favorite
         </button>
-        @if($product->variants->count() <= 1)
-        <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
-        <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
-            ADD TO CART
-        </button>
+        @if($product->in_stock)
+            @if($product->variants->count() <= 1)
+            <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
+            <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
+                ADD TO CART
+            </button>
+            @else
+            <a href="/products/{{$product->id}}" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-center text-white hover:text-blue-500">
+                VIEW OPTIONS
+            </a>
+            @endif
         @else
-        <a href="/products/{{$product->id}}" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-center text-white hover:text-blue-500">
-            VIEW OPTIONS
-        </a>
+            <button type="button" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#B6B6B6] to-[#979797] rounded-sm text-white hover:text-white-500" disabled>
+                OUT OF STOCK
+            </button>
         @endif
     </div>
 
