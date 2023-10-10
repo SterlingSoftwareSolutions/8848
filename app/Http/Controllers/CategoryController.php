@@ -10,12 +10,18 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json([
-            'success' => true,
-            'categories' => Category::with('children')->where('parent_id', null)->get()
-        ]);
+        $categories = Category::with('children')->where('parent_id', null)->get();
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'categories' => $categories
+            ]);
+        }
+
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -47,10 +53,15 @@ class CategoryController extends Controller
             "background_image_url" => $request->background_image->store('category_images')
         ]);
 
-        return response()->json([
-            'success' => true,
-            'category' => $category->load('parent', 'children')
-        ]);
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'category' => $category->load('parent', 'children')
+            ]);
+        }
+
+        return redirect('/categories');
+
     }
 
     /**
