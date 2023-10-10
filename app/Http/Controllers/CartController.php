@@ -44,10 +44,14 @@ class CartController extends Controller
         $user = Auth::user();
         $user->cart_add($request->variant_id, $request->quantity ?? 1);
 
-        return response()->json([
-            'success' => true,
-            'message' => "Variant {$request->variant_id} added to cart"
-        ]);
+        if($request->wantsJson()){ 
+            return response()->json([
+                'success' => true,
+                'message' => "Variant {$request->variant_id} added to cart"
+            ]);
+        } else{
+            return back()->withErrors(['success' => "Item added to cart"]);
+        }
     }
 
     public function update(Request $request){
@@ -60,10 +64,14 @@ class CartController extends Controller
         $user = Auth::user();
 
         if($user->cart_update($request->variant_id, $request->quantity ?? 1)){
-            return response()->json([
-                'success' => true,
-                'message' => "Variant {$request->variant_id} updated in cart"
-            ]);
+            if($request->wantsJson()){
+                return response()->json([
+                    'success' => true,
+                    'message' => "Variant {$request->variant_id} updated in cart"
+                ]);
+            } else{
+                return back()->withErrors(['success' => 'Item quantity updated']);
+            }
         }
 
         return response()->json([
