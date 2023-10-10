@@ -1,9 +1,10 @@
 @extends('layouts.admin') @section('content')
     <div class="container p-6 mx-auto ">
+        <form>
         <div class="md:mb-5">
-            <h1 class="font-medium text-blue-700 truncate">Add Customer</h1>
+            <h1 class="text-lg font-bold">Add Customer</h1>
         </div>
-        <form action="" method="post">
+        <div action="" method="post" class="border-2 px-8 pb-8 mb-4 py-4 bg-white rounded">
             <!-- Row 1 -->
             <div class="flex gap-5 mb-4">
                 <div class="w-1/2 pr-4">
@@ -82,18 +83,15 @@
                     </select>
                 </div>
             </div>
-            <div class="mt-6">
-                <button class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
-                <button class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600">Cancel</button>
-            </div>
-        </form>
+      
+        </div>
 
         <div class="w-full gap-3 mt-5 md:flex">
             <div class="flex flex-col w-full">
                 <label for="Billing-address" class="text-lg font-bold">Billing address</label>
                 <div class="w-full mt-4 border rounded">
                     <div class="w-full p-4" id="billing-details">
-                        <form class="px-8 pb-8 mb-4 bg-white rounded" id="billing-form">
+                        <div class="px-8 pb-8 mb-4 bg-white rounded" id="billing-form">
                             {{-- name --}}
                             <div class="flex flex-row mb-4">
                                 <div class="mb-4 md:mr-2 md:mb-0" style="width: 50%">
@@ -192,10 +190,7 @@
                                 />
                             </div>
 
-                            <button class="p-2 font-semibold text-white bg-blue-500 rounded-md">
-                                Save Changes
-                            </button>
-                        </form>
+                        </div>
                     </div>
                 </div>
 
@@ -207,7 +202,7 @@
                   </label>                  
                 <div class="w-full mt-4 border rounded">
                     <div class="w-full p-4" id="shipping-details">
-                        <form class="px-8 pb-8 mb-4 bg-white rounded" id="shipping-form">
+                        <div class="px-8 pb-8 mb-4 bg-white rounded" id="shipping-form">
                             {{-- name --}}
                             <div class="flex flex-row mb-4">
                                 <div class="mb-4 md:mr-2 md:mb-0" style="width: 50%">
@@ -305,13 +300,15 @@
                                 />
                             </div>
 
-                            <button class="p-2 font-semibold text-white bg-blue-500 rounded-md">
-                                Save Changes
-                            </button>
-                        </form>
+                            <div class="mt-6 flex justify-end">
+                                <button class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
+                                <button class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600">Cancel</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
     </div>
 @endsection
