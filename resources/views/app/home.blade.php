@@ -20,42 +20,50 @@
     <!-- HEADER -->
     @include('layouts.app.header')
 
-    <div class="carousel relative shadow-2xl bg-white">
-        <div class="carousel-inner relative overflow-hidden w-full">
+    <div class="relative bg-white shadow-2xl carousel">
+        <div class="relative w-full overflow-hidden carousel-inner">
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-            <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center">Slide 1</div>
+            <div class="absolute flex flex-col opacity-0 carousel-item" style="height: 800px; width: 100%; background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+                <div class="md:mr-[550px] text-5xl text-center text-blue-600 font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[140px] md:text-4xl text-xl text-center text-gray-600 font-bold">Explore Our range of Cleaning & Packing Solution</div>
+                <button class="p-2 md:mr-[720px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
-            <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-            <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+                      
+            <label for="carousel-3" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-1 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
+            <label for="carousel-2" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-1 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
 
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full bg-orange-500 text-white text-5xl text-center">Slide 2</div>
+            <div class="absolute flex flex-col opacity-0 carousel-item" style="height: 800px; width: 100%; background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+                <div class="md:mr-[550px] text-5xl text-center text-blue-600 font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[140px] md:text-4xl text-xl text-center text-gray-600 font-bold">Explore Our range of Cleaning & Packing Solution</div>
+                <button class="p-2 md:mr-[720px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
-            <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-            <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+            
+            <label for="carousel-1" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-2 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
+            <label for="carousel-3" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-2 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
 
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full bg-green-500 text-white text-5xl text-center">Slide 3</div>
+            <div class="absolute flex flex-col opacity-0 carousel-item" style="height: 800px; width: 100%; background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+                <div class="md:mr-[550px] text-5xl text-center text-blue-600 font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[140px] md:text-4xl text-xl text-center text-gray-600 font-bold">Explore Our range of Cleaning & Packing Solution</div>
+                <button class="p-2 md:mr-[720px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
-            <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-            <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+            <label for="carousel-2" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-3 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
+            <label for="carousel-1" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-3 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
 
             <!-- Add additional indicators for each slide-->
             <ol class="carousel-indicators">
                 <li class="inline-block mr-3">
-                    <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    <label for="carousel-1" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-blue-700">•</label>
                 </li>
                 <li class="inline-block mr-3">
-                    <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    <label for="carousel-2" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-blue-700">•</label>
                 </li>
                 <li class="inline-block mr-3">
-                    <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    <label for="carousel-3" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-blue-700">•</label>
                 </li>
             </ol>
 
@@ -65,7 +73,7 @@
 
 
     <!-- Category Section -->
-    <div class="w-full mt-20 bg-gradient-to-b from-[#166EB6] to-[#284297]">
+    <div class="w-full bg-gradient-to-b from-[#166EB6] to-[#284297]">
         <div class="flex flex-col py-5 md:flex-row">
             <!-- Mug Image -->
             <div class="relative md:w-2/12">
@@ -85,11 +93,11 @@
 
             <!-- Categories -->
             <div class="w-full md:w-7/12">
-                <div class="flex flex-col justify-center gap-5 md:flex-row ml-10 md:ml-20 md:mr-10">
+                <div class="flex flex-col justify-center gap-5 ml-10 md:flex-row md:ml-20 md:mr-10">
                     <!-- Product Boxes (Responsive Grid) -->
-                    <div class=" w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -98,7 +106,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -114,17 +122,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -133,7 +141,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -149,17 +157,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -168,7 +176,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -184,17 +192,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -203,7 +211,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -219,8 +227,8 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
@@ -228,11 +236,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center gap-5 pt-5 md:flex-row ml-10 md:ml-8 md:mr-24">
+                <div class="flex flex-col justify-center gap-5 pt-5 ml-10 md:flex-row md:ml-8 md:mr-24">
                     <!-- Product Boxes (Responsive Grid) -->
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -241,7 +249,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -257,17 +265,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -276,7 +284,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -292,17 +300,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -311,7 +319,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -327,17 +335,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -346,7 +354,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -362,8 +370,8 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
@@ -371,11 +379,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center gap-5 pt-5 md:flex-row ml-10 md:-ml-5 md:mr-36">
+                <div class="flex flex-col justify-center gap-5 pt-5 ml-10 md:flex-row md:-ml-5 md:mr-36">
                     <!-- Product Boxes (Responsive Grid) -->
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -384,7 +392,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -400,17 +408,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -419,7 +427,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -435,17 +443,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -454,7 +462,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -470,17 +478,17 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 md:w-1/2 h-full rounded-md">
+                    <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
-                        <div class="group relative categoty-angle">
+                        <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
@@ -489,7 +497,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="middle-image w-1/2 h-auto">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -505,8 +513,8 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="middle-image2 w-1/2 h-auto">
-                                    <div class="category_name2 font-semibold text-xl">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
                                 </div>
@@ -529,7 +537,7 @@
 
         <!-- Icons -->
         <div class="py-4 bg-[#166EB6]">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-5">
+            <div class="flex flex-col items-center justify-center gap-5 md:flex-row">
                 <!-- Icon 1 -->
                 <div class="flex items-center">
                     <div class="w-1/3">
@@ -545,7 +553,7 @@
                 <!-- Icon 2 -->
                 <div class="flex items-center">
                     <div class="w-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-36 h-36 -ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-2 w-36 h-36">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                         </svg>
                     </div>
@@ -555,7 +563,7 @@
                 </div>
 
                 <!-- Icon 3 -->
-                <div class="flex flex-row gap-5 items-center">
+                <div class="flex flex-row items-center gap-5">
                     <div class="w-1/3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-36 h-36">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.746 3.746 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
