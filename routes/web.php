@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,10 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::get('/logout', [AuthController::class, 'logout_form'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Cart
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/remove', [CartController::class, 'remove']);
 
     // User CRUD
     Route::resource('/admin/user', UserController::class);
