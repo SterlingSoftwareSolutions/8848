@@ -1,37 +1,24 @@
 @extends('layouts.admin') @section('content')
 
 <div class="md:mb-5">
-   
-<div class="flex flex-col md:flex-row mt-5 mx-2 md:mx-10 items-center gap-2 ">
 
-    <div class="w-10 md:py-2 py-0.5 px-2">
-        <input type="checkbox" class="h-6 w-6 md:h-7 md:w-7" />
-    </div>
+        <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
+            <input type="checkbox" class="w-6 h-6 md:h-7 md:w-7" />
 
-    <div class="w-1/12">
-        <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve All</h1>
-    </div>
+            <div class="flex justify-between w-full">
+                <h1 class="px-2 py-2 text-center text-white bg-red-600 rounded-lg">Delete All</h1>
 
-    <div class="w-1/12">
-        <h1 class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-white text-center">Close All</h1>
-    </div>
-    <div class="w-10/12">
-       
-    </div>
-
-    <div class="w-1/12 flex justify-end">
-        <h1 class="py-2 px-2 rounded-lg mx-auto bg-blue-900 text-white text-center ">New Order </h1>
-    </div>  
-</div>
-
+                <h1 class="px-2 py-2 text-center text-white bg-blue-900 rounded-lg ">New Order</h1>
+            </div>
+        </div>
 
     
         {{-- End Dropdowns & Buttons Row --}}
     
-        <div class="md:mt-5 flex flex-col mx-2 md:mx-10 border-2 ">
+        <div class="flex flex-col mx-2 border-2 md:mt-5 md:mx-10 ">
                 <!-- Box 1: Customer List -->
-                <div class=" text-blue-900 ">
-                    <div class="flex flex-row bg-gray-200 py-5">
+                <div class="text-blue-900 ">
+                    <div class="flex flex-row py-5 bg-gray-200">
                         <p class="w-[5%] px-2">#</p>
                         <p class="w-[10%]">Number</p>
                         <p class="w-[10%]">Date</p>
@@ -45,7 +32,7 @@
                     <!-- Placeholder Content for Box 1 -->
 
                     {{-- Table list 1  --}}
-                    <div class="flex flex-row py-5   text-gray-500">
+                    <div class="flex flex-row py-5 text-gray-500">
 
                         <div class="w-[5%] py-2 px-2">
                             <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
@@ -62,7 +49,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-green-200 text-green-600 text-center"><span class="ml-4 mr-4">Paid</span></label>
+                            <label class="px-2 py-2 mx-auto text-center text-green-600 bg-green-200 rounded-lg"><span class="ml-4 mr-4">Paid</span></label>
 
                           </div>
 
@@ -80,13 +67,13 @@
 
                         <div class="md:flex flex-row gap-1 w-[20%] mx-1">
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-green-600 rounded-lg">Approve </h1>
                             </div>
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-white text-center">Cancel </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Cancel </h1>
                             </div>
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-black text-white text-center">Edit </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
                             </div>
                         </div>
                     </div>
@@ -94,7 +81,7 @@
                  
 
                       {{-- Table list 1  --}}
-                      <div class="flex flex-row py-5 border-b-2 border-gray-300 text-gray-500">
+                      <div class="flex flex-row py-5 text-gray-500 border-b-2 border-gray-300">
 
                         <div class="w-[5%] py-2 px-2">
                             <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
@@ -111,7 +98,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-red-200 text-red-600 text-center"><span class="ml-1 mr-1">Unpaid</span></label>
+                            <label class="px-2 py-2 mx-auto text-center text-red-600 bg-red-200 rounded-lg"><span class="ml-1 mr-1">Unpaid</span></label>
 
                         </div>
 
@@ -129,20 +116,20 @@
 
                         <div class="md:flex flex-row gap-1 w-[20%] mx-1">
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-green-600 rounded-lg">Approve </h1>
                             </div>
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-white text-center">Cancel </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Cancel </h1>
                             </div>
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-black text-white text-center">Edit </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
                             </div>
                         </div>
                     </div>
                     {{-- table list 2 --}}
 
                       {{-- Table list 1  --}}
-                      <div class="flex flex-row py-5 border-b-2 border-gray-300 text-gray-500">
+                      <div class="flex flex-row py-5 text-gray-500 border-b-2 border-gray-300">
 
                         <div class="w-[5%] py-2 px-2">
                             <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
@@ -159,7 +146,7 @@
                           </div>
 
                           <div class="w-[10%]">
-                            <label class="py-2 px-2 rounded-lg mx-auto bg-yellow-200 text-yellow-600 text-center"><span class="ml-2 mr-2">Partial</span></label>
+                            <label class="px-2 py-2 mx-auto text-center text-yellow-600 bg-yellow-200 rounded-lg"><span class="ml-2 mr-2">Partial</span></label>
                         </div>
 
                         <div class="w-[10%]">
@@ -176,13 +163,13 @@
 
                         <div class="md:flex flex-row gap-1 w-[20%] mx-1">
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-green-600 text-white text-center">Approve </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-green-600 rounded-lg">Approve </h1>
                             </div>
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-red-600 text-white text-center">Cancel </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Cancel </h1>
                             </div>
                             <div class="w-40">
-                                <h1 class="py-2 px-2 rounded-lg mx-auto bg-black text-white text-center">Edit </h1>
+                                <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
                             </div>
                         </div>
                     </div>
