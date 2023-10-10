@@ -10,12 +10,18 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json([
-            'success' => true,
-            'categories' => Category::with('children')->where('parent_id', null)->get()
-        ]);
+        $categories = Category::with('children')->where('parent_id', null)->get();
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'categories' => $categories
+            ]);
+        }
+
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -43,14 +49,19 @@ class CategoryController extends Controller
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
             "description" => $request->description,
-            "icon_url" => $request->icon->store('category_images'),
-            "background_image_url" => $request->background_image->store('category_images')
+            "icon_url" => $request->icon->store('public/category_images'),
+            "background_image_url" => $request->background_image->store('public/category_images')
         ]);
 
-        return response()->json([
-            'success' => true,
-            'category' => $category->load('parent', 'children')
-        ]);
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'category' => $category->load('parent', 'children')
+            ]);
+        }
+
+        return redirect('/categories');
+
     }
 
     /**
@@ -90,8 +101,8 @@ class CategoryController extends Controller
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
             "description" => $request->description,
-            "icon_url" => $request->icon ? $request->icon->store('category_images') : $category->icon_url,
-            "background_image_url" => $request->background_image ? $request->background_image->store('category_images') : $category->background_image_url
+            "icon_url" => $request->icon ? $request->icon->store('public/category_images') : $category->icon_url,
+            "background_image_url" => $request->background_image ? $request->background_image->store('public/category_images') : $category->background_image_url
         ]);
 
         return response()->json([

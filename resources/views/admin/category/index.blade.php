@@ -3,26 +3,14 @@
 <div class="md:mb-5">
 
     <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
+            <input type="checkbox" class="h-6 w-6 md:h-7 md:w-7" />
 
-        <div class="w-10 md:py-2 py-0.5 px-2">
-            <input type="checkbox" class="w-6 h-6 md:h-7 md:w-7" />
-        </div>
-    
-    
-        <div class="w-1/12">
-            <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete All</h1>
-        </div>
-    
-        <div class="w-10/12">
-           
-        </div>
-    
-        <div class="flex justify-end w-2/12">
-            <h1 class="p-2 mx-auto text-center text-white bg-blue-900 rounded-lg ">Add Product </h1>
-        </div>
+            <div class="flex justify-between w-full">
+                <h1 class="py-2 px-2 rounded-lg bg-red-600 text-white text-center">Delete All</h1>
+
+                <h1 class="py-2 px-2 rounded-lg bg-blue-900 text-white text-center ">Add Product </h1>
+            </div>
     </div>
-    
-
 
 
     <div class="flex flex-col mx-2 border-2 md:mt-5 md:mx-10 ">
