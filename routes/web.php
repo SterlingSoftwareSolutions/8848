@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout_form'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // User CRUD
+    Route::resource('/admin/user', UserController::class);
+
 });
