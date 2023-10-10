@@ -92,7 +92,7 @@
         </div>
     </body>
     {{-- footer --}}
-    <div class="">
+    <div class="-mt-8">
         @include('layouts.app.footer')
     </div>
     {{--end footer --}}

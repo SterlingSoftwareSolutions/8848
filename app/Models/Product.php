@@ -11,8 +11,9 @@ class Product extends Model
 
     protected $fillable = [
         'title',
+        'description',
+        'short_description',
         'category_id',
-        'price',
         'sku',
         'in_stock',
         'image_1_url',
@@ -20,4 +21,14 @@ class Product extends Model
         'image_3_url',
         'image_4_url'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
+    }
 }
