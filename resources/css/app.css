@@ -35,3 +35,38 @@ input[type="number"]::-webkit-outer-spin-button {
 .custom-number-input button:focus {
     outline: none !important;
 }
+
+/* Home */
+
+/* category list  */
+.group:hover .middle-image {
+    display: none;
+}
+
+.group:hover .category_name1 {
+    display: none;
+}
+
+.group:hover .hover-image {
+    display: block;
+    opacity: 1;
+}
+
+.middle-image2,
+.category_name2 {
+    display: none;
+}
+
+.group:hover .middle-image2 {
+    display: block;
+    opacity: 1;
+}
+
+.group:hover .category_name2 {
+    display: block;
+    color: white;
+}
+
+.categoty-angle {
+    transform: skew(-10deg);
+}
