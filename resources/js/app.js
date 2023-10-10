@@ -92,7 +92,6 @@ uploadInput.addEventListener("click", (event) => {
 });
 
 // Variyan
-
 const formContainer = document.getElementById("form-container");
 const addButton = document.getElementById("add-fields");
 let inputIndex = 2; // Starting index for additional input fields
@@ -106,7 +105,7 @@ addButton.addEventListener("click", () => {
     const inputField1 = document.createElement("input");
     inputField1.type = "text";
     inputField1.id = `input${inputIndex}`;
-    inputField1.name = `variant_name_${inputIndex}`;
+    inputField1.name = `variant_name_0${inputIndex}`;
     inputField1.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
     inputField1.placeholder = "Variant Name";
 
@@ -114,7 +113,7 @@ addButton.addEventListener("click", () => {
     const inputField2 = document.createElement("input");
     inputField2.type = "number";
     inputField2.id = `input${inputIndex}`;
-    inputField2.name = `variant_name_${inputIndex}`;
+    inputField2.name = `variant_name_0${inputIndex}`;
     inputField2.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
     inputField2.placeholder = "$ 0.00";
 
