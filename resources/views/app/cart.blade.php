@@ -63,6 +63,9 @@
                         <th scope="col" class="w-3/12 px-6 py-3">
                             
                         </th>
+                        <th scope="col" class="w-3/12 px-4 py-3 text-start">
+                            Variant
+                        </th>
                         <th scope="col" class="w-1/12 px-6 py-3">
                             Price
                         </th>
