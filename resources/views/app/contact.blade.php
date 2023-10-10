@@ -75,7 +75,7 @@
 <!-- component -->
 
 
-  <section class="relative w-full mt-10 text-gray-600 border-2 border-red-500 body-font ">
+  <section class="relative mx-auto mt-10 text-gray-600 body-font ">
     <div class="absolute inset-0 bg-gray-300">
         <iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed" style=""></iframe>
     </div>
