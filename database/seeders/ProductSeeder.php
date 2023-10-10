@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ]);
 
-            foreach(range(1, rand(1, 5)) as $i){
+            foreach(range(1, $faker->numberBetween(1, 3)) as $i){
                 DB::table('variants')->insert([
                     'product_id' => $product_id,
                     'name' => $faker->words(2, true),

@@ -38,15 +38,15 @@
                         
                         <!-- Name -->
                         <div>
-                            <label for="name" :value="__('Name')" class="block text-sm font-medium text-[#d9d9d9]">Name</label>
-                            <input id="name" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Name"/>
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            <label for="first_name" :value="__('first_name')" class="block text-sm font-medium text-[#d9d9d9]">Name</label>
+                            <input id="first_name" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="text" name="first_name" value="{{old('first_name')}}" required autofocus autocomplete="first_name" placeholder="Name"/>
+                            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                         </div>
                         
                         <!-- Email Address -->
                         <div class="mt-4">
                             <label for="email" :value="__('Email')" class="block text-sm font-medium text-[#d9d9d9]">Email</label>
-                            <input id="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" />
+                            <input id="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" type="email" name="email" value="{{old('email')}}" required autofocus autocomplete="username" placeholder="Email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
     
@@ -63,12 +63,12 @@
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
                         
-                        <!-- Password -->
+                        <!-- Password Confirmation-->
                         <div class="mt-4">
                             <label for="password_confirmation" :value="__('Confirm Password')" class="block text-sm font-medium text-[#d9d9d9]">Confirm Password</label>
     
                             <input id="password_confirmation" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                            type="password_confirmation"
+                                            type="password"
                                             name="password_confirmation"
                                             required autocomplete="current-password_confirmation"
                                             placeholder="Confirm Password" />

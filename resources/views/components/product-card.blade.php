@@ -3,7 +3,8 @@
 ])
 
 
-<div class="w-full h-full rounded-md border-[1px] border-[#707070]">
+<form class="w-full h-full rounded-md border-[1px] border-[#707070] overflow-hidden" @if($product->variants->count() <= 1) action="/cart/add" method="post" @endif>
+    @csrf
     <!-- Product Image -->
     <a href="/products/{{$product->id}}">
     <img src="{{ $product->image_1_url }}" alt="Image Description" class="w-full h-[280px] object-cover">
@@ -39,13 +40,13 @@
         <div class="m-auto">
             <div class="flex flex-row w-[150px] md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                 <!-- Decrease Button -->
-                <button data-action="decrement" class="w-10 h-10 text-gray-600 rounded-l outline-none cursor-pointer hover:text-gray-700 md:h-full md:w-20">
+                <button type="button" data-action="decrement" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                     <span class="m-auto text-2xl font-thin">−</span>
                 </button>
                 <!-- Input Field -->
-                <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="custom-input-number" value="0">
+                <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="quantity" min="1" value="1">
                 <!-- Increase Button -->
-                <button data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
+                <button type="button" data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
                     <span class="m-auto text-2xl font-thin">+</span>
                 </button>
             </div>
@@ -58,8 +59,16 @@
         <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
             Favorite
         </button>
+        @if($product->variants->count() <= 1)
+        <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
         <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
             ADD TO CART
         </button>
+        @else
+        <a href="/products/{{$product->id}}" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-center text-white hover:text-blue-500">
+            VIEW OPTIONS
+        </a>
+        @endif
     </div>
-</div>
+
+</form>
