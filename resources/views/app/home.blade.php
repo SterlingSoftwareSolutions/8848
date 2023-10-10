@@ -24,32 +24,32 @@
         <div class="relative w-full overflow-hidden carousel-inner">
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-            <div class="absolute flex flex-col opacity-0 carousel-item" style="height: 800px; width: 100%; background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
-                <div class="md:mr-[550px] text-5xl text-center text-blue-600 font-bold">Clean, Protect, Plan</div>
-                <div class="mt-5 md:mr-[140px] md:text-4xl text-xl text-center text-gray-600 font-bold">Explore Our range of Cleaning & Packing Solution</div>
-                <button class="p-2 md:mr-[720px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+                <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
+                <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
-                      
+
             <label for="carousel-3" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-1 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
             <label for="carousel-2" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-1 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
 
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item" style="height: 800px; width: 100%; background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
-                <div class="md:mr-[550px] text-5xl text-center text-blue-600 font-bold">Clean, Protect, Plan</div>
-                <div class="mt-5 md:mr-[140px] md:text-4xl text-xl text-center text-gray-600 font-bold">Explore Our range of Cleaning & Packing Solution</div>
-                <button class="p-2 md:mr-[720px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+                <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
+                <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
-            
+
             <label for="carousel-1" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-2 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
             <label for="carousel-3" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-2 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
 
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item" style="height: 800px; width: 100%; background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
-                <div class="md:mr-[550px] text-5xl text-center text-blue-600 font-bold">Clean, Protect, Plan</div>
-                <div class="mt-5 md:mr-[140px] md:text-4xl text-xl text-center text-gray-600 font-bold">Explore Our range of Cleaning & Packing Solution</div>
-                <button class="p-2 md:mr-[720px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+                <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
+                <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
             <label for="carousel-2" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-3 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
             <label for="carousel-1" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-3 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
@@ -536,41 +536,42 @@
         </div>
 
         <!-- Icons -->
-        <div class="py-4 bg-[#166EB6]">
+        <div class="py-4 w-6/12 mx-auto bg-[#166EB6]">
             <div class="flex flex-col items-center justify-center gap-5 md:flex-row">
                 <!-- Icon 1 -->
-                <div class="flex items-center">
-                    <div class="w-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-36 h-36">
+                <div class="flex flex-col items-center">
+                    <div class="w-1/3 -ml-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-20 h-20">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
                         </svg>
                     </div>
-                    <div class="ml-10">
-                        <h1 class="text-lg text-white">Quick Delivery</h1>
+                    <div class="">
+                        <h1 class=" text-[20px] md:text-[30px] text-white">Quick Delivery</h1>
                     </div>
                 </div>
+                <div class="border border-white h-44 mx-5 hidden md:block"></div>
 
                 <!-- Icon 2 -->
-                <div class="flex items-center">
-                    <div class="w-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-2 w-36 h-36">
+                <div class="flex flex-col items-center">
+                    <div class="w-1/3 -ml-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-20 h-20">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                         </svg>
                     </div>
-                    <div class="ml-10">
-                        <h1 class="text-lg text-white">Secure Payment</h1>
+                    <div class="md:ml-8">
+                        <h1 class=" text-[20px] md:text-[30px] text-white ">Secure Payment</h1>
                     </div>
                 </div>
-
+                <div class="border border-white h-44 mx-5 hidden md:block"></div>
                 <!-- Icon 3 -->
-                <div class="flex flex-row items-center gap-5">
-                    <div class="w-1/3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-36 h-36">
+                <div class="flex flex-col items-center">
+                    <div class="w-1/3 -ml-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-20 h-20">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.746 3.746 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                         </svg>
                     </div>
-                    <div class="ml-10">
-                        <h1 class="text-lg text-white">Best Quality</h1>
+                    <div class="md:ml-8">
+                        <h1 class="text-[20px] md:text-[30px] text-white">Best Quality</h1>
                     </div>
                 </div>
             </div>

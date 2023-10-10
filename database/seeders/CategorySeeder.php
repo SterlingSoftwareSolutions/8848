@@ -18,7 +18,7 @@ class CategorySeeder extends Seeder
         // Generate parent categories and store their IDs
         foreach (range(1, 5) as $index) {
             $parentCategoryIds[] = DB::table('categories')->insertGetId([
-                'name' => $faker->word,
+                'name' => $faker->unique()->word,
                 'description' => $faker->sentence,
                 'icon_url' => $faker->imageUrl(),
                 'background_image_url' => $faker->imageUrl(),

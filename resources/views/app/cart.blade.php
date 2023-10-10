@@ -18,24 +18,23 @@
         <!-- Alert -->
         <div class="mt-5">
 
-
-            @if($errors->any())
+            @error('error')
             <!-- Error Notiification -->
             <div class="flex flex-col pb-5 mt-5 bg-white border-t-4 border-red-700 rounded-md shadow-lg sm:flex-row">
                 <!-- ICON -->
                 <div class="mt-5 text-red-700 md:ml-10 sm:ml-0"><i class="fa-solid fa-circle-exclamation"></i></div>
                 <!-- text -->
-                <div class="flex justify-start mt-5 ml-5 font-light"><p>{{$errors->get('error')}}</p></div>
+                <div class="flex justify-start mt-5 ml-5 font-light"><p>{{$message}}</p></div>
                 <!-- Button -->
                 <div class="hidden mt-3 ml-auto">
                     <button type="button" class="font-light text-red-700 hover:text-indigo-950 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                        View Cart
+                        x
                     </button>
                 </div>
             </div>
             @enderror
 
-            @error('sucess')
+            @error('success')
             <!-- Success Notification -->
             <div class="flex flex-col my-3 bg-white border-t-4 rounded-md shadow-lg border-lime-600 sm:flex-row">
                 <!-- ICON -->
@@ -45,72 +44,75 @@
                 <!-- Button -->
                 <div class="mt-3 ml-auto">
                     <button type="button" class="font-light text-red-700 hover:text-indigo-950 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                        View Cart
+                        x
                     </button>
                 </div>
             </div>
             @enderror
 
         </div>
-        <!-- Table -->
-        <div class="relative mt-10 overflow-x-auto">
-            <table class="w-full text-xl font-light text-center text-gray-500 dark:text-gray-400">
-                <thead class="text-lg font-light capitalize text-gray-6600">
-                    <tr>
-                        <th scope="col" class="w-3/12 px-4 py-3 text-start">
-                            Product
-                        </th>
-                        <th scope="col" class="w-3/12 px-6 py-3">
-                            
-                        </th>
-                        <th scope="col" class="w-3/12 px-4 py-3 text-start">
-                            Variant
-                        </th>
-                        <th scope="col" class="w-1/12 px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="w-2/12 px-6 py-3">
-                            Quantity
-                        </th>
-                        <th scope="col" class="w-2/12 px-6 py-3">
-                            Subtotal
-                        </th>
-                        <th scope="col" class="w-1/12 px-6 py-3">
-                            
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($items as $item)
-                    <x-cart-item :cartitem="$item"/>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <!-- Button -->
-        <div class="flex flex-col mt-5">
-            <div class="flex justify-end "> 
-                <div class="h-16 md:w-4/12 lg:w-4/12 sm:w-64">
-                    <button class="w-full h-full text-white uppercase bg-blue-800">Update Cart</button>
-                </div>
+        <form method="post" id="cart_form">
+            @csrf
+            <!-- Table -->
+            <div class="relative mt-10 overflow-x-auto">
+                <table class="w-full text-xl font-light text-center text-gray-500 dark:text-gray-400">
+                    <thead class="text-lg font-light capitalize text-gray-6600">
+                        <tr>
+                            <th scope="col" class="w-3/12 px-4 py-3 text-start">
+                                Product
+                            </th>
+                            <th scope="col" class="w-3/12 px-6 py-3">
+                                
+                            </th>
+                            <th scope="col" class="w-3/12 px-4 py-3 text-start">
+                                Variant
+                            </th>
+                            <th scope="col" class="w-1/12 px-6 py-3">
+                                Price
+                            </th>
+                            <th scope="col" class="w-2/12 px-6 py-3">
+                                Quantity
+                            </th>
+                            <th scope="col" class="w-2/12 px-6 py-3">
+                                Subtotal
+                            </th>
+                            <th scope="col" class="w-1/12 px-6 py-3">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form id="testform"></form>
+                        @foreach($items as $item)
+                        <x-cart-item :cartitem="$item"/>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <div class="flex flex-row justify-end h-16 mt-3">
-                <div class="flex flex-row border border-black md:w-4/12 lg:w-4/12 sm:w-64">
-                    <div class="flex items-center justify-start w-1/2 place-items-start">
-                        <p class="ml-3 text-gray-500">Total</p>
-                    </div>
-                    <div class="flex items-center justify-end w-1/2 place-items-end">
-                        <p class="mr-3">${{$total_price}}</p>
+            <!-- Button -->
+            <div class="flex flex-col mt-5">
+                <div class="flex justify-end "> 
+                    <div class="h-16 md:w-4/12 lg:w-4/12 sm:w-64">
+                        <button  form="cart_form" type="submit" class="w-full h-full text-white uppercase bg-blue-800">Update Cart</button>
                     </div>
                 </div>
-            </div>
-            <div class="flex justify-end "> 
-                <div class="h-16 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
-                    <button class="w-full h-full text-white uppercase bg-blue-800">Checkout</button>
+                <div class="flex flex-row justify-end h-16 mt-3">
+                    <div class="flex flex-row border border-black md:w-4/12 lg:w-4/12 sm:w-64">
+                        <div class="flex items-center justify-start w-1/2 place-items-start">
+                            <p class="ml-3 text-gray-500">Total</p>
+                        </div>
+                        <div class="flex items-center justify-end w-1/2 place-items-end">
+                            <p class="mr-3">${{$total_price}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end "> 
+                    <div class="h-16 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
+                        <a href="/cart/checkout"><button type="button" class="w-full h-full text-white uppercase bg-blue-800">Checkout</button></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        
+        </form>
     </div>
 </body>
 <script>
