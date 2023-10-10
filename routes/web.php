@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     // Cart
     Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/add', [CartController::class, 'add']);
     Route::post('/cart/remove', [CartController::class, 'remove']);
 
     // User CRUD
