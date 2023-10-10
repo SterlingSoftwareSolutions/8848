@@ -21,7 +21,7 @@ class CategoryController extends Controller
             ]);
         }
 
-        return view('admin.category.index', compact('categories'));
+        return view('app.category', compact('categories'));
     }
 
     /**
