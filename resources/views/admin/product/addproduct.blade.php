@@ -93,31 +93,57 @@
                 </select>
             </div>
             <div>
-                <label for="sub_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sub Category * :</label>
-                <select type="text" id="sub_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option>Sugarcane</option>
-                    <option>Sugarcane</option>
-                    <option>Sugarcane</option>
-                    <option>Sugarcane</option>
-                    <option>Sugarcane</option>
-                </select>
-            </div>
-            <div>
                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price * :</label>
                 <input type="number" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="$ 0.00" required>
             </div>
             <div>
                 <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock Adjustment :</label>
-                <input type="number" id="stock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <div>
+                    <div class="flex items-center mb-4">
+                        <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stok Available</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                        <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stok Not Available</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Short Description * :</label>
+                <textarea id="message" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+            </div>
+            <div>
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrition * :</label>
+                <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
             </div>
             <div>
                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Catelog :</label>
-                <input id="file_input" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <input id="file_input" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+        </div>
+        <h1 class=" text-[#1670B7] font-bold text-lg">Variation</h1>
+        <div class="flex flex-row py-10">
+            <div class="max-w-md">
+                <div id="form-container">
+                    <!-- Initial input field -->
+                    <div class="mb-4 flex flex-row gap-5">
+                        <div>
+                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Variyan Name:</label>
+                            <input type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
+                        </div>
+                        <div>
+                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price :</label>
+                            <input type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
+                        </div>
+                    </div>
+                </div>
+                <button id="add-fields" class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-600">Add Variant</button>
             </div>
         </div>
 
-        <button type="submit" class="text-white bg-[#2BB673] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-normal text-base w-full sm:w-auto px-12 py-2.5 text-center">Save</button>
-        <button type="submit" class="text-white bg-[#D2042D] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-normal text-base w-full sm:w-auto px-6 py-2.5 text-center ">Cancel</button>
+        <button type="submit" class="text-white bg-[#2BB673] hover:bg-[#2b7753] focus:ring-4 font-normal text-base w-full sm:w-auto px-12 py-2.5 text-center">Save</button>
+        <button type="submit" class="text-white bg-[#D2042D] hover:bg-[#943d4e]  text-base w-full sm:w-auto px-6 py-2.5 text-center ">Cancel</button>
     </form>
 
 </div>
