@@ -1,19 +1,6 @@
 @extends('layouts.app')
 @section('content')
-{{-- Main Image --}}
-<div class="relative">
-    <div
-        class="bg-cover h-72 md:h-96"
-        style="background-image: url('{{
-            asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg')
-        }}'); "
-    ></div>
-    <div class="absolute inset-0 flex items-center justify-center">
-        <h1 class="text-3xl font-bold text-white underline md:text-4xl">
-            8848 Text Product 2
-        </h1>
-    </div>
-</div>
+
 <div class="flex flex-col justify-center mt-4 md:flex-row md:mt-4">
     <!-- Image Box 1 -->
     <div class="w-full px-4 rounded-md md:w-1/3">
