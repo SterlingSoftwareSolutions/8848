@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Variant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -83,6 +84,12 @@ class ProductController extends Controller
             ]);
         }
 
+        if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin'){
+             return view('admin.products.index', [
+                'products' => $query->get()
+            ]);
+        }
+
         return view('app.products.index', [
             'products' => $query->get()
         ]);
@@ -93,7 +100,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**

@@ -34,7 +34,8 @@ Route::get('/', function () {
     return view('app.home');
 });
 
-Route::resource('/products', ProductController::class)->only('index', 'show');
+Route::resource('/products', [ProductController::class, 'index_client']);
+Route::resource('/products/{Product}', [ProductController::class, 'show_client']);
 Route::resource('/categories', CategoryController::class)->only('index', 'show');
 
 Route::middleware('auth')->group(function () {
@@ -49,7 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/remove', [CartController::class, 'remove']);
     Route::get('/cart/checkout', [CartController::class, 'checkout']);
 
-    // User CRUD
-    Route::resource('/admin/user', UserController::class);
+    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
+        Route::resource('/users', UserController::class);
+        Route::resource('/products', ProductController::class);
+    });
 
 });
