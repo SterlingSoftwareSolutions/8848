@@ -90,3 +90,57 @@ uploadInput.addEventListener("change", (event) => {
 uploadInput.addEventListener("click", (event) => {
     event.stopPropagation();
 });
+
+// Variyan
+
+const formContainer = document.getElementById("form-container");
+const addButton = document.getElementById("add-fields");
+let inputIndex = 2; // Starting index for additional input fields
+
+addButton.addEventListener("click", () => {
+    // Create a new div for the input and image upload fields
+    const fieldDiv = document.createElement("div");
+    fieldDiv.classList.add("mb-4", "flex", "gap-5");
+
+    // Create a new input field 1
+    const inputField1 = document.createElement("input");
+    inputField1.type = "text";
+    inputField1.id = `input${inputIndex}`;
+    inputField1.name = `variant_name_${inputIndex}`;
+    inputField1.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
+    inputField1.placeholder = "Variant Name";
+
+    // Create a new input field 2
+    const inputField2 = document.createElement("input");
+    inputField2.type = "number";
+    inputField2.id = `input${inputIndex}`;
+    inputField2.name = `variant_name_${inputIndex}`;
+    inputField2.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
+    inputField2.placeholder = "$ 0.00";
+
+    // Create a "Remove" button
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.classList.add(
+        "bg-red-500",
+        "text-white",
+        "px-2",
+        "py-1",
+        "rounded-md",
+        "hover:bg-red-600"
+    );
+    removeButton.addEventListener("click", () => {
+        formContainer.removeChild(fieldDiv); // Remove the field when the "Remove" button is clicked
+    });
+
+    // Append the label, input, and image upload fields to the div
+    fieldDiv.appendChild(inputField1);
+    fieldDiv.appendChild(inputField2);
+    fieldDiv.appendChild(removeButton);
+
+    // Append the div to the form container
+    formContainer.appendChild(fieldDiv);
+
+    // Increment the input index
+    inputIndex++;
+});
