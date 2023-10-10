@@ -7,6 +7,10 @@
     <td class="w-3/12 px-6 py-4 text-blue-900 text-start">
         {{$cartitem->variant->product->title}}
     </td>
+    <!-- Variant -->
+    <td class="w-3/12 px-6 py-4 text-blue-900 text-start">
+        {{$cartitem->variant->name}}
+    </td>
     <!-- Price -->
     <td class="w-1/12 px-6 py-4">
         ${{$cartitem->variant->price}}
