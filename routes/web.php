@@ -48,6 +48,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/remove', [CartController::class, 'remove']);
 
     // User CRUD
-    Route::resource('/admin/user', UserController::class);
+    Route::resource('/admin/users', UserController::class);
 
 });

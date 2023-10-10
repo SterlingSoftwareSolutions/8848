@@ -12,10 +12,16 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json([
-            'success' => true,
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'users' => User::all()
+            ]); 
+        }
+
+        return view('admin.users.index', [
             'users' => User::all()
         ]);
     }
@@ -25,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -64,16 +70,16 @@ class UserController extends Controller
      */
     public function show(Request $request, User $user)
     {
-     if($request->wantsJson()){
+        if($request->wantsJson()){
         return response()->json([
           'success' => true,
           'user' => $user
         ]);
-     }
+        }
 
-     return view('admin.users.show',[
-        'user' => $user
-     ]);
+        return view('admin.users.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -81,7 +87,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.users.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -121,8 +129,12 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return response()->json([
-            'success' => true, 
-        ]);
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true
+            ]);
+        }
+
+        return redirect('/admin/users');
     }
 }
