@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'role',
         'email',
+        'phone',
         'password',
     ];
 
@@ -56,18 +58,18 @@ class User extends Authenticatable
         return $this->hasMany(CartItems::class);
     }
 
-    public function cart_add($product, $quantity = 1){
+    public function cart_add($variant, $quantity = 1){
 
-        if($product instanceof Product){
-            $product_id = $product->id;
+        if($variant instanceof Variant){
+            $variant_id = $variant->id;
         } else{
-            $product_id = $product;
+            $variant_id = $variant;
         }
 
-        $existing_cart_item = $this->cart_items()->where('product_id', $product_id)->first();
+        $existing_cart_item = $this->cart_items()->where('variant_id', $variant_id)->first();
 
         if($existing_cart_item){
-            // Product already in cart, just modify the quantity
+            // variant already in cart, just modify the quantity
             $existing_cart_item->quantity += $quantity;
             $existing_cart_item->save();
 
@@ -75,21 +77,21 @@ class User extends Authenticatable
             // Create a new cart item
             CartItems::create([
                 'user_id' => $this->id,
-                'product_id' => $product_id,
+                'variant_id' => $variant_id,
                 'quantity' => $quantity
             ]);
         }
     }
 
-    public function cart_update($product, $quantity){
+    public function cart_update($variant, $quantity){
 
-        if($product instanceof Product){
-            $product_id = $product->id;
+        if($variant instanceof Variant){
+            $variant_id = $variant->id;
         } else{
-            $product_id = $product;
+            $variant_id = $variant;
         }
 
-        $existing_cart_item = $this->cart_items()->where('product_id', $product_id)->first();
+        $existing_cart_item = $this->cart_items()->where('variant_id', $variant_id)->first();
 
         if($existing_cart_item){
             $existing_cart_item->quantity = $quantity;
@@ -100,14 +102,14 @@ class User extends Authenticatable
         }
     }
 
-    public function cart_remove($product){
-        if($product instanceof Product){
-            $product_id = $product->id;
+    public function cart_remove($variant){
+        if($variant instanceof Variant){
+            $variant_id = $variant->id;
         } else{
-            $product_id = $product;
+            $variant_id = $variant;
         }
 
-        $existing_cart_item = $this->cart_items()->where('product_id', $product_id)->first();
+        $existing_cart_item = $this->cart_items()->where('variant_id', $variant_id)->first();
 
         if($existing_cart_item){
             $existing_cart_item->delete();

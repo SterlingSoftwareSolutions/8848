@@ -14,7 +14,6 @@ class Product extends Model
         'description',
         'short_description',
         'category_id',
-        'price',
         'sku',
         'in_stock',
         'image_1_url',
@@ -26,5 +25,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function variants()
+    {
+        return $this->hasMany(Variant::class);
     }
 }
