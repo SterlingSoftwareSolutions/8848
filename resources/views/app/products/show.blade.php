@@ -16,12 +16,12 @@
         <div
             class="bg-cover h-72 md:h-96"
             style="background-image: url('{{
-                asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg')
+                $product->image_1_url
             }}'); "
         ></div>
         <div class="absolute inset-0 flex items-center justify-center">
             <h1 class="text-white font-bold text-3xl md:text-4xl underline">
-                8848 Text Product 2
+                {{$product->title}}
             </h1>
         </div>
     </div>
@@ -31,18 +31,18 @@
         <div
             class="flex flex-col md:flex-row text-blue-800 font-bold gap-1 text-sm md:text-2xl"
         >
-            <a href="">Home</a>
+            <a href="/">Home</a>
             <span>/</span>
-            <a href="">Areca Palm Leaves</a>
+            <a href="/products?category_id={{$product->category->id}}">{{$product->category->name ?? 'Unknown'}}</a>
             <span>/</span>
-            <span class="">8848 Test Product 2</span>
+            <span class="">{{$product->title}}</span>
         </div>
 
         <div class="flex flex-col md:flex-row mt-5">
             <div class="w-full md:w-6/12 relative">
                 <img
                     src="{{
-                        asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg')
+                        $product->image_1_url
                     }}"
                     alt="Image Description"
                     class="w-full"
@@ -62,22 +62,23 @@
             </div>
 
             <div class="w-full md:w-6/12 mt-5 md:mt-10 md:pl-5">
-                <p class="text-lg text-gray-400 font-bold">CODE:test-p-2</p>
+                <p class="text-lg text-gray-400 font-bold">CODE:{{$product->sku}}</p>
                 <p class="text-blue-800 font-bold text-3xl mt-1">
-                    8848 Test Product 02
+                    {{$product->title}}
                 </p>
                 <p class="text-gray-700 mt-2">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Enim suscipit ipsum quia aliquam explicabo ipsa amet?
+                    {{$product->short_description}}
                 </p>
-                <p class="text-blue-800 font-bold mt-5 text-3xl">$30.00</p>
-
+                <p class="text-blue-800 font-bold mt-5 text-3xl">${{$product->price}}</p>
+                @if($product->in_stock)
+                <p class="text-blue-500 md:mt-5 text-lg">In stock</p>
+                @else
                 <p class="text-red-500 md:mt-5 text-lg">Out of stock</p>
-
+                @endif
                 <div class="horizontal-line md:mt-5"></div>
 
                 <p class="text-gray-500 text-lg mt-5 font-bold">
-                    Categories: Areca Palm Leaves
+                    Category: {{$product->category->name ?? 'Unknown'}}
                 </p>
             </div>
         </div>
@@ -96,11 +97,7 @@
         </div>
 
         <p class="text-center md:mb-20">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus assumenda eveniet explicabo provident atque commodi
-            asperiores. Modi ullam rerum aspernatur, dolore deleniti minus
-            veniam, eaque consequatur dicta quo veritatis ducimus temporibus
-            deserunt.
+            {{$product->description}}
         </p>
     </div>
 
