@@ -11,6 +11,27 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    private function parse_cartitems(Request $request){
+        $cart_items = [];
+
+        $requestData = $request->all();
+
+        foreach ($requestData as $key => $value) {
+            $variantIndex = substr($key, strlen('variant_quantity_'));
+
+            if (isset($requestData['variant_quantity_' . $variantIndex])) {
+                $variant = [
+                    'id' => $variantIndex,
+                    'quantity' => $requestData['variant_quantity_' . $variantIndex]
+                ];
+
+                $cart_items[] = $variant;
+            }
+        }
+
+        return $cart_items;
+    }
+
     public function index(Request $request){
         $user = Auth::user();
         $items = $user->cart_items;
@@ -81,6 +102,25 @@ class CartController extends Controller
         ]);
     }
 
+    public function bulkupdate(Request $request){
+        $user = Auth::user();
+
+        $parsed_cartitems = $this->parse_cartitems($request);
+
+        foreach($parsed_cartitems as $item){
+            $user->cart_update($item['id'], $item['quantity']);
+        }
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'message' => "Variants updated in cart"
+            ]);
+        } else{
+            return back()->withErrors(['success' => 'Item quantities updated']);
+        }
+    }
+
     public function remove(Request $request){
 
         $request->validate([
@@ -97,7 +137,7 @@ class CartController extends Controller
                 ]);
             }
 
-            return back()->with(['success' => 'removed item from cart']);
+            return back()->withErrors(['success' => "Item removed from cart"]);
         }
 
         if($request->wantsJson()){
@@ -106,13 +146,22 @@ class CartController extends Controller
                 'message' => "Variant {$request->variant_id} not found in cart"
             ]);  
         }
-
-        return back()->with(['error' => 'failed to remove item from cart']);
-    }
+            return back()->withErrors(['error' => "Failed to remvoe item from cart"]);
+        }
 
     public function checkout(Request $request)
     {
         $user = Auth::user();
+
+        if(!($user->address_shipping && $user->address_billing)){
+            if($request->wantsJson()){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Shipping / billingg address not found'
+                ]);
+            }
+            return back()->withErrors(['error' => "No addresses found"]);
+        }
 
         $order = Order::create([
             'user_id' => $user->id,
@@ -155,9 +204,13 @@ class CartController extends Controller
 
         $user->cart_empty();
 
-        return response()->json([
-            'success' => true,
-            'order' => $order->load('items')
-        ]);
+        if($request->wantsJson()){            
+            return response()->json([
+                'success' => true,
+                'order' => $order->load('items')
+            ]);
+        }
+
+        return back();
     }
 }
