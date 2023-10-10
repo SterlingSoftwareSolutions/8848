@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    overflow-x: hidden;
+}
+
 .horizontal-line {
     flex-grow: 1;
     height: 1px;
