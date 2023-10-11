@@ -29,7 +29,7 @@
             <div class="flex flex-col gap-1 text-sm font-bold text-blue-800 md:flex-row md:text-2xl">
                 <a href="">Home</a>
                 <span>/</span>
-                <a href="">{{ $product->category->name }}</a>
+                <a href="">{{ $product->category->name ?? null }}</a>
                 <span>/</span>
                 <span class="">{{ $product->title }}</span>
             </div>
@@ -99,7 +99,7 @@
                     <div class="horizontal-line md:mt-5"></div>
 
                     <p class="mt-5 text-lg font-bold text-gray-500">
-                        Categories: {{ $product->category->name }}
+                        Categories: {{ $product->category->name ?? null}}
                     </p>
                 </div>
             </div>
