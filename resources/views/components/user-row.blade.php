@@ -32,7 +32,7 @@
     <div class="md:flex flex-row gap-1 w-[15%] justify-end mx-1">
 
         <div class="w-40">
-            <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
+            <a href="/admin/users/{{$user->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1></a>
         </div>
         <div class="w-40">
             <form action="/admin/users/{{$user->id}}" method="post">
