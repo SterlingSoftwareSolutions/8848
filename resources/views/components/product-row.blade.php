@@ -39,7 +39,11 @@
             <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
         </div>
         <div class="w-40">
-            <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</h1>
+            <form action="/admin/products/{{$product->id}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
+            </form>
         </div>
     </div>
 </div>

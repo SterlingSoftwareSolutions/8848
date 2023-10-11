@@ -7,7 +7,7 @@
         <div class="flex justify-between w-full">
             <h1 class="px-2 py-2 text-center text-white bg-red-600 rounded-lg">Delete All</h1>
     
-            <h1 class="px-2 py-2 text-center text-white bg-blue-900 rounded-lg ">Add Product</h1>
+            <a href="/admin/products/create"><h1 class="px-2 py-2 text-center text-white bg-blue-900 rounded-lg ">Add Product</h1></a>
         </div>
     </div>
 
