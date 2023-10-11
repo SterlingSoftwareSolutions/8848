@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,12 @@ Route::get('/register', [AuthController::class, 'register_form'])->name('registe
 Route::post('/register', [AuthController::class, 'register']);
 
 // Public Routes
-Route::get('/', function () {
-    return view('app.home');
-});
+
+Route::get('/', [HomeController::class, 'index']);
+
+// Route::get('/', function () {
+//     return view('app.home');
+// });
 
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
