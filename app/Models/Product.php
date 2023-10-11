@@ -35,7 +35,7 @@ class Product extends Model
     public function price(){
         $prices = $this->variants->pluck('price')->toArray();
         if(count($prices) <= 1){
-            return $prices[0];
+            return $prices[0] ?? 0;
         } else{
             return min($prices) . ' - ' . max($prices);
         }

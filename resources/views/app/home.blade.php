@@ -122,7 +122,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -157,7 +157,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -192,7 +192,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -227,7 +227,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -265,7 +265,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -300,7 +300,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -335,7 +335,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -370,7 +370,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -408,7 +408,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -443,7 +443,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -478,7 +478,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
@@ -513,7 +513,7 @@
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2">
+                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
                                         Favorite
                                     </div>
