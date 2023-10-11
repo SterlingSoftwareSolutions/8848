@@ -1,4 +1,7 @@
-<!doctype html>
+@props([
+    'category' => null
+])
+ 
 
 <head>
     <meta charset="utf-8">
@@ -24,7 +27,7 @@
         <div class="relative w-full overflow-hidden carousel-inner">
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -35,7 +38,7 @@
 
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -46,7 +49,7 @@
 
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -95,6 +98,7 @@
             <div class="w-full md:w-7/12">
                 <div class="flex flex-col justify-center gap-5 ml-10 md:flex-row md:ml-20 md:mr-10">
                     <!-- Product Boxes (Responsive Grid) -->
+                    @foreach($categories as $category)
                     <div class="w-10/12 h-full rounded-md md:w-1/2">
                         <!-- Product Image -->
                         <div class="relative group categoty-angle">
@@ -106,18 +110,17 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
+                                    <img src="{{  $category->icon_url }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
+                                        {{$category->name}}
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Hover image (Initial) -->
                             <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                <img src="{{ $category->background_image_url }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
 
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
@@ -130,395 +133,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center gap-5 pt-5 ml-10 md:flex-row md:ml-8 md:mr-24">
-                    <!-- Product Boxes (Responsive Grid) -->
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center gap-5 pt-5 ml-10 md:flex-row md:-ml-5 md:mr-36">
-                    <!-- Product Boxes (Responsive Grid) -->
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path 18.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        Favorite
-                                    </div>
-                                </div>
-                            </div>
+    @endforeach
+                  
                         </div>
                     </div>
                 </div>
@@ -549,7 +165,7 @@
                         <h1 class=" text-[20px] md:text-[30px] text-white">Quick Delivery</h1>
                     </div>
                 </div>
-                <div class="border border-white h-44 mx-5 hidden md:block"></div>
+                <div class="hidden mx-5 border border-white h-44 md:block"></div>
 
                 <!-- Icon 2 -->
                 <div class="flex flex-col items-center">
@@ -562,7 +178,7 @@
                         <h1 class=" text-[20px] md:text-[30px] text-white ">Secure Payment</h1>
                     </div>
                 </div>
-                <div class="border border-white h-44 mx-5 hidden md:block"></div>
+                <div class="hidden mx-5 border border-white h-44 md:block"></div>
                 <!-- Icon 3 -->
                 <div class="flex flex-col items-center">
                     <div class="w-1/3 -ml-10">
