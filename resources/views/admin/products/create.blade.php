@@ -5,93 +5,122 @@
     @csrf
     <h1 class=" text-[#1670B7] font-bold text-lg">Add Product</h1>
     <div class="flex flex-row py-10">
-        <section class="container w-full mx-auto items-center">
-            <div class="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden items-center">
+        <div class="max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
+            <h1 class="mb-4 text-xl font-semibold">Image Previewer</h1>
+            <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
+                <input type="file" id="upload" accept="image/*" class="hidden">
+                <label for="upload" class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                    </svg>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                </label>
+            </div>
+            <div id="image-preview" class="text-center">
+                <!-- Preview image will be displayed here -->
+            </div>
+        </div>
+        <div class="max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
+            <h1 class="mb-4 text-xl font-semibold">Image Previewer</h1>
+            <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
+                <input type="file" id="upload-1" accept="image/*" class="hidden">
+                <label for="upload-1" class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                    </svg>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                </label>
+            </div>
+            <div id="image-preview-1" class="text-center">
+                <!-- Preview image will be displayed here -->
+            </div>
+        </div>
+        <div class="max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
+            <h1 class="mb-4 text-xl font-semibold">Image Previewer</h1>
+            <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
+                <input type="file" id="upload-2" accept="image/*" class="hidden">
+                <label for="upload-2" class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                    </svg>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                </label>
+            </div>
+            <div id="image-preview-2" class="text-center">
+                <!-- Preview image will be displayed here -->
+            </div>
+        </div>
+        <div class="max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
+            <h1 class="mb-4 text-xl font-semibold">Image Previewer</h1>
+            <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
+                <input type="file" id="upload-3" accept="image/*" class="hidden">
+                <label for="upload-3" class="cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                    </svg>
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                    <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                    <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                </label>
+            </div>
+            <div id="image-preview-3" class="text-center">
+                <!-- Preview image will be displayed here -->
+            </div>
+        </div>
+        {{-- <section class="container items-center w-full mx-auto">
+            <div class="items-center max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md">
                 <div class="px-4 py-6">
-                    <div id="image-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
-                        <input id="image_1" type="file" accept="image/*" name="image_1" />
-                        <label for="image_1" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
+                    <div id="image-preview2" class="items-center max-w-sm p-6 mx-auto mb-4 text-center bg-gray-100 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer">
+                        <input id="upload2" type="file" class="hidden" accept="image/*" />
+                        <label for="upload2" class="cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                             </svg>
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
-                            <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
+                            <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                            <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                            <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
+                            <p class="text-sm font-normal text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
+                            <p class="text-sm font-normal text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
+                            <span id="filename" class="z-50 text-gray-500 bg-gray-200"></span>
                         </label>
                     </div>
-                    <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
                 </div>
             </div>
-        </section>
-        <section class="container w-full mx-auto items-center">
-            <div class="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden items-center">
-                <div class="px-4 py-6">
-                    <div id="image-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
-                        <input id="image_2" type="file" accept="image/*" name="image_2" />
-                        <label for="image_2" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                            </svg>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
-                            <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
-                        </label>
-                    </div>
-                    <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
-                </div>
-            </div>
-        </section>
-        <section class="container w-full mx-auto items-center">
-            <div class="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden items-center">
-                <div class="px-4 py-6">
-                    <div id="image-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
-                        <input id="image_3" type="file" accept="image/*" name="image_3" />
-                        <label for="image_3" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                            </svg>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
-                            <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
-                        </label>
-                    </div>
-                    <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
-                </div>
-            </div>
-        </section>
-        <section class="container w-full mx-auto items-center">
-            <div class="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden items-center">
-                <div class="px-4 py-6">
-                    <div id="image-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
-                        <input id="image_4" type="file" accept="image/*" name="image_4" />
-                        <label for="image_4" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                            </svg>
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Upload picture</h5>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">Choose photo size should be less than <b class="text-gray-600">2mb</b></p>
-                            <p class="font-normal text-sm text-gray-400 md:px-6">and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format.</p>
-                            <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
-                        </label>
-                    </div>
-                    <x-input-error :messages="$errors->get('image_4')" class="mt-2" />
-                </div>
-            </div>
-        </section>
+        </section> --}}
     </div>
     <div>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                 <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Product Title * :</label>
-                <input name="title" type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="John" required>
+                <input name="title" type="text" id="title" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="John" required>
                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
             </div>
             <div>
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Category * :</label>
-                <select name="category_id" type="text" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                     @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
@@ -129,7 +158,7 @@
             <div class="max-w-md">
                 <div id="form-container">
                     <!-- Initial input field -->
-                    <div class="mb-4 flex flex-row gap-5">
+                    <div class="flex flex-row gap-5 mb-4">
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
                             <input name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
@@ -142,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" id="add-fields" class="bg-blue-500 text-white px-4 py-2 hover:bg-blue-600">Add Variant</button>
+                <button type="button" id="add-fields" class="px-4 py-2 text-white bg-blue-500 hover:bg-blue-600">Add Variant</button>
             </div>
         </div>
 
@@ -151,4 +180,74 @@
     </div>
 
 </form>
+
+<script>
+    const uploadInput = document.getElementById('upload');
+    const imagePreview = document.getElementById('image-preview');
+
+    uploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview.innerHTML = `<img src="${e.target.result}" class="h-auto max-w-full">`;
+            }
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.innerHTML = '';
+        }
+    });
+    
+    const uploadInput1 = document.getElementById('upload-1');
+    const imagePreview1 = document.getElementById('image-preview-1');
+
+    uploadInput1.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview1.innerHTML = `<img src="${e.target.result}" class="h-auto max-w-full">`;
+            }
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview1.innerHTML = '';
+        }
+    });
+
+    const uploadInput2 = document.getElementById('upload-2');
+    const imagePreview2 = document.getElementById('image-preview-2');
+
+    uploadInput2.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview2.innerHTML = `<img src="${e.target.result}" class="h-auto max-w-full">`;
+            }
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview2.innerHTML = '';
+        }
+    });
+
+    const uploadInput3 = document.getElementById('upload-3');
+    const imagePreview3 = document.getElementById('image-preview-3');
+
+    uploadInput3.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview3.innerHTML = `<img src="${e.target.result}" class="h-auto max-w-full">`;
+            }
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview3.innerHTML = '';
+        }
+    });
+</script>
 @endsection
