@@ -224,6 +224,10 @@ class AuthController extends Controller
                     'token' => $token
                 ], 200);
             } else {
+                $user = Auth::user();
+                if($user->role == 'admin' || $user->role == 'superadmin'){
+                    return redirect('/admin/');
+                }
                 // Cookie Session Authentication
                 return redirect('/');
             }

@@ -86,6 +86,9 @@
               <a href="/" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Home</a>
               <a href="/products" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Products</a>
               <a href="/contact" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Contact</a>
+              @if(Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin'))
+                <a href="/admin" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Admin</a>
+              @endif
             </div>
           </div>
         </div>
