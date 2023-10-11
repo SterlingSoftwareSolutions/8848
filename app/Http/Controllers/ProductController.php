@@ -137,7 +137,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return view('app.products.index', [
+        return view('admin.products.index', [
             'products' => $query->get()
         ]);
     }
@@ -148,7 +148,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::whereNot('parent_id', null)->get();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -163,10 +164,10 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'sku' => 'required|unique:products,sku',
             'in_stock' => 'required',
-            'image_1' => 'required|file|max:4096',
-            'image_2' => 'nullable|file|max:4096',
-            'image_3' => 'nullable|file|max:4096',
-            'image_4' => 'nullable|file|max:4096',
+            'image_1' => 'required|image|max:4096',
+            'image_2' => 'nullable|image|max:4096',
+            'image_3' => 'nullable|image|max:4096',
+            'image_4' => 'nullable|image|max:4096',
 
             'variant_name_01' => 'required',
             'variant_price_01' => 'required'
@@ -180,14 +181,12 @@ class ProductController extends Controller
             'short_description' => $request->description,
             'category_id' => $request->category_id,
             'sku' => $request->sku,
-            'in_stock' => $request->in_stock,
-            'image_1_url' => $request->image_1 ? $request->image_1->store('public/prodduct_images') : null,
-            'image_2_url' => $request->image_2 ? $request->image_2->store('public/prodduct_images') : null,
-            'image_3_url' => $request->image_3 ? $request->image_3->store('public/prodduct_images') : null,
-            'image_4_url' => $request->image_4 ? $request->image_4->store('public/prodduct_images') : null
+            'in_stock' => $request->in_stock ? true : false,
+            'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : null,
+            'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : null,
+            'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : null,
+            'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : null
         ]);
-
-
 
         foreach($variants as $variant) {
             Variant::create([
@@ -197,10 +196,14 @@ class ProductController extends Controller
             ]);
         }
 
-        return response()->json([
-            'success' => true,
-            'product' => $product
-        ]);
+        if($request->expectsJson()){
+            return response()->json([
+                'success' => true,
+                'product' => $product
+            ]);            
+        }
+
+        return redirect('/admin/products')->withErrors(['success' => 'Product created']);
     }
 
     /**
@@ -236,7 +239,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return view('app.products.show',[
+        return view('admin.products.create',[
             'product' => $product->load('variants')
         ]);
     }
@@ -276,10 +279,10 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'sku' => $request->sku,
             'in_stock' => $request->in_stock,
-            'image_1_url' => $request->image_1 ? $request->image_1->store('public/prodduct_images') : $product->image_1_url,
-            'image_2_url' => $request->image_2 ? $request->image_2->store('public/prodduct_images') : $product->image_2_url,
-            'image_3_url' => $request->image_3 ? $request->image_3->store('public/prodduct_images') : $product->image_3_url,
-            'image_4_url' => $request->image_4 ? $request->image_4->store('public/prodduct_images') : $product->image_4_url
+            'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,
+            'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : $product->image_2_url,
+            'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : $product->image_3_url,
+            'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : $product->image_4_url
         ]);
 
         // Delete variants
@@ -319,18 +322,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        if($product){
-            $product->delete();
+        $product->delete();
+        if($request->wantsJson()){
             return response()->json([
                 'success' => true
             ]);
         }
-
-        return response()->json([
-            'success' => false,
-            'message' => 'Product not found'
-        ]);
+        return back()->withErrors(['success' => "Product deleted"]);
     }
 }
