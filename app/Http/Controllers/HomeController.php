@@ -21,7 +21,7 @@ class HomeController extends Controller
             ]);
         }
 
-        return view('app.category', compact('categories'));
+        return view('app.home', compact('categories'));
     }
 
 
@@ -46,7 +46,7 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
