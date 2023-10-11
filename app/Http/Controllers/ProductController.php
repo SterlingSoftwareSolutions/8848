@@ -39,6 +39,59 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function index_client(Request $request)
+    {
+        $query = Product::query();
+
+        $query->with('variants');
+
+        if($request->category_id){
+
+            $category = Category::findOrFail($request->category_id);
+
+            if($category->parent != null){
+                $query->where('category_id', $category->id);
+            } else{
+                $query->whereIn('category_id', $category->children->pluck('id'));
+            }
+        }
+
+        if($request->in_stock != null){
+            $query->where('in_stock', $request->in_stock);
+        }
+
+        if($request->has('sort')){
+            switch($request->sort){
+                case 'price_asc':
+                    $query->orderBy('price', 'asc');
+                    break;
+                case 'price_desc':
+                    $query->orderBy('price', 'desc');
+                    break;
+                case 'date_asc':
+                    $query->orderBy('created_at', 'asc');
+                    break;
+                case 'date_desc':
+                    $query->orderBy('created_at', 'desc');
+                    break;
+            }
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'products' => $query->get()
+            ]);
+        }
+
+        return view('app.products.index', [
+            'products' => $query->get()
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
     public function index(Request $request)
     {
         $query = Product::query();
@@ -84,16 +137,11 @@ class ProductController extends Controller
             ]);
         }
 
-        if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin'){
-             return view('admin.products.index', [
-                'products' => $query->get()
-            ]);
-        }
-
         return view('app.products.index', [
             'products' => $query->get()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -152,6 +200,25 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'product' => $product
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show_client(Request $request, Product $product)
+    {
+        $product->load('variants');
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'product' => $product
+            ]);
+        }
+
+        return view('app.products.show',[
+            'product' => $product->load('variants')
         ]);
     }
 

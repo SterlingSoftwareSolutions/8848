@@ -34,8 +34,8 @@ Route::get('/', function () {
     return view('app.home');
 });
 
-Route::resource('/products', [ProductController::class, 'index_client']);
-Route::resource('/products/{Product}', [ProductController::class, 'show_client']);
+Route::get('/products', [ProductController::class, 'index_client']);
+Route::get('/products/{product}', [ProductController::class, 'show_client']);
 Route::resource('/categories', CategoryController::class)->only('index', 'show');
 
 Route::middleware('auth')->group(function () {
