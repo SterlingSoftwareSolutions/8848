@@ -55,6 +55,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart/checkout', [CartController::class, 'checkout']);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
+        // Public Routes
+        Route::get('/', function () {
+            return view('admin.dashboard');
+        });
         Route::resource('/users', UserController::class);
         Route::resource('/products', ProductController::class);
     });

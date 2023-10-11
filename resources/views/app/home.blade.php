@@ -27,7 +27,7 @@
         <div class="relative w-full overflow-hidden carousel-inner">
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -38,7 +38,7 @@
 
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -49,7 +49,7 @@
 
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[1000px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -165,7 +165,7 @@
                         <h1 class=" text-[20px] md:text-[30px] text-white">Quick Delivery</h1>
                     </div>
                 </div>
-                <div class="border border-white h-44 mx-5 hidden md:block"></div>
+                <div class="hidden mx-5 border border-white h-44 md:block"></div>
 
                 <!-- Icon 2 -->
                 <div class="flex flex-col items-center">
@@ -178,7 +178,7 @@
                         <h1 class=" text-[20px] md:text-[30px] text-white ">Secure Payment</h1>
                     </div>
                 </div>
-                <div class="border border-white h-44 mx-5 hidden md:block"></div>
+                <div class="hidden mx-5 border border-white h-44 md:block"></div>
                 <!-- Icon 3 -->
                 <div class="flex flex-col items-center">
                     <div class="w-1/3 -ml-10">
