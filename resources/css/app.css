@@ -117,3 +117,7 @@ input[type="number"]::-webkit-outer-spin-button {
     .carousel-bullet {
     color: #2b6cb0; /*Set to match the Tailwind colour you want the active one to be */
 }
+
+.tint-red {
+     filter: grayscale(100%);
+}

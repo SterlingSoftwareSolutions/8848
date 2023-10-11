@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="flex items-center justify-center relative mx-auto ">
-            <div class="flex items-center justify-between w-8/12 align-middle mt-10 md:flex-row md:mt-4">
+            <div class="flex flex-col md:flex-row items-center justify-between w-8/12 align-middle mt-10 md:mt-4">
                 <!-- Image Box 1 -->
                 <div class="w-full px-4 rounded-md md:w-1/3">
                     <img src="{{ asset('images/su-san-lee-g3PyXO4A0yc-unsplash.jpg') }}" alt="Image Description" class="w-full h-[150px] object-cover rounded-md">
@@ -46,7 +46,7 @@
         </div>
 
 
-        <div class="grid items-center justify-center grid-cols-1 gap-5 p-5 md:grid-cols-4 md:ml-[10%] md:mr-[10%] relative mx-auto">
+        <div class="grid items-center justify-center grid-cols-1 gap-5 p-5 md:grid-cols-4 ml-0 mr-0 md:ml-[10%] md:mr-[10%] relative mx-auto">
             @foreach($products as $product)
             <x-product-card :product="$product" />
             @endforeach
