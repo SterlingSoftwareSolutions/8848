@@ -1,4 +1,7 @@
-<!doctype html>
+@props([
+    'category' => null
+])
+ 
 
 <head>
     <meta charset="utf-8">
@@ -106,18 +109,18 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
+                                    <img src="{{ $category[0]->icon_url }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        Favorite
+
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Hover image (Initial) -->
                             <div class="hover-image">
-                                <img src="{{ asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                <img src="" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
 
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
