@@ -22,7 +22,7 @@ class UserController extends Controller
         }
 
         return view('admin.users.index', [
-            'users' => User::all()
+            'users' => User::where('role', 'client_retail')->orWhere('role', 'client_wholesale')->get()
         ]);
     }
 
