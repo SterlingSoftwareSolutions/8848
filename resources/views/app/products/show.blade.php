@@ -11,14 +11,14 @@
     <!-- HEADER -->
     @include('layouts.app.header')
 
-    <div class="container min-w-fit">
+    <div class="container">
         {{-- Main Image --}}
         <div class="relative w-screen">
-            <div class="bg-cover h-56 md:h-96" style="background-image: url('{{
+            <div class="h-56 bg-cover md:h-96" style="background-image: url('{{
         asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg')
-    }}'); "></div>
-            <div class="absolute inset-0 flex items-center justify-center bg-opacity-80 bg-black">
-                <h1 class="text-2xl md:text-4xl font-bold text-white underline text-center">
+        }}'); "></div>
+            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80">
+                <h1 class="text-2xl font-bold text-center text-white underline md:text-4xl">
                     Product
                 </h1>
             </div>
@@ -63,7 +63,7 @@
                         @if($product->variants->count() <= 1)
                         <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
                         @else
-                        <select name="variant_id" class="p-4 my-4 w-1/2">
+                        <select name="variant_id" class="w-1/2 p-4 my-4">
                             @foreach($product->variants as $variant)
                                 <option value="{{$variant->id}}">{{$variant->name}} - ${{$variant->price}}</option>
                             @endforeach
@@ -74,18 +74,18 @@
                         @endif
                         <!-- Product Quantity -->
                         <div class="flex gap-4">
-                            <div class="flex flex-row w-1/2 md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
+                            <div class="flex flex-row md:flex-row custom-number-input border-[2px] border-[#1670B7] rounded-md">
                                 <!-- Decrease Button -->
-                                <button type="button" data-action="decrement" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
-                                    <span class="m-auto text-2xl font-thin">−</span>
+                                <button type="button" data-action="decrement" class="w-8 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
+                                    <span class="text-xl font-thin">−</span>
                                 </button>
                                 <!-- Input Field -->
-                                <input type="number" class="flex items-center w-16 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="quantity" min="1" value="1">
+                                <input type="number" class="flex items-center w-12 font-semibold text-center text-gray-700 outline-none cursor-default focus:outline-none md:w-full text-md md:text-base" name="quantity" min="1" value="1">
                                 <!-- Increase Button -->
-                                <button type="button" data-action="increment" class="w-10 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover:bg-gray-400 md:h-full md:w-20">
-                                    <span class="m-auto text-2xl font-thin">+</span>
+                                <button type="button" data-action="increment" class="w-8 h-10 text-gray-600 rounded-r cursor-pointer hover:text-gray-700 hover-bg-gray-400 md:h-full md:w-20">
+                                    <span class="text-xl font-thin">+</span>
                                 </button>
-                            </div>
+                            </div>                            
                             <button  type="submit" class="w-1/2 p-2 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">ADD TO CART</button>
                             @if(false)
                             <button  type="button" class="w-1/2 p-2 bg-gradient-to-b from-[#B6B6B6] to-[#979797] rounded-sm text-white hover:text-white-500" disabled>CHOOSE AN OPTION</button>
