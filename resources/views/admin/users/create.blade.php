@@ -1,6 +1,7 @@
 @extends('layouts.admin') @section('content')
-    <div class="container p-6 mx-auto ">
-        <form>
+<div class="container p-6 mx-auto ">
+    <form method="post" action="/admin/users">
+        @csrf
         <div class="md:mb-5">
             <h1 class="text-lg font-bold">Add Customer</h1>
         </div>
@@ -16,10 +17,12 @@
             </div>
             <div class="flex gap-5 mb-4">
                 <div class="w-1/2 pr-4">
-                    <input type="text" id="first_name" class="w-full p-2 border">
+                    <input type="text" id="first_name" name="first_name" class="w-full p-2 border">
+                    <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                 </div>
                 <div class="w-1/2">
-                    <input type="text" id="last_name" class="w-full p-2 border">
+                    <input type="text" id="last_name" name="last_name" class="w-full p-2 border">
+                    <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
                 </div>
             </div>
 
@@ -34,10 +37,12 @@
             </div>
             <div class="flex gap-5 mb-3">
                 <div class="w-1/2 pr-4">
-                    <input type="text" id="phone" class="w-full p-2 border">
+                    <input type="text" id="phone" name="phone"  class="w-full p-2 border">
+                    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                 </div>
                 <div class="w-1/2">
-                    <input type="text" id="email" class="w-full p-2 border">
+                    <input type="text" id="email" name="email" class="w-full p-2 border">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
             </div>
 
@@ -52,10 +57,12 @@
             </div>
             <div class="flex gap-5 mb-3">
                 <div class="w-1/2 pr-4">
-                    <input type="text" id="street" class="w-full p-2 border">
+                    <input type="password" id="street" name="password" class="w-full p-2 border">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
                 <div class="w-1/2">
-                    <input type="text" id="state" class="w-full p-2 border">
+                    <input type="password" id="state" name="password_confirmation" class="w-full p-2 border">
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
             </div>
 
@@ -70,20 +77,21 @@
             </div>
             <div class="flex mb-3">
                 <div class="w-1/2 pr-5">
-                    <select id="customer_type" class="w-full p-2 border">
-                        <option value="wholesale">Wholesale Customer</option>
-                        <option value="retail">Retail Customer</option>
+                    <select id="role" name="role" class="w-full p-2 border">
+                        <option value="client_wholesale">Wholesale Customer</option>
+                        <option value="client_retail">Retail Customer</option>
                     </select>
+                    <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
                 <div class="w-1/2 pl-2">
-                    <select id="priority_level" class="w-full p-2 border">
+                    <select id="priority_level" name="priority_level" class="w-full p-2 border">
                         <option value="high">High Priority</option>
                         <option value="medium">Medium Priority</option>
                         <option value="low">Low Priority</option>
                     </select>
+                    <x-input-error :messages="$errors->get('priority_level')" class="mt-2" />
                 </div>
             </div>
-      
         </div>
 
         <div class="w-full gap-3 mt-5 md:flex">
@@ -98,16 +106,20 @@
                                     <label class="block mb-2 text-sm font-semibold text-gray-700" for="firstname">
                                         First Name
                                     </label>
-                                    <input class="w-full px-3 py-2 mr-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="" placeholder="First name" />
+                                    <input
+                                        class="w-full px-3 py-2 mr-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        type="text" name="" id="" placeholder="First name" />
                                 </div>
                                 <div class="md:ml-2" style="width: 50%">
                                     <label class="block mb-2 text-sm font-semibold text-gray-700" for="lastname">
                                         Last Name
                                     </label>
-                                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="lastname" placeholder="Last name" />
+                                    <input
+                                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        type="text" name="" id="lastname" placeholder="Last name" />
                                 </div>
                             </div>
-    
+
                             {{-- company --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
@@ -115,22 +127,21 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="company_name"
-                                    type="text"
-                                    placeholder="Company Name"
-                                />
+                                    id="company_name" type="text" placeholder="Company Name" />
                             </div>
-                            
+
                             {{-- state --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_region">
                                     State
                                 </label>
-                                <select class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" name="country" id="country">
+                                <select
+                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    id="country">
                                     <option class="text-sm" value="">California</option>
                                 </select>
                             </div>
-    
+
                             {{-- street Address --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="street-address">
@@ -138,18 +149,12 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="House number and street name"
-                                />
+                                    id="" type="text" placeholder="House number and street name" />
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Apartment, suite, unit, etc. (optional)"
-                                />
+                                    id="" type="text" placeholder="Apartment, suite, unit, etc. (optional)" />
                             </div>
-    
+
                             {{-- town/city --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="towm-city">
@@ -157,13 +162,10 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Town/City"
-                                />
+                                    id="" type="text" placeholder="Town/City" />
                             </div>
-    
-    
+
+
                             {{-- zip-code --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="zip_code">
@@ -171,12 +173,9 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Zip Code"
-                                />
+                                    id="" type="text" placeholder="Zip Code" />
                             </div>
-    
+
                             {{-- phone --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="number">
@@ -184,10 +183,7 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="number"
-                                    placeholder="Phone"
-                                />
+                                    id="" type="number" placeholder="Phone" />
                             </div>
 
                         </div>
@@ -199,7 +195,7 @@
             <div class="flex flex-col w-full">
                 <label for="Shipping-address" class="text-lg font-bold">
                     Shipping address
-                  </label>                  
+                </label>
                 <div class="w-full mt-4 border rounded">
                     <div class="w-full p-4" id="shipping-details">
                         <div class="px-8 pb-8 mb-4 bg-white rounded" id="shipping-form">
@@ -209,16 +205,20 @@
                                     <label class="block mb-2 text-sm font-semibold text-gray-700" for="firstname">
                                         First Name
                                     </label>
-                                    <input class="w-full px-3 py-2 mr-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="" placeholder="First name" />
+                                    <input
+                                        class="w-full px-3 py-2 mr-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        type="text" name="" id="" placeholder="First name" />
                                 </div>
                                 <div class="md:ml-2" style="width: 50%">
                                     <label class="block mb-2 text-sm font-semibold text-gray-700" for="lastname">
                                         Last Name
                                     </label>
-                                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="lastname" placeholder="Last name" />
+                                    <input
+                                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        type="text" name="" id="lastname" placeholder="Last name" />
                                 </div>
                             </div>
-    
+
                             {{-- company --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
@@ -226,22 +226,21 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="company_name"
-                                    type="text"
-                                    placeholder="Company Name"
-                                />
+                                    id="company_name" type="text" placeholder="Company Name" />
                             </div>
-                            
+
                             {{-- state --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_region">
                                     State
                                 </label>
-                                <select class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" name="country" id="country">
+                                <select
+                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    name="country" id="country">
                                     <option class="text-sm" value="">California</option>
                                 </select>
                             </div>
-    
+
                             {{-- street Address --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="street-address">
@@ -249,18 +248,12 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="House number and street name"
-                                />
+                                    id="" type="text" placeholder="House number and street name" />
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Apartment, suite, unit, etc. (optional)"
-                                />
+                                    id="" type="text" placeholder="Apartment, suite, unit, etc. (optional)" />
                             </div>
-    
+
                             {{-- town/city --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="towm-city">
@@ -268,12 +261,9 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Town/City"
-                                />
+                                    id="" type="text" placeholder="Town/City" />
                             </div>
-    
+
                             {{-- zip-code --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="zip_code">
@@ -281,12 +271,9 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Zip Code"
-                                />
+                                    id="" type="text" placeholder="Zip Code" />
                             </div>
-    
+
                             {{-- phone --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="number">
@@ -294,15 +281,14 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="number"
-                                    placeholder="Phone"
-                                />
+                                    id="" type="number" placeholder="Phone" />
                             </div>
 
                             <div class="mt-6 flex justify-end">
-                                <button class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
-                                <button class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600">Cancel</button>
+                                <button
+                                    class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
+                                <button type="button" 
+                                    class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600" disabled>Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -310,5 +296,5 @@
             </div>
         </div>
     </form>
-    </div>
+</div>
 @endsection
