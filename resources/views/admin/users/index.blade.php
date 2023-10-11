@@ -30,9 +30,12 @@
                 <p class="w-[15%]">Action</p>
             </div>
             <!-- Placeholder Content for Box 1 -->
-        @foreach($users as $user)
+            @foreach($users as $user)
             <x-user-row :user="$user"/>
-        @endforeach
+            @endforeach
+            <div class="flex justify-center p-5">
+                {{$users->links()}}
+            </div>
     </div>
 </div>
 </div>

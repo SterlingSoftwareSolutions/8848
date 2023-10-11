@@ -85,7 +85,7 @@ class ProductController extends Controller
         }
 
         return view('app.products.index', [
-            'products' => $query->get()
+            'products' => $query->paginate(10)
         ]);
     }
 
@@ -128,6 +128,8 @@ class ProductController extends Controller
                     $query->orderBy('created_at', 'desc');
                     break;
             }
+        } else{
+            $query->orderBy('created_at', 'desc');
         }
 
         if ($request->wantsJson()) {
@@ -138,7 +140,7 @@ class ProductController extends Controller
         }
 
         return view('admin.products.index', [
-            'products' => $query->get()
+            'products' => $query->paginate(10)
         ]);
     }
 

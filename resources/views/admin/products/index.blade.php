@@ -32,6 +32,9 @@
             <x-product-row :product="$product"/>
             {{-- table list 2 --}}
             @endforeach
+            <div class="flex justify-center p-5">
+                {{$products->links()}}
+            </div>
         </div>
     </div>
 </div>
