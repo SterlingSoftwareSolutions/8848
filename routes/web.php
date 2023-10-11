@@ -34,9 +34,9 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/', [HomeController::class, 'index']);
 
-// Route::get('/', function () {
-//     return view('app.home');
-// });
+Route::get('/contact', function () {
+    return view('app.contact');
+});
 
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
