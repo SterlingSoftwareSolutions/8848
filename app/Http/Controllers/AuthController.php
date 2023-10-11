@@ -110,7 +110,6 @@ class AuthController extends Controller
             Address::create($billing_address_data);
         }
 
-
         // Shipping Address
         $shipping_address_data = [
             'user_id' => $user->id,
@@ -131,7 +130,6 @@ class AuthController extends Controller
         } else{
             Address::create($shipping_address_data);
         }
-
 
         if($request->password){
             $request->validate([
