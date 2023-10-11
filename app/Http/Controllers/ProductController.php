@@ -137,7 +137,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return view('app.products.index', [
+        return view('admin.products.index', [
             'products' => $query->get()
         ]);
     }
@@ -236,7 +236,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return view('app.products.show',[
+        return view('admin.products.create',[
             'product' => $product->load('variants')
         ]);
     }
