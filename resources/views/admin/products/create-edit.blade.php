@@ -3,7 +3,6 @@
 ])
 
 @extends('layouts.admin') @section('content')
-<pre>{{$errors}}</pre>
 <form class="p-8" method="post" @if($product) action="/admin/products/{{$product->id}}" @else action="/admin/products" @endif enctype="multipart/form-data">
     @if($product) @method('put') @endif
     @csrf
@@ -129,7 +128,7 @@
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
-                            <input value="{{ old('variant_price_01', 0.0) }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
+                            <input value="{{ old('variant_price_01') }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                         </div>
                         <div>
