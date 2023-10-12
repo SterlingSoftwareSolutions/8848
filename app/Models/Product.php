@@ -45,7 +45,7 @@ class Product extends Model
     {
         $url = $this['image_' . $index . '_url'];
         if(!$url){
-            return null;
+            return '/images/product-dummy.jpeg';
         }
         if(str_starts_with($url, 'http')){
             return $url;
