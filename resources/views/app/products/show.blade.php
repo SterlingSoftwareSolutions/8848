@@ -36,9 +36,7 @@
 
             <div class="flex flex-col mt-5 md:flex-row">
                 <div class="relative w-full md:w-6/12">
-                    <img src="{{
-                            $product->image_1_url
-                        }}" alt="Image Description" class="w-full" />
+                    <img src="{{$product->image(1)}}" alt="Image Description" class="w-full" />
 
                     <!-- White circle with search icon -->
                     <div class="absolute flex items-center justify-center w-12 h-12 bg-white rounded-full cursor-pointer top-5 right-5" onclick="openImage()">
