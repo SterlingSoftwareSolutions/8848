@@ -3,6 +3,7 @@
 ])
 
 @extends('layouts.admin') @section('content')
+<pre>{{$errors}}</pre>
 <form class="p-8" method="post" @if($product) action="/admin/products/{{$product->id}}" @else action="/admin/products" @endif enctype="multipart/form-data">
     @if($product) @method('put') @endif
     @csrf
@@ -116,8 +117,8 @@
                             </div>
                             <div>
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
-                                <input type="text" value="{{old('sku', $product->sku ?? null)}}" name="sku" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <x-input-error :messages="$errors->get('sku')" class="mt-2" />
+                                <input value="{{old('variant_sku_' . $variant->id, $variant->sku ?? null)}}" name="variant_sku_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
+                                <x-input-error :messages="$errors->get('variant_sku_' . $variant->id)" class="mt-2" />
                             </div>
                         </div>
                         <button class="remove-field-button bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button">Remove</button>
@@ -127,18 +128,18 @@
                     <div class="flex flex-row gap-5 mb-4">
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
-                            <input value="{{ old('variant_name_01', $product->variant_name_01 ?? null) }}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
-                            <x-input-error :messages="$errors->get('')" class="mt-2" />
+                            <input value="{{ old('variant_name_01', 'Default') }}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
+                            <x-input-error :messages="$errors->get('variant_name_01')" class="mt-2" />
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
-                            <input value="{{ old('variant_price_01', $product->variant_price_01 ?? null) }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
+                            <input value="{{ old('variant_price_01', 0.0) }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
-                            <input type="text" value="{{old('sku', $product->sku ?? null)}}" name="sku" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <x-input-error :messages="$errors->get('sku')" class="mt-2" />
+                            <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <x-input-error :messages="$errors->get('variant_sku_01')" class="mt-2" />
                         </div>
                     </div>
                     @endif
@@ -207,7 +208,7 @@
         const sku = document.createElement("input");
         sku.type = "text";
         sku.id = `input${inputIndex}`;
-        sku.name = `variant_price_0${inputIndex}`;
+        sku.name = `variant_sku_0${inputIndex}`;
         sku.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
         sku.placeholder = "SKU";
         sku.required = true; // Make inputField2 required

@@ -25,7 +25,8 @@ class ProductController extends Controller
                     $variant = [
                         'id' => $variantIndex,
                         'name' => $value,
-                        'price' => $requestData['variant_price_' . $variantIndex]
+                        'price' => $requestData['variant_price_' . $variantIndex],
+                        'sku' => $requestData['variant_sku_' . $variantIndex]
                     ];
 
                     $variants[] = $variant;
@@ -164,7 +165,6 @@ class ProductController extends Controller
             'description' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'sku' => 'required|unique:products,sku',
             'in_stock' => 'nullable',
             'image_1' => 'required|image|max:4096',
             'image_2' => 'nullable|image|max:4096',
@@ -172,7 +172,8 @@ class ProductController extends Controller
             'image_4' => 'nullable|image|max:4096',
 
             'variant_name_01' => 'required',
-            'variant_price_01' => 'required'
+            'variant_price_01' => 'required',
+            'variant_sku_01' => 'required'
         ]);
 
         $variants = $this->parse_variants($request);
@@ -182,7 +183,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'short_description' => $request->description,
             'category_id' => $request->category_id,
-            'sku' => $request->sku,
+            'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : null,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : null,
@@ -194,7 +195,8 @@ class ProductController extends Controller
             Variant::create([
                 'product_id' => $product->id,
                 'name' => $variant['name'],
-                'price' => $variant['price']
+                'price' => $variant['price'],
+                'sku' => $variant['sku']
             ]);
         }
 
@@ -268,7 +270,6 @@ class ProductController extends Controller
             'description' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'sku' => 'required|unique:products,sku,' . $product->id,
             'in_stock' => 'nullable',
             'image_1' => 'nullable|file|max:4096',
             'image_2' => 'nullable|file|max:4096',
@@ -283,7 +284,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'short_description' => $request->description,
             'category_id' => $request->category_id,
-            'sku' => $request->sku,
+            'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : $product->image_2_url,
@@ -308,13 +309,15 @@ class ProductController extends Controller
                 Variant::create([
                     'product_id' => $product->id,
                     'name' => $variant['name'],
-                    'price' => $variant['price']
+                    'price' => $variant['price'],
+                    'sku' => $variant['sku']
                 ]);
             } else{
                 $existing_variant = Variant::where('product_id', $product->id)->where('id', $variant['id'])->firstOrFail();
                 $existing_variant->update([
                     'name' => $variant['name'],
-                    'price' => $variant['price']
+                    'price' => $variant['price'],
+                    'sku' => $variant['sku']
                 ]);
             }
         }
