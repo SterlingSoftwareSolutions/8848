@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('sku')->nullable();
+            $table->string('units')->nullable();
+            $table->string('unit_type')->nullable();
+            $table->boolean('in_stock')->default(true);
             $table->decimal('price', 10, 2);
             $table->timestamps();
         });
