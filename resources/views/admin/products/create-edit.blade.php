@@ -50,14 +50,23 @@
         </section> --}}
     </div>
     <div>
+        <div class="w-full" style="width: 100%">
+            <label for="title" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Product Title :</label>
+            <input value="{{old('title', $product->title ?? null)}}" name="title" type="text" id="title" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="John" style="width: 100%">
+            <x-input-error :messages="$errors->get('title')" class="mt-2" />
+        </div><br>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Product Title * :</label>
-                <input value="{{old('title', $product->title ?? null)}}" name="title" type="text" id="title" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="John">
-                <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Category :</label>
+                <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
             </div>
             <div>
-                <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Category * :</label>
+                <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Sub Category * :</label>
                 <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                     @foreach($categories as $category)
                         <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
@@ -71,7 +80,7 @@
                 <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
             </div>
             <div>
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Descrition * :</label>
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Description * :</label>
                 <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your thoughts here...">{{old('description', $product->description ?? null)}}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
