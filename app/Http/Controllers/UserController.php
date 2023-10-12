@@ -177,6 +177,7 @@ class UserController extends Controller
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
             'phone' => 'required|string|unique:users,phone,' . $user->id,
+            'role' => 'required',
 
             'billing_first_name' => 'required',
             'billing_last_name' => 'required',
@@ -204,6 +205,7 @@ class UserController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'role' => $request->role,
         ]);
 
         // Billing Address
@@ -254,7 +256,7 @@ class UserController extends Controller
                 'user' => $user->load(['address_shipping', 'address_billing']),
             ], 200);
         } else {
-            return back();
+            return redirect('/admin/users');
         }
     }
 
