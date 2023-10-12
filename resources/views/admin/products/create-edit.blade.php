@@ -14,8 +14,8 @@
             <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
                 <input type="file" id="image_{{$i}}" name="image_{{$i}}" accept="image/*" class="hidden" onchange="loadPreview({{$i}})">
                 <label for="image_{{$i}}" class="cursor-pointer">
-                    <img src="{{$product->image($i) ?? null}}" id="preview_image_{{$i}}" class="w-[100%] aspect-square object-cover @if(!$product->image($i)) hidden @endif"></img>
-                    <div id="info_image_{{$i}}" class="@if($product->image($i)) hidden @endif">
+                    <img @if($product) src="{{$product->image($i)}}" @endif id="preview_image_{{$i}}" class="w-[100%] aspect-square object-cover @if(!($product && $product->image($i))) hidden @endif"></img>
+                    <div id="info_image_{{$i}}" class="@if($product && $product->image($i)) hidden @endif">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                         </svg>
