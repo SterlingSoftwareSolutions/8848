@@ -36,7 +36,7 @@
        
       
         <div class="w-40">
-            <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
+            <a href="/admin/products/{{$product->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit</h1></a>
         </div>
         <div class="w-40">
             <form action="/admin/products/{{$product->id}}" method="post">
