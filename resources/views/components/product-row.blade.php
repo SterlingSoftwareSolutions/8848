@@ -5,7 +5,7 @@
     </div>
 
     <div class="w-[10%] px-2">
-        <img src="{{$product->image_1_url}}" alt="Image Description" class="w-full">
+        <img src="{{$product->image(1)}}" alt="Image Description" class="w-full">
     </div>
 
 
