@@ -128,7 +128,7 @@
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
-                            <input value="{{ old('variant_price_01', 0.0) }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
+                            <input value="{{ old('variant_price_01') }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                         </div>
                         <div>
