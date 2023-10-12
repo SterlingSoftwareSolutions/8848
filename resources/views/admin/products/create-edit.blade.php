@@ -1,5 +1,5 @@
 @props([
-    'product' => null
+'product' => null
 ])
 
 @extends('layouts.admin') @section('content')
@@ -50,17 +50,26 @@
         </section> --}}
     </div>
     <div>
+        <div class="w-full" style="width: 100%">
+            <label for="title" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Product Title :</label>
+            <input value="{{old('title', $product->title ?? null)}}" name="title" type="text" id="title" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="John" style="width: 100%">
+            <x-input-error :messages="$errors->get('title')" class="mt-2" />
+        </div><br>
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Product Title * :</label>
-                <input value="{{old('title', $product->title ?? null)}}" name="title" type="text" id="title" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="John">
-                <x-input-error :messages="$errors->get('title')" class="mt-2" />
-            </div>
-            <div>
-                <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Category * :</label>
+                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Category :</label>
                 <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                     @foreach($categories as $category)
-                        <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
+                    <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+            </div>
+            <div>
+                <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Sub Category * :</label>
+                <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
@@ -71,7 +80,7 @@
                 <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
             </div>
             <div>
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Descrition * :</label>
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Description * :</label>
                 <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your thoughts here...">{{old('description', $product->description ?? null)}}</textarea>
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
@@ -98,29 +107,32 @@
                     <!-- Initial input field -->
                     @if($product && count($product->variants))
                     @foreach($product->variants as $variant)
-                    <div class="flex flex-row gap-5 mb-4">
-                        <div>
-                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
-                            <input value="{{old('variant_name_' . $variant->id, $variant->name ?? null)}}" name="variant_name_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
-                            <x-input-error :messages="$errors->get('variant_name_{{$variant->id}}')" class="mt-2" />
+                    <div class="flex flex-row gap-5">
+                        <div class="flex flex-row gap-5 mb-4">
+                            <div>
+                                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
+                                <input value="{{old('variant_name_' . $variant->id, $variant->name ?? null)}}" name="variant_name_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
+                                <x-input-error :messages="$errors->get('variant_name_{{$variant->id}}')" class="mt-2" />
+                            </div>
+                            <div>
+                                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
+                                <input value="{{old('variant_price_' . $variant->id, $variant->price ?? null)}}" name="variant_price_{{$variant->id}}" min="0" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
+                                <x-input-error :messages="$errors->get('variant_price_{{$variant->id}}')" class="mt-2" />
+                            </div>
                         </div>
-                        <div>
-                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
-                            <input value="{{old('variant_price_' . $variant->id, $variant->price ?? null)}}" name="variant_price_{{$variant->id}}" min="0" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
-                            <x-input-error :messages="$errors->get('variant_price_{{$variant->id}}')" class="mt-2" />
-                        </div>
+                        <button class="remove-field-button bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button">Remove</button>
                     </div>
                     @endforeach
                     @else
                     <div class="flex flex-row gap-5 mb-4">
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
-                            <input value="{{old('variant_name_01', $product->variant_name_01 ?? null)}}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
+                            <input value="{{ old('variant_name_01', $product->variant_name_01 ?? null) }}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
                             <x-input-error :messages="$errors->get('')" class="mt-2" />
                         </div>
                         <div>
-                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
-                            <input value="{{old('variant_price_01', $product->variant_price_01 ?? null)}}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
+                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
+                            <input value="{{ old('variant_price_01', $product->variant_price_01 ?? null) }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                         </div>
                     </div>
@@ -136,7 +148,7 @@
 </form>
 
 <script>
-    function loadPreview(index, ){
+    function loadPreview(index, ) {
         const inputFile = document.getElementById('image_' + index);
         const previewImage = document.getElementById('preview_image_' + index);
         const infoBox = document.getElementById('info_image_' + index);
@@ -158,58 +170,69 @@
 </script>
 
 <script>
-const formContainer = document.getElementById("form-container");
-const addButton = document.getElementById("add-fields");
-let inputIndex = 2; // Starting index for additional input fields
+    const formContainer = document.getElementById("form-container");
+    const addButton = document.getElementById("add-fields");
+    let inputIndex = 2; // Starting index for additional input fields
+    const isEditMode = true;
 
-addButton.addEventListener("click", () => {
-    // Create a new div for the input and image upload fields
-    const fieldDiv = document.createElement("div");
-    fieldDiv.classList.add("mb-4", "flex", "gap-5");
+    addButton.addEventListener("click", () => {
+        // Create a new div for the input and image upload fields
+        const fieldDiv = document.createElement("div");
+        fieldDiv.classList.add("mb-4", "flex", "gap-5");
 
-    // Create a new input field 1
-    const inputField1 = document.createElement("input");
-    inputField1.type = "text";
-    inputField1.id = `input${inputIndex}`;
-    inputField1.name = `variant_name_0${inputIndex}`;
-    inputField1.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
-    inputField1.placeholder = "Variant Name";
-    inputField1.required = true; // Make inputField1 required
+        // Create a new input field 1
+        const inputField1 = document.createElement("input");
+        inputField1.type = "text";
+        inputField1.id = `input${inputIndex}`;
+        inputField1.name = `variant_name_0${inputIndex}`;
+        inputField1.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
+        inputField1.placeholder = "Variant Name";
+        inputField1.required = true; // Make inputField1 required
 
-    // Create a new input field 2
-    const inputField2 = document.createElement("input");
-    inputField2.type = "number";
-    inputField2.id = `input${inputIndex}`;
-    inputField2.name = `variant_price_0${inputIndex}`;
-    inputField2.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
-    inputField2.placeholder = "$ 0.00";
-    inputField2.required = true; // Make inputField2 required
+        // Create a new input field 2
+        const inputField2 = document.createElement("input");
+        inputField2.type = "number";
+        inputField2.id = `input${inputIndex}`;
+        inputField2.name = `variant_price_0${inputIndex}`;
+        inputField2.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
+        inputField2.placeholder = "$ 0.00";
+        inputField2.required = true; // Make inputField2 required
 
-    // Create a "Remove" button
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.classList.add(
-        "bg-red-500",
-        "text-white",
-        "px-2",
-        "py-1",
-        "rounded-md",
-        "hover:bg-red-600"
-    );
-    removeButton.addEventListener("click", () => {
-        formContainer.removeChild(fieldDiv); // Remove the field when the "Remove" button is clicked
+        // Create a "Remove" button
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.classList.add(
+            "bg-red-500",
+            "text-white",
+            "px-2",
+            "py-1",
+            "rounded-md",
+            "hover:bg-red-600"
+        );
+        removeButton.addEventListener("click", () => {
+            formContainer.removeChild(fieldDiv); // Remove the field when the "Remove" button is clicked
+        });
+
+        // Append the label, input, and image upload fields to the div
+        fieldDiv.appendChild(inputField1);
+        fieldDiv.appendChild(inputField2);
+        fieldDiv.appendChild(removeButton);
+
+        // Append the div to the form container
+        formContainer.appendChild(fieldDiv);
+
+        // Increment the input index
+        inputIndex++;
     });
-
-    // Append the label, input, and image upload fields to the div
-    fieldDiv.appendChild(inputField1);
-    fieldDiv.appendChild(inputField2);
-    fieldDiv.appendChild(removeButton);
-
-    // Append the div to the form container
-    formContainer.appendChild(fieldDiv);
-
-    // Increment the input index
-    inputIndex++;
-});
+</script>
+<script>
+    document.addEventListener("click", function(event) {
+        if (event.target && event.target.classList.contains("remove-field-button")) {
+            const fieldGroup = event.target.closest(".flex.flex-row");
+            if (fieldGroup) {
+                fieldGroup.remove();
+            }
+        }
+    });
 </script>
 @endsection

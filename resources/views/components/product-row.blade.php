@@ -14,11 +14,11 @@
     </div>
 
     <div class="w-[10%]">
-    {{$product->category->parent->name}}
+    {{$product->category->parent ? $product->category->parent->name : $product->category->name}}
     </div>
 
     <div class="w-[10%]">
-    {{$product->category->name}}
+    {{$product->category->parent ? $product->category->name : null}}
     </div>
 
       <div class="w-[10%]">
