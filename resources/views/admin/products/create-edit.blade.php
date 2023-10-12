@@ -60,7 +60,7 @@
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Category * :</label>
                 <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                     @foreach($categories as $category)
-                        <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name}} - {{$category->name}}</option>
+                        <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
