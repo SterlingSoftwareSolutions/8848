@@ -54,11 +54,11 @@
                     </p>
                     <p class="mt-5 text-3xl font-bold text-blue-800">${{ $product->price() }}</p>
 
-                    @if($product->in_stock)
+                    @if($product->in_stock && $product->variants->count() > 0)
                     <p class="text-lg text-blue-500 md:mt-5">In stock</p>
                     <form  action="/cart/add" method="post">
                         @csrf
-                        @if($product->variants->count() <= 1)
+                        @if($product->variants->count() == 1)
                         <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
                         @else
                         <select name="variant_id" class="w-1/2 p-4 my-4">
@@ -91,7 +91,7 @@
                         </div>
                     </form>
                     @else
-                    <p class="text-lg text-red-500 md:mt-5">Out of stock</p>
+                    <p class="text-lg text-red-500 md:mt-5">@if($product->variants->count() > 0) Out of stock @else Product has no options @endif</p>
                     @endif
 
                     <div class="horizontal-line md:mt-5"></div>
