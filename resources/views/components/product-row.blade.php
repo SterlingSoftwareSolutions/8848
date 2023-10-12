@@ -23,9 +23,9 @@
 
       <div class="w-[10%]">
         @if($product->in_stock)
-        <label class="px-2 py-2 mx-auto text-center text-green-600 bg-green-200 rounded-lg"><span class="ml-4 mr-4">In stock</span></label>
+        <label class="px-1 py-2 mx-auto text-center text-green-600 bg-green-200 rounded-lg"><span class="ml-4 mr-4">In stock</span></label>
         @else
-        <label class="px-2 py-2 mx-auto text-center text-red-600 bg-red-200 rounded-lg"><span class="">Out of Stock</span></label>
+        <label class="px-1 py-2 mx-auto text-center text-red-600 bg-red-200 rounded-lg"><span class="">Out of Stock</span></label>
         @endif
       </div>
       <div class="w-[10%]">
@@ -36,13 +36,13 @@
        
       
         <div class="w-40">
-            <h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1>
+            <a href="/admin/products/{{$product->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit</h1></a>
         </div>
         <div class="w-40">
             <form action="/admin/products/{{$product->id}}" method="post">
                 @csrf
                 @method('delete')
-                <button type="submit" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
+                <button type="submit" class="w-full px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
             </form>
         </div>
     </div>
