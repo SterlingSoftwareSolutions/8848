@@ -60,7 +60,7 @@
             Favorite
         </button>
         @if($product->in_stock)
-            @if($product->variants->count() <= 1)
+            @if($product->variants->count() == 1)
             <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
             <button type="submit" class="w-3/4 p-2 ml-4 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white hover:text-blue-500">
                 ADD TO CART
