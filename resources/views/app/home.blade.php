@@ -110,7 +110,7 @@
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
-                                    <img src="{{  $category->icon_url }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
+                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -120,7 +120,7 @@
                             </div>
                             <!-- Hover image (Initial) -->
                             <div class="hover-image">
-                                <img src="{{  $category->background_image_url }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                <img src="{{ asset('images/product.png') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
 
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
