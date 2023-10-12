@@ -165,6 +165,7 @@ class ProductController extends Controller
             'description' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
+            'sub_category_id' => 'nullable|exists:categories,id',
             'in_stock' => 'nullable',
             'image_1' => 'required|image|max:4096',
             'image_2' => 'nullable|image|max:4096',
@@ -182,7 +183,7 @@ class ProductController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'short_description' => $request->description,
-            'category_id' => $request->category_id,
+            'category_id' => $request->sub_category_id ?? $request->category_id,
             'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : null,
@@ -270,6 +271,7 @@ class ProductController extends Controller
             'description' => 'required',
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
+            'sub_category_id' => 'nullable|exists:categories,id',
             'in_stock' => 'nullable',
             'image_1' => 'nullable|file|max:4096',
             'image_2' => 'nullable|file|max:4096',
@@ -277,13 +279,14 @@ class ProductController extends Controller
             'image_4' => 'nullable|file|max:4096',
         ]);
 
+
         $variants = $this->parse_variants($request);
 
         $product->update([
             'title' => $request->title,
             'description' => $request->description,
             'short_description' => $request->description,
-            'category_id' => $request->category_id,
+            'category_id' => $request->sub_category_id ?? $request->category_id,
             'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,

@@ -59,21 +59,17 @@
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Category :</label>
-                <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                    @foreach($categories as $category)
-                    <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
-                    @endforeach
+                <select name="category_id" type="text" id="category" onchange="updateSubCat()" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                    {{-- CATEGORIES GO HERE --}}
                 </select>
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
             </div>
             <div>
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Sub Category * :</label>
-                <select name="category_id" type="text" id="category" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                    @foreach($categories as $category)
-                    <option value="{{$category->id}}" @if(old('category_id', $product->category_id ?? null) == $category->id) selected @endif>{{$category->parent->name ?? null}} - {{$category->name}}</option>
-                    @endforeach
+                <select name="sub_category_id" type="text" id="subcategory" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                    {{-- SUB CATEGORIES GO HERE --}}
                 </select>
-                <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+                <x-input-error :messages="$errors->get('sub_category_id')" class="mt-2" />
             </div>
             <div>
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Short Description * :</label>
@@ -152,6 +148,62 @@
         <button type="button" class="text-white bg-[#D2042D] hover:bg-[#943d4e]  text-base w-full sm:w-auto px-6 py-2.5 text-center" disabled>Cancel</button>
     </div>
 </form>
+
+
+{{-- Category Selection --}}
+<script>
+    var categories = @json($categories);
+    var categoryElement = document.getElementById("category");
+    var subCategoryElement = document.getElementById("subcategory");
+    var selectedCat = {{$product->category->parent_id ?? $product->category->id}}
+    var selectedSubCat = {{$product->category->parent_id ? $product->category->id : 0}}
+
+    // Iterate through the categories array and create option elements for parent categories
+    for (var i = 0; i < categories.length; i++) {
+        var category = categories[i];
+        if(category.parent_id === null){
+            var option = document.createElement("option");
+            option.value = category.id;
+            option.text = category.name;
+            option.selected = category.id === selectedCat;
+            categoryElement.appendChild(option);
+        }
+    }
+
+    // Iterate through the categories array and create option elements for subcategories of current parent
+    function updateSubCat(){
+        subCategoryElement.innerHTML = '';
+        var default_option = document.createElement("option");
+        default_option.value = ''
+        default_option.text = 'None'
+        subCategoryElement.appendChild(default_option);
+        selectedCat = categoryElement.options[categoryElement.selectedIndex].value;
+        console.log(selectedCat);
+        if(selectedCat){
+            // Iterate through the categories array and create option elements
+            for (var i = 0; i < categories.length; i++) {
+                var category = categories[i];
+                if(category.parent_id == selectedCat){
+                    var option = document.createElement("option");
+                    option.value = category.id;
+                    option.text = category.name;
+                    option.selected = (category.id === selectedSubCat);
+                    subCategoryElement.appendChild(option);
+                }
+            }
+            if(subCategoryElement.innerHTML == ''){
+                subCategoryElement.setAttribute('disabled', true);
+            } else{
+                subCategoryElement.removeAttribute('disabled')
+            }
+        } else{
+            subCategoryElement.setAttribute('disabled', true);
+        }
+    }
+
+    updateSubCat();
+
+</script>
 
 <script>
     function loadPreview(index, ) {
