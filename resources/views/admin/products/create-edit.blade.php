@@ -120,7 +120,7 @@
                     </div>
                     @endforeach
                     @else
-                    <div class="flex flex-row gap-5 mb-4 variant-container">
+                    <div class="flex flex-row gap-5 mb-4 variant-container" id="variant_container_01">
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
                             <input value="{{ old('variant_name_01', 'Default') }}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
@@ -136,7 +136,7 @@
                             <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="SKU">
                             <x-input-error :messages="$errors->get('variant_sku_01')" class="mt-2" />
                         </div>
-                        <button class="remove-field-button bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button">Remove</button>
+                        <button class="bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" onclick="remove_id('variant_container_01')" type="button">Remove</button>
                     </div>
                     @endif
                 </div>
@@ -145,7 +145,7 @@
         </div>
 
         <button type="submit" class="text-white bg-[#2BB673] hover:bg-[#2b7753] focus:ring-4 font-normal text-base w-full sm:w-auto px-12 py-2.5 text-center">Save</button>
-        <button type="button" class="text-white bg-[#D2042D] hover:bg-[#943d4e]  text-base w-full sm:w-auto px-6 py-2.5 text-center" disabled>Cancel</button>
+        <a href="/admin/products"><button type="button" class="text-white bg-[#D2042D] hover:bg-[#943d4e]  text-base w-full sm:w-auto px-6 py-2.5 text-center">Cancel</button></a>
     </div>
 </form>
 
@@ -159,6 +159,9 @@
     @if($product)
     var selectedCat = {{$product->category->parent_id ?? $product->category->id}}
     var selectedSubCat = {{$product->category->parent_id ? $product->category->id : 0}}
+    @else
+    var selectedCat = 0;
+    var selectedSubCat = 0;
     @endif
 
     // Iterate through the categories array and create option elements for parent categories
