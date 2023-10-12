@@ -40,4 +40,18 @@ class Product extends Model
             return min($prices) . ' - ' . max($prices);
         }
     }
+
+    public function image($index)
+    {
+        $url = $this['image_' . $index . '_url'];
+        if(!$url){
+            return null;
+        }
+        if(str_starts_with($url, 'http')){
+            return $url;
+        } else{
+            return '/' . str_replace('public', 'storage', $url);
+        }
+    }
+
 }
