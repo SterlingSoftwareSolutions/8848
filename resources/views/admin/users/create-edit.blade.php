@@ -81,9 +81,9 @@
             </div>
             <div class="flex mb-3">
                 <div class="w-1/2 pr-5">
-                    <select id="role" name="role" value="{{old('role', $user->role ?? null)}}"   class="w-full p-2 border border-gray-400 rounded">
-                        <option value="client_wholesale">Wholesale Customer</option>
-                        <option value="client_retail">Retail Customer</option>
+                    <select id="role" name="role" class="w-full p-2 border border-gray-400 rounded">
+                        <option value="client_wholesale" @if(($user->role ?? '') ==  'client_wholesale') selected @endif>Wholesale Customer</option>
+                        <option value="client_retail" @if(($user->role ?? '') == 'client_retail') selected @endif>Retail Customer</option>
                     </select>
                     <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
