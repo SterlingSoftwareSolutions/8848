@@ -243,7 +243,7 @@ class ProductController extends Controller
 
         return view('admin.products.create-edit',[
             'product' => $product->load('variants'),
-            'categories' => Category::whereNot('parent_id', null)->get()
+            'categories' => Category::all()
         ]);
     }
 
@@ -254,7 +254,7 @@ class ProductController extends Controller
     {
         return view('admin.products.create-edit',[
             'product' => $product->load('variants'),
-            'categories' => Category::whereNot('parent_id', null)->get()
+            'categories' => Category::all()
         ]);
     }
 
