@@ -85,30 +85,25 @@
                 <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
             <div>
-                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
-                <input type="text" value="{{old('sku', $product->sku ?? null)}}" name="sku" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <x-input-error :messages="$errors->get('sku')" class="mt-2" />
+                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Upload Catelog :</label>
+                <input id="file_input" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <x-input-error :messages="$errors->get('file_input')" class="mt-2" />
             </div>
             <div>
                 <label for="in_stock" class="block mb-2 text-sm font-medium text-gray-900">In Stock :</label>
                 <input id="in_stock" @if(!$product || $product->in_stock)) checked @endif name="in_stock" class="w-5 aspect-square" type="checkbox">
                 <x-input-error :messages="$errors->get('in_stock')" class="mt-2" />
             </div>
-            <div>
-                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Upload Catelog :</label>
-                <input id="file_input" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <x-input-error :messages="$errors->get('file_input')" class="mt-2" />
-            </div>
         </div>
         <h1 class=" text-[#1670B7] font-bold text-lg">Add Variation</h1>
-        <div class="flex flex-row py-10">
-            <div class="max-w-md">
+        <div class="py-10">
+            <div class="">
                 <div id="form-container">
                     <!-- Initial input field -->
                     @if($product && count($product->variants))
                     @foreach($product->variants as $variant)
-                    <div class="flex flex-row gap-5">
-                        <div class="flex flex-row gap-5 mb-4">
+                    <div class="flex gap-5">
+                        <div class="flex gap-5 mb-4">
                             <div>
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
                                 <input value="{{old('variant_name_' . $variant->id, $variant->name ?? null)}}" name="variant_name_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
@@ -118,6 +113,11 @@
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
                                 <input value="{{old('variant_price_' . $variant->id, $variant->price ?? null)}}" name="variant_price_{{$variant->id}}" min="0" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
                                 <x-input-error :messages="$errors->get('variant_price_{{$variant->id}}')" class="mt-2" />
+                            </div>
+                            <div>
+                                <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
+                                <input type="text" value="{{old('sku', $product->sku ?? null)}}" name="sku" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <x-input-error :messages="$errors->get('sku')" class="mt-2" />
                             </div>
                         </div>
                         <button class="remove-field-button bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button">Remove</button>
@@ -134,6 +134,11 @@
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
                             <input value="{{ old('variant_price_01', $product->variant_price_01 ?? null) }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
+                        </div>
+                        <div>
+                            <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
+                            <input type="text" value="{{old('sku', $product->sku ?? null)}}" name="sku" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <x-input-error :messages="$errors->get('sku')" class="mt-2" />
                         </div>
                     </div>
                     @endif
@@ -178,7 +183,7 @@
     addButton.addEventListener("click", () => {
         // Create a new div for the input and image upload fields
         const fieldDiv = document.createElement("div");
-        fieldDiv.classList.add("mb-4", "flex", "gap-5");
+        fieldDiv.classList.add("mb-4", "flex", "gap-5", "max-w-md");
 
         // Create a new input field 1
         const inputField1 = document.createElement("input");
@@ -198,6 +203,15 @@
         inputField2.placeholder = "$ 0.00";
         inputField2.required = true; // Make inputField2 required
 
+        // Create a new input field 2
+        const sku = document.createElement("input");
+        sku.type = "text";
+        sku.id = `input${inputIndex}`;
+        sku.name = `variant_price_0${inputIndex}`;
+        sku.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
+        sku.placeholder = "SKU";
+        sku.required = true; // Make inputField2 required
+
         // Create a "Remove" button
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
@@ -216,6 +230,7 @@
         // Append the label, input, and image upload fields to the div
         fieldDiv.appendChild(inputField1);
         fieldDiv.appendChild(inputField2);
+        fieldDiv.appendChild(sku);
         fieldDiv.appendChild(removeButton);
 
         // Append the div to the form container
