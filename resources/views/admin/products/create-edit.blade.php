@@ -3,7 +3,6 @@
 ])
 
 @extends('layouts.admin') @section('content')
-<pre>{{$errors}}</pre>
 <form class="p-8" method="post" @if($product) action="/admin/products/{{$product->id}}" @else action="/admin/products" @endif enctype="multipart/form-data">
     @if($product) @method('put') @endif
     @csrf
