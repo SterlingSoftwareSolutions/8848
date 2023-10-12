@@ -51,7 +51,9 @@
             <x-product-card :product="$product" />
             @endforeach
         </div>
-        
+        <div class="flex justify-center p-5">
+            {{$products->links()}}
+        </div>
         <!-- FOOTER -->
         @include('layouts.app.footer')
 </body>

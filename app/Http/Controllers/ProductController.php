@@ -85,7 +85,7 @@ class ProductController extends Controller
         }
 
         return view('app.products.index', [
-            'products' => $query->paginate(10)
+            'products' => $query->paginate(12)
         ]);
     }
 
@@ -151,7 +151,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::whereNot('parent_id', null)->get();
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create-edit', compact('categories'));
     }
 
     /**
@@ -165,7 +165,7 @@ class ProductController extends Controller
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
             'sku' => 'required|unique:products,sku',
-            'in_stock' => 'required',
+            'in_stock' => 'nullable',
             'image_1' => 'required|image|max:4096',
             'image_2' => 'nullable|image|max:4096',
             'image_3' => 'nullable|image|max:4096',
@@ -241,8 +241,9 @@ class ProductController extends Controller
             ]);
         }
 
-        return view('admin.products.create',[
-            'product' => $product->load('variants')
+        return view('admin.products.create-edit',[
+            'product' => $product->load('variants'),
+            'categories' => Category::whereNot('parent_id', null)->get()
         ]);
     }
 
@@ -251,7 +252,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.create-edit',[
+            'product' => $product->load('variants'),
+            'categories' => Category::whereNot('parent_id', null)->get()
+        ]);
     }
 
     /**
@@ -265,7 +269,7 @@ class ProductController extends Controller
             'short_description' => 'required',
             'category_id' => 'required|exists:categories,id',
             'sku' => 'required|unique:products,sku,' . $product->id,
-            'in_stock' => 'required',
+            'in_stock' => 'nullable',
             'image_1' => 'nullable|file|max:4096',
             'image_2' => 'nullable|file|max:4096',
             'image_3' => 'nullable|file|max:4096',
@@ -280,7 +284,7 @@ class ProductController extends Controller
             'short_description' => $request->description,
             'category_id' => $request->category_id,
             'sku' => $request->sku,
-            'in_stock' => $request->in_stock,
+            'in_stock' => $request->in_stock ? true : false,
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : $product->image_2_url,
             'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : $product->image_3_url,
@@ -315,10 +319,14 @@ class ProductController extends Controller
             }
         }
 
-        return response()->json([
+        if($request->wantsJson()){
+             return response()->json([
                 'success' => true,
                 'product' => $product->load('variants')
-        ]);
+            ]);
+        }
+
+        return redirect('/admin/products')->withErrors(['success' => 'Product updated']);
     }
 
     /**
