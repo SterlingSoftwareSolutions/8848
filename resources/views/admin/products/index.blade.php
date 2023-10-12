@@ -21,7 +21,7 @@
                 <p class="w-[20%]">Product Name</p>
                 <p class="w-[10%]">Category</p>
                 <p class="w-[10%]">Sub Category</p>
-                <p class="w-[10%] md:ml-3">Stock</p>
+                <p class="w-[10%]">Stock</p>
                 <p class="w-[10%]">Price</p>
                 <p class="w-[15%]">Action</p>
             </div>

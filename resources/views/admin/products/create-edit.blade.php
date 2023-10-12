@@ -98,7 +98,7 @@
                     <!-- Initial input field -->
                     @if($product && count($product->variants))
                     @foreach($product->variants as $variant)
-                    <div class="flex gap-5">
+                    <div class="flex gap-5" id="variant_container_{{$variant->id}}">
                         <div class="flex gap-5 mb-4">
                             <div>
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
@@ -116,11 +116,11 @@
                                 <x-input-error :messages="$errors->get('variant_sku_' . $variant->id)" class="mt-2" />
                             </div>
                         </div>
-                        <button class="remove-field-button bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button">Remove</button>
+                        <button class="bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button" onclick="remove_id('variant_container_{{$variant->id}}')">Remove</button>
                     </div>
                     @endforeach
                     @else
-                    <div class="flex flex-row gap-5 mb-4">
+                    <div class="flex flex-row gap-5 mb-4 variant-container">
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
                             <input value="{{ old('variant_name_01', 'Default') }}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
@@ -136,6 +136,7 @@
                             <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="SKU">
                             <x-input-error :messages="$errors->get('variant_sku_01')" class="mt-2" />
                         </div>
+                        <button class="remove-field-button bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button">Remove</button>
                     </div>
                     @endif
                 </div>
@@ -154,8 +155,11 @@
     var categories = @json($categories);
     var categoryElement = document.getElementById("category");
     var subCategoryElement = document.getElementById("subcategory");
+
+    @if($product)
     var selectedCat = {{$product->category->parent_id ?? $product->category->id}}
     var selectedSubCat = {{$product->category->parent_id ? $product->category->id : 0}}
+    @endif
 
     // Iterate through the categories array and create option elements for parent categories
     for (var i = 0; i < categories.length; i++) {
@@ -235,7 +239,8 @@
     addButton.addEventListener("click", () => {
         // Create a new div for the input and image upload fields
         const fieldDiv = document.createElement("div");
-        fieldDiv.classList.add("mb-4", "flex", "gap-5", "max-w-md");
+        fieldDiv.classList.add("mb-4", "flex", "gap-5", "max-w-md", 'variant-container');
+        fieldDiv.id = `variant_container_0${inputIndex}`;
 
         // Create a new input field 1
         const inputField1 = document.createElement("input");
@@ -267,6 +272,7 @@
         // Create a "Remove" button
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
+        removeButton.type = 'button';
         removeButton.classList.add(
             "bg-red-500",
             "text-white",
@@ -275,9 +281,7 @@
             "rounded-md",
             "hover:bg-red-600"
         );
-        removeButton.addEventListener("click", () => {
-            formContainer.removeChild(fieldDiv); // Remove the field when the "Remove" button is clicked
-        });
+        removeButton.setAttribute('onclick', "remove_id('variant_container_0" + inputIndex +"')");
 
         // Append the label, input, and image upload fields to the div
         fieldDiv.appendChild(inputField1);
@@ -293,13 +297,8 @@
     });
 </script>
 <script>
-    document.addEventListener("click", function(event) {
-        if (event.target && event.target.classList.contains("remove-field-button")) {
-            const fieldGroup = event.target.closest(".flex.flex-row");
-            if (fieldGroup) {
-                fieldGroup.remove();
-            }
-        }
-    });
+    function remove_id(container){
+        document.getElementById(container).remove();
+    }
 </script>
 @endsection

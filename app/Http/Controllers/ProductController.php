@@ -76,6 +76,8 @@ class ProductController extends Controller
                     $query->orderBy('created_at', 'desc');
                     break;
             }
+        } else{
+            $query->orderBy('created_at', 'desc');
         }
 
         if ($request->wantsJson()) {
@@ -323,6 +325,16 @@ class ProductController extends Controller
                     'sku' => $variant['sku']
                 ]);
             }
+        }
+
+        // If product has no variants, create a default one
+        if(!$product->variants->count()){
+                Variant::create([
+                    'product_id' => $product->id,
+                    'name' => 'Default',
+                    'price' => null,
+                    'sku' => null
+                ]);
         }
 
         if($request->wantsJson()){
