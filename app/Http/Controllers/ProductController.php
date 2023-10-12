@@ -153,7 +153,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::whereNot('parent_id', null)->get();
+        $categories = Category::all();
         return view('admin.products.create-edit', compact('categories'));
     }
 
