@@ -138,7 +138,7 @@
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
-                            <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="SKU">
                             <x-input-error :messages="$errors->get('variant_sku_01')" class="mt-2" />
                         </div>
                     </div>
