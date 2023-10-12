@@ -115,12 +115,12 @@
                     <div class="flex flex-row gap-5 mb-4">
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
-                            <input value="{{old('variant_name_01', $product->variant_name_01 ?? null)}}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
-                            <x-input-error :messages="$errors->get('variant_name_01')" class="mt-2" />
+                            <input value="{{old('variant_name_01', $product->variant_name_01 ?? null)}}" name="variant_name_01" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
+                            <x-input-error :messages="$errors->get('')" class="mt-2" />
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
-                            <input value="{{old('variant_price_01', $product->variant_price_01 ?? null)}}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
+                            <input value="{{old('variant_price_01', $product->variant_price_01 ?? null)}}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                         </div>
                     </div>
@@ -158,7 +158,6 @@
 </script>
 
 <script>
-// Variants
 const formContainer = document.getElementById("form-container");
 const addButton = document.getElementById("add-fields");
 let inputIndex = 2; // Starting index for additional input fields
@@ -175,6 +174,7 @@ addButton.addEventListener("click", () => {
     inputField1.name = `variant_name_0${inputIndex}`;
     inputField1.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
     inputField1.placeholder = "Variant Name";
+    inputField1.required = true; // Make inputField1 required
 
     // Create a new input field 2
     const inputField2 = document.createElement("input");
@@ -183,6 +183,7 @@ addButton.addEventListener("click", () => {
     inputField2.name = `variant_price_0${inputIndex}`;
     inputField2.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
     inputField2.placeholder = "$ 0.00";
+    inputField2.required = true; // Make inputField2 required
 
     // Create a "Remove" button
     const removeButton = document.createElement("button");
