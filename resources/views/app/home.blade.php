@@ -143,7 +143,7 @@
     </div>
 
     <!-- End Section -->
-    <div class="flex flex-col py-10 bg-white">
+    <div class="flex flex-col bg-white">
         <!-- Text -->
         <div class="text-center">
             <h1 class="my-5 text-2xl tracking-wide text-blue-500">Secure And Organize</h1>
