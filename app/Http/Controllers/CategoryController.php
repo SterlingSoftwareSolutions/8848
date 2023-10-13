@@ -9,14 +9,18 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends Controller
 {
 
-
-    public function index_client()
+    public function index_client(Request $request)
     {
-        $user = Auth::user();
-        $categories = Category::query()->where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
-        return view('app.index', [
-            'categories' => $categories
-        ]);
+        $categories = Category::with('children')->where('parent_id', null)->get();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'categories' => $categories
+            ]);
+        }
+
+        return view('app.category', compact('categories'));
     }
     
     /**
@@ -35,7 +39,7 @@ class CategoryController extends Controller
 
         return view('admin.categories.index', compact('categories'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
