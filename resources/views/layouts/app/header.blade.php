@@ -57,13 +57,13 @@
           {{-- logo --}}
           <div class="items-center justify-center flex-1 md:ml-0 ml-[80px] sm:items-stretch sm:justify-start">
             <a href="/">
-                <img class="w-auto h-10" src="{{ URL('images/Logo-white.png')}}" alt="Company">
+              <img class="w-auto h-10" src="{{ URL('images/Logo-white.png')}}" alt="Company">
             </a>
-        </div>
-        
+          </div>
+
 
           {{-- search bar --}}
-          <x-serach  />
+          <x-serach />
 
           <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-end">
 
@@ -103,7 +103,7 @@
       {{-- user icon details --}}
       <div class="absolute z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg right-0 md:right-[100px] ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-icon-details">
         <!-- Active: "bg-gray-100", Not Active: "" -->
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Edit Profile</a>
+        <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Edit Profile</a>
         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
         <form action="/logout" method="post">
           @csrf
