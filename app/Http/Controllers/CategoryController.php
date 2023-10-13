@@ -4,9 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+
+    public function index_client(Request $request)
+    {
+        $categories = Category::with('children')->where('parent_id', null)->get();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'categories' => $categories
+            ]);
+        }
+
+        return view('app.category', compact('categories'));
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -21,9 +37,9 @@ class CategoryController extends Controller
             ]);
         }
 
-        return view('app.category', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
