@@ -104,7 +104,7 @@
       <div class="absolute z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg right-0 md:right-[100px] ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-icon-details">
         <!-- Active: "bg-gray-100", Not Active: "" -->
         <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Edit Profile</a>
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Orders</a>
         <form action="/logout" method="post">
           @csrf
           <button class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
