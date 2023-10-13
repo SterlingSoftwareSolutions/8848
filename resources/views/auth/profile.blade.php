@@ -7,9 +7,6 @@
 <form method="post" action="/profile">
     @if($user) @method('put') @endif
     @csrf
-    <div class="md:mb-5">
-        <h1 class="text-lg font-bold">Edit Profile</h1>
-    </div>
     <div action="" method="post" class="border-2 px-8 pb-8 mb-4 py-4 bg-white rounded">
         <!-- Row 1 -->
         <div class="flex gap-5 mb-4">

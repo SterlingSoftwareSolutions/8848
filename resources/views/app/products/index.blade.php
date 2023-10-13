@@ -23,7 +23,7 @@
                 </h1>
             </div>
         </div>
-        <div class="relative flex items-center justify-center mx-auto ">
+        <div class="relative flex items-center justify-center mx-auto">
             <div class="flex flex-col items-center justify-between w-8/12 mt-10 align-middle md:flex-row md:mt-4">
                 <!-- Image Box 1 -->
                 <div class="w-full px-4 rounded-md md:w-1/3">
@@ -46,7 +46,7 @@
         </div>
 
 
-        <div class="relative grid items-center justify-center grid-cols-1 gap-5 p-5 mx-auto ml-0 mr-0 md:grid-cols-4 md:ml-0 md:mr-0">
+        <div class="relative grid items-center justify-center grid-cols-1 gap-5 p-8 mx-auto ml-0 mr-0 md:grid-cols-4 md:ml-10 md:mr-10">
             @foreach($products as $product)
             <x-product-card :product="$product" />
             @endforeach
