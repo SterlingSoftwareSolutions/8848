@@ -2,7 +2,7 @@
 <div class="md:mb-5">
 
     <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
-        <div class="flex justify-between w-full">
+        <div class="flex justify-between w-full md:mt-5">
 
         </div>
     </div>
@@ -27,20 +27,20 @@
     </button>
     <div class="w-1/2 pr-5 -mt-4">
         <label class="block text-gray-700 text-sm font-bold" for="username">
-            Category
+            Status
           </label>
-        <select id="customer_type" class=" p-2 border rounded">
+        <select id="order_status" class=" p-2 border rounded-lg">
             <option value="wholesale">Wholesale Customer</option>
             <option value="wholesale">Order 1</option>
             <option value="wholesale">Order 2</option>
             <option value="retail">Retail Customer</option>
         </select>
     </div>
-    <div class="w-1/2 pr-5 -mt-4">
+    <div class="w-2/3 pr-5 -mt-4">
         <label class="block text-gray-700 text-sm font-bold " for="username">
-            Sub Category
+            Payment Status
           </label>
-        <select id="customer_type" class="p-2 border">
+        <select id="payment_status" class="p-2 border rounded-lg">
             <option value="wholesale">High</option>
             <option value="wholesale">Order 1</option>
             <option value="wholesale">Order 2</option>

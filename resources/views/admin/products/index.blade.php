@@ -3,7 +3,7 @@
 <div class="md:mb-5">
     <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
         
-        <div class="flex justify-between w-full ">
+        <div class="flex justify-between w-full md:mt-5">
             <form class="flex gap-5 items-center">   
                 <div class="relative w-full">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -23,7 +23,7 @@
                     <label class="block text-gray-700 text-sm font-bold" for="username">
                         Category
                       </label>
-                    <select id="customer_type" class=" p-2 border rounded-lg">
+                    <select id="parent_category" class=" p-2 border rounded-lg">
                         <option value="wholesale">Wholesale Customer</option>
                         <option value="wholesale">Product 1</option>
                         <option value="wholesale">Product 2</option>
@@ -34,7 +34,7 @@
                     <label class="block text-gray-700 text-sm font-bold " for="username">
                         Sub Category
                       </label>
-                    <select id="customer_type" class="p-2 border rounded-lg">
+                    <select id="sub_category" class="p-2 border rounded-lg">
                         <option value="wholesale">High</option>
                         <option value="wholesale">Pro 1</option>
                         <option value="wholesale">Pro 2</option>
