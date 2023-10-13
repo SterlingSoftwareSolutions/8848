@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
         return view('app.category', compact('categories'));
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -45,7 +45,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create-edit');
     }
 
     /**
@@ -83,6 +83,23 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show_client(Category $category, Request $request)
+    {
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'category' => $category->load('parent', 'children')
+            ]);
+        }
+        return view('app.category', [
+            'category' => $category,
+            'categories' => $category->children
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
     public function show(Category $category)
     {
 
@@ -97,7 +114,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.create-edit', compact('category'));
     }
 
     /**

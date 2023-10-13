@@ -6,7 +6,7 @@
 
         <div class="flex justify-between w-full md:mt-5">
 
-            <h1 class="text-center text-white bg-blue-900 rounded-lg px-4 py-3 h-12 w-40">Add Category </h1>
+            <a href="/admin/categories/create"><h1 class="text-center text-white bg-blue-900 rounded-lg px-4 py-3 h-12 w-40">Add Category </h1></a>
         </div>
     </div>
 
@@ -52,7 +52,7 @@
 
 
                     <div class="w-[95px]">
-                        <button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button>
+                        <a href="/admin/categories/{{$categories[0]->id}}/edit"><button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button></a>
                     </div>
                     <div class="w-[95px]">
                         <button class="w-full px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
@@ -91,7 +91,7 @@
 
 
                     <div class="w-[95px]">
-                        <button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button>
+                        <a href="/admin/categories/{{$categories[0]->id}}/edit"><button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button></a>
                     </div>
                     <div class="w-[95px]">
                         <button class="w-full px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
