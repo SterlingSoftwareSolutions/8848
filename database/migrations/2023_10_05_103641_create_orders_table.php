@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->enum('order_type', ['retail', 'wholesale']);
             $table->string('status');
+            $table->string('payment_status');
             $table->decimal('discount', 10, 2);
             $table->timestamp('order_date');
 
