@@ -1,10 +1,6 @@
 <div class="flex flex-row items-center py-5 text-gray-500 border-b-2 border-gray-300">
 
-    <div class="w-[5%] py-2 px-2">
-        <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
-    </div>
-
-    <div class="w-[10%] px-2">
+    <div class="w-[12%] px-2">
         <img src="{{$product->image(1)}}" alt="Image Description" class="w-full">
     </div>
 
@@ -13,11 +9,11 @@
     {{$product->title}}
     </div>
 
-    <div class="w-[10%]">
+    <div class="w-[15%]">
     {{$product->category->parent ? $product->category->parent->name : $product->category->name}}
     </div>
 
-    <div class="w-[10%]">
+    <div class="w-[15%]">
     {{$product->category->parent ? $product->category->name : null}}
     </div>
 
