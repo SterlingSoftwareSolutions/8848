@@ -41,7 +41,11 @@ Route::get('/contact', function () {
 
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
-Route::resource('/categories', CategoryController::class)->only('index', 'show');
+
+
+Route::get('/category', [CategoryController::class, 'index_client']);
+Route::get('/category/{category}', [CategoryController::class, 'show_client']);
+
 
 Route::middleware('auth')->group(function () {
     // Logout
@@ -68,5 +72,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('/users', UserController::class);
         Route::resource('/products', ProductController::class);
         Route::resource('/orders', OrderController::class);
+        Route::resource('/categories', OrderController::class);
     });
+
+    Route::get('/categories', [CategoryController::class, 'index']);
 });

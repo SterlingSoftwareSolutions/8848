@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+
+
+    public function index_client()
+    {
+        $user = Auth::user();
+        $categories = Category::query()->where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+        return view('app.index', [
+            'categories' => $categories
+        ]);
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +33,7 @@ class CategoryController extends Controller
             ]);
         }
 
-        return view('app.category', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
