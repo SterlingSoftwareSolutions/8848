@@ -64,35 +64,56 @@
             <!-- Table -->
             <div class="relative mt-10 overflow-x-auto">
                 <table class="w-full text-xl font-light text-center text-gray-500 dark:text-gray-400">
-                    <thead class="text-lg font-light capitalize text-gray-6600">
+                    <thead class="text-lg font-light capitalize border-b text-gray-6600">
                         <!-- Table Headings -->
                         <tr>
-                            <th scope="col" class="w-3/12 px-2 py-3 text-start md:w-2/12">
-                                Order
-                            </th>
                             <th scope="col" class="w-3/12 px-2 py-3 md:w-2/12">
-                                Order
-                            </th>
-                            <th scope="col" class="w-3/12 px-2 py-3 text-start md:w-2/12">
-                                Variant
+                                Order ID
                             </th>
                             <th scope="col" class="w-1/12 px-2 py-3 md:w-2/12">
                                 Price
                             </th>
                             <th scope="col" class="w-2/12 px-2 py-3 md:w-2/12">
-                                Quantity
+                                Status
                             </th>
+                            
                             <th scope="col" class="w-2/12 px-2 py-3 md:w-2/12">
-                                Subtotal
-                            </th>
-                            <th scope="col" class="w-1/12 px-2 py-3 md:w-2/12">
-
+                                Action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Loop through cart items -->
-
+                        <tr class="border-b">
+                            <td class="p-2">
+                                <h1 class="">#</h1>
+                            </td>
+                            <td class="p-2">
+                                <span class="">$0 .00</span>
+                            </td>
+                            <td class="p-2">
+                                <span class="p-2 text-sm text-black border-2 border-green-400 rounded">Approved</span>
+                            </td>
+                            
+                            <td class="flex justify-center p-2">
+                                <button class="w-1/3 p-2 text-sm text-black bg-blue-400 rounded">Edit</button>
+                                <button class="w-1/3 p-2 ml-3 text-sm text-black bg-red-600 rounded">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">
+                                <h1 class="">#</h1>
+                            </td>
+                            <td class="p-2">
+                                <span class="">$0 .00</span>
+                            </td>
+                            <td class="p-2">
+                                <span class="p-2 text-sm text-black border-2 border-red-400 rounded">Reject</span>
+                            </td>
+                            <td class="flex justify-center p-2">
+                                <button class="w-1/3 p-2 text-sm text-black bg-blue-400 rounded">Edit</button>
+                                <button class="w-1/3 p-2 ml-3 text-sm text-black bg-red-600 rounded">Delete</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
