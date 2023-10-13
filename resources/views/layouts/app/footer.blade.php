@@ -11,7 +11,7 @@
             </div>
 
             <div class="flex flex-col gap-5 md:w-6/12 md:flex-row">
-                <img class="w-36 h-auto md:w-1/5 md:h-[300px] md:ml-0 ml-[100px]" src="{{ URL('images/iphone-x-mockup.png')}}" style="width: 40%">
+                <img class="w-36 h-auto md:w-1/5 lg:w-30 md:h-[300px] md:ml-0 ml-[100px]" src="{{ URL('images/iphone-x-mockup.png')}}" style="width: 40%">
                 <div class="flex flex-col ml-8 text-center md:text-left">
                     <h1 class="text-2xl font-bold">Download</h1>
                     <h2 class="text-xl font-semibold">8848 Supplies Mobile App</h2>
