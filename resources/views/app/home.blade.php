@@ -1,7 +1,7 @@
 @props([
-    'category' => null
+'category' => null
 ])
- 
+
 
 <head>
     <meta charset="utf-8">
@@ -127,19 +127,19 @@
                                     <!-- Middle Image (Hover) -->
                                     <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
-                                        Favorite
+                                        {{$category->name}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-    @endforeach
-                  
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- End Section -->
@@ -176,7 +176,7 @@
                     <div class="text-center">
                         <h1 class=" text-[20px] md:text-[30px] text-white">Secure Payment</h1>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -193,14 +193,14 @@
                 </div>
 
             </div>
-            
+
         </div>
 
 
-    <!-- FOOTER -->
-    <div class="mt-20">
-        @include('layouts.app.footer')
-    </div>
+        <!-- FOOTER -->
+        <div class="mt-20">
+            @include('layouts.app.footer')
+        </div>
 </body>
 
 </html>
