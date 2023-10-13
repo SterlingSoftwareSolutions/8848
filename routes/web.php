@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::get('/logout', [AuthController::class, 'logout_form'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::put('/profile', [AuthController::class, 'profile_update'])->name('profile');
 
     // Cart
     Route::get('/cart', [CartController::class, 'index']);
