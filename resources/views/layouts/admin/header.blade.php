@@ -26,11 +26,15 @@
       </div>
       {{-- logo --}}
       <div class="items-center justify-center flex-1 md:ml-0 ml-[80px] sm:items-stretch sm:justify-start">
-        <img class="w-auto h-10" src="{{ URL('images/Logo-white.png')}}" alt="Company">
-      </div>
+        <a href="/">
+            <img class="w-auto h-10" src="{{ URL('images/Logo-white.png')}}" alt="Company">
+        </a>
+    </div>
+    
 
       {{-- search bar --}}
       <x-serach />
+      
 
       {{-- <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-end"></div> --}}
 
