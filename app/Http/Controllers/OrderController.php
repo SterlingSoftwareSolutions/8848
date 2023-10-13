@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index_client()
+    {
+        $user = Auth::user();
+        $orders = Order::query()->where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+        return view('app.orders.index', [
+            'orders' => $orders
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      */
