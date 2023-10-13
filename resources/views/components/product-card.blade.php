@@ -28,7 +28,7 @@
                 <h4 class="px-2 text-red-800">OUT OF STOCK</h4>
             </span>
             @endif
-            <h4 class="px-2 text-[#505050] font-semibold">Code : {{$product->sku ?? '(unknown)'}} </h4>
+            <h4 class="px-2 text-[#505050] font-semibold">Code :<br/> {{$product->sku ?? '(unknown)'}} </h4>
         </div>
 
         <!-- Product Quantity -->
@@ -51,7 +51,7 @@
 
     <!-- Product Buttons -->
     <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
-        <button type="submit" class="w-1/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+        <button type="submit" class="w-1/4 p-1 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
             Favorite
         </button>
         @if($product->in_stock)
