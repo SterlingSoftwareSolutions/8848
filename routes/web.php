@@ -57,6 +57,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/remove', [CartController::class, 'remove']);
     Route::get('/cart/checkout', [CartController::class, 'checkout']);
 
+    // Orders
+    Route::get('/orders', [OrderController::class, 'index_client']);
+
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         // Public Routes
         Route::get('/', function () {
