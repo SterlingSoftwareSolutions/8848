@@ -98,7 +98,7 @@
             <div class="w-full md:w-7/12">
                 <div class="flex flex-col justify-center gap-5 ml-10 md:flex-row md:ml-20 md:mr-10">
                     <!-- Product Boxes (Responsive Grid) -->
-                    @foreach(array_chunk($categories->toArray(), 2) as $categoryGroup)
+                    @foreach(array_chunk($categories->toArray(), 4) as $categoryGroup)
                     <div class="w-10/12 h-full rounded-md md:w-1/3">
                         @foreach($categoryGroup as $category)
                         <!-- Product Image -->
