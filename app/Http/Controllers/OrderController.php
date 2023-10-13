@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\OrderLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,6 +72,15 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show_client(Order $order)
+    {
+        return view('app.orders.show', compact('order'));
+    }
+
+
+    /**
+     * Display the specified resource.
+     */
     public function show(Order $order)
     {
         return view('admin.orders.show');
@@ -93,6 +103,14 @@ class OrderController extends Controller
             'status' => 'required',
             'payment_status' => 'required',
         ]);
+
+        if($order->status != $request->status){
+            OrderLog::create([
+                'order_id' => $order->id,
+                'status' => $request->status,
+                'message' => 'Status updated'
+            ]);
+        }
 
         $order->update([
             'status' => $request->status,

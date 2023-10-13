@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
     // Orders
     Route::get('/orders', [OrderController::class, 'index_client']);
+    Route::get('/orders/{order}', [OrderController::class, 'show_client']);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         // Public Routes
