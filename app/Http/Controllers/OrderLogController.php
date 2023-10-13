@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\OrderLog;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OrderLogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = Order::query()->paginate(10);
-        return view('admin.orders.index', compact('orders'));
+        //
     }
 
     /**
@@ -21,7 +20,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('admin.orders.create');
+        //
     }
 
     /**
@@ -35,23 +34,23 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(OrderLog $orderLog)
     {
-        return view('admin.orders.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order)
+    public function edit(OrderLog $orderLog)
     {
-        return view('admin.orders.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, OrderLog $orderLog)
     {
         //
     }
@@ -59,7 +58,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy(OrderLog $orderLog)
     {
         //
     }

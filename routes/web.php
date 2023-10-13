@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::get('/logout', [AuthController::class, 'logout_form'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::put('/profile', [AuthController::class, 'profile_update'])->name('profile');
 
     // Cart
     Route::get('/cart', [CartController::class, 'index']);
@@ -61,5 +64,6 @@ Route::middleware('auth')->group(function () {
         });
         Route::resource('/users', UserController::class);
         Route::resource('/products', ProductController::class);
+        Route::resource('/orders', OrderController::class);
     });
 });

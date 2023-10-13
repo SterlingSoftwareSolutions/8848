@@ -72,7 +72,6 @@
                 </div>
     
                 <div class="w-2/12 md:w-1/12">
-                    <img class="px-2 py-2 mx-auto bg-green-600 rounded-lg" src="{{ asset('images/check.png') }}" alt="Check Icon" />
                 </div>
     
                 <div class="w-2/12 md:w-1/12">

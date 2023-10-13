@@ -83,7 +83,7 @@ class ProductController extends Controller
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
-                'products' => $query->get()
+                'products' => $query->with(['image_1, image_2', 'image_3', 'image_4'])
             ]);
         }
 
