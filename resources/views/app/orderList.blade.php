@@ -91,7 +91,7 @@
                                 <span class="">$0 .00</span>
                             </td>
                             <td class="p-2">
-                                <span class="p-2 text-sm text-black border-2 border-green-400 rounded">Approved</span>
+                                <span class="p-2 text-sm font-semibold text-green-600 rounded">Approved</span>
                             </td>
                             
                             <td class="flex justify-center p-2">
@@ -107,7 +107,7 @@
                                 <span class="">$0 .00</span>
                             </td>
                             <td class="p-2">
-                                <span class="p-2 text-sm text-black border-2 border-red-400 rounded">Reject</span>
+                                <span class="p-2 text-sm font-semibold text-red-600 rounded">Reject</span>
                             </td>
                             <td class="flex justify-center p-2">
                                 <button class="w-1/3 p-2 text-sm text-black bg-blue-400 rounded">Edit</button>
