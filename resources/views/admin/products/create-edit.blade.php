@@ -116,7 +116,7 @@
                                 <x-input-error :messages="$errors->get('variant_sku_' . $variant->id)" class="mt-2" />
                             </div>
                         </div>
-                        <button class="bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" type="button" onclick="remove_id('variant_container_{{$variant->id}}')">Remove</button>
+                        <button class="px-2 py-1 mt-8 text-white bg-red-500 rounded-md h-7 hover:bg-red-600" type="button" onclick="remove_id('variant_container_{{$variant->id}}')">Remove</button>
                     </div>
                     @endforeach
                     @else
@@ -136,7 +136,7 @@
                             <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="SKU">
                             <x-input-error :messages="$errors->get('variant_sku_01')" class="mt-2" />
                         </div>
-                        <button class="bg-red-500 h-7 mt-8 text-white px-2 py-1 rounded-md hover:bg-red-600" onclick="remove_id('variant_container_01')" type="button">Remove</button>
+                        <button class="h-10 px-2 mt-8 text-white bg-red-500 rounded-md hover:bg-red-600" onclick="remove_id('variant_container_01')" type="button">Remove</button>
                     </div>
                     @endif
                 </div>

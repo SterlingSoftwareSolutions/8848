@@ -40,20 +40,33 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
+        $user = $request->user();
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'user' => $request->user(),
+                'user' => $user,
             ], 200);
         }
 
-        return view('auth.profile');
+        return view('auth.profile', compact('user'));
     }
 
 
     public function profile_update(Request $request)
     {
         $user = Auth::user();
+
+        // Changing password?
+        if($request->password){
+            $request->validate([
+                    'current_password' => 'required|string|current_password',
+                    'password' => 'required|string|min:8|confirmed',
+            ]);
+
+            $request->user()->forceFill([
+                'password' => Hash::make($request->password)
+            ])->save();
+        }
 
         $request->validate([
             'first_name' => 'required|string|max:255',
@@ -129,17 +142,6 @@ class AuthController extends Controller
             $user->address_shipping->update($shipping_address_data);
         } else{
             Address::create($shipping_address_data);
-        }
-
-        if($request->password){
-            $request->validate([
-                'current_password' => 'required|string|current_password',
-                'password' => 'required|string|min:8|confirmed',
-            ]);
-
-            $request->user()->forceFill([
-                'password' => Hash::make($request->password)
-            ])->save();
         }
 
         if ($request->wantsJson()) {
