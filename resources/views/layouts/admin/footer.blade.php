@@ -38,10 +38,10 @@
                             <a href="#" class="hover:underline">My Wishlist</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">Cart</a>
+                            <a href="/cart" class="hover:underline">Cart</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">Checkout</a>
+                            <a href="/checkout" class="hover:underline">Checkout</a>
                         </li>
                     </ul>
                 </div>

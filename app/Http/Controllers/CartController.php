@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CartItems;
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\OrderLog;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,12 +18,12 @@ class CartController extends Controller
         $requestData = $request->all();
 
         foreach ($requestData as $key => $value) {
-            $variantIndex = substr($key, strlen('variant_quantity_'));
+            $cartIndex = substr($key, strlen('variant_quantity_'));
 
-            if (isset($requestData['variant_quantity_' . $variantIndex])) {
+            if (isset($requestData['variant_quantity_' . $cartIndex])) {
                 $variant = [
-                    'id' => $variantIndex,
-                    'quantity' => $requestData['variant_quantity_' . $variantIndex]
+                    'id' => $cartIndex,
+                    'quantity' => $requestData['variant_quantity_' . $cartIndex]
                 ];
 
                 $cart_items[] = $variant;
@@ -201,6 +202,13 @@ class CartController extends Controller
                 'price' => $item->variant->price
             ]);
         }
+
+        // Log order
+        OrderLog::create([
+            'order_id' => $order->id,
+            'status' => $order->status,
+            'message' => 'Order created'
+        ]);
 
         $user->cart_empty();
 

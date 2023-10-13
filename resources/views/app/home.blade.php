@@ -1,7 +1,7 @@
 @props([
-    'category' => null
+'category' => null
 ])
- 
+
 
 <head>
     <meta charset="utf-8">
@@ -82,7 +82,7 @@
             <div class="relative md:w-2/12">
                 <div class="absolute inset-0 bg-opacity-50 bg-no-repeat -ml-28" style="background-image: url('{{ asset('images/jug-image.png') }}'); opacity: 0.5;"></div>
             </div>
-
+    
             <!-- Text -->
             <div class="flex flex-col items-center justify-center md:w-3/12">
                 <div class="ml-5">
@@ -93,53 +93,58 @@
                     </div>
                 </div>
             </div>
-
+    
             <!-- Categories -->
             <div class="w-full md:w-7/12">
                 <div class="flex flex-col justify-center gap-5 ml-10 md:flex-row md:ml-20 md:mr-10">
                     <!-- Product Boxes (Responsive Grid) -->
-                    @foreach($categories as $category)
-                    <div class="w-10/12 h-full rounded-md md:w-1/2">
+                    @foreach(array_chunk($categories->toArray(), 2) as $categoryGroup)
+                    <div class="w-10/12 h-full rounded-md md:w-1/3">
+                        @foreach($categoryGroup as $category)
                         <!-- Product Image -->
                         <div class="relative group categoty-angle">
                             <!-- Original image -->
                             <div class="relative">
                                 <!-- Original Image -->
                                 <img src="{{ asset('images/Path.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-
+    
                                 <!-- Overlay Image and Text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Initial) -->
                                     <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-
+    
                                     <!-- Text (You can customize this) -->
                                     <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        {{$category->name}}
+                                        {{ $category['name'] }}
                                     </div>
                                 </div>
                             </div>
                             <!-- Hover image (Initial) -->
                             <div class="hover-image">
                                 <img src="{{ asset('images/product.png') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-
+    
                                 <!-- Icon and text -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                     <!-- Middle Image (Hover) -->
                                     <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                     <div class="text-xl font-semibold category_name2">
-                                        Favorite
+                                        {{ $category['name'] }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-    @endforeach
-                  
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
+    </div>
+    
+    
+        </div>
+    </div>
+    </div>
     </div>
 
     <!-- End Section -->
@@ -176,7 +181,7 @@
                     <div class="text-center">
                         <h1 class=" text-[20px] md:text-[30px] text-white">Secure Payment</h1>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -193,14 +198,14 @@
                 </div>
 
             </div>
-            
+
         </div>
 
 
-    <!-- FOOTER -->
-    <div class="mt-20">
-        @include('layouts.app.footer')
-    </div>
+        <!-- FOOTER -->
+        <div class="mt-20">
+            @include('layouts.app.footer')
+        </div>
 </body>
 
 </html>
