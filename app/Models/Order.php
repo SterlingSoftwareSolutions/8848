@@ -10,9 +10,11 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference',
         'user_id',
         'order_type',
         'status',
+        'payment_status',
         'discount',
         'order_date',
 
@@ -39,8 +41,11 @@ class Order extends Model
         'shipping_phone'
     ];
 
-    public function items()
-    {
+    public function items(){
         return $this->hasMany(OrderItems::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
