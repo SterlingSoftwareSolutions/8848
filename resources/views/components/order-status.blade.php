@@ -23,6 +23,6 @@
 
     @default()
     <label class="px-2 py-2 mx-auto text-center text-gray-600 bg-gray-200 rounded-lg"><span
-        class="ml-1 mr-1">{{$order->status}}</span>
+        class="ml-1 mr-1">{{$status}}</span>
     </label>
 @endswitch

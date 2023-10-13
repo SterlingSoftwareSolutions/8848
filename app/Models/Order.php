@@ -45,6 +45,13 @@ class Order extends Model
         return $this->hasMany(OrderItems::class);
     }
 
+    public function total(){
+        $total = $this->items->sum(function($order_item){
+            return $order_item->price * $order_item->quantity;
+        });
+        return $total;
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }

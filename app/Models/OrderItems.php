@@ -17,8 +17,8 @@ class OrderItems extends Model
         'price'
     ];
 
-    public function product()
+    public function variant()
     {
-        $this->belongsTo(Product::class);
+        return $this->belongsTo(Variant::class);
     }
 }
