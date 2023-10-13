@@ -1,7 +1,7 @@
     <!-- The menu here -->
     <div id="side-menu" class="fixed top-0 -right-[350px] w-[350px] h-screen z-50 bg-white p-5
     flex flex-col space-y-5 text-black duration-300">
-      <a href="javascript:void(0)" class="text-left text-4xl" onclick="closeMenu()">&times;</a>
+      <a href="javascript:void(0)" class="text-4xl text-left" onclick="closeMenu()">&times;</a>
       <div>
         <div class="flex flex-row">
           <div>
@@ -11,12 +11,12 @@
             <h1 class=" text-base font-semibold text-[#284297]">8848 Test Product</h1>
             <div class="flex flex-row gap-20">
               <h1 class=" text-lg font-semibold text-[#48525c]">1 × $10.25</h1>
-              <i class="fa-solid fa-xmark mt-2"></i>
+              <i class="mt-2 fa-solid fa-xmark"></i>
             </div>
           </div>
         </div>
         <hr class="w-full">
-        <h1 class=" text-xl font-extrabold text-black text-center mt-5">Subtotal: <span class=" text-xl font-semibold">$10.25</span></h1>
+        <h1 class="mt-5 text-xl font-extrabold text-center text-black ">Subtotal: <span class="text-xl font-semibold ">$10.25</span></h1>
         <hr class="w-full mt-5">
         <div class="flex flex-row justify-center gap-5 mt-5">
           <a href="/cart" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
@@ -55,9 +55,12 @@
             </button>
           </div>
           {{-- logo --}}
-          <div class="items-center justify-center flex-1 md:ml-0 ml-[100px] sm:items-stretch sm:justify-start">
-            <img class="w-auto h-10" src="{{url('images/Logo-white.png')}}" alt="Company">
-          </div>
+          <div class="items-center justify-center flex-1 md:ml-0 ml-[80px] sm:items-stretch sm:justify-start">
+            <a href="/">
+                <img class="w-auto h-10" src="{{ URL('images/Logo-white.png')}}" alt="Company">
+            </a>
+        </div>
+        
 
           {{-- search bar --}}
           <x-serach  />
@@ -77,12 +80,6 @@
             </div>
           </div>
           <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button id="user-icon-button" type="button" class="relative p-1 mr-4 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-              <span class="absolute -inset-1.5"></span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            </button>
             <span onclick="openMenu()">
               <a type="button" class="relative flex items-center text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span class="text-xs pe-3">$0.00</span>
@@ -92,13 +89,19 @@
                 </svg>
               </a>
             </span>
+            <button id="user-icon-button" type="button" class="relative p-1 ml-4 mr-4 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="absolute -inset-1.5"></span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </button>
           </div>
 
         </div>
       </div>
 
       {{-- user icon details --}}
-      <div class="absolute z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg right-0 md:right-[250px] ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-icon-details">
+      <div class="absolute z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg right-0 md:right-[100px] ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-icon-details">
         <!-- Active: "bg-gray-100", Not Active: "" -->
         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Edit Profile</a>
         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>

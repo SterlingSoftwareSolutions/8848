@@ -17,14 +17,9 @@
         <div class="grid">
             @if($product->in_stock == true)
             <span class="text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                    <style>
-                        svg {
-                            fill: #1670b7
-                        }
-                    </style>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#1670b7">
                     <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
-                </svg>
+                </svg>                
                 <h4 class="px-2 text-[#1670B7]">IN STOCK</h4>
             </span>
             @else

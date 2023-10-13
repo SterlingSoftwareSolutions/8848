@@ -11,7 +11,7 @@
             </div>
 
             <div class="flex flex-col gap-5 md:w-6/12 md:flex-row">
-                <img class="w-36 h-auto md:w-1/4 md:h-[300px] md:ml-0 ml-[100px]" src="{{ URL('images/iphone-x-mockup.png')}}" style="width: 40%">
+                <img class="w-36 h-auto md:w-1/5 lg:w-30 md:h-[300px] md:ml-0 ml-[100px]" src="{{ URL('images/iphone-x-mockup.png')}}" style="width: 40%">
                 <div class="flex flex-col ml-8 text-center md:text-left">
                     <h1 class="text-2xl font-bold">Download</h1>
                     <h2 class="text-xl font-semibold">8848 Supplies Mobile App</h2>
@@ -24,11 +24,11 @@
                 <div class="text-center sm:text-left">
                     <h2 class="mb-2 text-lg font-semibold text-blue-900 uppercase">Buyer Central</h2>
                     <ul class="text-gray-500">
-                        <li><a href="#" class="hover:underline">Home</a></li>
-                        <li><a href="#" class="hover:underline">About</a></li>
-                        <li><a href="#" class="hover:underline">Shop</a></li>
+                        <li><a href="/" class="hover:underline">Home</a></li>
+                        <li><a href="/products" class="hover:underline">Products</a></li>
+                        <li><a href="/cart" class="hover:underline">Cart</a></li>
                         <li><a href="#" class="hover:underline">My Account</a></li>
-                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                        <li><a href="/contact" class="hover:underline">Contact Us</a></li>
                     </ul>
                 </div>
 
