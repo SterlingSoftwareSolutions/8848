@@ -1,4 +1,4 @@
-@extends('layouts.admin') @section('content')
+@extends('layouts.app') @section('content')
 <div class="md:mb-5">
 
     <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
@@ -110,9 +110,6 @@
                 </div>
               
                 <div class="md:flex flex-row gap-1 w-[20%] mx-1">
-                  <div class="w-40">
-                    <h1 class="px-2 py-2 mx-auto text-center text-white bg-green-600 rounded-lg">Approve </h1>
-                  </div>
                   <div class="w-40">
                     <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Cancel </h1>
                   </div>
