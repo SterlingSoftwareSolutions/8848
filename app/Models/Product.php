@@ -22,6 +22,20 @@ class Product extends Model
         'image_4_url'
     ];
 
+    protected $hidden = [
+        'image_1_url',
+        'image_2_url',
+        'image_3_url',
+        'image_4_url'
+    ];
+
+    protected $appends = [
+        'image_1',
+        'image_2',
+        'image_3',
+        'image_4'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -53,5 +67,22 @@ class Product extends Model
             return '/' . str_replace('public', 'storage', $url);
         }
     }
+
+    public function getImage1Attribute(){
+        return $this->image(1);
+    }
+
+    public function getImage2Attribute(){
+        return $this->image(2);
+    }
+
+    public function getImage3Attribute(){
+        return $this->image(3);
+    }
+
+    public function getImage4Attribute(){
+        return $this->image(4);
+    }
+
 
 }
