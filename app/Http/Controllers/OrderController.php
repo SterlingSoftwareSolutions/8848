@@ -3,11 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    private function parse_orderitems(Request $request){
+        $orderItems = [];
+
+        $requestData = $request->all();
+
+        foreach ($requestData as $key => $value) {
+            $item_id = substr($key, strlen('item_price_'));
+
+            if (isset($requestData['item_quantity_' . $item_id])) {
+                $variant = [
+                    'id' => $item_id,
+                    'price' => $requestData['item_price_' . $item_id],
+                    'quantity' => $requestData['item_quantity_' . $item_id]
+                ];
+
+                $orderItems[] = $variant;
+            }
+        }
+
+        return $orderItems;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -58,7 +81,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('admin.orders.edit');
+        return view('admin.orders.edit', compact('order'));
     }
 
     /**
@@ -66,7 +89,29 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'status' => 'required',
+            'payment_status' => 'required',
+        ]);
+
+        $order->update([
+            'status' => $request->status,
+            'payment_status' => $request->payment_status
+        ]);
+
+        $items = $this->parse_orderitems($request);
+
+        foreach($items as $item){
+            $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();
+            if($orderItem){
+                $orderItem->update([
+                    'price' => $item['price'],
+                    'quantity' => $item['quantity'],
+                ]);
+            }
+        }
+
+        return redirect('/admin/orders');
     }
 
     /**
