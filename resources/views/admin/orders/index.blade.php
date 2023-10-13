@@ -6,7 +6,7 @@
 
         </div>
     </div>
-    <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
+    <div class="flex flex-col items-center gap-2 mx-2  md:flex-row md:mx-10 ">
         <div class="flex justify-between w-full">
             
 <form class="flex gap-5 items-center">   
@@ -25,15 +25,25 @@
         </svg>
         <span class="sr-only">Search</span>
     </button>
-    <div class="w-1/2 pr-5">
+    <div class="w-1/2 pr-5 -mt-4">
+        <label class="block text-gray-700 text-sm font-bold" for="username">
+            Category
+          </label>
         <select id="customer_type" class=" p-2 border rounded">
             <option value="wholesale">Wholesale Customer</option>
+            <option value="wholesale">Order 1</option>
+            <option value="wholesale">Order 2</option>
             <option value="retail">Retail Customer</option>
         </select>
     </div>
-    <div class="w-1/2 pr-5">
+    <div class="w-1/2 pr-5 -mt-4">
+        <label class="block text-gray-700 text-sm font-bold " for="username">
+            Sub Category
+          </label>
         <select id="customer_type" class="p-2 border">
             <option value="wholesale">High</option>
+            <option value="wholesale">Order 1</option>
+            <option value="wholesale">Order 2</option>
             <option value="wholesale">Medium</option>
             <option value="retail">Low</option>
         </select>
@@ -42,7 +52,7 @@
 
             <a href="">
 
-                <h1 class="px-2 py-2 text-center text-white bg-blue-900 rounded-lg ">New Order</h1>
+                <h1 class="text-center text-white bg-blue-900 rounded-lg px-4 py-3 h-12 w-40">New Order</h1>
             </a>
         </div>
     </div>
