@@ -6,8 +6,8 @@
         <div class="flex flex-col gap-6 mb-6 md:grid-cols-2 w-full">
             <div class="flex flex-row gap-5">
                 <div class="flex flex-col w-full">
-                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Parent Category * :</label>
-                    <select type="text" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Parent Category * :</label>
+                    <select type="text" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 ">
                         <option>Sugarcane</option>
                         <option>Sugarcane1</option>
                         <option>Sugarcane2</option>
@@ -16,18 +16,18 @@
                     </select>
                 </div>
                 <div class="flex flex-col w-full"> <!-- Add w-full class here to make it full width -->
-                    <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category Name * :</label>
-                    <input type="text" id="category_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John" required>
+                    <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900">Category Name * :</label>
+                    <input type="text" id="category_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="John" required>
                 </div>
             </div>
             <div class="flex flex-row gap-5">
                 <div class="w-full">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Category Icon</label>
-                    <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="file_input" type="file">
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Category Icon</label>
+                    <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" id="file_input" type="file">
                 </div>
                 <div class="w-full">
-                    <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category Description * :</label>
-                    <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Your message..."></textarea>
+                    <label for="category_name" class="block mb-2 text-sm font-medium text-gray-900">Category Description * :</label>
+                    <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 " placeholder="Your message..."></textarea>
                 </div>
             </div>
         </div>
