@@ -41,7 +41,8 @@ Route::get('/contact', function () {
 
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
-Route::resource('/categories', CategoryController::class)->only('index', 'show');
+Route::get('/categories', [CategoryController::class, 'index_client']);
+Route::get('/categories/{category}', [CategoryController::class, 'show_client']);
 
 Route::middleware('auth')->group(function () {
     // Logout
@@ -62,12 +63,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{order}', [OrderController::class, 'show_client']);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
-        // Public Routes
+        // Dashboard
         Route::get('/', function () {
             return view('admin.dashboard');
         });
-        Route::resource('/users', UserController::class);
-        Route::resource('/products', ProductController::class);
-        Route::resource('/orders', OrderController::class);
+
+        // CRUD
+        Route::resource('/users', UserController::class)->except(['show']);
+        Route::resource('/products', ProductController::class)->except(['show']);
+        Route::resource('/orders', OrderController::class)->except(['show']);
+        Route::resource('/categories', CategoryController::class)->except(['show']);
     });
 });

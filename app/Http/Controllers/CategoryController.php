@@ -4,9 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+
+    public function index_client(Request $request)
+    {
+        $categories = Category::with('children')->where('parent_id', null)->get();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'categories' => $categories
+            ]);
+        }
+
+        return view('app.category', compact('categories'));
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -21,15 +37,15 @@ class CategoryController extends Controller
             ]);
         }
 
-        return view('app.category', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('admin.categories.create-edit');
     }
 
     /**
@@ -67,6 +83,23 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show_client(Category $category, Request $request)
+    {
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'category' => $category->load('parent', 'children')
+            ]);
+        }
+        return view('app.category', [
+            'category' => $category,
+            'categories' => $category->children
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
     public function show(Category $category)
     {
 
@@ -81,7 +114,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.create-edit', compact('category'));
     }
 
     /**
