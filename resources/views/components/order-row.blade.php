@@ -1,10 +1,10 @@
-<div class="flex flex-row item p-5">
+<div class="flex flex-row items-center p-5">
 
-  <div class="w-[5%] py-2 px-2">
+  <div class="w-[5%] py-2">
     <input type="checkbox" class="h-7 w-7 md:h-8 md:w-8" />
   </div>
 
-  <p class="w-[10%]">#{{$order->id}}</p>
+  <p class="w-[10%]">#{{$order->reference}}</p>
 
   <div class="w-[10%]">
     {{ explode(' ', $order->created_at)[0]}}

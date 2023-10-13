@@ -165,9 +165,11 @@ class CartController extends Controller
         }
 
         $order = Order::create([
+            'reference' => $this->generateRandomString(),
             'user_id' => $user->id,
             'order_type' => $user->role == 'client_wholesale' ? 'wholesole' : 'retail',
             'status' => 'pending',
+            'payment_status' => 'unpaid',
             'discount' => 0,
 
             'billing_first_name' => $user->address_billing->first_name,
