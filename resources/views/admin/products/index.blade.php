@@ -25,6 +25,8 @@
                       </label>
                     <select id="customer_type" class=" p-2 border rounded-lg">
                         <option value="wholesale">Wholesale Customer</option>
+                        <option value="wholesale">Product 1</option>
+                        <option value="wholesale">Product 2</option>
                         <option value="retail">Retail Customer</option>
                     </select>
                 </div>
@@ -34,13 +36,15 @@
                       </label>
                     <select id="customer_type" class="p-2 border rounded-lg">
                         <option value="wholesale">High</option>
+                        <option value="wholesale">Pro 1</option>
+                        <option value="wholesale">Pro 2</option>
                         <option value="wholesale">Medium</option>
                         <option value="retail">Low</option>
                     </select>
                 </div>
             </form>
             <a href="/admin/products/create">
-                <h1 class="text-center text-white bg-blue-900 rounded-lg px-4 py-3 h-12">Add Product</h1>
+                <h1 class="text-center text-white bg-blue-900 rounded-lg px-4 py-3 h-12 w-40">Add Product</h1>
             </a>
         </div>
     </div>
