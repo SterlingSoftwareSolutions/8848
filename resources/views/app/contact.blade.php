@@ -22,7 +22,7 @@
 
     {{-- 4 ICONS ROW  --}}
 
-    <div class="flex flex-col w-6/12 gap-4 mx-auto mt-10 md:flex-row">
+    <div class="flex flex-col md:w-8/12  gap-4 mx-auto mt-10 md:flex-row">
         <div class="w-full md:w-3/12">
             <img
                 class="mx-auto border-green-500"
@@ -286,7 +286,7 @@
                 </div>
 
                 <div class="mt-5 text-center md:mt-10 md:text-left">
-                    <button class="bg-gradient-to-b from-[#166EB6] to-[#284297] text-white w-32 md:px-2 md:py-2 ">Submit</button>
+                    <button class="bg-gradient-to-b from-[#166EB6] to-[#284297] text-white w-32 md:px-2 md:py-2 rounded-lg">Submit</button>
                 </div>
             </form>
         </div>
