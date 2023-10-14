@@ -48,12 +48,13 @@ class ProductController extends Controller
 
         if($request->category_id){
 
-            $category = Category::findOrFail($request->category_id);
-
-            if($category->parent != null){
-                $query->where('category_id', $category->id);
+            $category = Category::find($request->category_id);
+            if($category){
+                $ids = $category->children->pluck('id');
+                $ids[] = $category->id;
+                $query->whereIn('category_id', $ids);
             } else{
-                $query->whereIn('category_id', $category->children->pluck('id'));
+                $query->where('category_id', $request->category_id);
             }
         }
 
@@ -78,6 +79,11 @@ class ProductController extends Controller
             }
         } else{
             $query->orderBy('created_at', 'desc');
+        }
+
+        // Search in all fields
+        if ($request->q) {
+            $query->where('title', 'like', '%' . $request->q . '%');
         }
 
         if ($request->wantsJson()) {
