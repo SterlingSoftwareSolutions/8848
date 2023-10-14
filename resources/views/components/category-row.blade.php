@@ -20,7 +20,11 @@
             <a href="/admin/categories/{{$category->id}}/edit"><button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button></a>
         </div>
         <div class="w-[95px]">
-            <button class="w-full px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
+            <form action="/admin/categories/{{$category->id}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="w-full px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
+            </form>
         </div>
     </div>
 </div>

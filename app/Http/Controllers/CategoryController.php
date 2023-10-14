@@ -147,12 +147,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request, Category $category)
     {
         $category->delete();
-
-        return response()->json([
-            'success' => true,
-        ]);
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+            ]);
+        }
+        return redirect()->intended('/admin/categories');
     }
 }
