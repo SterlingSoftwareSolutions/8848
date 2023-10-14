@@ -160,17 +160,17 @@ class CartController extends Controller
     {
         $user = Auth::user();
 
-        if(!($user->address_shipping && $user->address_billing)){
+        if(!($user->address_billing)){
             if($request->wantsJson()){
                 return response()->json([
                     'success' => false,
-                    'message' => 'Shipping / billingg address not found'
+                    'message' => 'Billing address not found'
                 ]);
             }
-            return back()->withErrors(['error' => "No addresses found"]);
+            return back()->withErrors(['error' => "Billingg address not found"]);
         }
 
-        $order = Order::create([
+        $data = [
             'reference' => $this->generateRandomString(),
             'user_id' => $user->id,
             'order_type' => $user->role == 'client_wholesale' ? 'wholesale' : 'retail',
@@ -187,17 +187,37 @@ class CartController extends Controller
             'billing_zip' => $user->address_billing->zip,
             'billing_state' => $user->address_billing->state,
             'billing_phone' => $user->address_billing->phone,
+        ];
 
-            'shipping_first_name' => $user->address_shipping->first_name,
-            'shipping_last_name' => $user->address_shipping->last_name,
-            'shipping_company' => $user->address_shipping->company,
-            'shipping_address_line_1' => $user->address_shipping->address_line_1,
-            'shipping_address_line_2' => $user->address_shipping->address_line_2,
-            'shipping_city' => $user->address_shipping->city,
-            'shipping_zip' => $user->address_shipping->zip,
-            'shipping_state' => $user->address_shipping->state,
-            'shipping_phone' => $user->address_shipping->phone
-        ]);
+        if($user->address_shipping){
+            $shipping_address = [
+                'shipping_first_name' => $user->address_shipping->first_name,
+                'shipping_last_name' => $user->address_shipping->last_name,
+                'shipping_company' => $user->address_shipping->company,
+                'shipping_address_line_1' => $user->address_shipping->address_line_1,
+                'shipping_address_line_2' => $user->address_shipping->address_line_2,
+                'shipping_city' => $user->address_shipping->city,
+                'shipping_zip' => $user->address_shipping->zip,
+                'shipping_state' => $user->address_shipping->state,
+                'shipping_phone' => $user->address_shipping->phone
+            ];
+        } else{
+            $shipping_address = [
+                'shipping_first_name' => $user->address_billing->first_name,
+                'shipping_last_name' => $user->address_billing->last_name,
+                'shipping_company' => $user->address_billing->company,
+                'shipping_address_line_1' => $user->address_billing->address_line_1,
+                'shipping_address_line_2' => $user->address_billing->address_line_2,
+                'shipping_city' => $user->address_billing->city,
+                'shipping_zip' => $user->address_billing->zip,
+                'shipping_state' => $user->address_billing->state,
+                'shipping_phone' => $user->address_billing->phone
+            ];
+        }
+
+        $order = Order::create(
+            array_merge($data, $shipping_address)
+        );
 
         $cart_items = $user->cart_items;
 
