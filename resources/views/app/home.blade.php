@@ -28,9 +28,9 @@
             <!--Slide 1-->
             <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
             <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
-                <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
-                <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
-                <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
+                <div class="md:mr-[650px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[540px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
+                <button class="p-2 md:mr-[830px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
 
             <label for="carousel-3" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-1 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
@@ -39,9 +39,9 @@
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
             <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
-                <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
-                <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
-                <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
+                <div class="md:mr-[650px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[540px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
+                <button class="p-2 md:mr-[830px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
 
             <label for="carousel-1" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-2 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
@@ -50,9 +50,9 @@
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
             <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
-                <div class="md:mr-[750px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
-                <div class="mt-5 md:mr-[630px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
-                <button class="p-2 md:mr-[920px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
+                <div class="md:mr-[650px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
+                <div class="mt-5 md:mr-[540px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
+                <button class="p-2 md:mr-[830px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
             </div>
             <label for="carousel-2" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-3 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
             <label for="carousel-1" class="absolute inset-y-0 right-0 z-10 hidden w-10 h-10 my-auto mr-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer next control-3 md:mr-10 hover:text-white hover:bg-blue-700">›</label>
@@ -80,72 +80,71 @@
         <div class="flex flex-col py-5 md:flex-row">
             <!-- Mug Image -->
             <div class="relative md:w-2/12">
-                <div class="absolute inset-0 bg-opacity-50 bg-no-repeat -ml-28" style="background-image: url('{{ asset('images/jug-image.png') }}'); opacity: 0.5;"></div>
+                <div class="absolute inset-0 bg-opacity-50 bg-no-repeat -mt-24 md:-ml-36" style="background-image: url('{{ asset('images/jug-image.png') }}'); opacity: 0.5;"></div>
             </div>
-    
+
             <!-- Text -->
             <div class="flex flex-col items-center justify-center md:w-3/12">
                 <div class="ml-5">
                     <h1 class="mb-5 text-4xl text-white">We Are 8848 Suppliers</h1>
                     <p class="mb-5 text-white">Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Et Leo Tincidunt, Placerat Ex In, Feugiat Urna. Integer Dictum Tellus Vitae Turpis Consequa</p>
                     <div class="flex items-center justify-center md:items-start md:justify-start">
-                        <button type="button" class="text-blue-600 bg-white font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 uppercase flex md:justify-center md:items-center hover:bg-blue-300">shop now</button>
+                        <a href="/categories" class="text-blue-600 bg-white font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2 uppercase flex md:justify-center md:items-center hover:bg-blue-300">shop now</a>
                     </div>
                 </div>
             </div>
-    
+
             <!-- Categories -->
             <div class="w-full md:w-7/12">
                 <div class="flex flex-col justify-center gap-5 ml-10 md:flex-row md:ml-20 md:mr-10">
                     <!-- Product Boxes (Responsive Grid) -->
                     @foreach(array_chunk($categories->toArray(), 4) as $categoryGroup)
                     <div class="w-10/12 h-full rounded-md md:w-1/3">
+                        @php $categoryCounter = 0 @endphp <!-- Initialize a counter -->
                         @foreach($categoryGroup as $category)
-                        <!-- Product Image -->
-                        <div class="relative group categoty-angle">
-                            <!-- Original image -->
-                            <div class="relative">
-                                <!-- Original Image -->
-                                <img src="{{ asset('images/Path.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
-    
-                                <!-- Overlay Image and Text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Initial) -->
-                                    <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
-    
-                                    <!-- Text (You can customize this) -->
-                                    <div class="category_name1 text-[#166eb6] font-semibold text-xl">
-                                        {{ $category['name'] }}
+                        @if ($categoryCounter < 1) <!-- Only display the first four categories -->
+                            <!-- Product Image -->
+                            <div class="relative group categoty-angle">
+                                <!-- Original image -->
+                                <div class="relative">
+                                    <!-- Original Image -->
+                                    <img src="{{ asset('images/Path.png') }}" alt="Original Image" class="w-full h-[280px] object-cover transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
+
+                                    <!-- Overlay Image and Text -->
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
+                                        <!-- Middle Image (Initial) -->
+                                        <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
+
+                                        <!-- Text (You can customize this) -->
+                                        <div class="category_name1 text-[#166eb6] font-semibold text-xl">
+                                            {{ $category['name'] }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Hover image (Initial) -->
+                                <div class="hover-image">
+                                    <img src="{{ asset('images/product.png') }}" alt="Hover Image" class="hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+
+                                    <!-- Icon and text -->
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
+                                        <!-- Middle Image (Hover) -->
+                                        <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
+                                        <div class="text-xl font-semibold category_name2">
+                                            {{ $category['name'] }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Hover image (Initial) -->
-                            <div class="hover-image">
-                                <img src="{{ asset('images/product.png') }}" alt="Hover Image" class=" hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
-    
-                                <!-- Icon and text -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
-                                    <!-- Middle Image (Hover) -->
-                                    <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
-                                    <div class="text-xl font-semibold category_name2">
-                                        {{ $category['name'] }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                            @php $categoryCounter++ @endphp <!-- Increment the counter -->
+                            @endif
+                            @endforeach
                     </div>
                     @endforeach
+
                 </div>
             </div>
             
         </div>
-    </div>
-    
-    
-        </div>
-    </div>
-    </div>
     </div>
 
     <!-- End Section -->
