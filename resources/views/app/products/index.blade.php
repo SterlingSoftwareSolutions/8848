@@ -52,7 +52,7 @@
             @endforeach
         </div>
         <div class="flex justify-center p-5">
-            {{$products->links()}}
+            {{$products->appends($_GET)->links()}}
         </div>
         <!-- FOOTER -->
         @include('layouts.app.footer')
