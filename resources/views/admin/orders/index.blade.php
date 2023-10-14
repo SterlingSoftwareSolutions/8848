@@ -8,47 +8,28 @@
     </div>
     <div class="flex flex-col items-center gap-2 mx-2  md:flex-row md:mx-10 ">
         <div class="flex justify-between w-full">
+            <form class="flex gap-4 items-center">
+                <input name="search" type="text" value="{{$_GET['search'] ?? null}}" class="px-4 bg-white rounded h-12 border border-blue-900" placeholder="Order Id ...">
 
-            <form class="flex gap-5 items-center">
-                <label for="simple-search" class="sr-only">Search</label>
-                <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
-                        </svg>
-                    </div>
-                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5  " placeholder="Search branch name..." required>
-                </div>
-                <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-900 rounded-lg border hover:bg-blue-800 focus:ring-4 focus:outline-none">
+                <button type="submit" class="p-4 text-white rounded bg-blue-900">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                     <span class="sr-only">Search</span>
                 </button>
-                <div class="w-1/2 pr-5 -mt-4">
-                    <label class="block text-gray-700 text-sm font-bold" for="username">
-                        Status
-                    </label>
-                    <select id="order_status" class=" p-2 border rounded-lg">
-                        <option value="wholesale">Wholesale Customer</option>
-                        <option value="wholesale">Order 1</option>
-                        <option value="wholesale">Order 2</option>
-                        <option value="retail">Retail Customer</option>
-                    </select>
-                </div>
-                <div class="w-2/3 pr-5 -mt-4">
-                    <label class="block text-gray-700 text-sm font-bold " for="username">
-                        Payment Status
-                    </label>
-                    <select id="payment_status" class="p-2 border rounded-lg">
-                        <option value="wholesale">High</option>
-                        <option value="wholesale">Order 1</option>
-                        <option value="wholesale">Order 2</option>
-                        <option value="wholesale">Medium</option>
-                        <option value="retail">Low</option>
-                    </select>
-                </div>
-            </form>
+
+                <select name="status"class="px-4 bg-white rounded h-12 border border-blue-900" onchange="this.form.submit()">
+                    <option value="">Any Status</option>
+                    <option value="unverified" @if(($_GET['status'] ?? null) == 'unverified') selected @endif>Unverified</option>
+                    <option value="pending" @if(($_GET['status'] ?? null) == 'pending') selected @endif>Pending</option>
+                    <option value="processing" @if(($_GET['status'] ?? null) == 'processing') selected @endif>Processing</option>
+                    <option value="shipped" @if(($_GET['status'] ?? null) == 'shipped') selected @endif>Shipped</option>
+                    <option value="delivered" @if(($_GET['status'] ?? null) == 'delivered') selected @endif>Delivered</option>
+                    <option value="returned" @if(($_GET['status'] ?? null) == 'returned') selected @endif>Returned</option>
+                    <option value="canceled" @if(($_GET['status'] ?? null) == 'canceled') selected @endif>Canceled</option>
+                    <option value="rejected" @if(($_GET['status'] ?? null) == 'rejected') selected @endif>Rejected</option>
+                </select>
+            </form>        
         </div>
     </div>
     {{-- End Dropdowns & Buttons Row --}}

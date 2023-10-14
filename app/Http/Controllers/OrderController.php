@@ -53,10 +53,21 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::query()->paginate(10);
-        return view('admin.orders.index', compact('orders'));
+        $query = Order::query();
+
+        if($request->status){
+            $query->where('status', $request->status);
+        }
+
+        if($request->search){
+            $query->where('reference', 'LIKE', $request->search);
+        }
+
+        return view('admin.orders.index', [
+            'orders' => $query->paginate(10)
+        ]);
     }
 
     /**
@@ -80,9 +91,11 @@ class OrderController extends Controller
      */
     public function show_client(Order $order)
     {
+        if($order->user_id != Auth::user()->id){
+            abort(404);
+        }
         return view('app.orders.show', compact('order'));
     }
-
 
     /**
      * Display the specified resource.
