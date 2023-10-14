@@ -96,7 +96,7 @@
 
           {{-- user icon details --}}
           <div
-            class="absolute z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg right-0 md:right-[100px] ring-1 ring-black ring-opacity-5 focus:outline-none"
+            class="absolute z-10 hidden w-48 py-1 mt-2 bg-white rounded-md shadow-lg right-0 top-12 ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
             id="user-icon-details">
             <!-- Active: "bg-gray-100", Not Active: "" -->
