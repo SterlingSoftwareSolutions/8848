@@ -16,7 +16,7 @@ class AuthController extends Controller
         if(!Auth::check()){
             return view('auth.register');
         }
-        return redirect('/');
+        return redirect()->intended('/');
     }
 
 
@@ -25,7 +25,7 @@ class AuthController extends Controller
         if(!Auth::check()){
             return view('auth.login');
         }
-        return redirect('/');
+        return redirect()->intended('/');
     }
 
 
@@ -34,7 +34,7 @@ class AuthController extends Controller
         if(Auth::check()){
             return view('auth.logout');
         }
-        return redirect('/');
+        return redirect()->intended('/');
     }
 
 
@@ -150,7 +150,7 @@ class AuthController extends Controller
                 'user' => $user->load(['address_shipping', 'address_billing']),
             ], 200);
         } else {
-            return back();
+            return redirect()->intended('/profile');
         }
     }
 
@@ -226,10 +226,10 @@ class AuthController extends Controller
             } else {
                 $user = Auth::user();
                 if($user->role == 'admin' || $user->role == 'superadmin'){
-                    return redirect('/admin/');
+                    return redirect()->intended('/admin');
                 }
                 // Cookie Session Authentication
-                return redirect('/');
+                return redirect()->intended('/');
             }
         } else {
             // Authentication failed
@@ -242,8 +242,6 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-
-
         if ($request->wantsJson()) {
                 auth()->user()->tokens()->delete();
                 return response()->json([
