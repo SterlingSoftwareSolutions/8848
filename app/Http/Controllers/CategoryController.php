@@ -45,7 +45,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create-edit');
+        $parent_categories = Category::with('children')->where('parent_id', null)->get();
+        return view('admin.categories.create-edit', compact('parent_categories'));
     }
 
     /**
@@ -56,17 +57,17 @@ class CategoryController extends Controller
         $request->validate([
             "parent_id" => 'nullable',
             "name" => 'required',
-            "description" => 'required',
-            "icon" => 'required|file',
-            "background_image" => 'required|file'
+            "description" => 'nullable',
+            "icon" => 'nullable|file',
+            "background_image" => 'nullable|file'
         ]);
 
         $category = Category::create([
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
             "description" => $request->description,
-            "icon_url" => $request->icon->store('category_images'),
-            "background_image_url" => $request->background_image->store('category_images')
+            "icon_url" => $request->icon ? $request->icon->store('public/category_images') : null,
+            "background_image_url" => $request->icon ? $request->background_image->store('public/category_images') : null
         ]);
 
         if($request->wantsJson()){
@@ -76,7 +77,7 @@ class CategoryController extends Controller
             ]);
         }
 
-        return redirect('/categories');
+        return redirect()->intended('/admin/categories');
 
     }
 
@@ -100,13 +101,21 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
-    {
+    public function show(Request $request, Category $category)
+    {   
+        if($request->wantsJson())
+        {
+            return response()->json([
+                'success' => true,
+                'category' => $category->load('parent', 'children')
+            ]);  
+        }
 
-        return response()->json([
-            'success' => true,
-            'category' => $category->load('parent', 'children')
+        return view('admin.categories.index', [
+            'parent' => $category,
+            'categories' => $category->children
         ]);
+
     }
 
     /**
@@ -114,8 +123,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.create-edit', compact('category'));
-    }
+        $parent_categories = Category::with('children')->where('parent_id', null)->get();
+        return view('admin.categories.create-edit', compact(['parent_categories', 'category']));    }
 
     /**
      * Update the specified resource in storage.
@@ -125,7 +134,7 @@ class CategoryController extends Controller
         $request->validate([
             "parent_id" => 'nullable',
             "name" => 'required',
-            "description" => 'required',
+            "description" => 'nullable',
             "icon" => 'nullable|file',
             "background_image" => 'nullable|file'
         ]);
@@ -134,14 +143,18 @@ class CategoryController extends Controller
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
             "description" => $request->description,
-            "icon_url" => $request->icon ? $request->icon->store('category_images') : $category->icon_url,
-            "background_image_url" => $request->background_image ? $request->background_image->store('category_images') : $category->background_image_url
+            "icon_url" => $request->icon ? $request->icon->store('public/category_images') : $category->icon_url,
+            "background_image_url" => $request->background_image ? $request->background_image->store('public/category_images') : $category->background_image_url
         ]);
 
-        return response()->json([
-            'success' => true,
-            'category' => $category->load('parent', 'children')
-        ]);
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'category' => $category->load('parent', 'children')
+            ]);
+        }
+
+        return redirect()->intended('/admin/categories');
     }
 
     /**
