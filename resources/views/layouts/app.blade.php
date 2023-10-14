@@ -1,6 +1,7 @@
 @props([
     'title' => '',
-    'parent' => null
+    'parent' => null,
+    'fullwidth' => false
 ])
 
 <!doctype html>
@@ -15,8 +16,8 @@
     <!-- HEADER -->
     @include('layouts.app.header')
 
-    <div class="max-w-screen-xl mx-auto p-8">
-        @if($title)
+    <div class="@if(!$fullwidth) max-w-screen-xl mx-auto p-8 @endif">
+        @if($title && !$fullwidth)
             <!-- Navigation Bar -->
             <div class="flex gap-1 font-bold text-blue-800 flex-row text-2xl mb-4">
                 <a href="/">Home</a>

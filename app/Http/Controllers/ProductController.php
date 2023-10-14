@@ -94,7 +94,8 @@ class ProductController extends Controller
         }
 
         return view('app.products.index', [
-            'products' => $query->paginate(12)
+            'products' => $query->paginate(12),
+            'category' => $category ?? null
         ]);
     }
 
