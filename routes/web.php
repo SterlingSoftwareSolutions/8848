@@ -72,6 +72,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('/users', UserController::class)->except(['show']);
         Route::resource('/products', ProductController::class)->except(['show']);
         Route::resource('/orders', OrderController::class)->except(['show']);
-        Route::resource('/categories', CategoryController::class)->except(['show']);
+        Route::resource('/categories', CategoryController::class);
     });
 });
