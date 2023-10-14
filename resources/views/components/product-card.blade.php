@@ -2,7 +2,6 @@
     'product' => null
 ])
 
-
 <form class="w-full h-full rounded-md border-[1px] border-[#707070] overflow-hidden" @if($product->variants->count() <= 1) action="/cart/add" method="post" @endif>
     @csrf
     <!-- Product Image -->
@@ -14,7 +13,7 @@
 
     <div class="flex flex-row">
         <!-- Product Status and Code -->
-        <div class="grid">
+        <div>
             @if($product->in_stock == true)
             <span class="text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#1670b7">
