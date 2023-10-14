@@ -88,12 +88,12 @@
                     <x-input-error :messages="$errors->get('role')" class="mt-2" />
                 </div>
                 <div class="w-1/2 pl-2">
-                    <select id="priority_level" name="priority_level" value="{{old('priority_level', $user->priority_level ?? null)}}"   class="w-full p-2 border border-gray-400 rounded">
-                        <option value="high">High Priority</option>
-                        <option value="medium">Medium Priority</option>
-                        <option value="low">Low Priority</option>
+                    <select id="priority_level" name="priority" value="{{old('priority', $user->priority ?? null)}}"   class="w-full p-2 border border-gray-400 rounded">
+                        <option value="high" @if(old('priority', $user->priority) == 'high') selected @endif>High Priority</option>
+                        <option value="medium" @if(old('priority', $user->priority) == 'medium') selected @endif>Medium Priority</option>
+                        <option value="low" @if(old('priority', $user->priority) == 'low') selected @endif>Low Priority</option>
                     </select>
-                    <x-input-error :messages="$errors->get('priority_level')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('priority')" class="mt-2" />
                 </div>
             </div>
         </div>
