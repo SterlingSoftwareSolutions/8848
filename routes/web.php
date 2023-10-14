@@ -73,5 +73,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('/products', ProductController::class)->except(['show']);
         Route::resource('/orders', OrderController::class)->except(['show']);
         Route::resource('/categories', CategoryController::class);
+
+        // Order review
+        Route::get('/orders/{order}/reject', [OrderController::class, 'reject']);
+        Route::get('/orders/{order}/approve', [OrderController::class, 'approve']);
+
     });
 });

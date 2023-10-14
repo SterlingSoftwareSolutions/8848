@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    /**
+     * possible statueses
+     */
+    private $payment_statuses = ['unpaid', 'partial', 'paid', 'refunded'];
+    private $order_statuses = ['unverified', 'pending', 'processing', 'shipped', 'delivered', 'returned', 'canceled', 'rejected', ];
+
     private function parse_orderitems(Request $request){
         $orderItems = [];
 
@@ -100,8 +106,9 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'status' => 'required',
-            'payment_status' => 'required',
+            'status' => ['required', 'in:' . implode(',', $this->order_statuses)],
+            'payment_status' => ['required', 'in:' . implode(',', $this->payment_statuses)],
+            'order_type' => ['required', 'in:wholesale,retail'],
         ]);
 
         if($order->status != $request->status){
@@ -114,7 +121,8 @@ class OrderController extends Controller
 
         $order->update([
             'status' => $request->status,
-            'payment_status' => $request->payment_status
+            'payment_status' => $request->payment_status,
+            'order_type' => $request->order_type
         ]);
 
         $items = $this->parse_orderitems($request);
@@ -130,6 +138,20 @@ class OrderController extends Controller
         }
 
         return redirect('/admin/orders');
+    }
+
+    public function approve(Request $request, Order $order){
+        $order->update([
+            'status' => 'pending'
+        ]);
+        return back();
+    }
+
+    public function reject(Request $request, Order $order){
+        $order->update([
+            'status' => 'rejected'
+        ]);
+        return back();
     }
 
     /**

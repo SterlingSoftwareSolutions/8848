@@ -168,8 +168,8 @@ class CartController extends Controller
             'reference' => $this->generateRandomString(),
             'user_id' => $user->id,
             'order_type' => $user->role == 'client_wholesale' ? 'wholesale' : 'retail',
-            'status' => 'pending',
-            'payment_status' => 'unpaid',
+            'status' => $user->role == 'client_wholesale' ? 'unverified' : 'pending',
+            'payment_status' => $user->role == 'client_wholesale' ? 'unpaid' : 'paid',
             'discount' => 0,
 
             'billing_first_name' => $user->address_billing->first_name,

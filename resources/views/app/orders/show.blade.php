@@ -13,7 +13,7 @@
             </div>
             <div class="text-start flex items-center gap-4">
                 <div class="font-semibold">Payment Status:</div>
-                <x-order-status :status="$order->payment_status"/>
+                <x-payment-status :status="$order->payment_status"/>
             </div>
             <div class="text-start flex items-center gap-4 ms-auto">
                 <b class="font-semibold">Date:</b> {{$order->created_at}}
