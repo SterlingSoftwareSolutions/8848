@@ -1,32 +1,5 @@
     <!-- The menu here -->
-    <div id="side-menu" class="fixed top-0 -right-[350px] w-[350px] h-screen z-50 bg-white p-5 flex flex-col space-y-5 text-black duration-300">
-      <a href="javascript:void(0)" class="text-4xl text-left" onclick="closeMenu()">&times;</a>
-      <div>
-        <div class="flex flex-row">
-          <div>
-            <img src="{{url('images/lemon.jpg')}}" class="w-auto h-20" alt="" srcset="">
-          </div>
-          <div class="flex flex-col gap-5">
-            <h1 class=" text-base font-semibold text-[#284297]">8848 Test Product</h1>
-            <div class="flex flex-row gap-20">
-              <h1 class=" text-lg font-semibold text-[#48525c]">1 × $10.25</h1>
-              <i class="mt-2 fa-solid fa-xmark"></i>
-            </div>
-          </div>
-        </div>
-        <hr class="w-full">
-        <h1 class="mt-5 text-xl font-extrabold text-center text-black ">Subtotal: <span class="text-xl font-semibold ">$10.25</span></h1>
-        <hr class="w-full mt-5">
-        <div class="flex flex-row justify-center gap-5 mt-5">
-          <a href="/cart" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
-            View cart
-          </a>
-          <a class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
-            Checkout
-          </a>
-        </div>
-      </div>
-    </div>
+    <x-slideout-cart/>
 
     <nav class="bg-gradient-to-b from-[#166EB6] to-[#284297]">
       <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
