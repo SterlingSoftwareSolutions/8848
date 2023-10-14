@@ -37,6 +37,14 @@
                     </select>
                     <x-input-error :messages="$errors->get('payment_status')" class="mt-2" />
                 </div>
+                <div class="text-start">
+                    <div class="font-semibold mb-2">Order Type {{$order->type }}</div>
+                    <select class="p-3 bg-blue-50 border-blue-300 w-40 border rounded-lg" name="order_type">
+                        <option value="wholesale" @if($order->order_type == 'wholesale') selected @endif>Wholesale Order</option>
+                        <option value="retail" @if($order->order_type == 'retail') selected @endif>Retail Order</option>
+                    </select>
+                    <x-input-error :messages="$errors->get('order_type')" class="mt-2" />
+                </div>
                 <div class="text-start ms-auto">
                     <b class="font-semibold">Date:</b> {{$order->created_at}}
                 </div>
@@ -57,9 +65,12 @@
                         <div class="w-full text-center py-12">This order has no products</div>
                 </div>
                 @else
+                @php
+                    $content_editable = ($order->status == 'unverified' || $order->status == 'pending') && $order->order_type != 'retail';
+                @endphp
                 <!-- Order items -->
                 @foreach($order->items as $item)
-                <x-order-item-row :item="$item" :admin="$order->status == 'unverified' || $order->status == 'pending'" />
+                <x-order-item-row :item="$item" :admin="$content_editable" />
                 @endforeach
                 @endif
             </div>

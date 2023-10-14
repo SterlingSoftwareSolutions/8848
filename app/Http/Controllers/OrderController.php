@@ -108,6 +108,7 @@ class OrderController extends Controller
         $request->validate([
             'status' => ['required', 'in:' . implode(',', $this->order_statuses)],
             'payment_status' => ['required', 'in:' . implode(',', $this->payment_statuses)],
+            'order_type' => ['required', 'in:wholesale,retail'],
         ]);
 
         if($order->status != $request->status){
@@ -120,7 +121,8 @@ class OrderController extends Controller
 
         $order->update([
             'status' => $request->status,
-            'payment_status' => $request->payment_status
+            'payment_status' => $request->payment_status,
+            'order_type' => $request->order_type
         ]);
 
         $items = $this->parse_orderitems($request);
