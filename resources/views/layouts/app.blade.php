@@ -15,10 +15,9 @@
 <body>
     <!-- HEADER -->
     @include('layouts.app.header')
-
     <div class="@if(!$fullwidth) max-w-screen-xl mx-auto p-8 @endif">
         @if($title && !$fullwidth)
-            <!-- Navigation Bar -->
+            <!-- Breadcrumbs -->
             <div class="flex gap-1 font-bold text-blue-800 flex-row text-2xl mb-4">
                 <a href="/">Home</a>
                 <span>/</span>
@@ -29,6 +28,7 @@
                 <span>{{$title}}</span>
             </div>
         @endif
+        <x-errors />
         @yield('content')
     </div>
 

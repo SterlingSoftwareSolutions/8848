@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Cart'])
 @section('content')
 
 <head>
@@ -10,60 +10,11 @@
 </head>
 
 <body>
-    <div class="container p-4 mx-auto mt-10 min-w-fit sm:px-6 md:px-8">
-        <!-- Navigation Bar -->
-        <div class="flex flex-col gap-1 text-sm font-bold text-blue-800 md:flex-row md:text-2xl">
-            <a href="">Home</a>
-            <span>/</span>
-            <span>Cart</span>
-        </div>
-        <!-- Alert -->
-        <div class="mt-5">
-            <!-- Error Notification -->
-            @error('error')
-            <div class="flex flex-col pb-5 mt-5 bg-white border-t-4 border-red-700 rounded-md shadow-lg sm:flex-row">
-                <!-- ICON -->
-                <div class="mt-5 text-red-700 md:ml-10 sm:ml-0">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                </div>
-                <!-- Text -->
-                <div class="flex justify-start mt-5 ml-5 font-light">
-                    <p>{{$message}}</p>
-                </div>
-                <!-- Button -->
-                <div class="mt-3 ml-auto">
-                    <button type="button" class="text-red-700 hover:text-indigo-950 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">
-                        x
-                    </button>
-                </div>
-            </div>
-            @enderror
-
-            <!-- Success Notification -->
-            @error('success')
-            <div class="flex flex-col my-3 bg-white border-t-4 rounded-md shadow-lg border-lime-600 sm:flex-row">
-                <!-- ICON -->
-                <div class="mt-5 md:ml-10 sm:ml-0 text-lime-600">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-                <!-- Text -->
-                <div class="flex justify-start mt-5 ml-5 font-light">
-                    <p>{{$message}}</p>
-                </div>
-                <!-- Button -->
-                <div class="mt-3 ml-auto">
-                    <button type="button" class="font-light text-red-700 hover:text-indigo-950 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">
-                        x
-                    </button>
-                </div>
-            </div>
-            @enderror
-        </div>
-
+    <div class="container p-4 mx-auto min-w-fit sm:px-6 md:px-8">
         <form method="post" id="cart_form">
             @csrf
             <!-- Table -->
-            <div class="relative mt-10 overflow-x-auto">
+            <div class="relative overflow-x-auto">
                 <table class="w-full text-xl font-light text-center text-gray-500 ">
                     <thead class="text-lg font-light capitalize text-gray-6600">
                         <!-- Table Headings -->
