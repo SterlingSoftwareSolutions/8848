@@ -1,33 +1,6 @@
     <!-- The menu here -->
-    <div id="side-menu" class="fixed top-0 -right-[350px] w-[350px] h-screen z-50 bg-white p-5
-    flex flex-col space-y-5 text-black duration-300">
-      <a href="javascript:void(0)" class="text-4xl text-left" onclick="closeMenu()">&times;</a>
-      <div>
-        <div class="flex flex-row">
-          <div>
-            <img src="{{url('images/lemon.jpg')}}" class="w-auto h-20" alt="" srcset="">
-          </div>
-          <div class="flex flex-col gap-5">
-            <h1 class=" text-base font-semibold text-[#284297]">8848 Test Product</h1>
-            <div class="flex flex-row gap-20">
-              <h1 class=" text-lg font-semibold text-[#48525c]">1 × $10.25</h1>
-              <i class="mt-2 fa-solid fa-xmark"></i>
-            </div>
-          </div>
-        </div>
-        <hr class="w-full">
-        <h1 class="mt-5 text-xl font-extrabold text-center text-black ">Subtotal: <span class="text-xl font-semibold ">$10.25</span></h1>
-        <hr class="w-full mt-5">
-        <div class="flex flex-row justify-center gap-5 mt-5">
-          <a href="/cart" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
-            View cart
-          </a>
-          <a class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
-            Checkout
-          </a>
-        </div>
-      </div>
-    </div>
+    <x-slideout-cart/>
+
     <nav class="bg-gradient-to-b from-[#166EB6] to-[#284297]">
       <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
@@ -61,12 +34,10 @@
             </a>
           </div>
 
-
           {{-- search bar --}}
           <x-serach />
 
           <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-end">
-
             <div class="hidden sm:ml-6 sm:block">
               <div class="flex space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -79,9 +50,10 @@
               </div>
             </div>
           </div>
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <span onclick="openMenu()">
-              <a type="button" class="relative flex items-center text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+
+          <div class="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto ml-4 sm:pr-0">
+            <span onclick="openMenu()" class="cursor-pointer">
+              <a type="button" class="relative flex items-center px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
                 <span class="text-xs pe-3">$0.00</span>
                 <span class="absolute -inset-1.5"></span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -89,7 +61,7 @@
                 </svg>
               </a>
             </span>
-            <button id="user-icon-button" type="button" class="relative p-1 ml-4 mr-4 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <button id="user-icon-button" type="button" class="relative ml-4 px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
               <span class="absolute -inset-1.5"></span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -104,13 +76,12 @@
       <div class="absolute z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg right-0 md:right-[100px] ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-icon-details">
         <!-- Active: "bg-gray-100", Not Active: "" -->
         <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Edit Profile</a>
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Orders</a>
+        <a href="/orders" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Orders</a>
         <form action="/logout" method="post">
           @csrf
           <button class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
         </form>
       </div>
-
 
       <!-- Mobile menu, show/hide based on menu state. -->
       <div class="sm:hidden" id="mobile-menu">
@@ -120,7 +91,6 @@
           <a href="/contact" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Contact</a>
         </div>
       </div>
-
     </nav>
 
     <script>
