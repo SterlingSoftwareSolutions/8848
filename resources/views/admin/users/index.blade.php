@@ -52,7 +52,7 @@
             <x-user-row :user="$user" />
             @endforeach
             <div class="flex justify-center p-5">
-                {{$user->appends($_GET)->links()}}
+                {{$users->appends($_GET)->links()}}
             </div>
         </div>
     </div>
