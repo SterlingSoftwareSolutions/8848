@@ -1,60 +1,40 @@
 @extends('layouts.admin') @section('content')
 
 <div class="md:mb-5">
-
     <div class="flex flex-col items-center gap-2 mx-2 mt-5 md:flex-row md:mx-10 ">
-            
-            <div class="flex justify-between w-full md:mt-5">
-                <form class="flex gap-5 items-center">   
-                    <div class="relative w-full">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
-                            </svg>
-                        </div>
-                        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5  " placeholder="Search branch name..." required>
-                    </div>
-                    <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-900 rounded-lg border hover:bg-blue-800 focus:ring-4 focus:outline-none">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                        <span class="sr-only">Search</span>
-                    </button>
-                    <div class="w-1/2 pr-5 -mt-4">
-                        <label class="block text-gray-700 text-sm font-bold" for="username">
-                            Type 
-                          </label>
-                        <select id="customer_type" class=" p-2 border rounded-lg">
-                            <option value="wholesale">Wholesale Customer</option>
-                            <option value="wholesale">User 1</option>
-                            <option value="wholesale">User 2</option>
-                            <option value="retail">Retail Customer</option>
-                        </select>
-                    </div>
-                    <div class="w-1/2 pr-5 -mt-4">
-                        <label class="block text-gray-700 text-sm font-bold " for="username">
-                            Priority
-                          </label>
-                        <select id="priority_level" class="p-2 border rounded-lg">
-                            <option value="wholesale">High</option>
-                            <option value="wholesale">User 1</option>
-                            <option value="wholesale">User 2</option>
-                            <option value="wholesale">Medium</option>
-                            <option value="retail">Low</option>
-                        </select>
-                    </div>
-                </form>
+        <div class="flex justify-between w-full md:mt-5">
+
+            <form class="flex gap-4 items-center">
+                <input name="search" type="text" class="px-4 bg-white rounded h-12 border border-blue-900" placeholder="Search ..." value="{{$_GET['search'] ?? null}}">
+
+                <button type="submit" class="p-4 text-white rounded bg-blue-900">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+
+                <select name="role"class="px-4 bg-white rounded h-12 border border-blue-900" onchange="this.form.submit()">
+                    <option value="">Any Type</option>
+                    <option value="client_wholesale" @if(($_GET['role'] ?? null) == 'client_wholesale') selected @endif>Wholesale</option>
+                    <option value="client_retail" @if(($_GET['role'] ?? null) == 'client_retail') selected @endif>Retail</option>
+                </select>
+
+                <select name="priority"class="px-4 bg-white rounded h-12 border border-blue-900" onchange="this.form.submit()">
+                    <option value="">Any Priority</option>
+                    <option value="high"  @if(($_GET['priority'] ?? null) == 'high') selected @endif>High</option>
+                    <option value="medium" @if(($_GET['priority'] ?? null) == 'medium') selected @endif>Medium</option>
+                    <option value="low" @if(($_GET['priority'] ?? null) == 'low') selected @endif>Low</option>
+                </select>
+            </form>
 
             <a href="/admin/users/create">
-                <h1 class="text-center text-white bg-blue-900 rounded-lg px-4 py-3 h-12 w-40">Add Customer </h1>
+                <div class="text-center text-white bg-blue-900 rounded py-2.5 h-12 w-40">Add Customer</div>
             </a>
         </div>
     </div>
 
-
-
     {{-- End Dropdowns & Buttons Row --}}
-
     <div class="flex flex-col mx-2 border-2 md:mt-5 md:mx-10 ">
         <!-- Box 1: Customer List -->
         <div class="text-blue-900 ">
@@ -72,18 +52,9 @@
             <x-user-row :user="$user" />
             @endforeach
             <div class="flex justify-center p-5">
-                {{$users->links()}}
+                {{$user->appends($_GET)->links()}}
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-</div>
-</div>
-
-
 </div>
 @endsection

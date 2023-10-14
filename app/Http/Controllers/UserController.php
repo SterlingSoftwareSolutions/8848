@@ -15,6 +15,25 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $query = User::query();
+
+        if($request->role){
+            $query->where('role', $request->role);
+        } else{
+            $query->whereIn('role', ['client_retail', 'client_wholesale']);
+        }
+
+        if($request->priority){
+            $query->where('priority', $request->priority);
+        }
+
+        if($request->search){
+            $query->where('first_name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('last_name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('phone', 'LIKE', '%' . $request->search . '%');
+        }
+
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
@@ -23,7 +42,7 @@ class UserController extends Controller
         }
 
         return view('admin.users.index', [
-            'users' => User::where('role', 'client_retail')->orWhere('role', 'client_wholesale')->paginate(10)
+            'users' => $query->paginate(10)
         ]);
     }
 
@@ -46,6 +65,7 @@ class UserController extends Controller
             'email' => 'required|string|email|unique:users,email',
             'phone' => 'required|string|unique:users,phone',
             'role' => 'required',
+            'priority' => 'required',
             'password' => 'required|confirmed',
 
             'billing_first_name' => 'required',
@@ -75,6 +95,7 @@ class UserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'role' => $request->role,
+            'priority' => $request->priority,
             'password' => Hash::make($request->password)
         ]);
 
@@ -178,6 +199,7 @@ class UserController extends Controller
             'email' => 'required|string|email|unique:users,email,' . $user->id,
             'phone' => 'required|string|unique:users,phone,' . $user->id,
             'role' => 'required',
+            'priority' => 'required',
 
             'billing_first_name' => 'required',
             'billing_last_name' => 'required',
@@ -206,6 +228,7 @@ class UserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'role' => $request->role,
+            'priority' => $request->priority,
         ]);
 
         // Billing Address

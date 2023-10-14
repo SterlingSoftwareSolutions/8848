@@ -22,7 +22,7 @@
             @endforeach
         @endif
         <div class="flex justify-center p-5">
-            {{$orders->links()}}
+            {{$orders->appends($_GET)->links()}}
         </div>
     </div>
 </div>

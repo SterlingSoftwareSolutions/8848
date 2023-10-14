@@ -227,6 +227,6 @@ class CartController extends Controller
             ]);
         }
 
-        return back();
+        return redirect('/orders/' . $order->id);
     }
 }
