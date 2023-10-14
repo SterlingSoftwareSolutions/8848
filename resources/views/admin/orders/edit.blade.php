@@ -16,11 +16,16 @@
                 <div class="text-start">
                     <div class="font-semibold mb-2">Status</div>
                     <select class="p-3 bg-blue-50 border-blue-300 w-40 border rounded-lg" name="status">
+                        <option value="unverified" @if($order->status == 'unverified') selected @endif>Unverified</option>
                         <option value="pending" @if($order->status == 'pending') selected @endif>Pending</option>
+                        <option value="processing" @if($order->status == 'processing') selected @endif>Processing</option>
                         <option value="shipped" @if($order->status == 'shipped') selected @endif>Shipped</option>
                         <option value="delivered" @if($order->status == 'delivered') selected @endif>Delivered</option>
+                        <option value="returned" @if($order->status == 'returned') selected @endif>Returned</option>
                         <option value="canceled" @if($order->status == 'canceled') selected @endif>Canceled</option>
+                        <option value="rejected" @if($order->status == 'rejected') selected @endif>Rejected</option>
                     </select>
+                    <x-input-error :messages="$errors->get('status')" class="mt-2" />
                 </div>
                 <div class="text-start">
                     <div class="font-semibold mb-2">Payment Status</div>
@@ -28,7 +33,9 @@
                         <option value="unpaid" @if($order->payment_status == 'unpaid') selected @endif>Unpaid</option>
                         <option value="paid" @if($order->payment_status == 'paid') selected @endif>Paid</option>
                         <option value="partial" @if($order->payment_status == 'partial') selected @endif>Partial</option>
+                        <option value="refunded" @if($order->payment_status == 'refunded') selected @endif>Refunded</option>
                     </select>
+                    <x-input-error :messages="$errors->get('payment_status')" class="mt-2" />
                 </div>
                 <div class="text-start ms-auto">
                     <b class="font-semibold">Date:</b> {{$order->created_at}}
@@ -52,7 +59,7 @@
                 @else
                 <!-- Order items -->
                 @foreach($order->items as $item)
-                <x-order-item-row :item="$item" />
+                <x-order-item-row :item="$item" :admin="$order->status == 'unverified' || $order->status == 'pending'" />
                 @endforeach
                 @endif
             </div>

@@ -31,14 +31,16 @@
   </div>
 
   <div class="md:flex flex-row gap-1 w-[20%] mx-1">
+    @if($order->status == 'unverified')
     <div class="w-40">
-      <h1 class="px-2 py-2 mx-auto text-center text-white bg-green-600 rounded-lg">Approve </h1>
+      <a href="/admin/orders/{{$order->id}}/approve"><h1 class="px-2 py-2 mx-auto text-center bg-green-600 text-white rounded-lg">Approve</h1></a>
     </div>
     <div class="w-40">
-      <h1 class="px-2 py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Cancel </h1>
+      <a href="/admin/orders/{{$order->id}}/reject"><h1 class="px-2 py-2 mx-auto text-center bg-red-600 text-white rounded-lg">Reject</h1></a>
     </div>
+    @endif
     <div class="w-40">
-      <a href="/admin/orders/{{$order->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1></a>
+      <a href="/admin/orders/{{$order->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center bg-gray-600 text-white rounded-lg">Edit </h1></a>
     </div>
   </div>
 </div>
