@@ -148,7 +148,13 @@ class CartController extends Controller
             ]);  
         }
             return back()->withErrors(['error' => "Failed to remvoe item from cart"]);
-        }
+    }
+
+    public function checkout_form()
+    {
+        return view('app.checkout');
+    }
+
 
     public function checkout(Request $request)
     {

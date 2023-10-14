@@ -35,7 +35,7 @@
           <a href="/cart" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
             View cart
           </a>
-          <a href="/cart/checkout" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
+          <a href="/checkout" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
             Checkout
           </a>
         </div>

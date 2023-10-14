@@ -56,7 +56,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/add', [CartController::class, 'add']);
     Route::post('/cart', [CartController::class, 'bulkupdate']);
     Route::post('/cart/remove', [CartController::class, 'remove']);
-    Route::get('/cart/checkout', [CartController::class, 'checkout']);
+
+    // Checkout
+    Route::get('/checkout', [CartController::class, 'checkout_form']);
+    Route::post('/checkout', [CartController::class, 'checkout']);
 
     // Orders
     Route::get('/orders', [OrderController::class, 'index_client']);
