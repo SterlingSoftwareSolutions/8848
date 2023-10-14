@@ -56,9 +56,10 @@
 
         <div class="text-blue-900">
             <div class="flex flex-row p-5 bg-gray-200">
-                <p class="w-[15%]">Number</p>
+                <p class="w-[10%]">Order ID</p>
+                <p class="w-[10%]">Type</p>
                 <p class="w-[10%]">Date</p>
-                <p class="w-[15%]">Customer Name</p>
+                <p class="w-[10%]">Customer Name</p>
                 <p class="w-[10%]">Status</p>
                 <p class="w-[10%]">Items</p>
                 <p class="w-[10%]">Discount</p>

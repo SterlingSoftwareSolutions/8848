@@ -123,7 +123,7 @@
                 <!-- Checkout Button -->
                 <div class="flex justify-end">
                     <div class="h-12 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
-                        <a href="/cart/checkout">
+                        <a href="/checkout">
                             <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
                                 Checkout
                             </button>
