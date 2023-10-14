@@ -32,7 +32,7 @@
                 </div>
                 <!-- Button -->
                 <div class="mt-3 ml-auto">
-                    <button type="button" class="text-red-700 hover:text-indigo-950 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                    <button type="button" class="text-red-700 hover:text-indigo-950 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">
                         x
                     </button>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
                 <!-- Button -->
                 <div class="mt-3 ml-auto">
-                    <button type="button" class="font-light text-red-700 hover:text-indigo-950 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                    <button type="button" class="font-light text-red-700 hover:text-indigo-950 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">
                         x
                     </button>
                 </div>
@@ -64,7 +64,7 @@
             @csrf
             <!-- Table -->
             <div class="relative mt-10 overflow-x-auto">
-                <table class="w-full text-xl font-light text-center text-gray-500 dark:text-gray-400">
+                <table class="w-full text-xl font-light text-center text-gray-500 ">
                     <thead class="text-lg font-light capitalize text-gray-6600">
                         <!-- Table Headings -->
                         <tr>
