@@ -17,10 +17,10 @@
                     <h1 class=" text-base font-semibold text-[#284297]">{{$item->variant->product->title}}</h1>
                     <div class="flex flex-row gap-20">
                         <h1 class=" text-lg font-semibold text-[#48525c]">{{$item->quantity}} × ${{$item->variant->price}}</h1>
-                        <form action="/cart/remove/" method="post" id="cart_remove_{{$item->id}}">
+                        <form action="/cart/remove/" method="post">
                             @csrf
                             <input type="hidden" value="{{$item->variant->id}}" name="variant_id">
-                            <button type="submit" form="cart_remove_{{$item->id}}"><i class="mt-2 fa-solid fa-xmark"></i></button>
+                            <button type="submit"><i class="mt-2 fa-solid fa-xmark"></i></button>
                         </form>
                     </div>
                   </div>
