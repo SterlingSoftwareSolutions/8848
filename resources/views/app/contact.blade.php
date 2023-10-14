@@ -25,7 +25,7 @@
     <div class="flex flex-col md:w-8/12  gap-4 mx-auto mt-10 md:flex-row">
         <div class="w-full md:w-3/12">
             <img
-                class="mx-auto border-green-500"
+                class="mx-auto border-green-500 w-14 h-14"
                 src="{{ asset('images/Group 204.png') }}"
             />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
@@ -35,7 +35,7 @@
 
         <div class="w-full md:w-3/12">
             <img
-                class="mx-auto border-green-500"
+                class="mx-auto border-green-500 w-14 h-14"
                 src="{{ asset('images/Group 205.png') }}"
             />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
@@ -45,18 +45,19 @@
 
         <div class="w-full md:w-3/12">
             <img
-                class="mx-auto border-green-500"
+                class="mx-auto border-green-500 w-14 h-14"
                 src="{{ asset('images/Group 206.png') }}"
             />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
                 support@gimigimi.com
+                
             </p>
         </div>
 
         <div class="w-full md:w-3/12">
             <img
-                class="mx-auto border-green-500"
-                src="{{ asset('images/Group 206.png') }}"
+                class="mx-auto border-green-500 w-14 h-14"
+                src="{{ asset('images/Group 209.png') }}"
             />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
                 Monday - Saturday Sunday is Closed
