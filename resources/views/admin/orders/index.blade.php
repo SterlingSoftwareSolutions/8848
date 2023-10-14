@@ -29,7 +29,13 @@
                     <option value="canceled" @if(($_GET['status'] ?? null) == 'canceled') selected @endif>Canceled</option>
                     <option value="rejected" @if(($_GET['status'] ?? null) == 'rejected') selected @endif>Rejected</option>
                 </select>
-            </form>        
+
+                <select name="order_type"class="px-4 bg-white rounded h-12 border border-blue-900" onchange="this.form.submit()">
+                    <option value="">Any Type</option>
+                    <option value="wholesale" @if(($_GET['order_type'] ?? null) == 'wholesale') selected @endif>Wholesale</option>
+                    <option value="retail" @if(($_GET['order_type'] ?? null) == 'retail') selected @endif>Retail</option>
+                </select>
+            </form>
         </div>
     </div>
     {{-- End Dropdowns & Buttons Row --}}

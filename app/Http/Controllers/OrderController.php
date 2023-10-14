@@ -61,6 +61,10 @@ class OrderController extends Controller
             $query->where('status', $request->status);
         }
 
+        if($request->order_type){
+            $query->where('order_type', $request->order_type);
+        }
+
         if($request->search){
             $query->where('reference', 'LIKE', $request->search);
         }
