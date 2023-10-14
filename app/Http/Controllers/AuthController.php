@@ -78,21 +78,22 @@ class AuthController extends Controller
             'billing_last_name' => 'required',
             'billing_company' => 'required',
             'billing_address_line_1' => 'required',
-            'billing_address_line_2' => 'required',
+            'billing_address_line_2' => 'nullable',
             'billing_city' => 'required',
             'billing_zip' => 'required',
             'billing_state' => 'required',
             'billing_phone' => 'required',
 
-            'shipping_first_name' => 'required',
-            'shipping_last_name' => 'required',
-            'shipping_company' => 'required',
-            'shipping_address_line_1' => 'required',
-            'shipping_address_line_2' => 'required',
-            'shipping_city' => 'required',
-            'shipping_zip' => 'required',
-            'shipping_state' => 'required',
-            'shipping_phone' => 'required'
+            'ship_to_billing' => 'required',
+            'shipping_first_name' => 'required_if:ship_to_billing,no',
+            'shipping_last_name' => 'required_if:ship_to_billing,no',
+            'shipping_company' => 'required_if:ship_to_billing,no',
+            'shipping_address_line_1' => 'required_if:ship_to_billing,no',
+            'shipping_address_line_2' => 'nullable',
+            'shipping_city' => 'required_if:ship_to_billing,no',
+            'shipping_zip' => 'required_if:ship_to_billing,no',
+            'shipping_state' => 'required_if:ship_to_billing,no',
+            'shipping_phone' => 'required_if:ship_to_billing,no'
         ]);
 
         $user->update([
@@ -124,24 +125,29 @@ class AuthController extends Controller
         }
 
         // Shipping Address
-        $shipping_address_data = [
-            'user_id' => $user->id,
-            'type' => 'shipping',
-            'first_name' => $request->shipping_first_name,
-            'last_name' => $request->shipping_last_name,
-            'company' => $request->shipping_company,
-            'address_line_1' => $request->shipping_address_line_1,
-            'address_line_2' => $request->shipping_address_line_2,
-            'city' => $request->shipping_city,
-            'zip' => $request->shipping_zip,
-            'state' => $request->shipping_state,
-            'phone' => $request->shipping_phone,
-        ];
+        if($request->ship_to_billing == 'no')
+        {
+            $shipping_address_data = [
+                'user_id' => $user->id,
+                'type' => 'shipping',
+                'first_name' => $request->shipping_first_name,
+                'last_name' => $request->shipping_last_name,
+                'company' => $request->shipping_company,
+                'address_line_1' => $request->shipping_address_line_1,
+                'address_line_2' => $request->shipping_address_line_2,
+                'city' => $request->shipping_city,
+                'zip' => $request->shipping_zip,
+                'state' => $request->shipping_state,
+                'phone' => $request->shipping_phone,
+            ];
 
-        if($user->address_shipping != null){
-            $user->address_shipping->update($shipping_address_data);
-        } else{
-            Address::create($shipping_address_data);
+            if($user->address_shipping != null){
+                $user->address_shipping->update($shipping_address_data);
+            } else{
+                Address::create($shipping_address_data);
+            }
+        } elseif($user->address_shipping){
+            $user->address_shipping->delete();
         }
 
         if ($request->wantsJson()) {
