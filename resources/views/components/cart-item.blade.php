@@ -49,11 +49,8 @@
 
     <!-- Delete icon -->
     <td class="px-6 py-4 text-center md:text-left">
-        <form action="/cart/remove/" method="post" id="cart_remove_{{$cartitem->id}}">
-            @csrf
-            <input type="hidden" value="{{$cartitem->variant->id}}" name="variant_id">
-            <button type="submit" form="cart_remove_{{$cartitem->id}}"><i
-                    class="w-1/12 fa-solid fa-trash-can"></i></button>
-        </form>
+        <a href="/cart/remove/{{$cartitem->variant->id}}">
+        <button type="submit" form="cart_remove_{{$cartitem->id}}"><i class="w-1/12 fa-solid fa-trash-can"></i></button>
+        </a>
     </td>
 </tr>
