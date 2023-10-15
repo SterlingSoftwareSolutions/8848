@@ -138,4 +138,20 @@ class User extends Authenticatable
     {
         return $this->role == 'client_wholesale';
     }
+
+    public function cart_total()
+    {
+        return $this->cart_items->sum(function ($cart_item) {
+            return $cart_item->variant->price * $cart_item->quantity;
+        });
+
+    }
+
+    public function cart_quantity()
+    {
+        return $this->cart_items->sum(function ($cart_item) {
+            return $cart_item->quantity;
+        });
+
+    }
 }
