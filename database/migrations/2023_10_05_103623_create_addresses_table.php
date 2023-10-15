@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('type', ['billing', 'shipping']);
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('phone')->nullable();
             $table->string('company')->nullable();
-            $table->string('address_line_1');
+            $table->string('address_line_1')->nullable();
             $table->string('address_line_2')->nullable();
-            $table->string('city');
-            $table->string('zip');
-            $table->string('state');
+            $table->string('city')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('state')->nullable();
             $table->timestamps();
 
             // Compound unique constraint on user_id and type
