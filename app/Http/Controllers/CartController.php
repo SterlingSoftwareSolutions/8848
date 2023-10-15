@@ -152,11 +152,16 @@ class CartController extends Controller
     public function checkout_form()
     {
         $user = Auth::user();
+
         if (!$user || Auth::user()->is_whsl_user()) {
             return redirect()->back();
         }
 
-        return view('app.checkout', ['cart_items' => $user->cart_items, 'sub_totle' => $user->cart_total(), 'user' => $user]);
+        return view('app.checkout', [
+            'cart_items' => $user->cart_items,
+            'cart_total' => $user->cart_total(),
+            'user' => $user
+        ]);
     }
 
     public function checkout(Request $request)
@@ -181,21 +186,25 @@ class CartController extends Controller
             'billing_zip' => 'required|string',
             'billing_state' => 'required|string',
             'billing_phone' => 'required|string|min:10',
-            'save_billing' => 'required:in:yes,no',
+            'save_billing' => 'nullable',
 
-            'ship_to_billing' => 'required',
+            'ship_elsewhere' => 'nullable',
 
-            'shipping_first_name' => 'required_if:ship_to_billing,0|string',
-            'shipping_last_name' => 'required_if:ship_to_billing,0|string',
-            'shipping_company' => 'required_if:ship_to_billing,0|string',
-            'shipping_address_line_1' => 'required_if:ship_to_billing,0|string',
-            'shipping_address_line_2' => 'required_if:ship_to_billing,0|string',
-            'shipping_city' => 'required_if:ship_to_billing,0|string',
-            'shipping_zip' => 'required_if:ship_to_billing,0|string',
-            'shipping_state' => 'required_if:ship_to_billing,0|string',
-            'shipping_phone' => 'required_if:ship_to_billing,0|string|min:10',
-            'save_shipping' => 'required:in:yes,no',
+            'shipping_first_name' => 'required_with:ship_elsewhere',
+            'shipping_last_name' => 'required_with:ship_elsewhere',
+            'shipping_company' => 'required_with:ship_elsewhere',
+            'shipping_address_line_1' => 'required_with:ship_elsewhere',
+            'shipping_address_line_2' => 'required_with:ship_elsewhere',
+            'shipping_city' => 'required_with:ship_elsewhere',
+            'shipping_zip' => 'required_with:ship_elsewhere',
+            'shipping_state' => 'required_with:ship_elsewhere',
+            'shipping_phone' => 'required_with:ship_elsewhere',
+            'save_shipping' => 'nullable',
 
+            'clear_cart' => 'nullable'
+
+        ], [
+            'required_with' => 'The :attribute field is required.'
         ]);
 
         $data = [
@@ -220,19 +229,7 @@ class CartController extends Controller
         ];
 
         // Shipping address is the same as billing address?
-        if($request->ship_to_billing == 1){
-            $shipping_address = [
-                'shipping_first_name' => $request->billing_first_name,
-                'shipping_last_name' => $request->billing_last_name,
-                'shipping_company' => $request->billing_company,
-                'shipping_address_line_1' => $request->billing_address_line_1,
-                'shipping_address_line_2' => $request->billing_address_line_2,
-                'shipping_city' => $request->billing_city,
-                'shipping_zip' => $request->billing_zip,
-                'shipping_state' => $request->billing_state,
-                'shipping_phone' => $request->billing_phone,
-            ];
-        } else{
+        if($request->ship_elsewhere == 1){
             $shipping_address = [
                 'shipping_first_name' => $request->shipping_first_name,
                 'shipping_last_name' => $request->shipping_last_name,
@@ -244,23 +241,46 @@ class CartController extends Controller
                 'shipping_state' => $request->shipping_state,
                 'shipping_phone' => $request->shipping_phone,
             ];
+        } else{
+            $shipping_address = [];
+            foreach ($billing_address as $key => $value) {
+                $new_key = str_replace('billing_', 'shipping_', $key);
+                $shipping_address[$new_key] = $value;
+            }
         }
 
         // Save the billing address to user's profile
         if($request->save_billing){
+            $billing_address_save = [
+                'type' => 'billing'
+            ];
+
+            foreach ($billing_address as $key => $value) {
+                $new_key = str_replace('billing_', '', $key);
+                $billing_address_save[$new_key] = $value;
+            }
+
             if($user->address_billing){
-                $user->address_billing->update($billing_address);
+                $user->address_billing->update($billing_address_save);
             } else{
-                Address::create($billing_address);
+                Address::create($billing_address_save);
             }
         }
 
         // Save the shipping address to user's profile
-        if($request->save_shipping && !$request->ship_to_billing){
+        if($request->save_shipping && $request->ship_elsewhere){
+            $shipping_address_save = [
+                'type' => 'shipping'
+            ];
+            foreach ($shipping_address as $key => $value) {
+                $new_key = str_replace('shipping_', '', $key);
+                print_r($new_key . ' : ', $value);
+                $shipping_address_save[$new_key] = $value;
+            }
             if($user->address_shipping){
-                $user->address_shipping->update($shipping_address);
+                $user->address_shipping->update($shipping_address_save);
             } else{
-                Address::create($shipping_address);
+                Address::create($shipping_address_save);
             }
         }
 
@@ -287,7 +307,9 @@ class CartController extends Controller
         ]);
 
         // Clear the user's cart
-        $user->cart_empty();
+        if($request->clear_cart){
+            $user->cart_empty();
+        }
 
         if($request->wantsJson()){
             return response()->json([
