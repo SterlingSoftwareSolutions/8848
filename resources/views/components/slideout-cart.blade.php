@@ -16,7 +16,9 @@
                   <div class="flex flex-col gap-5">
                     <h1 class=" text-base font-semibold text-[#284297]">{{$item->variant->product->title}}</h1>
                     <div class="flex flex-row gap-20">
+                        @if (!auth()->user()->is_whsl_user())
                         <h1 class=" text-lg font-semibold text-[#48525c]">{{$item->quantity}} × ${{$item->variant->price}}</h1>
+                        @endif
                         <form action="/cart/remove/" method="post">
                             @csrf
                             <input type="hidden" value="{{$item->variant->id}}" name="variant_id">
@@ -29,14 +31,16 @@
         @endif
 
         <hr class="w-full">
+        @if (!auth()->user()->is_whsl_user())
         <h1 class="mt-5 text-xl font-extrabold text-center text-black ">Subtotal: <span class="text-xl font-semibold ">${{$total_price}}</span></h1>
+        @endif
         <hr class="w-full mt-5">
         <div class="flex flex-row justify-center gap-5 mt-5">
           <a href="/cart" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
             View cart
           </a>
           <a href="/checkout" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
-            Checkout
+            {{auth()->user()->is_whsl_user() ? 'Place order' : 'Checkout'}}
           </a>
         </div>
     </div>

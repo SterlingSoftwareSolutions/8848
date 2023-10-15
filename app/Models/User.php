@@ -127,4 +127,31 @@ class User extends Authenticatable
     public function cart_empty(){
         $this->cart_items()->delete();
     }
+
+    public function is_rtl_user()
+    {
+
+        return $this->role == 'client_retail';
+    }
+
+    public function is_whsl_user()
+    {
+        return $this->role == 'client_wholesale';
+    }
+
+    public function cart_total()
+    {
+        return $this->cart_items->sum(function ($cart_item) {
+            return $cart_item->variant->price * $cart_item->quantity;
+        });
+
+    }
+
+    public function cart_quantity()
+    {
+        return $this->cart_items->sum(function ($cart_item) {
+            return $cart_item->quantity;
+        });
+
+    }
 }

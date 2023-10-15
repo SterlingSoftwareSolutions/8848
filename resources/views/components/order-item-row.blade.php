@@ -13,6 +13,7 @@
         {{$item->variant->product->title}}
     </div>
 
+    @if (!auth()->user()->is_whsl_user())
     <div class="w-1/6">
         ${{$item->full_price}}
     </div>
@@ -24,6 +25,7 @@
         ${{$item->price}}
         @endif
     </div>
+    @endif
 
     <div class="w-1/6">
         @if($admin)
@@ -32,8 +34,9 @@
         {{$item->quantity}} Item{{$item->quantity == 1 ? '' : 's'}}
         @endif
     </div>
-
+    @if (!auth()->user()->is_whsl_user())
     <div class="w-1/6">
         ${{$item->price * $item->quantity}}
     </div>
+    @endif
 </div>
