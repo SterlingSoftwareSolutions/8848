@@ -357,16 +357,17 @@
                             <td>Product</td>
                             <td>Subtotal</td>
                         </tr>
-
+                        @foreach($cart_items as $item)
                         <tr>
                             <td class="flex">
-                                <label class="py-2">8848 Test Product 01</label>
+                                <label class="py-2">{{$item?->variant?->product?->title}} ({{$item?->quantity}})</label>
                             </td>
-                            <td>$30.00</td>
+                            <td>${{$item?->variant?->product?->price()}}</td>
                         </tr>
+                        @endforeach
                         <tr class="ml-2 font-semibold text-gray-500">
                             <td>Sub Total</td>
-                            <td>$30.00</td>
+                            <td>${{number_format($sub_totle, 2)}}</td>
                         </tr>
                         <tr class="ml-2 font-semibold text-gray-500">
                             <td>Discounts</td>
@@ -374,7 +375,7 @@
                         </tr>
                         <tr class="ml-2 font-semibold text-gray-500">
                             <td>Total</td>
-                            <td>$30.00</td>
+                            <td>${{number_format($sub_totle, 2)}}</td>
                         </tr>
                     </table>
                 </div>

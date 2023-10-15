@@ -68,7 +68,7 @@ class CartController extends Controller
         $user = Auth::user();
         $user->cart_add($request->variant_id, $request->quantity ?? 1);
 
-        if($request->wantsJson()){ 
+        if($request->wantsJson()){
             return response()->json([
                 'success' => true,
                 'message' => "Variant {$request->variant_id} added to cart"
@@ -146,16 +146,20 @@ class CartController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => "Variant {$request->variant_id} not found in cart"
-            ]);  
+            ]);
         }
             return back()->withErrors(['error' => "Failed to remvoe item from cart"]);
     }
 
     public function checkout_form()
     {
-        return view('app.checkout');
-    }
+        $user = Auth::user();
+        if (!$user || Auth::user()->is_whsl_user()) {
+            return redirect()->back();
+        }
 
+        return view('app.checkout', ['cart_items' => $user->cart_items, 'sub_totle' => $user->cart_total()]);
+    }
 
     public function checkout(Request $request)
     {
@@ -287,7 +291,7 @@ class CartController extends Controller
         // Clear the user's cart
         $user->cart_empty();
 
-        if($request->wantsJson()){            
+        if($request->wantsJson()){
             return response()->json([
                 'success' => true,
                 'order' => $order->load('items')
