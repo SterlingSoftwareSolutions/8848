@@ -63,7 +63,7 @@ class UserController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email',
-            'phone' => 'required|string|unique:users,phone',
+            'phone' => 'nullable|string|min:10|unique:users',
             'role' => 'required',
             'priority' => 'required',
             'password' => 'required|confirmed',
@@ -197,7 +197,7 @@ class UserController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
-            'phone' => 'nullable|string|unique:users,phone,' . $user->id,
+            'phone' => 'nullable|string|min:10|unique:users,phone,' . $user->id,
             'role' => 'required',
             'priority' => 'required',
 

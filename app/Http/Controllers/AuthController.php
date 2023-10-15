@@ -72,28 +72,27 @@ class AuthController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
-            'phone' => 'required|string|unique:users,phone,' . $user->id,
+            'phone' => 'nullable|string|min:10|unique:users,phone,' . $user->id,
 
-            'billing_first_name' => 'required',
-            'billing_last_name' => 'required',
-            'billing_company' => 'required',
-            'billing_address_line_1' => 'required',
-            'billing_address_line_2' => 'nullable',
-            'billing_city' => 'required',
-            'billing_zip' => 'required',
-            'billing_state' => 'required',
-            'billing_phone' => 'required',
+            'billing_first_name' => 'nullable|string',
+            'billing_last_name' => 'nullable|string',
+            'billing_company' => 'nullable|string',
+            'billing_address_line_1' => 'nullable|string',
+            'billing_address_line_2' => 'nullable|string',
+            'billing_city' => 'nullable|string',
+            'billing_zip' => 'nullable|string',
+            'billing_state' => 'nullable|string',
+            'billing_phone' => 'nullable|string|min:10',
 
-            'ship_to_billing' => 'required',
-            'shipping_first_name' => 'required_if:ship_to_billing,no',
-            'shipping_last_name' => 'required_if:ship_to_billing,no',
-            'shipping_company' => 'required_if:ship_to_billing,no',
-            'shipping_address_line_1' => 'required_if:ship_to_billing,no',
-            'shipping_address_line_2' => 'nullable',
-            'shipping_city' => 'required_if:ship_to_billing,no',
-            'shipping_zip' => 'required_if:ship_to_billing,no',
-            'shipping_state' => 'required_if:ship_to_billing,no',
-            'shipping_phone' => 'required_if:ship_to_billing,no'
+            'shipping_first_name' => 'nullable|string',
+            'shipping_last_name' => 'nullable|string',
+            'shipping_company' => 'nullable|string',
+            'shipping_address_line_1' => 'nullable|string',
+            'shipping_address_line_2' => 'nullable|string',
+            'shipping_city' => 'nullable|string',
+            'shipping_zip' => 'nullable|string',
+            'shipping_state' => 'nullable|string',
+            'shipping_phone' => 'nullable|string|min:10'
         ]);
 
         $user->update([
@@ -125,29 +124,24 @@ class AuthController extends Controller
         }
 
         // Shipping Address
-        if($request->ship_to_billing == 'no')
-        {
-            $shipping_address_data = [
-                'user_id' => $user->id,
-                'type' => 'shipping',
-                'first_name' => $request->shipping_first_name,
-                'last_name' => $request->shipping_last_name,
-                'company' => $request->shipping_company,
-                'address_line_1' => $request->shipping_address_line_1,
-                'address_line_2' => $request->shipping_address_line_2,
-                'city' => $request->shipping_city,
-                'zip' => $request->shipping_zip,
-                'state' => $request->shipping_state,
-                'phone' => $request->shipping_phone,
-            ];
+        $shipping_address_data = [
+            'user_id' => $user->id,
+            'type' => 'shipping',
+            'first_name' => $request->shipping_first_name,
+            'last_name' => $request->shipping_last_name,
+            'company' => $request->shipping_company,
+            'address_line_1' => $request->shipping_address_line_1,
+            'address_line_2' => $request->shipping_address_line_2,
+            'city' => $request->shipping_city,
+            'zip' => $request->shipping_zip,
+            'state' => $request->shipping_state,
+            'phone' => $request->shipping_phone,
+        ];
 
-            if($user->address_shipping != null){
-                $user->address_shipping->update($shipping_address_data);
-            } else{
-                Address::create($shipping_address_data);
-            }
-        } elseif($user->address_shipping){
-            $user->address_shipping->delete();
+        if($user->address_shipping != null){
+            $user->address_shipping->update($shipping_address_data);
+        } else{
+            Address::create($shipping_address_data);
         }
 
         if ($request->wantsJson()) {
