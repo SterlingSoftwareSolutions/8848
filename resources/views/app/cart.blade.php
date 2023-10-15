@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Cart</title>
 </head>
 
@@ -28,15 +30,19 @@
                             <th scope="col" class="w-3/12 px-2 py-3 text-start md:w-2/12">
                                 Variant
                             </th>
+                            @if (!auth()->user()->is_whsl_user())
                             <th scope="col" class="w-1/12 px-2 py-3 md:w-2/12">
                                 Price
                             </th>
+                            @endif
                             <th scope="col" class="w-2/12 px-2 py-3 md:w-2/12">
                                 Quantity
                             </th>
+                            @if (!auth()->user()->is_whsl_user())
                             <th scope="col" class="w-2/12 px-2 py-3 md:w-2/12">
                                 Subtotal
                             </th>
+                            @endif
                             <th scope="col" class="w-1/12 px-2 py-3 md:w-2/12">
 
                             </th>
@@ -60,6 +66,7 @@
                         </button>
                     </div>
                 </div>
+                @if (!auth()->user()->is_whsl_user())
                 <!-- Total Price Display -->
                 <div class="flex flex-row justify-end mt-3">
                     <div class="flex flex-row border border-black md:h-14 md:w-4/12 lg:w-4/12 sm:w-64">
@@ -71,12 +78,13 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <!-- Checkout Button -->
                 <div class="flex justify-end">
                     <div class="h-12 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
                         <a href="/checkout">
                             <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
-                                Checkout
+                                {{auth()->user()->is_whsl_user() ? 'Place order' : 'Checkout'}}
                             </button>
                         </a>
                     </div>

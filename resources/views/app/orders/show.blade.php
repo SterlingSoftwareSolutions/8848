@@ -1,23 +1,23 @@
 @extends('layouts.app', [
-    'title' => 'Order ' . $order->reference,
-    'parent' => ['name' => 'Orders', 'url' => '/orders']
+'title' => 'Order ' . $order->reference,
+'parent' => ['name' => 'Orders', 'url' => '/orders']
 ])
 
 @section('content')
 {{-- End Dropdowns & Buttons Row --}}
 <div class="flex flex-col border-2 rounded-lg">
     <div class="flex flex-row text-gray-700 gap-12 items-center rounded-lg p-5 bg-gray-100">
-            <div class="text-start flex items-center gap-4">
-                <div class="font-semibold">Status:</div>
-                <x-order-status :status="$order->status"/>
-            </div>
-            <div class="text-start flex items-center gap-4">
-                <div class="font-semibold">Payment Status:</div>
-                <x-payment-status :status="$order->payment_status"/>
-            </div>
-            <div class="text-start flex items-center gap-4 ms-auto">
-                <b class="font-semibold">Date:</b> {{$order->created_at}}
-            </div>
+        <div class="text-start flex items-center gap-4">
+            <div class="font-semibold">Status:</div>
+            <x-order-status :status="$order->status" />
+        </div>
+        <div class="text-start flex items-center gap-4">
+            <div class="font-semibold">Payment Status:</div>
+            <x-payment-status :status="$order->payment_status" />
+        </div>
+        <div class="text-start flex items-center gap-4 ms-auto">
+            <b class="font-semibold">Date:</b> {{$order->created_at}}
+        </div>
     </div>
 </div>
 
@@ -26,22 +26,25 @@
         <div class="flex flex-row p-5 bg-gray-100">
             <p class="w-1/6 text-start font-semibold">Product</p>
             <p class="w-2/6 text-start font-semibold"></p>
+            @if (!auth()->user()->is_whsl_user())
             <p class="w-1/6 text-start font-semibold">Price</p>
             <p class="w-1/6 text-start font-semibold">Custom Price</p>
             <p class="w-1/6 text-start font-semibold">Quantity</p>
+            @endif
+            @if (!auth()->user()->is_whsl_user())
             <p class="w-1/6 text-start font-semibold">Subtotal</p>
+            @endif
         </div>
-    @if($order->items->count() < 1)
-        <div class="flex flex-row items-center p-5">
+        @if($order->items->count() < 1) <div class="flex flex-row items-center p-5">
             <div class="w-full text-center py-12">This order has no products</div>
-        </div>
+    </div>
     @else
     <!-- Order items -->
     @foreach($order->items as $item)
-        <x-order-item-row :item="$item" />
+    <x-order-item-row :item="$item" />
     @endforeach
     @endif
-    </div>
+</div>
 </div>
 
 <div class="flex flex-col border-2 rounded-lg mt-4">
