@@ -158,7 +158,7 @@ class CartController extends Controller
             return redirect()->back();
         }
 
-        return view('app.checkout', ['cart_items' => $user->cart_items, 'sub_totle' => $user->cart_total()]);
+        return view('app.checkout', ['cart_items' => $user->cart_items, 'sub_totle' => $user->cart_total(), 'user' => $user]);
     }
 
     public function checkout(Request $request)
