@@ -38,7 +38,7 @@
 
             <!--Slide 2-->
             <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/background.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[650px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[540px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[830px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -49,7 +49,7 @@
 
             <!--Slide 3-->
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
+            <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/composition-cleaning-objects-with-copyspace@0.5x.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
                 <div class="md:mr-[650px]  text-[30px] md:text-5xl text-center text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 md:mr-[540px] text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore Our range of Cleaning &<br> Packing Solution</div>
                 <button class="p-2 md:mr-[830px] mt-4 bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">CLICK HERE TO VIEW OUR RANGE</button>
@@ -113,7 +113,7 @@
                                     <!-- Overlay Image and Text -->
                                     <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                         <!-- Middle Image (Initial) -->
-                                        <img src="{{ asset('images/logo.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
+                                        <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image">
 
                                         <!-- Text (You can customize this) -->
                                         <div class="category_name1 text-[#166eb6] font-semibold text-xl">
@@ -123,12 +123,12 @@
                                 </div>
                                 <!-- Hover image (Initial) -->
                                 <div class="hover-image">
-                                    <img src="{{ asset('images/product.png') }}" alt="Hover Image" class="hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                    <img src="{{ asset('images/product-dummy.jpeg') }}" alt="Hover Image" class="hover_img w-full h-[280px] object-cover absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-50">
 
                                     <!-- Icon and text -->
                                     <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-100">
                                         <!-- Middle Image (Hover) -->
-                                        <img src="{{ asset('images/leaf.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
+                                        <img src="{{ asset('images/leafw.png') }}" alt="Middle Image" class="w-1/2 h-auto middle-image2 tint-red">
                                         <div class="text-xl font-semibold category_name2">
                                             {{ $category['name'] }}
                                         </div>
@@ -143,7 +143,7 @@
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 
