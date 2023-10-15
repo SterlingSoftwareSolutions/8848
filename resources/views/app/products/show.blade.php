@@ -55,7 +55,7 @@
                     <p class="mt-2 text-gray-700">
                         {{ $product->short_description }}
                     </p>
-                    @if (!auth()->user()->is_whsl_user())
+                    @if (auth()->user() && !auth()->user()->is_whsl_user())
                     <p class="mt-5 text-3xl font-bold text-blue-800">${{ $product->price() }}</p>
                     @endif
                     @if($product->in_stock && $product->variants->count() > 0)
@@ -67,7 +67,7 @@
                         @else
                         <select name="variant_id" class="w-1/2 p-4 my-4">
                             @foreach($product->variants as $variant)
-                            <option value="{{$variant->id}}">{{$variant->name}} - ${{!auth()->user()->is_whsl_user() ? $variant->price : null}}</option>
+                            <option value="{{$variant->id}}">{{$variant->name}} - ${{auth()->user() && !auth()->user()->is_whsl_user() ? $variant->price : null}}</option>
                             @endforeach
                         </select>
                         @error('variant_id')
