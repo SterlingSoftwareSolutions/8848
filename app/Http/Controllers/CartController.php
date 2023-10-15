@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderLog;
 use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -123,19 +124,15 @@ class CartController extends Controller
         }
     }
 
-    public function remove(Request $request){
-
-        $request->validate([
-            'variant_id' => 'required|exists:variants,id',
-        ]);
+    public function remove(Request $request, Variant $variant){
 
         $user = Auth::user();
 
-        if($user->cart_remove($request->variant_id)){
+        if($user->cart_remove($variant->id)){
             if($request->wantsJson()){
                 return response()->json([
                     'success' => true,
-                    'message' => "Variant {$request->variant_id} removed from cart"
+                    'message' => "Variant {$variant->id} removed from cart"
                 ]);
             }
 
@@ -148,7 +145,8 @@ class CartController extends Controller
                 'message' => "Variant {$request->variant_id} not found in cart"
             ]);
         }
-            return back()->withErrors(['error' => "Failed to remvoe item from cart"]);
+
+        return back()->withErrors(['error' => "Failed to remove item from cart"]);
     }
 
     public function checkout_form()

@@ -1,6 +1,6 @@
 <form action="/products" class="my-auto"    >
     <div class="flex border-2 border-white rounded-lg overflow-hidden">
-        <select name="category_id" id="dropdown-button" type="button" class="inline-flex max-w-full justify-center bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm" id="menu-button" aria-expanded="true" aria-haspopup="true">
+        <select name="category_id" id="dropdown-button" type="button" class="max-w-[100px] inline-flex justify-center bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm" id="menu-button" aria-expanded="true" aria-haspopup="true">
             <option value="">All</option>
             @foreach($categories as $category)
             <option value="{{$category->id}}" @if(($_GET['category_id'] ?? null) == $category->id) selected @endif>{{$category->name}}</option>

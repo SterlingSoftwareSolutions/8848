@@ -1,6 +1,6 @@
 @extends('layouts.app', [
-'title' => 'Order ' . $order->reference,
-'parent' => ['name' => 'Orders', 'url' => '/orders']
+    'title' => 'Order ' . $order->reference,
+    'parent' => ['name' => 'Orders', 'url' => '/orders']
 ])
 
 @section('content')

@@ -19,11 +19,7 @@
                         @if (!auth()->user()->is_whsl_user())
                         <h1 class=" text-lg font-semibold text-[#48525c]">{{$item->quantity}} × ${{$item->variant->price}}</h1>
                         @endif
-                        <form action="/cart/remove/" method="post">
-                            @csrf
-                            <input type="hidden" value="{{$item->variant->id}}" name="variant_id">
-                            <button type="submit"><i class="mt-2 fa-solid fa-xmark"></i></button>
-                        </form>
+                        <a href="/cart/remove/{{$item->variant->id}}"><button type="submit"><i class="mt-2 fa-solid fa-xmark"></i></button></a>
                     </div>
                   </div>
                 </div>
