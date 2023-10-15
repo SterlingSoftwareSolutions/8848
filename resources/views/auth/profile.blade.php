@@ -188,6 +188,15 @@
             </label>
             <div class="w-full mt-4 border rounded">
                 <div class="w-full p-4" id="shipping-details">
+                    <div class="flex flex-col px-8 mb-4">
+                        <label class="block mb-2 text-sm font-semibold text-gray-700" for="ship_to_billing">
+                            Shipping address is the same as billing address?
+                        </label>
+                        <select name="ship_to_billing" id="ship_to_billing" class="p-2 mt-2" onchange="update_shipping_form()">
+                            <option value="yes" @if(old('ship_to_billing', $user->address_shipping ? 'no' : 'yes') == 'yes') selected @endif >Yes</option>
+                            <option value="no"  @if(old('ship_to_billing', $user->address_shipping ? 'no' : 'yes') == 'no') selected @endif>No</option>
+                        </select>
+                    </div>
                     <div class="px-8 pb-8 mb-4 bg-white rounded" id="shipping-form">
                         {{-- name --}}
                         <div class="flex flex-row mb-4">
@@ -295,4 +304,18 @@
             class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600" disabled>Cancel</button>
     </div>
 </form>
+<script>
+    const ship_to_billing = document.getElementById('ship_to_billing')
+    const shipping_form = document.getElementById('shipping-form')
+    function update_shipping_form(){
+        const option = ship_to_billing.options[ship_to_billing.selectedIndex].value;
+        if(option == 'yes'){
+            shipping_form.style.display = 'none';
+        } else {
+            shipping_form.style.display = 'block'
+        }
+    }
+
+    update_shipping_form();
+</script>
 @endsection

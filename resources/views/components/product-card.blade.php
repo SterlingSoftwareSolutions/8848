@@ -50,7 +50,7 @@
 
     <!-- Product Buttons -->
     <div class="flex items-center justify-center p-2 mt-3 ml-2 flex-col-2">
-        <button type="submit" class="w-1/4 p-1 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
+        <button type="submit" class="w-2/4 p-2 text-blue-500 border-2 border-blue-600 rounded-sm hover:bg-blue-300">
             Favorite
         </button>
         @if($product->in_stock)
