@@ -5,18 +5,29 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+
+
 <body>
     <!-- HEADER -->
-    @include('layouts.admin.header')
+    <header>
+        @include('layouts.admin.header')
+    </header>
 
-    <!-- SIDEBAR -->
-    @include('layouts.admin.sidebar')
+    <div class="flex">
+        <!-- SIDEBAR -->
+        <div class="w-[300px]">
+            @include('layouts.admin.sidebar')
+        </div>
 
-    <div>
-        @yield('content')
+        {{-- CONTENT --}}
+        <div class="w-full">
+            @yield('content')
+        </div>
     </div>
 
     <!-- FOOTER -->
-    @include('layouts.admin.footer')
+    <footer class="mt-4">
+        @include('layouts.admin.footer')
+    </footer>
 </body>
-</html
+</html>
