@@ -28,7 +28,7 @@
                 <span>{{$title}}</span>
             </div>
         @endif
-        <x-errors />
+             <x-errors :margin="!$fullwidth"/>
         @yield('content')
     </div>
 

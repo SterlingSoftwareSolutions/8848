@@ -55,13 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart/add', [CartController::class, 'add']);
     Route::post('/cart', [CartController::class, 'bulkupdate']);
-    Route::post('/cart/remove', [CartController::class, 'remove']);
-
-    // Fixxes occational error where
-    // a GET request was set to /cart/remove
-    Route::get('/cart/remove', function () {
-        return redirect('/cart');
-    });
+    Route::get('/cart/remove/{variant}', [CartController::class, 'remove']);
 
     // Checkout
     Route::get('/checkout', [CartController::class, 'checkout_form']);
