@@ -311,10 +311,8 @@
             </div>
         </div>
         <div class="mt-6 flex justify-end">
-            <button
-                class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
-            <button type="button" 
-                class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600" disabled>Cancel</button>
+            <button class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
+            <a href="/admin/users"><button type="button" class="px-8 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-600">Cancel</button></a>
         </div>
     </form>
 </div>
