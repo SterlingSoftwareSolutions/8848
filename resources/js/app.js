@@ -1,4 +1,6 @@
 import "./bootstrap";
+import $ from 'jquery';
+window.$ = $;
 
 function decrement(e) {
     const btn = e.target.parentNode.parentElement.querySelector(
@@ -35,3 +37,32 @@ decrementButtons.forEach((btn) => {
 incrementButtons.forEach((btn) => {
     btn.addEventListener("click", increment);
 });
+
+// Product add to my list function
+$('.favourite_btn').on('click', function (e) {
+    var productId = $(this).data('favourite')
+    var button = $(this);
+
+    button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i>');
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: '/my-list/' + productId + '/add',
+        success: function (data) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 2000);
+        },
+        error: function (xhr, status, error) {
+            button.prop('disabled', false).html(' Favorite');
+            console.log('request failed: ' + error);
+        }
+    });
+})

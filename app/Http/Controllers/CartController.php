@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    private function parse_cartitems(Request $request){
+    private function parse_cartitems(Request $request)
+    {
         $cart_items = [];
 
         $requestData = $request->all();
@@ -35,14 +36,15 @@ class CartController extends Controller
         return $cart_items;
     }
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $user = Auth::user();
         $items = $user->cart_items;
-        $total_price = $items->sum(function($cart_item){
+        $total_price = $items->sum(function ($cart_item) {
             return $cart_item->variant->price * $cart_item->quantity;
         });
 
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'cart' => [
@@ -60,26 +62,34 @@ class CartController extends Controller
         ]);
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
+
         $request->validate([
             'variant_id' => 'required|exists:variants,id',
             'quantity' => 'nullable|min:1'
         ]);
+
 
         $user = Auth::user();
         $user->cart_add($request->variant_id, $request->quantity ?? 1);
 
-        if($request->wantsJson()){
+        if ($request->has('my_list_item')) {
+            $user->my_list()->where(['product_id' => $request->my_list_item])->delete();
+        }
+
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'message' => "Variant {$request->variant_id} added to cart"
             ]);
-        } else{
+        } else {
             return back()->with(['success' => "Item added to cart"]);
         }
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
         $request->validate([
             'variant_id' => 'required|exists:variants,id',
@@ -88,13 +98,13 @@ class CartController extends Controller
 
         $user = Auth::user();
 
-        if($user->cart_update($request->variant_id, $request->quantity ?? 1)){
-            if($request->wantsJson()){
+        if ($user->cart_update($request->variant_id, $request->quantity ?? 1)) {
+            if ($request->wantsJson()) {
                 return response()->json([
                     'success' => true,
                     'message' => "Variant {$request->variant_id} updated in cart"
                 ]);
-            } else{
+            } else {
                 return back()->with(['success' => 'Item quantity updated']);
             }
         }
@@ -105,31 +115,33 @@ class CartController extends Controller
         ]);
     }
 
-    public function bulkupdate(Request $request){
+    public function bulkupdate(Request $request)
+    {
         $user = Auth::user();
 
         $parsed_cartitems = $this->parse_cartitems($request);
 
-        foreach($parsed_cartitems as $item){
+        foreach ($parsed_cartitems as $item) {
             $user->cart_update($item['id'], $item['quantity']);
         }
 
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'message' => "Variants updated in cart"
             ]);
-        } else{
+        } else {
             return back()->withErrors(['success' => 'Item quantities updated']);
         }
     }
 
-    public function remove(Request $request, Variant $variant){
+    public function remove(Request $request, Variant $variant)
+    {
 
         $user = Auth::user();
 
-        if($user->cart_remove($variant->id)){
-            if($request->wantsJson()){
+        if ($user->cart_remove($variant->id)) {
+            if ($request->wantsJson()) {
                 return response()->json([
                     'success' => true,
                     'message' => "Variant {$variant->id} removed from cart"
@@ -139,7 +151,7 @@ class CartController extends Controller
             return back()->withErrors(['success' => "Item removed from cart"]);
         }
 
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => false,
                 'message' => "Variant {$request->variant_id} not found in cart"
@@ -171,7 +183,7 @@ class CartController extends Controller
         $cart_items = $user->cart_items;
 
         // Can't checkout if the cart is empty
-        if($cart_items->count() < 1){
+        if ($cart_items->count() < 1) {
             return back()->withErrors(['error' => 'Your cart is empty.']);
         }
 
@@ -229,7 +241,7 @@ class CartController extends Controller
         ];
 
         // Shipping address is the same as billing address?
-        if($request->ship_elsewhere == 1){
+        if ($request->ship_elsewhere == 1) {
             $shipping_address = [
                 'shipping_first_name' => $request->shipping_first_name,
                 'shipping_last_name' => $request->shipping_last_name,
@@ -241,7 +253,7 @@ class CartController extends Controller
                 'shipping_state' => $request->shipping_state,
                 'shipping_phone' => $request->shipping_phone,
             ];
-        } else{
+        } else {
             $shipping_address = [];
             foreach ($billing_address as $key => $value) {
                 $new_key = str_replace('billing_', 'shipping_', $key);
@@ -250,7 +262,7 @@ class CartController extends Controller
         }
 
         // Save the billing address to user's profile
-        if($request->save_billing){
+        if ($request->save_billing) {
             $billing_address_save = [
                 'type' => 'billing'
             ];
@@ -260,15 +272,15 @@ class CartController extends Controller
                 $billing_address_save[$new_key] = $value;
             }
 
-            if($user->address_billing){
+            if ($user->address_billing) {
                 $user->address_billing->update($billing_address_save);
-            } else{
+            } else {
                 Address::create($billing_address_save);
             }
         }
 
         // Save the shipping address to user's profile
-        if($request->save_shipping && $request->ship_elsewhere){
+        if ($request->save_shipping && $request->ship_elsewhere) {
             $shipping_address_save = [
                 'type' => 'shipping'
             ];
@@ -277,9 +289,9 @@ class CartController extends Controller
                 print_r($new_key . ' : ', $value);
                 $shipping_address_save[$new_key] = $value;
             }
-            if($user->address_shipping){
+            if ($user->address_shipping) {
                 $user->address_shipping->update($shipping_address_save);
-            } else{
+            } else {
                 Address::create($shipping_address_save);
             }
         }
@@ -289,7 +301,7 @@ class CartController extends Controller
         );
 
         // Add items to the order
-        foreach($cart_items as $item){
+        foreach ($cart_items as $item) {
             OrderItems::create([
                 'order_id' => $order->id,
                 'variant_id' => $item->variant->id,
@@ -307,11 +319,11 @@ class CartController extends Controller
         ]);
 
         // Clear the user's cart
-        if($request->clear_cart){
+        if ($request->clear_cart) {
             $user->cart_empty();
         }
 
-        if($request->wantsJson()){
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'order' => $order->load('items')
