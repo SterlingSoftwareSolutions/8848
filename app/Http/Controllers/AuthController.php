@@ -188,7 +188,7 @@ class AuthController extends Controller
                 ], 200);
             } else {
                 // Cookie Session Authentication
-                return redirect('/');
+                return redirect('/profile')->withErrors(['success' => 'Registration successful, please enter your address details below.']);
             }
 
         } else {
@@ -229,7 +229,7 @@ class AuthController extends Controller
                     return redirect()->intended('/admin');
                 }
                 // Cookie Session Authentication
-                return redirect()->intended('/');
+                return redirect()->intended('/')->withErrors(['success' => 'Login Successful']);
             }
         } else {
             // Authentication failed
@@ -251,7 +251,7 @@ class AuthController extends Controller
         } else {
             // Cookie Session Authentication
             Auth::logout();
-            return redirect('/');
+            return redirect('/login')->withErrors(['success' => 'Logout successful.']);;
         }
     }
 }
