@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -58,8 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart/remove/{variant}', [CartController::class, 'remove']);
 
     // Checkout
-    Route::get('/checkout', [CartController::class, 'checkout_form']);
-    Route::post('/checkout', [CartController::class, 'checkout']);
+    Route::get('/checkout', [CheckoutController::class, 'checkout_form']);
+    Route::post('/checkout', [CheckoutController::class, 'checkout']);
 
     // Orders
     Route::get('/orders', [OrderController::class, 'index_client']);

@@ -235,10 +235,11 @@
                 <div class="w-full">
                     <label>Message:
                         <span class="text-red-500"> *</span></label>
-                    <input class="w-full h-32 px-3 py-2 text-gray-700 border border-black rounded-md" id="phone
-                            type=" text" placeholder="" />
+                        <textarea class="w-full h-32 px-3 py-2 text-gray-700 border border-black rounded-md" id="subject" name="subject" ></textarea>
                 </div>
+               
             </div>
+          
 
             <div class="mt-5 text-center md:mt-10 md:text-left">
                 <button class="bg-gradient-to-b from-[#166EB6] to-[#284297] text-white w-32 md:px-2 md:py-2 rounded-lg">Submit</button>
