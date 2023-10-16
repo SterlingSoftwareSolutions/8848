@@ -10,7 +10,11 @@
   </div>
 
   <div class="w-[10%]">
-    {{$order?->user?->first_name}} {{$order?->user?->last_name}}
+    @if($order->user)
+      {{$order?->user?->first_name}} {{$order?->user?->last_name}}
+    @else
+    <div class="text-red-500">No User</div>
+    @endif
   </div>
 
   <div class="w-[10%]">
