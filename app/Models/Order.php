@@ -41,6 +41,10 @@ class Order extends Model
         'shipping_phone'
     ];
 
+    public function getTotalAttribute(){
+        return $this->total();
+    }
+
     public function items(){
         return $this->hasMany(OrderItems::class);
     }

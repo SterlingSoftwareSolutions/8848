@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,52 +27,25 @@ class HomeController extends Controller
         return view('app.home', compact('categories'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function admin_dashboard()
     {
-        //
-    }
+        $customer_count = User::whereIn('role', ['client_retail', 'client_wholesale'])->count();
+        $product_count = Product::count();
+        $order_count = Order::count();
+        $order_total = Order::all()->sum(function($order){
+            return $order->total();
+        });
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $orders = Order::latest()->take(5)->get();
+        $customers = User::whereIn('role', ['client_retail', 'client_wholesale'])->latest()->take(5)->get();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('admin.dashboard', compact([
+            'customer_count',
+            'product_count',
+            'order_count',
+            'order_total',
+            'customers',
+            'orders'
+        ]));
     }
 }
