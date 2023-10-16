@@ -74,10 +74,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{order}/reorder', [CheckoutController::class, 'reorder']);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
+
         // Dashboard
-        Route::get('/', function () {
-            return view('admin.dashboard');
-        });
+        Route::get('/', [HomeController::class, 'admin_dashboard']);
 
         // CRUD
         Route::resource('/users', UserController::class)->except(['show']);
