@@ -37,11 +37,11 @@
         <button id="user-icon-button" type="button" class="relative p-1 mr-4 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span class="absolute -inset-1.5"></span>
           <span class="sr-only">Open user menu</span>
-          <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          <img class="w-10 h-10 rounded-full" src="/images/avatar.png" alt="">
         </button>
         <div class="flex flex-col ml-4 text-sm text-white">
-          <span class="">User Doe</span>
-          <span class="text-[12px]">hasindu@example.com</span>
+          <span class="">{{Auth::user()?->first_name}} {{Auth::user()?->last_name}}</span>
+          <span class="text-[12px]">{{Auth::user()?->email}}</span>
         </div>
       </div>
     </div>
