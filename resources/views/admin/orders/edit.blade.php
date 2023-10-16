@@ -10,8 +10,12 @@
         <div class="flex flex-row text-gray-700 mx-2 gap-12 bg-gray-100 border items-start rounded-lg p-5">
                 <div class="text-start">
                     <div class="font-semibold mb-2">Customer</div>
-                    {{$order->user->first_name}} {{$order->user->last_name}}<br>
-                    {{$order->user->email}}
+                    @if($order->user)
+                        {{$order->user->first_name}} {{$order->user->last_name}}<br>
+                        {{$order->user->email}}
+                    @else
+                        <div class="text-red-500 mb-2">No User</div>
+                    @endif
                 </div>
                 <div class="text-start">
                     <div class="font-semibold mb-2">Status</div>
