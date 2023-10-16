@@ -118,7 +118,10 @@ class CheckoutController extends Controller
             if($user->address_billing){
                 $user->address_billing->update($billing_address_save);
             } else{
-                Address::create($billing_address_save);
+                Address::create(array_merge($billing_address_save,[
+                    'user_id' => $user->id,
+                    'type' => 'billing'
+                ]));
             }
         }
 
@@ -135,7 +138,10 @@ class CheckoutController extends Controller
             if($user->address_shipping){
                 $user->address_shipping->update($shipping_address_save);
             } else{
-                Address::create($shipping_address_save);
+                Address::create(array_merge($shipping_address_save,[
+                    'user_id' => $user->id,
+                    'type' => 'billing'
+                ]));
             }
         }
 
