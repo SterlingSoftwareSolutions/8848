@@ -1,4 +1,5 @@
 <!doctype html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,38 +15,28 @@
             <div class="py-5">
                 <h1 class="flex items-center justify-center ml-4 font-bold text-left text-black text-md">Edit User Details</h1>
             </div>
-            
+
             <div>
                 <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                     <div class="flex items-center justify-center">
                         <img src="{{ URL('images/logo.png')}}" alt="Logo" class="w-16 h-16 border border-gray-400 rounded-full">
                     </div>
-                    
+
                     <div class="flex w-full mx-auto mt-6">
                         {{-- f name --}}
                         <div class="mb-2" style="width: 50%;">
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                 First name
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="company_name"
-                                type="text"
-                                placeholder="First Name"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="text" placeholder="First Name" />
                         </div>
-                    
+
                         {{-- l name --}}
                         <div class="mb-2 ml-8" style="width: 50%;">
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                 Last name
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="company_name"
-                                type="text"
-                                placeholder="Last Name"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="text" placeholder="Last Name" />
                         </div>
                     </div>
 
@@ -55,25 +46,15 @@
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                 Display name
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="company_name"
-                                type="text"
-                                placeholder="Display name"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="text" placeholder="Display name" />
                         </div>
-                    
+
                         {{-- email --}}
                         <div class="mb-2 ml-8" style="width: 50%;">
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                 Email Address
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="company_name"
-                                type="email"
-                                placeholder="Email"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="email" placeholder="Email" />
                         </div>
                     </div>
 
@@ -87,12 +68,7 @@
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="current_password">
                                 Current password (leave blank to leave unchanged)
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="current_password"
-                                type="password"
-                                placeholder="Current password"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="current_password" type="password" placeholder="Current password" />
                             {{-- <div class="absolute top-0 right-0 mt-3 mr-3">
                                 <button
                                     class="bg-transparent border-none outline-none focus:outline-none"
@@ -113,38 +89,28 @@
                                 </button>
                             </div> --}}
                         </div>
-                    
+
                         {{-- New password --}}
                         <div class="mb-2 ml-8" style="width: 50%;">
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                 New password (leave blank to leave unchanged)
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="company_name"
-                                type="password"
-                                placeholder="New password"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="password" placeholder="New password" />
                         </div>
-                        
+
                         {{-- Confirm new password --}}
                         <div class="mb-2 ml-8" style="width: 50%;">
                             <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                 Confirm new password
                             </label>
-                            <input
-                                class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                id="company_name"
-                                type="password"
-                                placeholder="Confirm new password"
-                            />
+                            <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="password" placeholder="Confirm new password" />
                         </div>
                     </div>
-                    
+
                     <button class="p-2 font-bold text-white bg-blue-500 rounded-md">
                         Save Changes
                     </button>
-  
+
                 </form>
             </div>
         </div>
@@ -174,20 +140,15 @@
                                     <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="lastname" placeholder="Last name" />
                                 </div>
                             </div>
-    
+
                             {{-- company --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                     Company Name (optional)
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="company_name"
-                                    type="text"
-                                    placeholder="Company Name"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="text" placeholder="Company Name" />
                             </div>
-                            
+
                             {{-- country/region --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_region">
@@ -197,77 +158,47 @@
                                     <option class="text-sm" value="">US</option>
                                 </select>
                             </div>
-    
+
                             {{-- street Address --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="street-address">
                                     Street address
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="House number and street name"
-                                />
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Apartment, suite, unit, etc. (optional)"
-                                />
+                                <input class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="House number and street name" />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Apartment, suite, unit, etc. (optional)" />
                             </div>
-    
+
                             {{-- town/city --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="towm-city">
                                     Town/City
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Town/City"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Town/City" />
                             </div>
-    
-    
+
+
                             {{-- zip-code --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="zip_code">
-                                    ZIP Code
+                                    Postal Code
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Zip Code"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Postal Code" />
                             </div>
-    
+
                             {{-- phone --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="number">
                                     Phone
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="number"
-                                    placeholder="Phone"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="number" placeholder="Phone" />
                             </div>
-                            
+
                             {{-- email --}}
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="email">
                                     Email Address
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none"
-                                    id="email"
-                                    type="email"
-                                    placeholder="Email"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none" id="email" type="email" placeholder="Email" />
                             </div>
 
                             <button class="p-2 font-semibold text-white bg-blue-500 rounded-md">
@@ -300,20 +231,15 @@
                                     <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="" id="lastname" placeholder="Last name" />
                                 </div>
                             </div>
-    
+
                             {{-- company --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_name">
                                     Company Name (optional)
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="company_name"
-                                    type="text"
-                                    placeholder="Company Name"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="company_name" type="text" placeholder="Company Name" />
                             </div>
-                            
+
                             {{-- country/region --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_region">
@@ -323,63 +249,38 @@
                                     <option class="text-sm" value="">US</option>
                                 </select>
                             </div>
-    
+
                             {{-- street Address --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="street-address">
                                     Street address
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="House number and street name"
-                                />
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Apartment, suite, unit, etc. (optional)"
-                                />
+                                <input class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="House number and street name" />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Apartment, suite, unit, etc. (optional)" />
                             </div>
-    
+
                             {{-- town/city --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="towm-city">
                                     Town/City
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Town/City"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Town/City" />
                             </div>
-    
+
                             {{-- zip-code --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="zip_code">
-                                    ZIP Code
+                                    Postal Code
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="text"
-                                    placeholder="Zip Code"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Postal Code" />
                             </div>
-    
+
                             {{-- phone --}}
                             <div class="mb-2">
                                 <label class="block mb-2 text-sm font-semibold text-gray-700" for="number">
                                     Phone
                                 </label>
-                                <input
-                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id=""
-                                    type="number"
-                                    placeholder="Phone"
-                                />
+                                <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" type="number" placeholder="Phone" />
                             </div>
 
                             <button class="p-2 font-semibold text-white bg-blue-500 rounded-md">
@@ -395,35 +296,35 @@
     <div class="mt-20">
         @include('layouts.app.footer')
     </div>
-    
+
 </body>
+
 </html>
 <script>
-// Get references to the button and the form
-const editButton = document.getElementById("edit-billing-address");
-const billingForm = document.getElementById("billing-form");
+    // Get references to the button and the form
+    const editButton = document.getElementById("edit-billing-address");
+    const billingForm = document.getElementById("billing-form");
 
-// Add a click event listener to the button
-editButton.addEventListener("click", () => {
-    // Toggle the visibility of the form
-    if (billingForm.style.display === "none" || billingForm.style.display === "") {
-        billingForm.style.display = "block";
-    } else {
-        billingForm.style.display = "none";
-    }
-});
+    // Add a click event listener to the button
+    editButton.addEventListener("click", () => {
+        // Toggle the visibility of the form
+        if (billingForm.style.display === "none" || billingForm.style.display === "") {
+            billingForm.style.display = "block";
+        } else {
+            billingForm.style.display = "none";
+        }
+    });
 
-const editButtonb = document.getElementById("edit-shipping-address");
-const shippingForm = document.getElementById("shipping-form");
+    const editButtonb = document.getElementById("edit-shipping-address");
+    const shippingForm = document.getElementById("shipping-form");
 
-// Add a click event listener to the button
-editButtonb.addEventListener("click", () => {
-    // Toggle the visibility of the form
-    if (shippingForm.style.display === "none" || shippingForm.style.display === "") {
-        shippingForm.style.display = "block";
-    } else {
-        shippingForm.style.display = "none";
-    }
-});
-
+    // Add a click event listener to the button
+    editButtonb.addEventListener("click", () => {
+        // Toggle the visibility of the form
+        if (shippingForm.style.display === "none" || shippingForm.style.display === "") {
+            shippingForm.style.display = "block";
+        } else {
+            shippingForm.style.display = "none";
+        }
+    });
 </script>
