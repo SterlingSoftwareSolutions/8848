@@ -8,7 +8,7 @@
             <p class="w-1/6 text-start font-semibold">Date</p>
             <p class="w-1/6 text-start font-semibold">Status</p>
             <p class="w-1/6 text-start font-semibold">Items</p>
-            @if (!auth()->user()->is_whsl_user())
+            @if (!auth()->user()->is_wholesale())
             <p class="w-1/6 text-start font-semibold">Total</p>
             @endif
             <p class="w-1/6 text-start font-semibold">Action</p>

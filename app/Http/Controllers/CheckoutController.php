@@ -15,7 +15,7 @@ class CheckoutController extends Controller
     {
         $user = Auth::user();
 
-        if (!$user || Auth::user()->is_whsl_user()) {
+        if (!$user || Auth::user()->is_wholesale()) {
             return redirect()->back();
         }
 
@@ -37,37 +37,25 @@ class CheckoutController extends Controller
             return back()->withErrors(['error' => 'Your cart is empty.']);
         }
 
-        // Validate inputs
-        $request->validate([
-            'billing_first_name' => 'required|string',
-            'billing_last_name' => 'required|string',
-            'billing_company' => 'required|string',
-            'billing_address_line_1' => 'required|string',
-            'billing_address_line_2' => 'required|string',
-            'billing_city' => 'required|string',
-            'billing_zip' => 'required|string',
-            'billing_state' => 'required|string',
-            'billing_phone' => 'required|string|min:10',
+        // Validation rules
+        $rules = [
             'save_billing' => 'nullable',
-
             'ship_elsewhere' => 'nullable',
-
-            'shipping_first_name' => 'required_with:ship_elsewhere',
-            'shipping_last_name' => 'required_with:ship_elsewhere',
-            'shipping_company' => 'required_with:ship_elsewhere',
-            'shipping_address_line_1' => 'required_with:ship_elsewhere',
-            'shipping_address_line_2' => 'required_with:ship_elsewhere',
-            'shipping_city' => 'required_with:ship_elsewhere',
-            'shipping_zip' => 'required_with:ship_elsewhere',
-            'shipping_state' => 'required_with:ship_elsewhere',
-            'shipping_phone' => 'required_with:ship_elsewhere',
-            'save_shipping' => 'nullable',
-
             'clear_cart' => 'nullable'
+        ];
 
-        ], [
-            'required_with' => 'The :attribute field is required.'
-        ]);
+        $billing_validations = Address::rules('billing_', true);
+
+        if($request->ship_elsewhere){
+            $shipping_validations = Address::rules('shipping_', true);
+        } else{
+            $shipping_validations = [];
+        }
+
+        // Validate inputs
+        $request->validate(
+            array_merge($rules, $billing_validations, $shipping_validations)
+        );
 
         $data = [
             'reference' => $this->generateRandomString(),
@@ -181,5 +169,12 @@ class CheckoutController extends Controller
         }
 
         return redirect('/orders/' . $order->id);
+    }
+
+    public function checkout_wholesale(Request $request){
+        $user = Auth::user();
+        $billing_address = $user->address_billing?->validated();
+        $shipping_address = $user->address_shipping?->validated();
+        dd($billing_address, $shipping_address);
     }
 }
