@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		@vite(['resources/css/app.css', 'resources/js/app.js'])
 		<style>
 			.table, .table th, .table td {
 			  border: 1px solid black;
