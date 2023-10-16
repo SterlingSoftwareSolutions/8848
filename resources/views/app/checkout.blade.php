@@ -7,33 +7,8 @@
     @csrf
     <div class="flex gap-4">
         <div class="flex flex-col w-8/12">
-            <div class="flex flex-col gap-4 w-full border rounded p-8">
-                <h1 class="text-lg font-bold">Billing address</h1>
-                <div class="bg-white rounded" id="billing_form">
-                    <x-address-form :prefix=" 'billing_' " :address="Auth::user()->address_billing"/>
-                    <div class="flex gap-2 items-center">
-                        <input id="save_billing" name="save_billing" type="checkbox" value="1" class="h-4 w-4 rounded-full shadow" @checked(old('save_billing'))>
-                        <label for="save_billing" class="font-medium text-sm">Save as default</label>
-                    </div>
-                </div>
-                <h1 class="text-lg font-bold mt-4">Shipping address</h1>
-                <div class="flex gap-2 items-center">
-                    <input id="ship_elsewhere"
-                        name="ship_elsewhere"
-                        type="checkbox"
-                        value="1"
-                        class="h-4 w-4 rounded-full shadow"
-                        onchange="ship_elsewhere_update()" 
-                        @checked(old('ship_elsewhere'))>
-                    <label for="ship_elsewhere" class="font-medium text-sm">Ship to a different address</label>
-                </div>
-                <div class="bg-white rounded" id="shipping_form">
-                    <x-address-form :prefix=" 'shipping_' " :address="Auth::user()->address_shipping"/>
-                    <div class="flex gap-2 items-center">
-                        <input id="save_shipping" name="save_shipping" type="checkbox" value="1" class="h-4 w-4 rounded-full shadow" @checked(old('save_shipping'))>
-                        <label for="save_shipping" class="font-medium text-sm">Save as default</label>
-                    </div>
-                </div>
+            <div class="flex flex-col gap-8 w-full border rounded p-8">
+                <x-addresses :user="$user" :show_save="true"/>
             </div>
         </div>
 
