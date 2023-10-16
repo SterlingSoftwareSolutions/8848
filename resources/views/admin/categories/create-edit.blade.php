@@ -1,6 +1,6 @@
 @props([
-    'category' => null,
-    'parent_categories' => null
+'category' => null,
+'parent_categories' => null
 ])
 
 @extends('layouts.admin') @section('content')
@@ -15,12 +15,12 @@
                 <div class="flex flex-col w-full">
                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Parent Category:</label>
                     <select name="parent_id" type="text" id="category" class="bg-gray-50 border disabled:bg-gray-300 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" @if($category && $category->parent_id == null) disabled @elseif($category) required @endif>
-                    <option value="">None</option>
-                    @foreach($parent_categories as $parent_category)
+                        <option value="">Add as Parent Category</option>
+                        @foreach($parent_categories as $parent_category)
                         @if($parent_category->id != ($category->id ?? null))
                         <option value="{{$parent_category->id}}" @if(($category->parent_id ?? null) == $parent_category->id) selected @elseif(Request::get('parent') == $parent_category->id) selected @endif>{{$parent_category->name}}</option>
                         @endif
-                    @endforeach
+                        @endforeach
                     </select>
                     <x-input-error :messages="$errors->get('parent_id')" class="mt-2" />
                 </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="w-full">
                     <label class="block mb-2 text-sm font-medium text-gray-900 " for="file_input">@if($category->background_url ?? null) Change @endif Category Image</label>
-                    <input  name="background_image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="file">
+                    <input name="background_image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="file">
                     <x-input-error :messages="$errors->get('background_image')" class="mt-2" />
                 </div>
             </div>
