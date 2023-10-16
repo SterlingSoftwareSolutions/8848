@@ -15,7 +15,7 @@
     <div class="w-1/6">
         {{$order->items->count()}} Item{{$order->items->count() == 1 ? '' : 's'}}
     </div>
-    @if (!auth()->user()->is_whsl_user())
+    @if (!auth()->user()->is_wholesale())
     <div class="w-1/6">
         ${{$order->items->sum('price')}}
     </div>

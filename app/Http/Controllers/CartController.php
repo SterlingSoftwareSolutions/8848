@@ -2,12 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
-use App\Models\CartItems;
-use App\Models\Order;
-use App\Models\OrderItems;
-use App\Models\OrderLog;
-use App\Models\Product;
 use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -26,12 +26,12 @@
         <div class="flex flex-row p-5 bg-gray-100">
             <p class="w-1/6 text-start font-semibold">Product</p>
             <p class="w-2/6 text-start font-semibold"></p>
-            @if (!auth()->user()->is_whsl_user())
+            @if (!auth()->user()->is_wholesale())
             <p class="w-1/6 text-start font-semibold">Price</p>
             <p class="w-1/6 text-start font-semibold">Custom Price</p>
             <p class="w-1/6 text-start font-semibold">Quantity</p>
             @endif
-            @if (!auth()->user()->is_whsl_user())
+            @if (!auth()->user()->is_wholesale())
             <p class="w-1/6 text-start font-semibold">Subtotal</p>
             @endif
         </div>

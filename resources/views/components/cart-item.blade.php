@@ -15,7 +15,7 @@
         {{$cartitem->variant->name}}
     </td>
     <!-- Price -->
-    @if (!auth()->user()->is_whsl_user())
+    @if (!auth()->user()->is_wholesale())
     <td class="w-1/12 px-6 py-4 text-center md:text-left">
         ${{$cartitem->variant->price}}
     </td>
@@ -41,7 +41,7 @@
         </div>
     </td>
     <!-- Subtotal -->
-    @if (!auth()->user()->is_whsl_user())
+    @if (!auth()->user()->is_wholesale())
     <td class="w-2/12 px-6 py-4 text-blue-900 text-center md:text-left">
         ${{$cartitem->variant->price * $cartitem->quantity}}
     </td>

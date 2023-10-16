@@ -26,7 +26,7 @@
             value="1"
             class="h-4 w-4 rounded-full shadow"
             onchange="ship_elsewhere_update()" 
-            @checked(old('ship_elsewhere', $user?->address_shipping ? true : false))>
+            @checked(old('ship_elsewhere', !$show_save && ($user?->address_shipping ? true : false)))>
         <label for="ship_elsewhere" class="font-medium text-sm">Ship to a different address</label>
     </div>
     <div class="bg-white rounded" id="shipping_form">
