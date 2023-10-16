@@ -41,7 +41,7 @@
     @else
     <!-- Order items -->
     @foreach($order->items as $item)
-    <x-order-item-row :item="$item" />
+    <x-order-item-row :item="$item" :admin="false"/>
     @endforeach
     @endif
 </div>
