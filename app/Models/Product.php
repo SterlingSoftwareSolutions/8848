@@ -19,7 +19,8 @@ class Product extends Model
         'image_1_url',
         'image_2_url',
         'image_3_url',
-        'image_4_url'
+        'image_4_url',
+        'file_url'
     ];
 
     protected $hidden = [
@@ -89,6 +90,19 @@ class Product extends Model
         return $this->image(4);
     }
 
+    public function getFileAttribute(){
+        $url = $this->file_url;
+
+        if (!$url) {
+            return null;
+        }
+
+        if (str_starts_with($url, 'http')) {
+            return $url;
+        } else {
+            return '/' . str_replace('public', 'storage', $url);
+        }
+    }
 
     public function getAvailableOnFavouriteAttribute()
     {

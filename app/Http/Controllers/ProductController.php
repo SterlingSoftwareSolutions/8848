@@ -183,10 +183,12 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'sub_category_id' => 'nullable|exists:categories,id',
             'in_stock' => 'nullable',
+
             'image_1' => 'required|image|max:4096',
             'image_2' => 'nullable|image|max:4096',
             'image_3' => 'nullable|image|max:4096',
             'image_4' => 'nullable|image|max:4096',
+            'pdf_file' => 'nullable|file|max:4096',
 
             'variant_name_01' => 'required',
             'variant_price_01' => 'required',
@@ -205,7 +207,8 @@ class ProductController extends Controller
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : null,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : null,
             'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : null,
-            'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : null
+            'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : null,
+            'file_url' => $request->pdf_file ? $request->pdf_file->store('public/product_files') : null
         ]);
 
         foreach($variants as $variant) {
@@ -293,6 +296,7 @@ class ProductController extends Controller
             'image_2' => 'nullable|file|max:4096',
             'image_3' => 'nullable|file|max:4096',
             'image_4' => 'nullable|file|max:4096',
+            'pdf_file' => 'nullable|file|max:4096',
         ]);
 
 
@@ -308,7 +312,8 @@ class ProductController extends Controller
             'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : $product->image_2_url,
             'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : $product->image_3_url,
-            'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : $product->image_4_url
+            'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : $product->image_4_url,
+            'file_url' => $request->pdf_file ? $request->pdf_file->store('public/product_files') : $product->file_url
         ]);
 
         // Delete variants
