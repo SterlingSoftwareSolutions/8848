@@ -34,7 +34,6 @@ Route::get('/register', [AuthController::class, 'register_form'])->name('registe
 Route::post('/register', [AuthController::class, 'register']);
 
 // Public Routes
-
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/contact', function () {
@@ -62,6 +61,7 @@ Route::middleware('auth')->group(function () {
     // Checkout
     Route::get('/checkout', [CheckoutController::class, 'checkout_form']);
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/place-order', [CheckoutController::class, 'checkout_wholesale']);
 
     // Orders
     Route::get('/my-list', [MyListController::class, 'index']);

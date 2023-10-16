@@ -81,8 +81,8 @@
                         Order</button>
                 </div>
                 <div class="flex gap-2 mt-2 my-4 mx-4 text-[12px] text-gray-500">
-                    <input id="clear_cart" name="clear_cart" type="checkbox" value="1" class="h-4 w-4 shadow" @checked(old('clear_cart'))>
-                    <label for="clear_cart" class="text-[12px] text-gray-500">Clear the cart.</label>
+                    <input id="dont_clear_cart" name="dont_clear_cart" type="checkbox" value="1" class="h-4 w-4 shadow" @checked(old('dont_clear_cart'))>
+                    <label for="dont_clear_cart" class="text-[12px] text-gray-500">Don't clear the cart.</label>
                 </div>
             </div>
         </div>
