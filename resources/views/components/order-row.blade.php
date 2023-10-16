@@ -30,7 +30,7 @@
   </div>
 
   <div class="w-[10%]">
-    ${{$order?->items->sum('price')}}
+    ${{$order->total()}}
   </div>
 
   <div class="md:flex flex-row gap-1 w-[10%] mx-1">
