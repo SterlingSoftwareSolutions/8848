@@ -46,11 +46,12 @@ class Product extends Model
         return $this->hasMany(Variant::class);
     }
 
-    public function price(){
+    public function price()
+    {
         $prices = $this->variants->pluck('price')->toArray();
-        if(count($prices) <= 1){
+        if (count($prices) <= 1) {
             return $prices[0] ?? 0;
-        } else{
+        } else {
             return min($prices) . ' - ' . max($prices);
         }
     }
@@ -58,31 +59,42 @@ class Product extends Model
     public function image($index)
     {
         $url = $this['image_' . $index . '_url'];
-        if(!$url){
+        if (!$url) {
             return '/images/product-dummy.jpeg';
         }
-        if(str_starts_with($url, 'http')){
+        if (str_starts_with($url, 'http')) {
             return $url;
-        } else{
+        } else {
             return '/' . str_replace('public', 'storage', $url);
         }
     }
 
-    public function getImage1Attribute(){
+    public function getImage1Attribute()
+    {
         return $this->image(1);
     }
 
-    public function getImage2Attribute(){
+    public function getImage2Attribute()
+    {
         return $this->image(2);
     }
 
-    public function getImage3Attribute(){
+    public function getImage3Attribute()
+    {
         return $this->image(3);
     }
 
-    public function getImage4Attribute(){
+    public function getImage4Attribute()
+    {
         return $this->image(4);
     }
 
 
+    public function getAvailableOnFavouriteAttribute()
+    {
+
+        if ($user = auth()->user()) {
+            return $user->my_list()->where('product_id', $this->id)->exists();
+        }
+    }
 }

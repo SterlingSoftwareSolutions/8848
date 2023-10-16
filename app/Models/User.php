@@ -63,6 +63,10 @@ class User extends Authenticatable
         return $this->hasMany(CartItems::class);
     }
 
+    public function my_list(){
+        return $this->hasMany(MyList::class);
+    }
+
     public function cart_add($variant, $quantity = 1){
 
         if($variant instanceof Variant){
