@@ -7,7 +7,7 @@
     @csrf
     <div class="flex gap-4">
         <div class="flex flex-col w-8/12">
-            <div class="flex flex-col gap-4 w-full border rounded p-8">
+            <div class="flex flex-col gap-8 w-full border rounded p-8">
                 <x-addresses :user="$user" :show_save="true"/>
             </div>
         </div>
