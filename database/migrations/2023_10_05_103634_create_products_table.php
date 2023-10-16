@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('image_2_url')->nullable();
             $table->string('image_3_url')->nullable();
             $table->string('image_4_url')->nullable();
+            $table->string('file_url')->nullable();
             $table->timestamps();
         });
     }

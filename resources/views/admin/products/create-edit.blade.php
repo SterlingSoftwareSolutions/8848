@@ -82,8 +82,8 @@
             </div>
             <div>
                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Upload Catelog :</label>
-                <input id="file_input" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <x-input-error :messages="$errors->get('file_input')" class="mt-2" />
+                <input id="file_input" name="pdf_file" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <x-input-error :messages="$errors->get('pdf_file')" class="mt-2" />
             </div>
             <div>
                 <label for="in_stock" class="block mb-2 text-sm font-medium text-gray-900">In Stock :</label>
