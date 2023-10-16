@@ -18,6 +18,8 @@
         <div class="flex flex-row gap-20">
           @if (!auth()->user()->is_wholesale())
           <h1 class="text-lg font-semibold text-[#48525c]">{{$item->quantity}} × ${{$item->variant->price}}</h1>
+          @else
+          <h1 class="text-lg font-semibold text-[#48525c]">{{$item->quantity}}</h1>
           @endif
           <a href="/cart/remove/{{$item->variant->id}}">
             <button type="submit"><i class="mt-2 fa-solid fa-xmark"></i></button>
