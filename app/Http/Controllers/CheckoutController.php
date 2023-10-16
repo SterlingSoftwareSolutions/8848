@@ -67,7 +67,7 @@ class CheckoutController extends Controller
             'reference' => $this->generateRandomString(),
             'user_id' => $user->id,
             'order_type' => 'retail',
-            'status' => $user->role == 'pending',
+            'status' => 'pending',
             'payment_status' => 'unpaid',
             'discount' => 0,
         ];
