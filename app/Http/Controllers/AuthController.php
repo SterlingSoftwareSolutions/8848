@@ -68,32 +68,27 @@ class AuthController extends Controller
             ])->save();
         }
 
-        $request->validate([
+        // Validation rules
+        $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email,' . $user->id,
             'phone' => 'nullable|string|min:10|unique:users,phone,' . $user->id,
+            'ship_elsewhere' => 'nullable'
+        ];
 
-            'billing_first_name' => 'nullable|string',
-            'billing_last_name' => 'nullable|string',
-            'billing_company' => 'nullable|string',
-            'billing_address_line_1' => 'nullable|string',
-            'billing_address_line_2' => 'nullable|string',
-            'billing_city' => 'nullable|string',
-            'billing_zip' => 'nullable|string',
-            'billing_state' => 'nullable|string',
-            'billing_phone' => 'nullable|string|min:10',
+        $billing_validations = Address::rules('billing_', false);
 
-            'shipping_first_name' => 'nullable|string',
-            'shipping_last_name' => 'nullable|string',
-            'shipping_company' => 'nullable|string',
-            'shipping_address_line_1' => 'nullable|string',
-            'shipping_address_line_2' => 'nullable|string',
-            'shipping_city' => 'nullable|string',
-            'shipping_zip' => 'nullable|string',
-            'shipping_state' => 'nullable|string',
-            'shipping_phone' => 'nullable|string|min:10'
-        ]);
+        if($request->ship_elsewhere){
+            $shipping_validations = Address::rules('shipping_', false);
+        } else{
+            $shipping_validations = [];
+        }
+
+        // Validate inputs
+        $request->validate(
+            array_merge($rules, $billing_validations, $shipping_validations)
+        );
 
         $user->update([
             'first_name' => $request->first_name,
@@ -138,10 +133,14 @@ class AuthController extends Controller
             'phone' => $request->shipping_phone,
         ];
 
-        if($user->address_shipping != null){
-            $user->address_shipping->update($shipping_address_data);
+        if($request->ship_elsewhere){
+            if($user->address_shipping != null){
+                $user->address_shipping->update($shipping_address_data);
+            } else{
+                Address::create($shipping_address_data);
+            }
         } else{
-            Address::create($shipping_address_data);
+            $user->address_shipping?->delete();
         }
 
         if ($request->wantsJson()) {

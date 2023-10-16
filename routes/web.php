@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MyListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,6 @@ Route::get('/register', [AuthController::class, 'register_form'])->name('registe
 Route::post('/register', [AuthController::class, 'register']);
 
 // Public Routes
-
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/contact', function () {
@@ -61,8 +61,12 @@ Route::middleware('auth')->group(function () {
     // Checkout
     Route::get('/checkout', [CheckoutController::class, 'checkout_form']);
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/place-order', [CheckoutController::class, 'checkout_wholesale']);
 
     // Orders
+    Route::get('/my-list', [MyListController::class, 'index']);
+    Route::post('/my-list/{product}/add', [MyListController::class, 'add']);
+    Route::delete('/my-list/{product}/remove', [MyListController::class, 'remove'])->name('removeMyList');
     Route::get('/orders', [OrderController::class, 'index_client']);
     Route::get('/orders/{order}', [OrderController::class, 'show_client']);
 
@@ -81,6 +85,5 @@ Route::middleware('auth')->group(function () {
         // Order review
         Route::get('/orders/{order}/reject', [OrderController::class, 'reject']);
         Route::get('/orders/{order}/approve', [OrderController::class, 'approve']);
-
     });
 });

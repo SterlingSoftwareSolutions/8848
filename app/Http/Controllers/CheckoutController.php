@@ -15,8 +15,9 @@ class CheckoutController extends Controller
     {
         $user = Auth::user();
 
-        if (!$user || Auth::user()->is_whsl_user()) {
-            return redirect()->back();
+        // This route doesn't exist for wholesale users
+        if($user->is_wholesale()){
+            return abort(404);
         }
 
         return view('app.checkout', [
@@ -28,53 +29,45 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {
-        // Fetch user's cart
         $user = Auth::user();
-        $cart_items = $user->cart_items;
+
+        // This route doesn't exist for wholesale users
+        if($user->is_wholesale()){
+            return abort(404);
+        }
 
         // Can't checkout if the cart is empty
+        $cart_items = $user->cart_items;
         if($cart_items->count() < 1){
             return back()->withErrors(['error' => 'Your cart is empty.']);
         }
 
-        // Validate inputs
-        $request->validate([
-            'billing_first_name' => 'required|string',
-            'billing_last_name' => 'required|string',
-            'billing_company' => 'required|string',
-            'billing_address_line_1' => 'required|string',
-            'billing_address_line_2' => 'required|string',
-            'billing_city' => 'required|string',
-            'billing_zip' => 'required|string',
-            'billing_state' => 'required|string',
-            'billing_phone' => 'required|string|min:10',
+        // Validation rules
+        $rules = [
             'save_billing' => 'nullable',
-
             'ship_elsewhere' => 'nullable',
+            'dont_clear_cart' => 'nullable'
+        ];
 
-            'shipping_first_name' => 'required_with:ship_elsewhere',
-            'shipping_last_name' => 'required_with:ship_elsewhere',
-            'shipping_company' => 'required_with:ship_elsewhere',
-            'shipping_address_line_1' => 'required_with:ship_elsewhere',
-            'shipping_address_line_2' => 'required_with:ship_elsewhere',
-            'shipping_city' => 'required_with:ship_elsewhere',
-            'shipping_zip' => 'required_with:ship_elsewhere',
-            'shipping_state' => 'required_with:ship_elsewhere',
-            'shipping_phone' => 'required_with:ship_elsewhere',
-            'save_shipping' => 'nullable',
+        $billing_validations = Address::rules('billing_', true);
 
-            'clear_cart' => 'nullable'
+        if($request->ship_elsewhere){
+            $shipping_validations = Address::rules('shipping_', true);
+        } else{
+            $shipping_validations = [];
+        }
 
-        ], [
-            'required_with' => 'The :attribute field is required.'
-        ]);
+        // Validate inputs
+        $request->validate(
+            array_merge($rules, $billing_validations, $shipping_validations)
+        );
 
         $data = [
             'reference' => $this->generateRandomString(),
             'user_id' => $user->id,
-            'order_type' => $user->role == 'client_wholesale' ? 'wholesale' : 'retail',
-            'status' => $user->role == 'client_wholesale' ? 'unverified' : 'pending',
-            'payment_status' => $user->role == 'client_wholesale' ? 'unpaid' : 'paid',
+            'order_type' => 'retail',
+            'status' => $user->role == 'pending',
+            'payment_status' => 'unpaid',
             'discount' => 0,
         ];
 
@@ -169,9 +162,116 @@ class CheckoutController extends Controller
         ]);
 
         // Clear the user's cart
-        if($request->clear_cart){
+        if(!$request->dont_clear_cart){
             $user->cart_empty();
         }
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'order' => $order->load('items')
+            ]);
+        }
+
+        return redirect('/orders/' . $order->id);
+    }
+
+    public function checkout_wholesale(Request $request)
+    {
+        $user = Auth::user();
+
+        // This route doesn't exist for retail users
+        if($user->is_retail()){
+            return abort(404);
+        }
+
+        // Can't checkout if the cart is empty
+        $cart_items = $user->cart_items;
+        if($cart_items->count() < 1){
+            return back()->withErrors(['error' => 'Your cart is empty.']);
+        }
+
+        // Billing address
+        $saved_billing_address = $user->address_billing;
+        if(!$saved_billing_address){
+            return back()->withErrors(['error' => 'Billing address not found']);
+        }
+
+        $billing_address_data = $saved_billing_address->validated();
+        if(!$billing_address_data){
+            return back()->withErrors(['error' => 'Billing address is incomplete']);
+        }
+
+        // Shipping address
+        $saved_shipping_address = $user->address_shipping;
+        if($saved_shipping_address){
+            $shipping_address_data = $saved_shipping_address->validated();
+            if(!$shipping_address_data){
+                return back()->withErrors(['error' => 'Shipping address is incomplete']);
+            }
+        } else{
+            $shipping_address_data = $billing_address_data;
+        }
+
+        // Format data for order creation
+        $data = [
+            'reference' => $this->generateRandomString(),
+            'user_id' => $user->id,
+            'order_type' => 'wholesale',
+            'status' => 'unverified',
+            'payment_status' => 'unpaid',
+            'discount' => 0,
+        ];
+
+        $billing_address = [
+            'billing_first_name' => $billing_address_data['first_name'],
+            'billing_last_name' => $billing_address_data['last_name'],
+            'billing_company' => $billing_address_data['company'],
+            'billing_address_line_1' => $billing_address_data['address_line_1'],
+            'billing_address_line_2' => $billing_address_data['address_line_2'],
+            'billing_city' => $billing_address_data['city'],
+            'billing_zip' => $billing_address_data['zip'],
+            'billing_state' => $billing_address_data['state'],
+            'billing_phone' => $billing_address_data['phone'],
+        ];
+
+        $shipping_address = [
+            'shipping_first_name' => $shipping_address_data['first_name'],
+            'shipping_last_name' => $shipping_address_data['last_name'],
+            'shipping_company' => $shipping_address_data['company'],
+            'shipping_address_line_1' => $shipping_address_data['address_line_1'],
+            'shipping_address_line_2' => $shipping_address_data['address_line_2'],
+            'shipping_city' => $shipping_address_data['city'],
+            'shipping_zip' => $shipping_address_data['zip'],
+            'shipping_state' => $shipping_address_data['state'],
+            'shipping_phone' => $shipping_address_data['phone'],
+        ];
+
+
+        $order = Order::create(
+            array_merge($data, $billing_address, $shipping_address)
+        );
+
+        // Add items to the order
+        foreach($cart_items as $item){
+            OrderItems::create([
+                'order_id' => $order->id,
+                'variant_id' => $item->variant->id,
+                'quantity' => $item->quantity,
+                'full_price' => $item->variant->price,
+                'price' => $item->variant->price
+            ]);
+        }
+
+        // Log order
+        OrderLog::create([
+            'order_id' => $order->id,
+            'status' => $order->status,
+            'message' => 'Order created'
+        ]);
+
+        // Clear the user's cart
+        $user->cart_empty();
 
         if($request->wantsJson()){
             return response()->json([

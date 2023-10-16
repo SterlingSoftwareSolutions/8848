@@ -63,6 +63,10 @@ class User extends Authenticatable
         return $this->hasMany(CartItems::class);
     }
 
+    public function my_list(){
+        return $this->hasMany(MyList::class);
+    }
+
     public function cart_add($variant, $quantity = 1){
 
         if($variant instanceof Variant){
@@ -128,14 +132,11 @@ class User extends Authenticatable
         $this->cart_items()->delete();
     }
 
-    public function is_rtl_user()
-    {
-
+    public function is_retail(){
         return $this->role == 'client_retail';
     }
 
-    public function is_whsl_user()
-    {
+    public function is_wholesale(){
         return $this->role == 'client_wholesale';
     }
 

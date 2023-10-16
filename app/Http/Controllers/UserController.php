@@ -59,7 +59,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // Validation rules
+        $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|unique:users,email',
@@ -67,27 +68,21 @@ class UserController extends Controller
             'role' => 'required',
             'priority' => 'required',
             'password' => 'required|confirmed',
+            'ship_elsewhere' => 'nullable'
+        ];
 
-            'billing_first_name' => 'nullable|string',
-            'billing_last_name' => 'nullable|string',
-            'billing_company' => 'nullable|string',
-            'billing_address_line_1' => 'nullable|string',
-            'billing_address_line_2' => 'nullable|string',
-            'billing_city' => 'nullable|string',
-            'billing_zip' => 'nullable|string',
-            'billing_state' => 'nullable|string',
-            'billing_phone' => 'nullable|string|min:10',
+        $billing_validations = Address::rules('billing_', false);
 
-            'shipping_first_name' => 'nullable|string',
-            'shipping_last_name' => 'nullable|string',
-            'shipping_company' => 'nullable|string',
-            'shipping_address_line_1' => 'nullable|string',
-            'shipping_address_line_2' => 'nullable|string',
-            'shipping_city' => 'nullable|string',
-            'shipping_zip' => 'nullable|string',
-            'shipping_state' => 'nullable|string',
-            'shipping_phone' => 'nullable|string|min:10'
-        ]);
+        if($request->ship_elsewhere){
+            $shipping_validations = Address::rules('shipping_', false);
+        } else{
+            $shipping_validations = [];
+        }
+
+        // Validate inputs
+        $request->validate(
+            array_merge($rules, $billing_validations, $shipping_validations)
+        );
 
         $user = User::create([
             'first_name' => $request->first_name,
