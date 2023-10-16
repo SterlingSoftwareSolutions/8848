@@ -63,12 +63,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
     Route::get('/place-order', [CheckoutController::class, 'checkout_wholesale']);
 
-    // Orders
+    // My List
     Route::get('/my-list', [MyListController::class, 'index']);
     Route::post('/my-list/{product}/add', [MyListController::class, 'add']);
     Route::delete('/my-list/{product}/remove', [MyListController::class, 'remove'])->name('removeMyList');
+
+    // Orders
     Route::get('/orders', [OrderController::class, 'index_client']);
     Route::get('/orders/{order}', [OrderController::class, 'show_client']);
+    Route::get('/orders/{order}/reorder', [CheckoutController::class, 'reorder']);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         // Dashboard

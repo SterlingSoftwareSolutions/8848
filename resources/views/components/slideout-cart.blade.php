@@ -35,9 +35,15 @@
           <a href="/cart" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
             View cart
           </a>
-          <a href="/checkout" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
-            {{auth()->user()->is_wholesale() ? 'Place order' : 'Checkout'}}
+          @if(Auth::user()->is_wholesale())
+          <a href="/place-order" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
+            Place Order
           </a>
+          @else
+          <a href="/checkout" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
+            Checkout
+          </a>
+          @endif
         </div>
     </div>
     @endif
