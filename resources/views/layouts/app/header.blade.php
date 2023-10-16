@@ -53,6 +53,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="/" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Home</a>
                 <a href="/categories" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Shop</a>
+                <a href="/my-list" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">My List</a>
                 <a href="/contact" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Contact</a>
                 @if(Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin'))
                 <a href="/admin" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Admin</a>
@@ -66,7 +67,7 @@
             <span onclick="openMenu()" class="cursor-pointer">
               <a type="button" class="relative flex items-center px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
                 @if (auth()->user() && auth()->user()->is_rtl_user())
-                    <span class="text-xs pe-3">${{ auth()->user() ? number_format(auth()->user()->cart_total(), 2) : '0.00'}}</span>
+                <span class="text-xs pe-3">${{ auth()->user() ? number_format(auth()->user()->cart_total(), 2) : '0.00'}}</span>
                 @elseif (auth()->user() && auth()->user()->is_whsl_user())
                 @else
                 <span class="text-xs pe-3">$0.00</span>
@@ -96,7 +97,6 @@
             <!-- Active: "bg-gray-100", Not Active: "" -->
             <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-0">Edit Profile</a>
             <a href="/orders" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Orders</a>
-            <a href="/my-list" class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">My List</a>
             <form action="/logout" method="post">
               @csrf
               <button class="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
