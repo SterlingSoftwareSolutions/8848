@@ -19,11 +19,12 @@
     </div>
 
     <div class="w-[10%]">
-        {{$user->role ?? '-'}}
+        {{$user->is_retail() ? 'Retail' : null}}
+        {{$user->is_wholesale() ? 'Wholesale' : null}}
     </div>
 
     <div class="w-[10%]">
-        {{$user->priority ?? '-'}}
+        {{ucwords($user?->priority)}}
     </div>
 
     <div class="md:flex flex-row gap-1 w-[15%] justify-end mx-1">
