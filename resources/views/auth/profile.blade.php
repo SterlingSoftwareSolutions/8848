@@ -1,5 +1,6 @@
 @props([
-    'user' => null
+    'user' => null,
+    'show_save' => false
 ])
 
 @extends('layouts.app', ['title' => 'Edit Profile'])
@@ -76,31 +77,12 @@
         </div>
     </div>
 
-    <div class="w-full gap-3 mt-5 md:flex">
-        <div class="flex flex-col w-full">
-            <label for="Billing-address" class="text-lg font-bold">Billing address</label>
-            <div class="w-full mt-4 border rounded">
-                <div class="w-full p-4" id="billing-details">
-                    <div class="px-8 pb-8 mb-4 bg-white rounded" id="billing-form">
-                            <x-address-form :prefix=" 'billing_' " :address="$user?->address_billing"/>
-                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full">
-            <label for="Shipping-address" class="text-lg font-bold">
-                Shipping address
-            </label>
-            <div class="w-full mt-4 border rounded">
-                <div class="w-full p-4" id="shipping-details">
-                    <div class="px-8 pb-8 mb-4 bg-white rounded" id="shipping-form">
-                        <x-address-form :prefix=" 'shipping_' " :address="$user?->address_shipping"/>
-                    </div>
-                </div>
-            </div>
+    <div class="flex w-full">
+        <div class="flex gap-8 w-full border rounded p-8">
+            <x-addresses :user="$user" :show_save="false"/>
         </div>
     </div>
+
     <div class="mt-6 flex justify-end">
         <button
             class="px-8 py-2 mr-2 font-bold text-white bg-green-600 rounded hover:bg-green-700">Save</button>
