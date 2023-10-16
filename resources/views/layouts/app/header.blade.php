@@ -66,9 +66,9 @@
           <div class="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto ml-4 sm:pr-0">
             <span onclick="openMenu()" class="cursor-pointer">
               <a type="button" class="relative flex items-center px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
-                @if (auth()->user() && auth()->user()->is_rtl_user())
+                @if (auth()->user() && auth()->user()->is_retail())
                 <span class="text-xs pe-3">${{ auth()->user() ? number_format(auth()->user()->cart_total(), 2) : '0.00'}}</span>
-                @elseif (auth()->user() && auth()->user()->is_whsl_user())
+                @elseif (auth()->user() && auth()->user()->is_wholesale())
                 @else
                 <span class="text-xs pe-3">$0.00</span>
                 @endif
