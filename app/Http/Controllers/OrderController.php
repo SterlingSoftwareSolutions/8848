@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderLog;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -169,6 +170,12 @@ class OrderController extends Controller
             'status' => 'rejected'
         ]);
         return back();
+    }
+
+    public function print(Order $order)
+    {
+        $pdf = Pdf::loadView('pdf.invoice', compact('order'))->setPaper('a4', 'portrait');
+        return $pdf->stream($order->reference);
     }
 
     /**
