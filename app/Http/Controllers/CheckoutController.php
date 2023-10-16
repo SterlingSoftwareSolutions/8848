@@ -27,6 +27,7 @@ class CheckoutController extends Controller
         ]);
     }
 
+
     public function checkout(Request $request)
     {
         $user = Auth::user();
@@ -182,47 +183,13 @@ class CheckoutController extends Controller
         return redirect('/orders/' . $order->id);
     }
 
-    public function checkout_wholesale(Request $request)
+
+    public function create_wholesale_order($user_id, $billing_address_data, $shipping_address_data)
     {
-        $user = Auth::user();
-
-        // This route doesn't exist for retail users
-        if($user->is_retail()){
-            return abort(404);
-        }
-
-        // Can't checkout if the cart is empty
-        $cart_items = $user->cart_items;
-        if($cart_items->count() < 1){
-            return back()->withErrors(['error' => 'Your cart is empty.']);
-        }
-
-        // Billing address
-        $saved_billing_address = $user->address_billing;
-        if(!$saved_billing_address){
-            return back()->withErrors(['error' => 'Billing address not found']);
-        }
-
-        $billing_address_data = $saved_billing_address->validated();
-        if(!$billing_address_data){
-            return back()->withErrors(['error' => 'Billing address is incomplete']);
-        }
-
-        // Shipping address
-        $saved_shipping_address = $user->address_shipping;
-        if($saved_shipping_address){
-            $shipping_address_data = $saved_shipping_address->validated();
-            if(!$shipping_address_data){
-                return back()->withErrors(['error' => 'Shipping address is incomplete']);
-            }
-        } else{
-            $shipping_address_data = $billing_address_data;
-        }
-
         // Format data for order creation
         $data = [
             'reference' => $this->generateRandomString(),
-            'user_id' => $user->id,
+            'user_id' => $user_id,
             'order_type' => 'wholesale',
             'status' => 'unverified',
             'payment_status' => 'unpaid',
@@ -253,10 +220,53 @@ class CheckoutController extends Controller
             'shipping_phone' => $shipping_address_data['phone'],
         ];
 
-
         $order = Order::create(
             array_merge($data, $billing_address, $shipping_address)
         );
+
+        return $order;
+    }
+
+
+    public function checkout_wholesale(Request $request)
+    {
+        $user = Auth::user();
+
+        // This route doesn't exist for retail users
+        if($user->is_retail()){
+            return abort(404);
+        }
+
+        // Can't checkout if the cart is empty
+        $cart_items = $user->cart_items;
+        if($cart_items->count() < 1){
+            return back()->withErrors(['error' => 'Your cart is empty.']);
+        }
+
+        // Billing address
+        $saved_billing_address = $user->address_billing;
+        if(!$saved_billing_address){
+            return back()->withErrors(['error' => 'Billing address not found']);
+        }
+
+        $billing_address_data = $saved_billing_address->validated();
+
+        if(!$billing_address_data){
+            return back()->withErrors(['error' => 'Billing address is incomplete']);
+        }
+
+        // Shipping address
+        $saved_shipping_address = $user->address_shipping;
+        if($saved_shipping_address){
+            $shipping_address_data = $saved_shipping_address->validated();
+            if(!$shipping_address_data){
+                return back()->withErrors(['error' => 'Shipping address is incomplete']);
+            }
+        } else{
+            $shipping_address_data = $billing_address_data;
+        }
+
+        $order = $this->create_wholesale_order($user->id, $billing_address_data, $shipping_address_data);
 
         // Add items to the order
         foreach($cart_items as $item){
@@ -287,5 +297,53 @@ class CheckoutController extends Controller
         }
 
         return redirect('/orders/' . $order->id);
+    }
+
+    public function reorder(Order $order)
+    {
+        $user = Auth::user();
+
+        // This route doesn't exist for retail users
+        if($user->id != $order->user_id || $user->is_retail()){
+            return abort(404);
+        }
+
+        // Billing address
+        $saved_billing_address = $user->address_billing;
+        if(!$saved_billing_address){
+            return back()->withErrors(['error' => 'Billing address not found']);
+        }
+
+        $billing_address_data = $saved_billing_address->validated();
+
+        if(!$billing_address_data){
+            return back()->withErrors(['error' => 'Billing address is incomplete']);
+        }
+
+        // Shipping address
+        $saved_shipping_address = $user->address_shipping;
+        if($saved_shipping_address){
+            $shipping_address_data = $saved_shipping_address->validated();
+            if(!$shipping_address_data){
+                return back()->withErrors(['error' => 'Shipping address is incomplete']);
+            }
+        } else{
+            $shipping_address_data = $billing_address_data;
+        }
+
+        $new_order = $this->create_wholesale_order($user->id, $billing_address_data, $shipping_address_data);
+
+        $items = $order->items;
+        foreach($items as $item){
+            OrderItems::create([
+                "order_id" => $new_order->id,
+                "variant_id" => $item->variant_id,
+                "quantity" => $item->quantity,
+                "full_price" => $item->variant->price,
+                "price" => $item->variant->price,
+            ]);
+        }
+
+        return redirect('/orders/' . $new_order->id);
     }
 }

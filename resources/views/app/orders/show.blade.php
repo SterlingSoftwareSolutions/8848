@@ -6,7 +6,7 @@
 @section('content')
 {{-- End Dropdowns & Buttons Row --}}
 <div class="flex flex-col border-2 rounded-lg">
-    <div class="flex flex-row text-gray-700 gap-12 items-center rounded-lg p-5 bg-gray-100">
+    <div class="flex flex-row text-gray-700 gap-8 items-center rounded-lg p-5 bg-gray-100">
         <div class="text-start flex items-center gap-4">
             <div class="font-semibold">Status:</div>
             <x-order-status :status="$order->status" />
@@ -18,6 +18,11 @@
         <div class="text-start flex items-center gap-4 ms-auto">
             <b class="font-semibold">Date:</b> {{$order->created_at}}
         </div>
+        @if(Auth::user()->is_wholesale())
+        <div>
+            <a href="/orders/{{$order->id}}/reorder"><button class="bg-blue-800 text-white font-semibold p-3 rounded-lg">Re-order</button></a>
+        </div>
+        @endif
     </div>
 </div>
 
