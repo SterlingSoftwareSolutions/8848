@@ -84,13 +84,21 @@
                 </div>
               </a>
             </span>
-            <button id="user-icon-button" type="button" class="relative ml-4 px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
-              <span class="absolute -inset-1.5"></span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            </button>
           </div>
+
+          @if(Auth::check())
+          <button id="user-icon-button" type="button" class="relative ml-4 px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
+            <span class="absolute -inset-1.5"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+          </button>
+          @else
+          <form action="/logout" method="post">
+            @csrf
+            <button class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Login/Register</button>
+          </form>
+          @endif
 
           {{-- user icon details --}}
           <div class="absolute z-10 hidden w-48 py-1 mt-2 bg-white rounded-md shadow-lg right-0 top-12 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-icon-details">
