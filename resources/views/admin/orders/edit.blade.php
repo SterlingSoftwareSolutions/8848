@@ -157,6 +157,7 @@
     </div>
 
     <div class="flex justify-end mx-auto md:mt-5">
+        <a href="/admin/orders/{{$order->id}}/print"><button type="button" class="border-2 border-gray-700 bg-gray-800 text-white py-2 px-5 rounded-lg w-40 mx-2">Print Invoice</button></a>
         <button type="submit" class="border-2 border-blue-700 bg-blue-800 text-white py-2 px-5 rounded-lg w-40 mx-2">Save</button>
     </div>
 </form>
