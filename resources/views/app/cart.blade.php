@@ -77,11 +77,19 @@
         <!-- Checkout Button -->
         <div class="flex justify-end">
             <div class="h-12 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
-                <a href="/checkout">
+                @if(Auth::user()->is_wholesale())
+                <a href="/place-order">
                     <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
-                        {{auth()->user()->is_wholesale() ? 'Place order' : 'Checkout'}}
+                        Place Order
                     </button>
                 </a>
+                @else
+                <a href="/checkout">
+                    <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
+                        Checkout
+                    </button>
+                </a>
+                @endif
             </div>
         </div>
     </div>
