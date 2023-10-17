@@ -227,7 +227,7 @@ class ProductController extends Controller
             ]);            
         }
 
-        return redirect('/admin/products')->withErrors(['success' => 'Product created']);
+        return redirect('/admin/products?category_id=' . $product->category_id)->withErrors(['success' => 'Product created']);
     }
 
     /**
@@ -363,7 +363,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect('/admin/products')->withErrors(['success' => 'Product updated']);
+        return redirect('/admin/products?category_id=' . $product->category_id)->withErrors(['success' => 'Product updated.']);
     }
 
     /**
