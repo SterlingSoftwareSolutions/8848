@@ -202,7 +202,6 @@ class UserController extends Controller
             'phone' => 'nullable|string|min:10|unique:users,phone,' . $user->id,
             'role' => 'required',
             'priority' => 'required',
-            'password' => 'required|confirmed',
             'ship_elsewhere' => 'nullable'
         ];
 
