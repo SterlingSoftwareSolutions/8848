@@ -21,12 +21,13 @@
           @else
           <h1 class="text-lg font-semibold text-[#48525c]">{{$item->quantity}}</h1>
           @endif
-          <a href="/cart/remove/{{$item->variant->id}}">
-            <button type="submit"><i class="mt-2 fa-solid fa-xmark"></i></button>
+          <a href="/cart/remove/{{$item->variant->id}}" class="ml-10">
+            <button type="submit" class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">Remove</button>
           </a>
         </div>
       </div>
     </div>
+    
     @endforeach
     @endif
 
