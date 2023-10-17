@@ -1,4 +1,8 @@
-@extends('layouts.app', ['title' => $parent->name ?? "Categories", 'fullwidth' => true])
+@props([
+    'parent' => null
+])
+
+@extends('layouts.app', ['title' => $parent?->name ?? "Categories", 'fullwidth' => true])
 @section('content')
 {{-- Main Image --}}
 <div class="h-56 md:h-96 bg-cover bg-center bg-fixed" style="background-image: url('{{ $parent?->background ?? asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}');">
