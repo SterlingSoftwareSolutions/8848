@@ -41,7 +41,7 @@
                         </li>
                         <li class="flex mb-4 ml-12 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/email.png')}}">
-                            <a href="mailto:info@carrental.com" class="ml-2 hover:underline">info@8848supplies.com.au</a>
+                            <a href="mailto:info@8848supplies.com.au" class="ml-2 hover:underline">info@8848supplies.com.au</a>
                         </li>
                         <li class="flex mb-4 ml-20 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">
