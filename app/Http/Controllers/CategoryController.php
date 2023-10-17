@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::with('children')->where('parent_id', null)->get();
+        $categories = Category::with('children')->where('parent_id', null)->orderBy('created_at', 'desc')->get();
 
         if($request->wantsJson()){
             return response()->json([
