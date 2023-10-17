@@ -60,10 +60,12 @@
                 Items: <br>
                 <p class="text-xl">{{$order->items->sum('quantity')}}</p>
             </div>
+            @if(!Auth::user()->is_wholesale())
             <div class="w-1/6 text-start font-semibold">
                 Total: <br>
                 <p class="text-xl">${{$order->total()}}</p>
             </div>
+            @endif
         </div>
     </div>
 </div>

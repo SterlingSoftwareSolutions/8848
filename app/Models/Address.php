@@ -45,7 +45,11 @@ class Address extends Model
 
         foreach ($rules as $key => $value) {
             $new_key = str_replace('prefix_', $prefix, $key);
-            $new_rules[$new_key] = $required ? 'required|' . $value : 'nullable|' . $value;
+            if($key == 'prefix_company' || $key == 'prefix_address_line_2'){
+                $new_rules[$new_key] = 'nullable|' . $value;
+            } else{
+                $new_rules[$new_key] = $required ? 'required|' . $value : 'nullable|' . $value;
+            }
         }
 
         return $new_rules;
