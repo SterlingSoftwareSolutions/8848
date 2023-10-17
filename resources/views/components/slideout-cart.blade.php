@@ -15,7 +15,7 @@
       </div>
       <div class="flex flex-col gap-5">
         <h1 class="text-base font-semibold text-[#284297]">{{$item->variant->product->title}}</h1>
-        <div class="flex flex-row gap-20">
+        <div class="flex flex-row gap-15">
           @if (!auth()->user()->is_wholesale())
           <h1 class="text-lg font-semibold text-[#48525c]">{{$item->quantity}} × ${{$item->variant->price}}</h1>
           @else
