@@ -102,17 +102,17 @@
                         <div class="flex gap-5 mb-4">
                             <div>
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
-                                <input value="{{old('variant_name_' . $variant->id, $variant->name ?? null)}}" name="variant_name_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
+                                <input value="{{old('variant_name_' . $variant->id, $variant->name ?? null)}}" name="variant_name_{{$variant->id}}" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name">
                                 <x-input-error :messages="$errors->get('variant_name_{{$variant->id}}')" class="mt-2" />
                             </div>
                             <div>
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
-                                <input value="{{old('variant_price_' . $variant->id, $variant->price ?? null)}}" name="variant_price_{{$variant->id}}" min="0" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
+                                <input value="{{old('variant_price_' . $variant->id, $variant->price ?? null)}}" name="variant_price_{{$variant->id}}" min="0" step=".01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$0.00">
                                 <x-input-error :messages="$errors->get('variant_price_{{$variant->id}}')" class="mt-2" />
                             </div>
                             <div>
                                 <label for="website" class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
-                                <input value="{{old('variant_sku_' . $variant->id, $variant->sku ?? null)}}" name="variant_sku_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00">
+                                <input value="{{old('variant_sku_' . $variant->id, $variant->sku ?? null)}}" name="variant_sku_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md" placeholder="SKU">
                                 <x-input-error :messages="$errors->get('variant_sku_' . $variant->id)" class="mt-2" />
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                         </div>
                         <div>
                             <label for="website" class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
-                            <input value="{{ old('variant_price_01') }}" name="variant_price_01" type="number" class="w-full px-4 py-2 border rounded-md" placeholder="$ 0.00" required>
+                            <input value="{{ old('variant_price_01') }}" name="variant_price_01" type="number" step=".01" class="w-full px-4 py-2 border rounded-md" placeholder="$0.00" required>
                             <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                         </div>
                         <div>
@@ -260,7 +260,9 @@
         inputField2.id = `input${inputIndex}`;
         inputField2.name = `variant_price_0${inputIndex}`;
         inputField2.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
-        inputField2.placeholder = "$ 0.00";
+        inputField2.placeholder = "$0.00";
+        inputField2.min = 0;
+        inputField2.step = ".01"
         inputField2.required = true; // Make inputField2 required
 
         // Create a new input field 2
