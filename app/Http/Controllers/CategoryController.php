@@ -55,7 +55,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "parent_id" => 'nullable',
+            "parent_id" => 'nullable|exists:categories,id',
             "name" => 'required',
             "description" => 'nullable',
             "icon" => 'nullable|file',
@@ -67,7 +67,7 @@ class CategoryController extends Controller
             "name" => $request->name,
             "description" => $request->description,
             "icon_url" => $request->icon ? $request->icon->store('public/category_images') : null,
-            "background_image_url" => $request->icon ? $request->background_image->store('public/category_images') : null
+            "background_image_url" => $request->icon ? $request->icon->store('public/category_images') : null
         ]);
 
         if($request->wantsJson()){
@@ -132,7 +132,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            "parent_id" => 'nullable',
+            "parent_id" => 'nullable|exists:categories,id',
             "name" => 'required',
             "description" => 'nullable',
             "icon" => 'nullable|file',
