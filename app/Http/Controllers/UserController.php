@@ -34,6 +34,8 @@ class UserController extends Controller
                 ->orWhere('phone', 'LIKE', '%' . $request->search . '%');
         }
 
+        $query->orderBy('created_at', 'desc');
+
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
