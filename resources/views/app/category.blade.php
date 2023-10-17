@@ -1,10 +1,10 @@
-@extends('layouts.app', ['title' => 'Categories', 'fullwidth' => true])
+@extends('layouts.app', ['title' => $parent->name ?? "Categories", 'fullwidth' => true])
 @section('content')
 {{-- Main Image --}}
-<div class="h-56 md:h-96 bg-cover bg-center bg-fixed" style="background-image: url('{{asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg')}}');">
+<div class="h-56 md:h-96 bg-cover bg-center bg-fixed" style="background-image: url('{{ $parent?->background ?? asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}');">
     <div class="bg-black bg-opacity-75 h-[100%] flex justify-center items-center">
         <h1 class="text-2xl font-bold text-center text-white md:text-4xl">
-            Categories
+            {{$parent->name ?? "Categories"}}
         </h1>
     </div>
 </div>

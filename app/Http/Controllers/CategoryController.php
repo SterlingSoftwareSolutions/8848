@@ -92,10 +92,16 @@ class CategoryController extends Controller
                 'category' => $category->load('parent', 'children')
             ]);
         }
-        return view('app.category', [
-            'category' => $category,
-            'categories' => $category->children
-        ]);
+
+        if($category->children->count()){
+            return view('app.category', [
+                'parent' => $category,
+                'categories' => $category->children
+            ]);
+        }
+
+        return redirect("/products?category_id=" . $category->id);
+
     }
 
     /**
