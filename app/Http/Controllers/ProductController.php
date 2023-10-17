@@ -359,7 +359,7 @@ class ProductController extends Controller
         if($request->wantsJson()){
              return response()->json([
                 'success' => true,
-                'product' => $product->load('variants')
+                'product' => $product->orderBy('created_at', 'desc')->load('variants')
             ]);
         }
 
