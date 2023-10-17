@@ -7,9 +7,10 @@
 
 <div class="p-8">
     <h1 class=" text-[#1670B7] font-bold text-lg pb-10">@if($category) Edit Category @else Add Category @endif</h1>
-    <form method="post" action="/admin/categories/@if($category){{$category->id}}@endif" enctype="multipart/form-data">
-        @if($category) @method('put') @endif
+    <form method="post" @if($category) action="/admin/categories/{{$category->id}}" @else  action="/admin/categories" @endif enctype="multipart/form-data">
+        @if($category) @method('put')@endif
         @csrf
+
         <div class="flex flex-col gap-6 mb-6 md:grid-cols-2 w-full">
             <div class="flex flex-row gap-5">
                 <div class="flex flex-col w-full">

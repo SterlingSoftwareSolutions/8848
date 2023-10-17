@@ -65,7 +65,7 @@ class CategoryController extends Controller
         $category = Category::create([
             "parent_id" => $request->parent_id ?? null,
             "name" => $request->name,
-            "description" => $request->description,
+            "description" => $request->description ?? null,
             "icon_url" => $request->icon ? $request->icon->store('public/category_images') : null,
             "background_image_url" => $request->icon ? $request->icon->store('public/category_images') : null
         ]);
