@@ -8,8 +8,11 @@ function decrement(e) {
     );
     const target = btn.nextElementSibling;
     let value = Number(target.value);
-    value--;
-    target.value = value;
+
+    if (value > 0) {
+        value--;
+        target.value = value;
+    }
 }
 
 function increment(e) {
