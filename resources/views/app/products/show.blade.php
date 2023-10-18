@@ -110,9 +110,18 @@
 
                     <div class="horizontal-line md:mt-5"></div>
 
-                    <p class="mt-5 text-lg font-bold text-gray-500">
-                        Categories: {{ $product->category->name ?? null}}
-                    </p>
+                    <div class="flex gap-2 mt-5 text-lg font-bold text-gray-500">
+                        <div>Categories:</div>
+                        @if($product->category)
+                            @if($product->category->parent)
+                            <a href="/categories/{{ $product->category->parent->id }}">{{ $product->category->parent->name }},</a>
+                            @endif
+                            <a href="/categories/{{ $product->category->id }}">{{ $product->category->name }}</a>
+                        @else
+                        <div>Undefined</div>
+                        @endif
+                    </div>
+
                     @if($product->file)
                         <div class="mt-2">
                             <a href="{{$product->file ?? '#'}}"><button class="bg-gray-800 disabled:bg-gray-400 text-white text-sm px-4 py-2 rounded-lg">Download PDF</button></a>
