@@ -27,6 +27,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
 
+Route::get('/categories', [CategoryController::class, 'index_client']);
+Route::get('/categories/{category}', [CategoryController::class, 'show_client']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
