@@ -197,8 +197,8 @@
     var subCategoryElement = document.getElementById("subcategory");
 
     @if ($product)
-        var selectedCat = {{ $product-> category ? -> parent_id ?? $product -> category ? -> id ?? 0}}
-    var selectedSubCat = {{ $product-> category ? -> parent_id ? $product -> category ? -> id : 0}}
+        var selectedCat = {{ $product->category?->parent_id ?? $product->category?->id ?? 0}}
+    var selectedSubCat = {{ $product->category?->parent_id ? $product->category?->id : 0}}
     @else
     var selectedCat = 0;
     var selectedSubCat = 0;
