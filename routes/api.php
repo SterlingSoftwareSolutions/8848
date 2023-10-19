@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 // Public Routes
-Route::resource('/products', ProductController::class)->only(['index', 'show']);
-Route::resource('/categories', CategoryController::class)->only(['index', 'show']);
+Route::get('/products', [ProductController::class, 'index_client']);
+Route::get('/products/{product}', [ProductController::class, 'show_client']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -35,11 +36,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Cart routes
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart/add/', [CartController::class, 'add']);
-    Route::post('/cart/remove', [CartController::class, 'remove']);
+    Route::get('/cart/remove/{variant}', [CartController::class, 'remove']);
     Route::post('/cart/update', [CartController::class, 'update']);
-    Route::post('/cart/checkout', [CartController::class, 'checkout']);
 
-    // Product routes (TODO: ADMIN ONLY)
-    Route::resource('/products', ProductController::class)->only(['store', 'update', 'destroy']);
-    Route::resource('/categories', CategoryController::class)->only(['store', 'update', 'destroy']);
+    // Order routes
+    Route::post('/place-order', [CheckoutController::class, 'checkout_wholesale']);
+
 });
