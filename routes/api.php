@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,5 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Order routes
     Route::post('/place-order', [CheckoutController::class, 'checkout_wholesale']);
+    Route::get('/orders', [OrderController::class, 'index_client']);
+    Route::get('/orders/{order}', [OrderController::class, 'show_client']);
 
 });

@@ -42,10 +42,18 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index_client()
+    public function index_client(Request $request)
     {
         $user = Auth::user();
         $orders = Order::query()->where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'orders' => $orders
+            ]);
+        }
+
         return view('app.orders.index', [
             'orders' => $orders
         ]);
@@ -94,11 +102,20 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show_client(Order $order)
+    public function show_client(Order $order, Request $request)
     {
         if($order->user_id != Auth::user()->id){
             abort(404);
         }
+
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'order' => $order->load('items')
+            ]);
+        }
+
+
         return view('app.orders.show', compact('order'));
     }
 
