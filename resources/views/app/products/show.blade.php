@@ -111,14 +111,14 @@
                     <div class="horizontal-line md:mt-5"></div>
 
                     <div class="flex gap-2 mt-5 text-lg font-bold text-gray-500">
-                        <div>Categories:</div>
+                        Categories: 
                         @if($product->category)
                             @if($product->category->parent)
                             <a href="/categories/{{ $product->category->parent->id }}">{{ $product->category->parent->name }},</a>
                             @endif
                             <a href="/categories/{{ $product->category->id }}">{{ $product->category->name }}</a>
                         @else
-                        <div>Undefined</div>
+                        Undefined
                         @endif
                     </div>
 
