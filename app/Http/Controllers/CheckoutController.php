@@ -8,6 +8,7 @@ use App\Models\OrderItems;
 use App\Models\OrderLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class CheckoutController extends Controller
 {
@@ -240,19 +241,25 @@ class CheckoutController extends Controller
         // Can't checkout if the cart is empty
         $cart_items = $user->cart_items;
         if($cart_items->count() < 1){
-            return back()->withErrors(['error' => 'Your cart is empty.']);
+            throw ValidationException::withMessages([
+                'error' => ['Your cart is empty'],
+            ]);
         }
 
         // Billing address
         $saved_billing_address = $user->address_billing;
         if(!$saved_billing_address){
-            return back()->withErrors(['error' => 'Billing address not found']);
+            throw ValidationException::withMessages([
+                'error' => ['Billing address not found'],
+            ]);
         }
 
         $billing_address_data = $saved_billing_address->validated();
 
         if(!$billing_address_data){
-            return back()->withErrors(['error' => 'Billing address is incomplete']);
+            throw ValidationException::withMessages([
+                'error' => ['Billing address incomplete'],
+            ]);
         }
 
         // Shipping address
@@ -260,7 +267,9 @@ class CheckoutController extends Controller
         if($saved_shipping_address){
             $shipping_address_data = $saved_shipping_address->validated();
             if(!$shipping_address_data){
-                return back()->withErrors(['error' => 'Shipping address is incomplete']);
+                throw ValidationException::withMessages([
+                    'error' => ['Shipping address incomplete'],
+                ]);
             }
         } else{
             $shipping_address_data = $billing_address_data;
