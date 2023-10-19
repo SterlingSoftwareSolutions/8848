@@ -55,7 +55,7 @@
             {{-- table list 2 --}}
             @endforeach
             <div class="flex justify-center p-5">
-                {{$products->links()}}
+                {{$products->appends($_GET)->links()}}
             </div>
         </div>
     </div>
