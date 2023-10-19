@@ -200,7 +200,7 @@ class ProductController extends Controller
         $product = Product::create([
             'title' => $request->title,
             'description' => $request->description,
-            'short_description' => $request->description,
+            'short_description' => $request->short_description,
             'category_id' => $request->sub_category_id ?? $request->category_id,
             'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
@@ -305,7 +305,7 @@ class ProductController extends Controller
         $product->update([
             'title' => $request->title,
             'description' => $request->description,
-            'short_description' => $request->description,
+            'short_description' => $request->short_description,
             'category_id' => $request->sub_category_id ?? $request->category_id,
             'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
