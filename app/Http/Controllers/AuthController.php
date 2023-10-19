@@ -44,7 +44,7 @@ class AuthController extends Controller
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'user' => $user,
+                'user' => $user->load(['address_billing', 'address_shipping']),
             ], 200);
         }
 
