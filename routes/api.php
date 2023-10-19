@@ -47,5 +47,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/place-order', [CheckoutController::class, 'checkout_wholesale']);
     Route::get('/orders', [OrderController::class, 'index_client']);
     Route::get('/orders/{order}', [OrderController::class, 'show_client']);
+    Route::get('/orders/{order}/reorder', [CheckoutController::class, 'reorder']);
 
 });

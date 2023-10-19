@@ -308,7 +308,7 @@ class CheckoutController extends Controller
         return redirect('/orders/' . $order->id);
     }
 
-    public function reorder(Order $order)
+    public function reorder(Order $order, Request $request)
     {
         $user = Auth::user();
 
@@ -320,13 +320,17 @@ class CheckoutController extends Controller
         // Billing address
         $saved_billing_address = $user->address_billing;
         if(!$saved_billing_address){
-            return back()->withErrors(['error' => 'Billing address not found']);
+            throw ValidationException::withMessages([
+                'error' => ['Billing address not found'],
+            ]);
         }
 
         $billing_address_data = $saved_billing_address->validated();
 
         if(!$billing_address_data){
-            return back()->withErrors(['error' => 'Billing address is incomplete']);
+            throw ValidationException::withMessages([
+                'error' => ['Billing address incomplete'],
+            ]);
         }
 
         // Shipping address
@@ -334,7 +338,9 @@ class CheckoutController extends Controller
         if($saved_shipping_address){
             $shipping_address_data = $saved_shipping_address->validated();
             if(!$shipping_address_data){
-                return back()->withErrors(['error' => 'Shipping address is incomplete']);
+                throw ValidationException::withMessages([
+                    'error' => ['Shipping address incomplete'],
+                ]);
             }
         } else{
             $shipping_address_data = $billing_address_data;
@@ -343,6 +349,7 @@ class CheckoutController extends Controller
         $new_order = $this->create_wholesale_order($user->id, $billing_address_data, $shipping_address_data);
 
         $items = $order->items;
+
         foreach($items as $item){
             OrderItems::create([
                 "order_id" => $new_order->id,
@@ -353,6 +360,12 @@ class CheckoutController extends Controller
             ]);
         }
 
+        if($request->wantsJson()){
+            return response()->json([
+                'success' => true,
+                'order' => $order->load('items')
+            ]);
+        }
         return redirect('/orders/' . $new_order->id);
     }
 }
