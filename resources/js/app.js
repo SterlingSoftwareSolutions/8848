@@ -1,6 +1,7 @@
 import "./bootstrap";
 import $ from 'jquery';
 window.$ = $;
+import 'slick-carousel'
 
 function decrement(e) {
     const btn = e.target.parentNode.parentElement.querySelector(
@@ -69,3 +70,41 @@ $('.favourite_btn').on('click', function (e) {
         }
     });
 })
+
+$('.category-slider').slick({
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 0,
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    arrows: false,
+    cssEase: 'linear',
+    speed: 4000,
+    initialSlide: 1,
+    draggable: true,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            },
+        },
+    ],
+});
