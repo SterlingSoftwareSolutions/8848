@@ -21,7 +21,7 @@ class ImportProductsSeeder extends Seeder
         if ($file_to_read !== FALSE) {
             $count = 1;
             while (($data = fgetcsv($file_to_read, 100, ',')) !== FALSE) {
-                $this->command->info("{$count} :  {$data[2]}");
+                // $this->command->info("{$count} :  {$data[2]}");
                 $count++;
                 if($data[0] == 'category'){
                     continue;
@@ -64,7 +64,7 @@ class ImportProductsSeeder extends Seeder
                             'price' => 0.0
                         ]);
 
-                        $this->command->info("{$count} :  ADDED");
+                        // $this->command->info("{$count} :  ADDED");
                     }
                 }
             }

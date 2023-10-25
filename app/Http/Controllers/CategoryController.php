@@ -130,7 +130,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $parent_categories = Category::with('children')->where('parent_id', null)->get();
-        return view('admin.categories.create-edit', compact(['parent_categories', 'category']));    }
+        return view('admin.categories.create-edit', compact(['parent_categories', 'category']));
+    }
 
     /**
      * Update the specified resource in storage.
