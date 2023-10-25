@@ -34,8 +34,13 @@ Route::get('/categories/{category}', [CategoryController::class, 'show_client'])
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
+    // User routes
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/profile', [AuthController::class, 'profile']);
+    Route::get('/user', [AuthController::class, 'api_user']);
+    Route::put('/user', [AuthController::class, 'api_user_update']);
+    Route::get('/addresses', [AuthController::class, 'api_addresses']);
+    Route::put('/addresses', [AuthController::class, 'api_addresses_update']);
     Route::put('/profile', [AuthController::class, 'profile_update']);
 
     // Cart routes
