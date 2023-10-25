@@ -45,17 +45,17 @@ class OrderController extends Controller
     public function index_client(Request $request)
     {
         $user = Auth::user();
-        $orders = Order::query()->where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);
+        $orders = Order::query()->where('user_id', $user->id)->orderBy('created_at', 'desc');
 
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'orders' => $orders
+                'orders' => $orders->get()
             ]);
         }
 
         return view('app.orders.index', [
-            'orders' => $orders
+            'orders' => $orders->paginate(10)
         ]);
     }
 

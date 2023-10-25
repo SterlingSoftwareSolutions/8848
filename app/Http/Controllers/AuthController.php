@@ -59,8 +59,8 @@ class AuthController extends Controller
         // Changing password?
         if($request->password){
             $request->validate([
-                    'current_password' => 'required|string|current_password',
-                    'password' => 'required|string|min:8|confirmed',
+                'current_password' => 'required|string|current_password',
+                'password' => 'required|string|min:8|confirmed',
             ]);
 
             $request->user()->forceFill([
@@ -151,6 +151,148 @@ class AuthController extends Controller
         } else {
             return redirect()->intended('/profile');
         }
+    }
+
+
+    public function api_user(){
+        $user = Auth::user();
+
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+        ], 200);
+    }
+
+
+    public function api_user_update(Request $request){
+        $user = Auth::user();
+
+        // Validation rules
+        $rules = [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'email' => 'required|string|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|string|min:10|unique:users,phone,' . $user->id,
+        ];
+
+        $password_rules = [
+            'current_password' => 'required|string|current_password',
+            'password' => 'required|string|min:8|confirmed',
+        ];
+
+        if($request->password){
+            // Validate inputs
+            $request->validate(
+                array_merge($rules, $password_rules)
+            );
+
+            $request->user()->forceFill([
+                'password' => Hash::make($request->password)
+            ])->save();
+
+        } else{
+            $request->validate($rules);
+        }
+
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'user' => $user,
+        ], 200);
+    }
+
+
+    public function api_addresses(){
+        $user = Auth::user();
+
+        return response()->json([
+            'success' => true,
+            'billing_address' => $user->address_billing,
+            'shipping_address' => $user->address_shipping,
+        ], 200);
+    }
+
+
+    public function api_addresses_update(Request $request){
+        $user = Auth::user();
+
+        // Rules
+        $rules = [
+            'ship_elsewhere' => 'nullable'
+        ];
+
+        $billing_validations = Address::rules('billing_', false);
+
+        if($request->ship_elsewhere){
+            $shipping_validations = Address::rules('shipping_', false);
+        } else{
+            $shipping_validations = [];
+        }
+
+        // Validate inputs
+        $request->validate(
+            array_merge($rules, $billing_validations, $shipping_validations)
+        );
+
+        // Billing Address
+        $billing_address_data = [
+            'user_id' => $user->id,
+            'type' => 'billing',
+            'first_name' => $request->billing_first_name,
+            'last_name' => $request->billing_last_name,
+            'company' => $request->billing_company,
+            'address_line_1' => $request->billing_address_line_1,
+            'address_line_2' => $request->billing_address_line_2,
+            'city' => $request->billing_city,
+            'zip' => $request->billing_zip,
+            'state' => $request->billing_state,
+            'phone' => $request->billing_phone,
+        ];
+
+        if($user->address_billing){
+            $user->address_billing->update($billing_address_data);
+        } else{
+            Address::create($billing_address_data);
+        }
+
+        // Shipping Address
+        $shipping_address_data = [
+            'user_id' => $user->id,
+            'type' => 'shipping',
+            'first_name' => $request->shipping_first_name,
+            'last_name' => $request->shipping_last_name,
+            'company' => $request->shipping_company,
+            'address_line_1' => $request->shipping_address_line_1,
+            'address_line_2' => $request->shipping_address_line_2,
+            'city' => $request->shipping_city,
+            'zip' => $request->shipping_zip,
+            'state' => $request->shipping_state,
+            'phone' => $request->shipping_phone,
+        ];
+
+        if($request->ship_elsewhere){
+            if($user->address_shipping != null){
+                $user->address_shipping->update($shipping_address_data);
+            } else{
+                Address::create($shipping_address_data);
+            }
+        } else{
+            $user->address_shipping?->delete();
+        }
+
+        $user = $user->fresh();
+
+        return response()->json([
+            'success' => true,
+            'billing_address' => $user->address_billing,
+            'shipping_address' => $user->address_shipping,
+        ], 200);
     }
 
 
