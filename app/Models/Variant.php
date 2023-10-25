@@ -16,8 +16,6 @@ class Variant extends Model
         'sku',
     ];
 
-    protected $with = ['product'];
-
     public function product(){
         return $this->belongsTo(Product::class);
     }

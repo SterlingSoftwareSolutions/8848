@@ -17,6 +17,6 @@ class CartItems extends Model
 
     public function variant()
     {
-        return $this->belongsTo(Variant::class);
+        return $this->belongsTo(Variant::class)->with('product');
     }
 }
