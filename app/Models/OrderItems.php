@@ -30,16 +30,16 @@ class OrderItems extends Model
 
     public function getImageAttribute()
     {
-        return $this->variant->product->image_1;
+        return $this?->variant?->product?->image_1;
     }
 
     public function getTitleAttribute()
     {
-        return $this->variant->product->title;
+        return $this?->variant?->product?->title;
     }
 
     public function getVariantNameAttribute()
     {
-        return $this->variant->name;
+        return $this?->variant?->name;
     }
 }
