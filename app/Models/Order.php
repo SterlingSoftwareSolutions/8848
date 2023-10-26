@@ -41,8 +41,16 @@ class Order extends Model
         'shipping_phone'
     ];
 
+    protected $appends = [
+        'count',
+    ];
+
     public function getTotalAttribute(){
         return $this->total();
+    }
+
+    public function getCountAttribute(){
+        return $this->items->count();
     }
 
     public function items(){
