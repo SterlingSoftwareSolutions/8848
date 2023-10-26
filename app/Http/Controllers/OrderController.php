@@ -111,9 +111,7 @@ class OrderController extends Controller
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'order' => $order->get()->each(function($order){
-                    $order->items->makeHidden(['variant']);
-                })->toArray()
+                'order' => $order->get()
             ]);
         }
 

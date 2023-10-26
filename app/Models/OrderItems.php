@@ -23,6 +23,10 @@ class OrderItems extends Model
         'variant_name'
     ];
 
+    protected $hidden = [
+        'variant'
+    ];
+
     public function variant()
     {
         return $this->belongsTo(Variant::class)->with('product');
