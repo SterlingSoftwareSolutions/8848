@@ -17,8 +17,29 @@ class OrderItems extends Model
         'price'
     ];
 
+    protected $appends = [
+        'image',
+        'title',
+        'variant_name'
+    ];
+
     public function variant()
     {
         return $this->belongsTo(Variant::class)->with('product');
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->variant->product->image_1;
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->variant->product->title;
+    }
+
+    public function getVariantNameAttribute()
+    {
+        return $this->variant->name;
     }
 }

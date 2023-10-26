@@ -50,7 +50,7 @@ class OrderController extends Controller
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'orders' => $orders->get()
+                'orders' => $orders->get()->makeHidden(['items'])
             ]);
         }
 
@@ -111,10 +111,11 @@ class OrderController extends Controller
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'order' => $order->load('items')
+                'order' => $order->get()->each(function($order){
+                    $order->items->makeHidden(['variant']);
+                })->toArray()
             ]);
         }
-
 
         return view('app.orders.show', compact('order'));
     }
