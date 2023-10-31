@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="w-full mt-5 md:w-6/12 md:mt-10 md:pl-5">
-                    <p class="text-lg font-bold text-gray-400">CODE:{{ $product->sku }}</p>
+                    <p class="text-lg font-bold text-gray-400">CODE: {{ implode( ', ', $product->variants->pluck('sku')->toArray()) }}</p>
                     <p class="mt-1 text-3xl font-bold text-blue-800">
                         {{ $product->title }}
                     </p>
