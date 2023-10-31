@@ -8,29 +8,32 @@
     @if($product) @method('put') @endif
     @csrf
     <h1 class=" text-[#1670B7] font-bold text-lg">Add Product</h1>
-    <div class="flex flex-row py-10"> @foreach(range(1,4) as $i) <div
-        class="w-1/4 max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
-        <h1 class="mb-4 text-xl font-semibold">Product Image {{$i}}</h1>
-        <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
-        <input type="file" id="image_{{$i}}" name="image_{{$i}}" accept="image/*" class="hidden"
-            onchange="loadPreview({{$i}})">
-        <label for="image_{{$i}}" class="cursor-pointer">
-        <img @if($product) src="{{$product->image($i)}}" @endif id="preview_image_{{$i}}" class="w-[100%] aspect-square
-        object-cover @if(!($product && $product->image($i))) hidden @endif"></img>
-        <div id="info_image_{{$i}}" class="@if($product && $product->image($i)) hidden @endif">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0
-            0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-            </svg>
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-center text-gray-700">Upload Photo</h5>
-            <p class="text-sm font-normal text-gray-400 md:px-6">Photo size should be less than
-            <bclass="text-gray-600">2mb</b> and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format. <span
-            id="filename" class="z-50 text-gray-500 bg-gray-200"></span></p>
-        </div>
-        </label>
-        </div>
-        <x-input-error :messages="$errors->get('image_' . $i)" class="mt-2" />
+    <div class="flex flex-row py-10"> 
+        @foreach(range(1,4) as $i)
+        <div class="w-1/4 max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
+            <h1 class="mb-4 text-xl font-semibold">Product Image {{$i}}</h1>
+            <div class="p-4 mb-4 border-2 border-gray-400 border-dashed aspect-square flex flex-col justify-center relative">
+                <input type="file" id="image_{{$i}}" name="image_{{$i}}" accept="image/*" class="hidden" onchange="loadPreview({{$i}})">
+                <label for="image_{{$i}}" class="cursor-pointer">
+                    <img @if($product) src="{{$product->image($i)}}" @endif id="preview_image_{{$i}}" class="w-[100%] aspect-square
+                    object-cover @if(!($product && $product->image($i))) hidden @endif"></img>
+                    <div id="info_image_{{$i}}" class="@if($product && $product->image($i)) hidden @endif">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-8 h-8 mx-auto mb-4 text-gray-700">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0
+                        0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                        </svg>
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-center text-gray-700">Upload Photo</h5>
+                        <p class="text-sm font-normal text-gray-400 md:px-6">Photo size should be less than
+                        <bclass="text-gray-600">2mb</b> and should be in <b class="text-gray-600">JPG, PNG, or GIF</b> format. <span
+                        id="filename" class="z-50 text-gray-500 bg-gray-200"></span></p>
+                    </div>
+                </label>
+                <div class="absolute -top-4 -right-4" id="remove_button_{{$i}}">
+                    <button type="button" class="bg-red-500 text-white p-3 rounded-full aspect-square fa fa-close @if(!$product || !$product->image($i)) hidden @endif" onclick="remove_image({{$i}})"></button>
+                </div>
+            </div>
+            <x-input-error :messages="$errors->get('image_' . $i)" class="mt-2" />
         </div>
         @endforeach
         {{-- <section class="container items-center w-full mx-auto">
@@ -257,17 +260,21 @@
         const previewImage = document.getElementById('preview_image_' + index);
         const infoBox = document.getElementById('info_image_' + index);
         const file = inputFile.files[0];
+        const removeButton = document.getElementById('remove_button_' + index);
+        console.log(removeButton);
 
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 previewImage.src = e.target.result;
                 previewImage.classList.remove('hidden');
+                removeButton.classList.remove('hidden');
                 infoBox.classList.add('hidden')
             }
             reader.readAsDataURL(file);
         } else {
             previewImage.classList.add('hidden');
+            removeButton.classList.add('hidden');
             infoBox.classList.remove('hidden')
         }
     }
