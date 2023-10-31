@@ -53,7 +53,7 @@
                         {{ $product->title }}
                     </p>
                     <p class="mt-2 text-gray-700">
-                        {{ $product->short_description }}
+                        {!! nl2br($product->short_description) !!}
                     </p>
                     @if (auth()->user() && !auth()->user()->is_wholesale())
                     <p class="mt-5 text-3xl font-bold text-blue-800">${{ $product->price() }}</p>
@@ -144,7 +144,7 @@
             </div>
 
             <p class="text-center md:mb-20">
-                {{ $product->description }}
+                {!! nl2br($product->description) !!}
             </p>
         </div>
 
