@@ -48,12 +48,12 @@
                 </div>
 
                 <div class="w-full mt-5 md:w-6/12 md:mt-10 md:pl-5">
-                    <p class="text-lg font-bold text-gray-400">CODE:{{ $product->sku }}</p>
+                    <p class="text-lg font-bold text-gray-400">CODE: {{ implode( ', ', $product->variants->pluck('sku')->toArray()) }}</p>
                     <p class="mt-1 text-3xl font-bold text-blue-800">
                         {{ $product->title }}
                     </p>
                     <p class="mt-2 text-gray-700">
-                        {{ $product->short_description }}
+                        {!! nl2br($product->short_description) !!}
                     </p>
                     @if (auth()->user() && !auth()->user()->is_wholesale())
                     <p class="mt-5 text-3xl font-bold text-blue-800">${{ $product->price() }}</p>
@@ -144,7 +144,7 @@
             </div>
 
             <p class="text-center md:mb-20">
-                {{ $product->description }}
+                {!! nl2br($product->description) !!}
             </p>
         </div>
 

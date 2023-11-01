@@ -78,7 +78,7 @@ class ProductController extends Controller
                     break;
             }
         } else{
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('title', 'asc');
         }
 
         // Search in all fields
