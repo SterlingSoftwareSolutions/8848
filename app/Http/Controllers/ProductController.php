@@ -89,9 +89,7 @@ class ProductController extends Controller
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
-                'products' => $query->with(['category' => function ($query) {
-                    $query->select('id', 'name');
-                }])->get()
+                'products' => $query->get()
             ]);
         }
 
