@@ -34,7 +34,8 @@ class Product extends Model
         'image_1',
         'image_2',
         'image_3',
-        'image_4'
+        'image_4',
+        'category_name'
     ];
 
     public function category()
@@ -88,6 +89,11 @@ class Product extends Model
     public function getImage4Attribute()
     {
         return $this->image(4);
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return $this->category->name;
     }
 
     public function getFileAttribute(){
