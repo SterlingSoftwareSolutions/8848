@@ -57,12 +57,16 @@
         <div class="flex flex-row justify-end p-5 bg-gray-100">
             <p class="w-5/6 text-start font-semibold"></p>
             <div class="w-1/6 text-start font-semibold">
-                Items: <br>
+                Products: <br>
+                <p class="text-xl">{{$order->items->count()}}</p>
+            </div>
+            <div class="w-1/6 text-start font-semibold">
+                Quantity: <br>
                 <p class="text-xl">{{$order->items->sum('quantity')}}</p>
             </div>
             @if(!Auth::user()->is_wholesale())
             <div class="w-1/6 text-start font-semibold">
-                Total: <br>
+                Amount: <br>
                 <p class="text-xl">${{$order->total()}}</p>
             </div>
             @endif
