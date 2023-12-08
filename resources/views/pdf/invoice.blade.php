@@ -3,7 +3,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<style>
 			.table, .table th, .table td {
-			  border: 1px solid black;
+			  border-bottom: 1px solid black;
 			  border-collapse: collapse;
 			}
 
@@ -54,7 +54,7 @@
 						</td>
 						<td style="width: 33%">
 							{{$item->variant->name}}
-							<p style="font-size: 12px; line-height: 80%;"><b> SKU:</b> {{$item->variant->sku}}</p>
+							<p style="font-size: 12px; line-height: 80%;"><b> SKU:</b> {{$item->variant->sku ?? 'Unknown'}}</p>
 						</td>
 						<td style="width: 33%">
 							{{$item->quantity}}
@@ -62,8 +62,23 @@
 					</tr>
 					@endforeach
 				</table>
+				<table style="width: 33%; margin-left: auto;" class="table">
+					<thead style="font-weight: bold;">
+						<td>Products</td>
+						<td>Quantity</td>
+					</thead>
+					<tr>
+						<td style="width: 50%">
+							<p>{{$order->items->count()}}</p>
+						</td>
+						<td style="width: 50%">
+							<p>{{$order->items->sum('quantity')}}</p>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
+
 		<div style="position: relative; bottom: 0;">
 			<table style="width: 100%;">
 				<tr>
