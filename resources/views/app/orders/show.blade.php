@@ -40,16 +40,17 @@
             <p class="w-1/6 text-start font-semibold">Subtotal</p>
             @endif
         </div>
-        @if($order->items->count() < 1) <div class="flex flex-row items-center p-5">
+        @if($order->items->count() < 1) 
+        <div class="flex flex-row items-center p-5">
             <div class="w-full text-center py-12">This order has no products</div>
+        </div>
+        @else
+        <!-- Order items -->
+        @foreach($order->items as $item)
+        <x-order-item-row :item="$item" :admin="false"/>
+        @endforeach
+        @endif
     </div>
-    @else
-    <!-- Order items -->
-    @foreach($order->items as $item)
-    <x-order-item-row :item="$item" :admin="false"/>
-    @endforeach
-    @endif
-</div>
 </div>
 
 <div class="flex flex-col border-2 rounded-lg mt-4">
