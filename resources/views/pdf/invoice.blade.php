@@ -54,6 +54,7 @@
 						</td>
 						<td style="width: 33%">
 							{{$item->variant->name}}
+							<p style="font-size: 12px; line-height: 80%;"><b> SKU:</b> {{$item->variant->sku}}</p>
 						</td>
 						<td style="width: 33%">
 							{{$item->quantity}}
