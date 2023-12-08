@@ -14,20 +14,8 @@
     @include('layouts.app.header')
 
     <div class="container">
-        {{-- Main Image --}}
-        <div class="relative w-screen">
-            <div class="h-56 bg-cover md:h-96" style="background-image: url('{{
-        asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg')
-        }}'); "></div>
-            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80">
-                <h1 class="text-2xl font-bold text-center text-white underline md:text-4xl">
-                    Product
-                </h1>
-            </div>
-        </div>
-
         {{-- Sub Image & Description --}}
-        <div class="w-11/12 mx-auto mt-5 md:w-9/12">
+        <div class="w-11/12 mx-auto mt-10 md:w-9/12">
             <div class="flex flex-col gap-1 text-sm font-bold text-blue-800 md:flex-row md:text-2xl">
                 <a href="">Home</a>
                 <span>/</span>
