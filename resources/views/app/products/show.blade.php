@@ -56,7 +56,7 @@
                         {!! nl2br($product->short_description) !!}
                     </p>
                     @if (auth()->user() && !auth()->user()->is_wholesale())
-                    <p class="mt-5 text-3xl font-bold text-blue-800">${{ $product->price() }}</p>
+                    <p class="mt-5 text-3xl font-bold text-blue-800" id="product_price">${{ $product->price() }}</p>
                     @endif
                     @if($product->in_stock && $product->variants->count() > 0)
                     <p class="text-lg text-blue-500 md:mt-5">In stock</p>
@@ -65,9 +65,10 @@
                         @if($product->variants->count() == 1)
                         <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
                         @else
-                        <select name="variant_id" class="w-1/2 p-4 my-4">
+                        <select name="variant_id" class="w-1/2 p-4 my-4" id="selected_variant" @if(!auth()->user()->is_wholesale()) onchange="update_price()" @endif>
+                            <option value="" selected>SELECT</option>
                             @foreach($product->variants as $variant)
-                            <option value="{{$variant->id}}">{{$variant->name}} - ${{auth()->user() && !auth()->user()->is_wholesale() ? $variant->price : null}}</option>
+                            <option value="{{$variant->id}}">{{$variant->name}}</option>
                             @endforeach
                         </select>
                         @error('variant_id')
@@ -153,6 +154,20 @@
 
     <!-- FOOTER -->
     @include('layouts.app.footer')
+    
+    @if(!auth()->user()->is_wholesale())
+    <script>
+        const price_range = "{{$product->price()}}"
+        const prices = @json($product->variants->pluck('price', 'id'));
+        const selected_variant = document.getElementById('selected_variant');
+        const product_price = document.getElementById('product_price');
+
+        function update_price(e){
+            product_price.innerText = '$' + (prices[selected_variant.value] ? prices[selected_variant.value] : price_range);
+            console.log("price");
+        }
+    </script>
+    @endif
 </body>
 
 </html
