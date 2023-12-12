@@ -16,11 +16,11 @@
 <div class="container min-w-fit">
     {{-- Main Image --}}
     <div class="relative w-screen">
-        <div class="h-56 bg-cover md:h-96"
+        <div class="h-56 bg-cover md:h-[70vh] bg-fixed"
             style="background-image: url('{{ $category->background ?? asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg') }}'); ">
         </div>
-        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80">
-            <h1 class="text-2xl font-bold text-center text-white md:text-4xl">
+        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+            <h1 class="text-2xl font-bold text-center text-white md:text-5xl drop-shadow-2xl">
                 {{$category ? $category->name : 'Products'}}
             </h1>
         </div>
