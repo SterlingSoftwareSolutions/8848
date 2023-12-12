@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
     // Checkout
     Route::get('/checkout', [CheckoutController::class, 'checkout_form']);
     Route::post('/checkout', [CheckoutController::class, 'checkout']);
-    Route::get('/place-order', [CheckoutController::class, 'checkout_wholesale']);
+    Route::post('/place-order', [CheckoutController::class, 'checkout_wholesale']);
 
     // My List
     Route::get('/my-list', [MyListController::class, 'index']);

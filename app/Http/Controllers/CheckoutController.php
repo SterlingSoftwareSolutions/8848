@@ -185,7 +185,7 @@ class CheckoutController extends Controller
     }
 
 
-    public function create_wholesale_order($user_id, $billing_address_data, $shipping_address_data)
+    public function create_wholesale_order($user_id, $billing_address_data, $shipping_address_data, $notes = "")
     {
         // Format data for order creation
         $data = [
@@ -195,6 +195,7 @@ class CheckoutController extends Controller
             'status' => 'unverified',
             'payment_status' => 'unpaid',
             'discount' => 0,
+            'notes' => $notes
         ];
 
         $billing_address = [
@@ -275,7 +276,7 @@ class CheckoutController extends Controller
             $shipping_address_data = $billing_address_data;
         }
 
-        $order = $this->create_wholesale_order($user->id, $billing_address_data, $shipping_address_data);
+        $order = $this->create_wholesale_order($user->id, $billing_address_data, $shipping_address_data, $request->notes ?? '');
 
         // Add items to the order
         foreach($cart_items as $item){

@@ -17,6 +17,7 @@ class Order extends Model
         'payment_status',
         'discount',
         'order_date',
+        'notes',
 
         'billing_first_name',
         'billing_last_name',
