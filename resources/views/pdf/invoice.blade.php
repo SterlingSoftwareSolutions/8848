@@ -34,7 +34,7 @@
 						<td style="width: 33%; font-size: 14px;">
 							<p>Customer Name: @if($order->user)<span>{{$order->user->first_name}} {{$order->user?->last_name}}</span>@else<span style="color: red;">No User</span>@endif</p>
 							<p>Order ID: <span>{{$order->reference}}</span></p>
-							<p>Date: <span>{{ \Carbon\Carbon::parse($order->created_at)->format('Y/m/d') }}</span></p>
+							<p>Date/Time: <span>{{ \Carbon\Carbon::parse($order->created_at)->format('Y/m/d h:i A') }}</span></p>
 						</td>
 					</tr>
 				</table>
