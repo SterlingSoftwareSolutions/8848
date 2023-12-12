@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -26,12 +29,17 @@
 
             <div class="flex flex-col mt-5 md:flex-row">
                 <div class="relative w-full md:w-6/12">
-                    <img src="{{$product->image(1)}}" alt="Image Description" class="w-full aspect-[4/3] object-cover hover:object-contain rounded bg-gray-200" />
-
-                    <!-- White circle with search icon -->
-                    <div class="absolute flex items-center justify-center w-12 h-12 bg-white rounded-full cursor-pointer top-5 right-5"
-                        onclick="openImage()">
-                        <i class="fa fa-search" style="color: rgb(167, 36, 36)" aria-hidden="true"></i>
+                    <div class="swiper product-images-swiper bg-gray-200 rounded">
+                        <div class="swiper-wrapper">
+                            @for($i = 1; $i <= 4; $i++)
+                            <div class="swiper-slide">
+                                <img class="object-cover hover:object-contain w-full h-96 rounded" src="{{$product->image($i)}}" alt="image" />
+                            </div>
+                            @endfor
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
 
@@ -156,6 +164,22 @@
         }
     </script>
     @endif
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".product-images-swiper", {
+        cssMode: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+      });f
+    </script>
 </body>
 
 </html
