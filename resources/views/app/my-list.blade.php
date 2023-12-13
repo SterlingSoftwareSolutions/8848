@@ -4,13 +4,16 @@
 <div class="flex flex-col border-2 rounded-lg">
     <div class="text-blue-900">
         <div class="flex flex-row p-5 bg-gray-100">
-            <p class="w-1/6 text-start font-semibold">Product ID</p>
-            <p class="w-1/6 text-start font-semibold">Product</p>
-            <p class="w-1/6 text-start font-semibold">Image</p>
-            <p class="w-1/6 text-start font-semibold">Action</p>
+            <p class="w-full text-start font-semibold">Image</p>
+            <p class="w-full text-start font-semibold">Product</p>
+            <p class="w-full text-start font-semibold">Variant</p>
+            @if(!Auth::user()->is_wholesale())
+            <p class="w-full text-start font-semibold">Price</p>
+            @endif
+            <p class="w-full text-start font-semibold">Action</p>
         </div>
         @if($myList->count() < 1) <div class="flex flex-row items-center p-5">
-            <div class="w-full text-center py-12">You don't have any Items</div>
+        <div class="w-full text-center py-12">You don't have any Items</div>
     </div>
     @else
     <!-- ORDERS -->

@@ -67,7 +67,7 @@ class CartController extends Controller
         $user->cart_add($request->variant_id, $request->quantity ?? 1);
 
         if ($request->has('my_list_item')) {
-            $user->my_list()->where(['product_id' => $request->my_list_item])->delete();
+            $user->my_list()->where(['variant_id' => $request->my_list_item])->delete();
         }
 
         if ($request->wantsJson()) {
