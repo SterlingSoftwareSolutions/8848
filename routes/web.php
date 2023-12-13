@@ -65,8 +65,8 @@ Route::middleware('auth')->group(function () {
 
     // My List
     Route::get('/my-list', [MyListController::class, 'index']);
-    Route::post('/my-list/{product}/add', [MyListController::class, 'add']);
-    Route::delete('/my-list/{product}/remove', [MyListController::class, 'remove'])->name('removeMyList');
+    Route::post('/my-list/{variant}/add', [MyListController::class, 'add']);
+    Route::delete('/my-list/{variant}/remove', [MyListController::class, 'remove'])->name('removeMyList');
 
     // Orders
     Route::get('/orders', [OrderController::class, 'index_client']);
