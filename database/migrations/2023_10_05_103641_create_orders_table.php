@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('payment_status');
             $table->decimal('discount', 10, 2);
             $table->timestamp('order_date');
+            $table->text('notes')->nullable();
 
             // Billing Address
             $table->string('billing_first_name');

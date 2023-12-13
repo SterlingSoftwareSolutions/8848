@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -14,20 +17,8 @@
     @include('layouts.app.header')
 
     <div class="container">
-        {{-- Main Image --}}
-        <div class="relative w-screen">
-            <div class="h-56 bg-cover md:h-96" style="background-image: url('{{
-        asset('images/composition-cleaning-objects-with-copyspace@0.5x.jpg')
-        }}'); "></div>
-            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80">
-                <h1 class="text-2xl font-bold text-center text-white underline md:text-4xl">
-                    Product
-                </h1>
-            </div>
-        </div>
-
         {{-- Sub Image & Description --}}
-        <div class="w-11/12 mx-auto mt-5 md:w-9/12">
+        <div class="w-11/12 mx-auto mt-10 md:w-9/12">
             <div class="flex flex-col gap-1 text-sm font-bold text-blue-800 md:flex-row md:text-2xl">
                 <a href="">Home</a>
                 <span>/</span>
@@ -38,12 +29,17 @@
 
             <div class="flex flex-col mt-5 md:flex-row">
                 <div class="relative w-full md:w-6/12">
-                    <img src="{{$product->image(1)}}" alt="Image Description" class="w-full aspect-[4/3] object-cover hover:object-contain rounded bg-gray-200" />
-
-                    <!-- White circle with search icon -->
-                    <div class="absolute flex items-center justify-center w-12 h-12 bg-white rounded-full cursor-pointer top-5 right-5"
-                        onclick="openImage()">
-                        <i class="fa fa-search" style="color: rgb(167, 36, 36)" aria-hidden="true"></i>
+                    <div class="swiper product-images-swiper bg-gray-200 rounded">
+                        <div class="swiper-wrapper">
+                            @for($i = 1; $i <= 4; $i++)
+                            <div class="swiper-slide">
+                                <img class="object-cover hover:object-contain w-full h-96 rounded" src="{{$product->image($i)}}" alt="image" />
+                            </div>
+                            @endfor
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
 
@@ -56,7 +52,7 @@
                         {!! nl2br($product->short_description) !!}
                     </p>
                     @if (auth()->user() && !auth()->user()->is_wholesale())
-                    <p class="mt-5 text-3xl font-bold text-blue-800">${{ $product->price() }}</p>
+                    <p class="mt-5 text-3xl font-bold text-blue-800" id="product_price">${{ $product->price() }}</p>
                     @endif
                     @if($product->in_stock && $product->variants->count() > 0)
                     <p class="text-lg text-blue-500 md:mt-5">In stock</p>
@@ -65,9 +61,10 @@
                         @if($product->variants->count() == 1)
                         <input type="hidden" name="variant_id" value="{{$product->variants[0]->id}}">
                         @else
-                        <select name="variant_id" class="w-1/2 p-4 my-4">
+                        <select name="variant_id" class="w-1/2 p-4 my-4" id="selected_variant" @if(!auth()->user()->is_wholesale()) onchange="update_price()" @endif>
+                            <option value="" selected>SELECT</option>
                             @foreach($product->variants as $variant)
-                            <option value="{{$variant->id}}">{{$variant->name}} - ${{auth()->user() && !auth()->user()->is_wholesale() ? $variant->price : null}}</option>
+                            <option value="{{$variant->id}}">{{$variant->name}}</option>
                             @endforeach
                         </select>
                         @error('variant_id')
@@ -153,6 +150,36 @@
 
     <!-- FOOTER -->
     @include('layouts.app.footer')
+    
+    @if(!auth()->user()->is_wholesale())
+    <script>
+        const price_range = "{{$product->price()}}"
+        const prices = @json($product->variants->pluck('price', 'id'));
+        const selected_variant = document.getElementById('selected_variant');
+        const product_price = document.getElementById('product_price');
+
+        function update_price(e){
+            product_price.innerText = '$' + (prices[selected_variant.value] ? prices[selected_variant.value] : price_range);
+            console.log("price");
+        }
+    </script>
+    @endif
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".product-images-swiper", {
+        cssMode: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+      });f
+    </script>
 </body>
 
 </html

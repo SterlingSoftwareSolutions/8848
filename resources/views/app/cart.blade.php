@@ -74,26 +74,28 @@
             </div>
         </div>
         @endif
-        <!-- Checkout Button -->
-        <div class="flex justify-end">
-            <div class="h-12 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
-                @if(Auth::user()->is_wholesale())
-                <a href="/place-order">
-                    <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
-                        Place Order
-                    </button>
-                </a>
-                @else
-                <a href="/checkout">
-                    <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
-                        Checkout
-                    </button>
-                </a>
-                @endif
-            </div>
-        </div>
     </div>
 </form>
+<!-- Checkout Button -->
+<div class="flex justify-end">
+    <div class="h-12 mt-3 md:w-4/12 lg:w-4/12 sm:w-64">
+        @if(Auth::user()->is_wholesale())
+        <form action="/place-order" id="order_form" method="post">
+            @csrf
+            <textarea class="w-full border-2 mb-3 p-2" placeholder="Order Notes" name="notes"></textarea>
+            <button form="order_form" type="submit" class="w-full h-12 text-white uppercase bg-blue-800">
+                Place Order
+            </button>
+        </form>
+        @else
+        <a href="/checkout">
+            <button type="button" class="w-full h-full text-white uppercase bg-blue-800">
+                Checkout
+            </button>
+        </a>
+        @endif
+    </div>
+</div>
 <script>
     // JavaScript to handle increment and decrement actions
     const inputElement = document.querySelector('input[name="custom-input-number"]');

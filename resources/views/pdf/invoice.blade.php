@@ -3,7 +3,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<style>
 			.table, .table th, .table td {
-			  border: 1px solid black;
+			  border-bottom: 1px solid black;
 			  border-collapse: collapse;
 			}
 
@@ -34,7 +34,7 @@
 						<td style="width: 33%; font-size: 14px;">
 							<p>Customer Name: @if($order->user)<span>{{$order->user->first_name}} {{$order->user?->last_name}}</span>@else<span style="color: red;">No User</span>@endif</p>
 							<p>Order ID: <span>{{$order->reference}}</span></p>
-							<p>Date: <span>{{ \Carbon\Carbon::parse($order->created_at)->format('Y/m/d') }}</span></p>
+							<p>Date/Time: <span>{{ \Carbon\Carbon::parse($order->created_at)->format('Y/m/d h:i A') }}</span></p>
 						</td>
 					</tr>
 				</table>
@@ -54,6 +54,7 @@
 						</td>
 						<td style="width: 33%">
 							{{$item->variant->name}}
+							<p style="font-size: 12px; line-height: 80%;"><b> SKU:</b> {{$item->variant->sku ?? 'Unknown'}}</p>
 						</td>
 						<td style="width: 33%">
 							{{$item->quantity}}
@@ -61,8 +62,23 @@
 					</tr>
 					@endforeach
 				</table>
+				<table style="width: 33%; margin-left: auto;" class="table">
+					<thead style="font-weight: bold;">
+						<td>Products</td>
+						<td>Quantity</td>
+					</thead>
+					<tr>
+						<td style="width: 50%">
+							<p>{{$order->items->count()}}</p>
+						</td>
+						<td style="width: 50%">
+							<p>{{$order->items->sum('quantity')}}</p>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
+
 		<div style="position: relative; bottom: 0;">
 			<table style="width: 100%;">
 				<tr>
