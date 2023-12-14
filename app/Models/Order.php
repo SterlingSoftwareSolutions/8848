@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Order extends Model
 {
@@ -45,6 +47,33 @@ class Order extends Model
     protected $appends = [
         'count',
     ];
+
+    public function email()
+    {
+        $order = $this;
+        if(env('MAIL_USERNAME')){
+            $pdf = Pdf::loadView('pdf.invoice', compact('order'))->setPaper('a4', 'portrait');
+
+            // Send invoice to customer
+            Mail::send([], [], function($message) use($pdf, $order) {
+                $message->to($order->user->email)
+                    ->subject('Confirmation for order ' . $order->reference)
+                    ->attachData($pdf->output(), $order->reference . '.pdf', [
+                        'mime' => 'application/pdf',
+                    ]);
+            });
+
+            // Send invoice to admin
+            $admin = User::where('role', 'admin')->first();
+            Mail::send([], [], function($message) use($pdf, $order, $admin) {
+                $message->to($admin->email)
+                    ->subject('Confirmation for order ' . $order->reference)
+                    ->attachData($pdf->output(), $order->reference . '.pdf', [
+                        'mime' => 'application/pdf',
+                    ]);
+            });
+        }
+    }
 
     public function getTotalAttribute(){
         return $this->total();
