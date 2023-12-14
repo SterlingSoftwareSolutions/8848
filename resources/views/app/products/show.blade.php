@@ -51,7 +51,7 @@
                     <p class="mt-2 text-gray-700">
                         {!! nl2br($product->short_description) !!}
                     </p>
-                    @if (auth()->user() && !auth()->user()->is_wholesale())
+                    @if (!auth()->user()?->is_wholesale())
                     <p class="mt-5 text-3xl font-bold text-blue-800" id="product_price">${{ $product->price() }}</p>
                     @endif
                     @if($product->in_stock && $product->variants->count() > 0)
@@ -151,7 +151,7 @@
     <!-- FOOTER -->
     @include('layouts.app.footer')
     
-    @if(!auth()->user()->is_wholesale())
+    @if(!auth()->user()?->is_wholesale())
     <script>
         const price_range = "{{$product->price()}}"
         const prices = @json($product->variants->pluck('price', 'id'));
