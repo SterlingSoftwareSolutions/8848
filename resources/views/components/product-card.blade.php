@@ -50,7 +50,7 @@
     <div class="flex items-center justify-center flex-col-2">
         <select name="variant_id" id="variant_id_{{$product->id}}" class="w-full p-2 rounded disabled:bg-gray-200" @if($product->variants->count() < 2) disabled @endif>
             @foreach($product->variants as $variant)
-            <option value="{{$variant->id}}">{{$variant->name}} @if(!Auth::user()->is_wholesale()) - ${{$variant->price}}@endif</option>
+            <option value="{{$variant->id}}">{{$variant->name}} @if(!Auth::user()?->is_wholesale()) - ${{$variant->price}}@endif</option>
             @endforeach
         </select>
     </div>
