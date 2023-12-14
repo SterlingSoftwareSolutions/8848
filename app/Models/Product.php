@@ -112,9 +112,8 @@ class Product extends Model
 
     public function getAvailableOnFavouriteAttribute()
     {
-
         if ($user = auth()->user()) {
-            return $user->my_list()->where('product_id', $this->id)->exists();
+            return $user->my_list()->whereIn('variant_id', $this->variants->pluck('id'))->exists();
         }
     }
 }

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('my_lists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('variant_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-            $table->unique(['user_id', 'product_id']);
+            $table->unique(['user_id', 'variant_id']);
         });
     }
 

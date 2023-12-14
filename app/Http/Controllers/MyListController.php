@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderLog;
-use App\Models\Product;
+use App\Models\Variant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +22,7 @@ class MyListController extends Controller
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'mylist' => $user->my_list->load('product')
+                'mylist' => $user->my_list->load('variant')
             ]);
         }
 
@@ -30,7 +30,7 @@ class MyListController extends Controller
     }
 
 
-    public function add(Product $product, Request $request)
+    public function add(Variant $variant, Request $request)
     {
         if ($request->ajax() || $request->wantsJson()) {
             $user = auth()->user();
@@ -39,14 +39,14 @@ class MyListController extends Controller
                 return response()->json(['success' => false, 'cause' => 'authorization']);
             }
 
-            $check_already_exsist = $user->my_list()->where('product_id', $product->id)->exists();
+            $check_already_exists = $user->my_list()->where('variant_id', $variant->id)->exists();
 
-
-            if ($check_already_exsist) {
+            if ($check_already_exists) {
                 return response()->json(['success' => false, 'cause' => 'exsist']);
             }
 
-            if ($user->my_list()->create(['product_id' => $product->id])) {
+
+            if ($user->my_list()->create(['variant_id' => $variant->id])) {
                 return response()->json(['success' => true, 'cause' => 'added']);
             }
 
@@ -57,7 +57,7 @@ class MyListController extends Controller
     }
 
 
-    public function remove(Product $product, Request $request)
+    public function remove(variant $variant, Request $request)
     {
         $user = auth()->user();
 
@@ -65,12 +65,12 @@ class MyListController extends Controller
             abort(404);
         }
 
-        $user->my_list()->where('product_id', $product->id)->delete();
+        $user->my_list()->where('variant_id', $variant->id)->delete();
 
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'message' => 'Product removed from MyList'
+                'message' => 'variant removed from MyList'
             ]);
         }
 

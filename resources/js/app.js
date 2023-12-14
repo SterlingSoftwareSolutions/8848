@@ -44,10 +44,10 @@ incrementButtons.forEach((btn) => {
 // Product add to my list function
 $('.favourite_btn').on('click', function (e) {
     var productId = $(this).data('favourite')
+    var variantId = $('#variant_id_' + productId).val()
     var button = $(this);
 
     button.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i>');
-
 
     $.ajaxSetup({
         headers: {
@@ -57,14 +57,14 @@ $('.favourite_btn').on('click', function (e) {
 
     $.ajax({
         type: 'POST',
-        url: '/my-list/' + productId + '/add',
+        url: '/my-list/' + variantId + '/add',
         success: function (data) {
             setTimeout(function () {
                 window.location.reload();
             }, 2000);
         },
         error: function (xhr, status, error) {
-            button.prop('disabled', false).html(' Favorite');
+            button.prop('disabled', false).html('MY LIST');
             console.log('request failed: ' + error);
         }
     });

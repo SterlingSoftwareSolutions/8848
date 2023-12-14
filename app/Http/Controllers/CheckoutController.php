@@ -71,6 +71,7 @@ class CheckoutController extends Controller
             'status' => 'pending',
             'payment_status' => 'unpaid',
             'discount' => 0,
+            'notes' => $request->notes ?? ''
         ];
 
         $billing_address = [

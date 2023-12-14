@@ -11,11 +11,11 @@ class MyList extends Model
 
     protected $fillable = [
         'user_id',
-        'product_id',
+        'variant_id',
     ];
 
-    public function product()
+    public function variant()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Variant::class);
     }
 }
