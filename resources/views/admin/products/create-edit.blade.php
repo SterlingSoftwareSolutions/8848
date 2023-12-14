@@ -117,7 +117,7 @@
         </div>
         </div>
         <h1 class=" text-[#1670B7] font-bold text-lg">Add Variation</h1>
-        <div class="py-10">
+        <div class="py-4">
         <div class="">
             <div id="form-container">
             <!-- Initial input field -->
@@ -126,67 +126,63 @@
             <div class="flex gap-5" id="variant_container_{{$variant->id}}">
                 <div class="flex gap-5 mb-4">
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
+
                         <input value="{{old('variant_name_' . $variant->id, $variant->name ?? null)}}"
                             name="variant_name_{{$variant->id}}" type="text" class="w-full px-4 py-2 border rounded-md"
                             placeholder="Variant Name">
                         <x-input-error :messages="$errors->get('variant_name_{{$variant->id}}')" class="mt-2" />
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Price :</label>
+
                         <input value="{{old('variant_price_' . $variant->id, $variant->price ?? null)}}"
                             name="variant_price_{{$variant->id}}" min="0" step=".01" type="number" class="w-full px-4 py-2
                                 border rounded-md" placeholder="$0.00">
                         <x-input-error :messages="$errors->get('variant_price_{{$variant->id}}')" class="mt-2" />
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
+
                         <input value="{{old('variant_sku_' . $variant->id, $variant->sku ?? null)}}"
                             name="variant_sku_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md"
                             placeholder="SKU">
                         <x-input-error :messages="$errors->get('variant_sku_' . $variant->id)" class="mt-2" />
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Unit :</label>
+
                         <input value="{{old('variant_unit_' . $variant->id, $variant->units ?? null)}}"
                             name="variant_unit_{{$variant->id}}" min="0" type="text" class="w-full px-4 py-2 border rounded-md"
                             placeholder="Unit">
                         <x-input-error :messages="$errors->get('variant_unit_' . $variant->id)" class="mt-2" />
                     </div>
                 </div>
-                <button class="px-2 py-1 mt-8 text-white bg-red-500 rounded-md h-7 hover:bg-red-600" type="button"
+                <button class="px-2 py-1 text-white bg-red-500 rounded-md mb-4 hover:bg-red-600" type="button"
                     onclick="remove_id('variant_container_{{$variant->id}}')">Remove</button>
             </div>
             @endforeach
             @else
             <div class="flex flex-row gap-5 mb-4 variant-container" id="variant_container_01">
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Variant Name:</label>
                     <input value="{{ old('variant_name_01', 'Default') }}" name="variant_name_01" type="text"
                         class="w-full px-4 py-2 border rounded-md" placeholder="Variant Name" required>
                     <x-input-error :messages="$errors->get('variant_name_01')" class="mt-2" />
                 </div>
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Price:</label>
                     <input value="{{ old('variant_price_01') }}" name="variant_price_01" type="number" step=".01"
                         class="w-full px-4 py-2 border rounded-md" placeholder="$0.00" required>
                     <x-input-error :messages="$errors->get('variant_price_01')" class="mt-2" />
                 </div>
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900">SKU :</label>
                     <input type="text" value="{{old('variant_sku_01', '')}}" name="variant_sku_01"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        class="w-full px-4 py-2 border rounded-md"
                         placeholder="SKU">
                     <x-input-error :messages="$errors->get('variant_sku_01')" class="mt-2" />
                 </div>
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900">Unit :</label>
                     <input type="text" value="{{old('variant_unit_01', '')}}" name="variant_unit_01"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        class="w-full px-4 py-2 border rounded-md"
                         placeholder="Unit">
                     <x-input-error :messages="$errors->get('variant_unit_01')" class="mt-2" />
                 </div>
-                <button class="h-10 px-2 mt-8 text-white bg-red-500 rounded-md hover:bg-red-600"
+                <button class="px-2 py-1 text-white bg-red-500 rounded-md hover:bg-red-600" type="button"
                     onclick="remove_id('variant_container_01')" type="button">Remove</button>
             </div>
             @endif
@@ -326,7 +322,14 @@
         sku.name = `variant_sku_0${inputIndex}`;
         sku.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
         sku.placeholder = "SKU";
-        sku.required = true; // Make inputField2 required
+
+        // Unit field
+        const unit = document.createElement("input");
+        unit.type = "text";
+        unit.id = `input${inputIndex}`;
+        unit.name = `variant_unit_0${inputIndex}`;
+        unit.classList.add("w-96", "px-4", "py-2", "border", "rounded-md");
+        unit.placeholder = "Unit";
 
         // Create a "Remove" button
         const removeButton = document.createElement("button");
@@ -346,6 +349,7 @@
         fieldDiv.appendChild(inputField1);
         fieldDiv.appendChild(inputField2);
         fieldDiv.appendChild(sku);
+        fieldDiv.appendChild(unit);
         fieldDiv.appendChild(removeButton);
 
         // Append the div to the form container
