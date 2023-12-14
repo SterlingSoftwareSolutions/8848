@@ -26,7 +26,8 @@ class ProductController extends Controller
                         'id' => $variantIndex,
                         'name' => $value,
                         'price' => $requestData['variant_price_' . $variantIndex],
-                        'sku' => $requestData['variant_sku_' . $variantIndex]
+                        'sku' => $requestData['variant_sku_' . $variantIndex],
+                        'units' => $requestData['variant_unit_' . $variantIndex]
                     ];
 
                     $variants[] = $variant;
@@ -192,7 +193,8 @@ class ProductController extends Controller
 
             'variant_name_01' => 'required',
             'variant_price_01' => 'required',
-            'variant_sku_01' => 'required'
+            'variant_sku_01' => 'required',
+            'variant_unit_01' => 'required'
         ]);
 
         $variants = $this->parse_variants($request);
@@ -216,7 +218,8 @@ class ProductController extends Controller
                 'product_id' => $product->id,
                 'name' => $variant['name'],
                 'price' => $variant['price'],
-                'sku' => $variant['sku']
+                'sku' => $variant['sku'],
+                'units' => $variant['units']
             ]);
         }
 
@@ -334,14 +337,16 @@ class ProductController extends Controller
                     'product_id' => $product->id,
                     'name' => $variant['name'],
                     'price' => $variant['price'],
-                    'sku' => $variant['sku']
+                    'sku' => $variant['sku'],
+                    'units' => $variant['units']
                 ]);
             } else{
                 $existing_variant = Variant::where('product_id', $product->id)->where('id', $variant['id'])->firstOrFail();
                 $existing_variant->update([
                     'name' => $variant['name'],
                     'price' => $variant['price'],
-                    'sku' => $variant['sku']
+                    'sku' => $variant['sku'],
+                    'units' => $variant['units']
                 ]);
             }
         }

@@ -14,6 +14,7 @@ class Variant extends Model
         'name',
         'price',
         'sku',
+        'units',
     ];
 
     public function product(){
