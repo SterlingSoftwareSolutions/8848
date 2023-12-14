@@ -22,7 +22,7 @@
 			<div>
 				<table style="width: 100%;">
 					<tr>
-						<td style="width: 66%">
+						<td style="width: 60%">
 							@php
 								$path = public_path('/images/logo.png');
 								$type = pathinfo($path, PATHINFO_EXTENSION);
@@ -31,7 +31,7 @@
 							@endphp
 							<img src="{{$base64}}>"/>
 						</td>
-						<td style="width: 33%; font-size: 14px;">
+						<td style="width: 40%; font-size: 14px;">
 							<p>Customer Name: @if($order->user)<span>{{$order->user->first_name}} {{$order->user?->last_name}}</span>@else<span style="color: red;">No User</span>@endif</p>
 							<p>Order ID: <span>{{$order->reference}}</span></p>
 							<p>Date/Time: <span>{{ \Carbon\Carbon::parse($order->created_at)->format('Y/m/d h:i A') }}</span></p>
@@ -39,43 +39,58 @@
 					</tr>
 				</table>
 			</div>
-			<div style="margin-top: 40px;">
-				<h2>Order Item List</h2>
-				<table style="width: 100%;" class="table">
+			<div style="margin-top: 20px;">
+				<h3>Order Item List</h3>
+				<table style="width: 100%; font-size: 15px;" class="table">
 					<thead style="font-weight: bold;">
-						<td>Product Name</td>
-						<td>Variant Name</td>
-						<td>Quantity</td>
+						<td>QTY</td>
+						<td>SKU</td>
+						<td>Product</td>
+						<td>Variant</td>
+						<td>Unit</td>
+						<td>Notes</td>
 					</thead>
 					@foreach($order->items as $item)
 					<tr>
-						<td style="width: 33%">
+						<td>
+							{{$item->quantity}}
+						</td>
+						<td>
+							{{$item->variant->sku}}
+						</td>
+						<td>
 							{{$item->variant->product->title}}
 						</td>
-						<td style="width: 33%">
+						<td>
 							{{$item->variant->name}}
-							<p style="font-size: 12px; line-height: 80%;"><b> SKU:</b> {{$item->variant->sku ?? 'Unknown'}}</p>
 						</td>
-						<td style="width: 33%">
-							{{$item->quantity}}
+						<td>
+							{{$item->variant->units}}
+						</td>
+						<td style="min-width: 150px;">
+							<div style="float: right; padding: 5px; border: 1px solid black; margin-top: 3px;"></div>
 						</td>
 					</tr>
 					@endforeach
 				</table>
-				<table style="width: 33%; margin-left: auto;" class="table">
+				<table style="width: 33%; margin-left: auto; font-size: 15px;" class="table">
 					<thead style="font-weight: bold;">
 						<td>Products</td>
 						<td>Quantity</td>
 					</thead>
 					<tr>
 						<td style="width: 50%">
-							<p>{{$order->items->count()}}</p>
+							{{$order->items->count()}}
 						</td>
 						<td style="width: 50%">
-							<p>{{$order->items->sum('quantity')}}</p>
+							{{$order->items->sum('quantity')}}
 						</td>
 					</tr>
 				</table>
+			</div>
+			<div>
+				<h3>Order Notes</h3>
+				<p style="font-size: 15px; border: 1px solid black; min-height: 4em">{{$order->notes}}</p>
 			</div>
 		</div>
 
