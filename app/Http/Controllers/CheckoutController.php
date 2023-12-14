@@ -175,6 +175,8 @@ class CheckoutController extends Controller
             $user->cart_empty();
         }
 
+        $order->email();
+
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
@@ -299,6 +301,7 @@ class CheckoutController extends Controller
 
         // Clear the user's cart
         $user->cart_empty();
+        $order->email();
 
         if($request->wantsJson()){
             return response()->json([
@@ -361,6 +364,8 @@ class CheckoutController extends Controller
                 "price" => $item->variant->price,
             ]);
         }
+
+        $order->email();
 
         if($request->wantsJson()){
             return response()->json([
