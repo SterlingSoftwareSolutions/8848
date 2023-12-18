@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     /**
-     * possible statueses
+     * possible statuses
      */
     private $payment_statuses = ['unpaid', 'partial', 'paid', 'refunded'];
     private $order_statuses = ['unverified', 'pending', 'processing', 'shipped', 'delivered', 'returned', 'canceled', 'rejected', ];
@@ -160,6 +160,14 @@ class OrderController extends Controller
         ]);
 
         $items = $this->parse_orderitems($request);
+        $item_ids = array_map(function ($item){
+            return $item['id'][0] == 0 ? null : $item['id'];
+        }, $items);
+
+        $existing_item_ids = $order->items->pluck('id')->toArray();
+        $items_to_delete = array_diff($existing_item_ids, $item_ids);
+
+        dd($items, $item_ids, $existing_item_ids, $items_to_delete);
 
         foreach($items as $item){
             $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();

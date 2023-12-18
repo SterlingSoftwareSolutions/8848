@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-
 <form class="p-8 ps-0" method="post" action="/admin/orders/{{$order->id}}">
     @csrf
     @method('put')
@@ -83,8 +82,9 @@
         {{-- Products --}}
         <div class="flex flex-col mx-2  md:mt-5 border rounded-lg">
             <div class="text-blue-900">
-                <div class="flex flex-row justify-end p-5 bg-gray-100">
-                    <p class="w-5/6 text-start font-semibold"></p>
+                <div class="flex flex-row justify-between items-center p-5 bg-gray-100">
+                    <button class="w-1/12 bg-blue-200 rounded h-10" type="button">Add Item</button>
+                    <p class="w-full text-start font-semibold"></p>
                     <div class="w-1/6 text-start font-semibold">
                         Products: <br>
                         <p class="text-xl">{{$order->items->count()}}</p>
@@ -167,4 +167,47 @@
         <button type="submit" class="border-2 border-blue-700 bg-blue-800 text-white py-2 px-5 rounded-lg w-40 mx-2">Save</button>
     </div>
 </form>
+
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <div class="relative transform overflow-auto rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 max-w-screen-lg">
+        <div class="flex flex-col p-5 gap-4 text-gray-800">
+            <h1 class="text-lg font-bold">Find Products</h1>
+            <div class="w-full flex justify-between">                
+                <div class="flex items-center gap-2">
+                    <label for="category">Category: </label>
+                    <select class="p-2 rounded-lg w-52 h-10 me-3" name="category">
+                        <option>SELECT CATEGORY</option>
+                    </select>
+                    <label for="sub_category">Sub Category: </label>
+                    <select class="p-2 rounded-lg w-52 h-10 me-3" id="sub_category">
+                        <option>SELECT SUB CATEGORY</option>
+                    </select>
+                    <label for="search">Search: </label>
+                    <input class="p-2 rounded-lg w-52 h-10 border border-gray-500 me-3" id="search"/>
+                    <button class="bg-gray-300 p-2 h-10 w-10 rounded-lg">Go</button>
+                </div>
+            </div>
+            <hr>
+            <div class="flex flex-col gap-2">
+                @for($i = 1; $i <= 5; $i++)
+                <div class="w-full p-2 gap-4 bg-gray-200 rounded-lg flex items-center">
+                    <img class="rounded-lg bg-white w-1/12 aspect-square object-cover" src="" alt="Product Image">
+                    <h3 class="w-2/12">Product Title</h3>
+                    <h3 class="w-2/12">CategorySubCategory</h3>
+                    <h3 class="w-2/12">Variant</h3>
+                    <h3 class="w-2/12">Product Name</h3>
+                    <h3 class="w-2/12">Product Name</h3>
+                    <button class="w-1/12 h-12 rounded-lg bg-gray-800 text-white">Add</button>
+                </div>
+                @endfor
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
