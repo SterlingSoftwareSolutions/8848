@@ -44,9 +44,12 @@
         View cart
       </a>
       @if(Auth::user()->is_wholesale())
-      <a href="/place-order" class="bg-[#284297] hover-bg-blue-700 text-white font-bold py-2 px-4">
-        Place Order
-      </a>
+      <form action="/place-order" method="post">
+        @csrf
+        <button type="submit" class="bg-[#284297] hover-bg-blue-700 text-white font-bold py-2 px-4">
+          Place Order
+        </button>
+      </form>
       @else
       <a href="/checkout" class="bg-[#284297] hover:bg-blue-700 text-white font-bold py-2 px-4">
         Checkout
