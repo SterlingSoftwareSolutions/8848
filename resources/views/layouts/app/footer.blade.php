@@ -6,7 +6,7 @@
             <div class="mb-6 md:mb-0 md:w-1/3">
                 <a href="" class="grid items-center justify-center text-center">
                     <img class="mx-auto" src="{{ URL('images/logo.png')}}" alt="Logo Image">
-                    <p class="mt-4  text-center text-black">Lorem Ipsum Dolor Sit<br> Amet, Consectetur</p>
+                    <p class="mt-4  text-center text-black">Your one stop shop for all<br> cleaning and packaging needs</p>
                 </a>
             </div>
 
@@ -16,7 +16,7 @@
                 <div class="flex flex-col ml-8 text-center md:text-left">
                     <h1 class="text-2xl font-bold">Download</h1>
                     <h2 class="text-xl font-semibold">8848 Supplies Mobile App</h2>
-                    <p class="mt-2 text-black">Lorem Ipsum Dolor Sit Amet, Consectetur<br>Adipiscing Elit. Sed Non Risus. Suspendisse<br>Lectus Tortor, Dignissim Sit Amet,</p>
+                    <p class="mt-2 text-black">Discover the 8848 Supplies App – your go-to hub for top-notch cleaning essentials and premium food packaging. Download now for a seamless shopping experience.</p>
                     <img class="h-auto mx-auto mt-4 md:-ml-[2px] w-28 " src="{{ URL('images/Download-on-the-App-Store-1.png')}}">
                 </div>
             </div>
