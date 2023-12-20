@@ -8,7 +8,7 @@
     function getData() {
         return {
             // Show Modal
-            showProductPicker: true,
+            showProductPicker: false,
 
             // Input
             searchQuery: null,
