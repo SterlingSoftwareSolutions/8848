@@ -49,14 +49,15 @@
             },
 
             addProduct(product){
+                // Check if a variant is selected
                 if(this.selectedVariants[product.id] === undefined){
-                    alert('No variant selected');
-                    return;
+                    variant = product.variants[0]; // No variant selected, select first one
+                } else {
+                    variant = product.variants[this.selectedVariants[product.id]];
                 }
 
-                variant = product.variants[this.selectedVariants[product.id]];
+                // Increase quantity if item is already added
                 quantity = (this.selectedProducts[product.id + '.' + variant.id]?.quantity ?? 0) + 1;
-                console.log(quantity);
 
                 this.selectedProducts[product.id + '.' + variant.id] = {
                     product: product,
@@ -153,7 +154,7 @@
 
                     @if($order->status == 'unverified' && $order->order_type == 'wholesale')
                     <template x-for="(item, index) in selectedProducts">
-                        <div class="flex flex-row items-center p-2 border">
+                        <div class="flex flex-row items-center p-2 border bg-blue-50">
                             <input type="hidden" x-bind:name="'item_variant_0' + index" x-bind:value="item.variant.id">
                             <p class="w-1/6">
                                 <img src="/images/product-dummy.jpeg" alt="Product Image" class="max-w-[60px] aspect-square">
@@ -314,7 +315,6 @@
                                     <h3 class="w-3/12" x-text="product.title">Product Title</h3>
                                     <h3 class="w-3/12" x-text="product.category_name">Category</h3>
                                     <select class="w-3/12" x-on:change="selectVariant(event.target.value, product)">
-                                        <option value="">SELECT VARIANT</option>
                                         <template x-for="(variant, index) in product.variants">
                                             <option x-text="variant.name + ' - $' + variant.price" x-bind:value="index"></option>
                                         </template>
