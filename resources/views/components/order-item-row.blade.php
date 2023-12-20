@@ -5,12 +5,16 @@
 
 <div class="flex flex-row items-center p-2 border">
 
+    @if($admin)
+        <input type="hidden" name="item_variant_{{$item->id}}" value="{{$item->variant->id}}">
+    @endif
+
     <p class="w-1/6">
         <img src="{{ $item->variant->product->image_1 }}" alt="Product Image" class="max-w-[60px] aspect-square">
     </p>
 
     <div class="w-2/6">
-        {{$item->variant->product->title}}
+        {{$item->variant->product->title}} -  {{$item->variant->name}}
     </div>
 
     @if (!auth()->user()->is_wholesale())

@@ -87,6 +87,11 @@ class ProductController extends Controller
             $query->where('title', 'like', '%' . $request->q . '%');
         }
 
+        // Limit number of products returned
+        if($request->limit){
+            $query->take($request->limit);
+        }
+
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,

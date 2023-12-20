@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+
+@if($order->status == 'unverified' && $order->order_type == 'wholesale')
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <script type="text/javascript">
@@ -9,9 +11,11 @@
             showProductPicker: false,
 
             // Input
+            searchQuery: null,
             selectedCategoryId: null,
             selectedSubCategoryId: null,
-            searchQuery: null,
+            selectedProducts: {},
+            selectedVariants: [],
 
             // Data
             categories: [],
@@ -37,17 +41,39 @@
             },
 
             fetchProducts(){
-                fetch(`/api/products?category_id=${this.selectedSubCategoryId ?? this.selectedCategoryId}`)
+                fetch(`/api/products?limit=5&category_id=${this.selectedSubCategoryId ?? this.selectedCategoryId ?? ''}&q=${this.searchQuery ?? ''}`)
                     .then((res) => res.json())
                     .then((data) => {
-                        this.products = data?.products ?? [];
+                        this.products = data.products ?? [];
                     });
+            },
+
+            addProduct(product){
+                if(this.selectedVariants[product.id] === undefined){
+                    alert('No variant selected');
+                    return;
+                }
+
+                variant = product.variants[this.selectedVariants[product.id]];
+                quantity = (this.selectedProducts[product.id + '.' + variant.id]?.quantity ?? 0) + 1;
+                console.log(quantity);
+
+                this.selectedProducts[product.id + '.' + variant.id] = {
+                    product: product,
+                    variant: variant,
+                    quantity: quantity
+                };
+            },
+
+            selectVariant(variantIndex, product){
+                this.selectedVariants[product.id] = variantIndex;
             }
         };
     }
 </script>
+@endif
 
-<div x-data="getData()">
+<div @if($order->status == 'unverified' && $order->order_type == 'wholesale') x-data="getData()" @endif>
     {{-- EDIT ORDER FORM --}}
     <form class="p-8 ps-0" method="post" action="/admin/orders/{{$order->id}}">
         @csrf
@@ -67,7 +93,7 @@
                     <div class="text-start">
                         <div class="font-semibold mb-2">Status</div>
                         <select class="p-3 bg-blue-50 border-blue-300 w-40 border rounded-lg" name="status">
-                            <option value="unverified" @if($order->status == 'unverified') selected @endif>Unverified</option>
+                            <option value="unverified" @if($order->status == 'unverified' && $order->order_type == 'wholesale') selected @endif>Unverified</option>
                             <option value="pending" @if($order->status == 'pending') selected @endif>Pending</option>
                             <option value="processing" @if($order->status == 'processing') selected @endif>Processing</option>
                             <option value="shipped" @if($order->status == 'shipped') selected @endif>Shipped</option>
@@ -117,12 +143,36 @@
                     </div>
                     @else
                     @php
-                        $content_editable = ($order->status == 'unverified' || $order->status == 'pending') && $order->order_type != 'retail';
+                        $content_editable = ($order->status == 'unverified' && $order->order_type == 'wholesale' || $order->status == 'pending') && $order->order_type != 'retail';
                     @endphp
                     <!-- Order items -->
                     @foreach($order->items as $item)
                     <x-order-item-row :item="$item" :admin="$content_editable" />
                     @endforeach
+                    @endif
+
+                    @if($order->status == 'unverified' && $order->order_type == 'wholesale')
+                    <template x-for="(item, index) in selectedProducts">
+                        <div class="flex flex-row items-center p-2 border">
+                            <input type="hidden" x-bind:name="'item_variant_0' + index" x-bind:value="item.variant.id">
+                            <p class="w-1/6">
+                                <img src="/images/product-dummy.jpeg" alt="Product Image" class="max-w-[60px] aspect-square">
+                            </p>
+
+                            <div class="w-2/6" x-text="item.product.title + ' - ' + item.variant.name "></div>
+
+                            <div class="w-1/6" x-text="'$' + item.variant.price"></div>
+
+                            <div class="w-1/6 flex">
+                                $<input x-bind:name="'item_price_0' + index" type="number" x-bind:value="item.variant.price" class="max-w-[60px] ms-2">
+                            </div>
+
+                            <div class="w-1/6">
+                                <input x-bind:name="'item_quantity_0' + index" type="number" x-bind:value="item.quantity" class="max-w-[60px] ms-2">
+                            </div>
+                            <div class="w-1/6" x-text="'$' + (item.quantity * item.variant.price)"></div>
+                        </div>
+                    </template>
                     @endif
                 </div>
             </div>
@@ -131,7 +181,7 @@
             <div class="flex flex-col mx-2  md:mt-5 border rounded-lg">
                 <div class="text-blue-900">
                     <div class="flex flex-row justify-between items-center p-5 bg-gray-100">
-                        <button class="bg-blue-200 w-32 rounded h-10" x-on:click="showProductPicker = true" type="button">Add Item</button>
+                        <button class="bg-blue-200 disabled:bg-gray-200 disabled:text-gray-300 w-32 rounded h-10" @if($order->status == 'unverified' && $order->order_type == 'wholesale') x-on:click="showProductPicker = true" @else disabled @endif type="button">Add Item</button>
                         <p class="w-full text-start font-semibold"></p>
                         <div class="w-1/6 text-start font-semibold">
                             Products: <br>
@@ -216,20 +266,21 @@
         </div>
     </form>
 
+    @if($order->status == 'unverified' && $order->order_type == 'wholesale')
     {{-- FIND PRODUCT --}}
     <div class="relative z-10" role="dialog" x-show="showProductPicker" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 backdrop-blur-sm backdrop-contrast-125 bg-opacity-75 transition-opacity" x-on:click="showProductPicker = false"></div>
+        <div class="fixed inset-0 bg-gray-500 backdrop-blur-sm backdrop-contrast-125 bg-opacity-75 transition-opacity" x-show="showProductPicker" x-transition.opacity x-on:click="showProductPicker = false"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform overflow-auto rounded-lg bg-white text-left shadow-xl transition-all sm:my-8" x-on:click.outside="showProductPicker = false">
-                    <div class="flex flex-col p-5 gap-4 text-gray-800 max-w-screen-lg">
+                <div class="relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:my-8" x-on:click.outside="showProductPicker = false" x-show="showProductPicker" x-transition>
+                    <button class="absolute right-0 -translate-y-[20%] text-gray-400 font-thin text-4xl w-8 h-8" x-on:click="showProductPicker = false">×</button>
+                    <div class="flex flex-col p-5 gap-4 text-gray-800 w-[800px]">
                         <h1 class="text-lg font-bold">Find Products</h1>
                         <div class="w-full flex justify-between">
-                            <div class="flex items-center gap-2">
-
-                                <div class="flex flex-col gap-1" x-init="fetchCategories()">
+                            <div class="flex items-center gap-2 w-full">
+                                <div class="flex flex-col gap-1 w-1/3" x-init="fetchCategories()">
                                     <label for="category">Category</label>
-                                    <select class="p-2 rounded-lg h-10 me-3 max-w-[200px]" name="category" x-model="selectedCategoryId" x-on:change="fetchSubCategories()">
+                                    <select class="p-2 rounded-lg h-10 me-3 w-full" name="category" x-model="selectedCategoryId" x-on:change="fetchSubCategories()">
                                         <option value="">SELECT CATEGORY</option>
                                         <template x-for="category in categories">
                                             <option x-text="category.name" x-bind:value="category.id"></option>
@@ -237,9 +288,9 @@
                                     </select>
                                 </div>
 
-                                <div class="flex flex-col gap-1">
+                                <div class="flex flex-col gap-1 w-1/3">
                                     <label for="sub_category">Sub Category</label>
-                                    <select class="p-2 rounded-lg h-10 me-3 max-w-[200px] disabled:bg-gray-400" name="sub_category" x-model="selectedSubCategoryId" x-bind:disabled="subCategories.length === 0">
+                                    <select class="p-2 rounded-lg h-10 me-3 w-full disabled:bg-gray-400" name="sub_category" x-model="selectedSubCategoryId" x-bind:disabled="subCategories.length === 0">
                                         <option value="">SELECT SUB CATEGORY</option>
                                         <template x-for="subCategory in subCategories">
                                             <option x-text="subCategory.name" x-bind:value="subCategory.id"></option>
@@ -247,30 +298,40 @@
                                     </select>
                                 </div>
 
-                                <div class="flex flex-col gap-1">
+                                <div class="flex flex-col gap-1 w-1/3">
                                     <label for="search">Search</label>
-                                    <input class="p-2 rounded-lg h-10 border border-gray-500 me-3" x-model="searchQuery" id="search" />
+                                    <input class="p-2 rounded-lg h-10 border border-gray-500" x-model="searchQuery" id="search" @keyup.enter="fetchProducts()"/>
                                 </div>
-                                <button class="bg-gray-300 p-2 h-10 w-10 rounded-lg mt-auto" x-on:click="fetchProducts()">Go</button>
+                                <button class="bg-gray-300 p-2 h-10 w-10 rounded-lg mt-auto fa fa-search" x-on:click="fetchProducts()"></button>
                             </div>
                         </div>
                         <hr>
-                        <div class="flex flex-col gap-2 max-h-64 overflow-auto">
+                        <div class="flex flex-col gap-2 h-[425px] overflow-auto" x-init="$nextTick(() => { fetchProducts() })">
                             <template x-for="product in products">                                
                                 <div class="w-full p-2 gap-4 bg-gray-200 rounded-lg flex items-center">
-                                    <img class="w-1/12 rounded-lg bg-white aspect-square object-cover" src=""
+                                    <img class="w-1/12 rounded-lg bg-white aspect-square object-cover" x-bind:src="product.image_1"
                                         alt="Product Image">
-                                    <h3 class="w-3/12 ">Product Title</h3>
-                                    <h3 class="w-3/12 ">Category</h3>
-                                    <h3 class="w-3/12 ">Variant - Price</h3>
-                                    <button class="h-12 w-12 rounded-lg bg-gray-800 text-white">Add</button>
+                                    <h3 class="w-3/12" x-text="product.title">Product Title</h3>
+                                    <h3 class="w-3/12" x-text="product.category_name">Category</h3>
+                                    <select class="w-3/12" x-on:change="selectVariant(event.target.value, product)">
+                                        <option value="">SELECT VARIANT</option>
+                                        <template x-for="(variant, index) in product.variants">
+                                            <option x-text="variant.name + ' - $' + variant.price" x-bind:value="index"></option>
+                                        </template>
+                                    </select>
+                                    <button class="h-10 w-10 rounded-lg bg-gray-600 text-white" x-on:click="addProduct(product)">Add</button>
                                 </div>
                             </template>
+                            <div x-show="products.length === 0" class="flex flex-col justify-center items-center gap-3 h-full">
+                                <span class="fa fa-search text-9xl opacity-5 absolute"></span>
+                                <h1 class="text-lg">No products matching your criteria</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endsection
