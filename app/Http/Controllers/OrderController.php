@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderLog;
+use App\Models\Variant;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     /**
-     * possible statueses
+     * possible statuses
      */
     private $payment_statuses = ['unpaid', 'partial', 'paid', 'refunded'];
     private $order_statuses = ['unverified', 'pending', 'processing', 'shipped', 'delivered', 'returned', 'canceled', 'rejected', ];
@@ -28,6 +29,7 @@ class OrderController extends Controller
             if (isset($requestData['item_quantity_' . $item_id])) {
                 $variant = [
                     'id' => $item_id,
+                    'variant' => $requestData['item_variant_' . $item_id],
                     'price' => $requestData['item_price_' . $item_id],
                     'quantity' => $requestData['item_quantity_' . $item_id]
                 ];
@@ -160,6 +162,16 @@ class OrderController extends Controller
         ]);
 
         $items = $this->parse_orderitems($request);
+        $item_ids = array_map(function ($item){
+            return $item['id'][0] == 0 ? null : $item['id'];
+        }, $items);
+
+        $existing_item_ids = $order->items->pluck('id')->toArray();
+        $items_to_delete = array_diff($existing_item_ids, $item_ids);
+        // dd($items, $item_ids, $existing_item_ids, $items_to_delete);
+
+        // Delete items
+        OrderItems::where('order_id', $order->id)->whereIn('id', $items_to_delete)->delete();
 
         foreach($items as $item){
             $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();
@@ -168,10 +180,18 @@ class OrderController extends Controller
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
                 ]);
+            } else{
+                OrderItems::create([
+                    'order_id' => $order->id,
+                    'variant_id' => $item['variant'],
+                    'quantity' => $item['quantity'],
+                    'full_price' => Variant::find($item['variant'])->price,
+                    'price' => $item['price'],
+                ]);
             }
         }
 
-        return redirect('/admin/orders');
+        return back();
     }
 
     public function approve(Request $request, Order $order){
