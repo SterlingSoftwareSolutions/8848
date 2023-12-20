@@ -168,6 +168,10 @@ class OrderController extends Controller
 
         $existing_item_ids = $order->items->pluck('id')->toArray();
         $items_to_delete = array_diff($existing_item_ids, $item_ids);
+        // dd($items, $item_ids, $existing_item_ids, $items_to_delete);
+
+        // Delete items
+        OrderItems::where('order_id', $order->id)->whereIn('id', $items_to_delete)->delete();
 
         foreach($items as $item){
             $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();
@@ -187,7 +191,7 @@ class OrderController extends Controller
             }
         }
 
-        return redirect('/admin/orders');
+        return back();
     }
 
     public function approve(Request $request, Order $order){

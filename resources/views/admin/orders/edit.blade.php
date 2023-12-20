@@ -32,10 +32,10 @@
             },
 
             fetchSubCategories(){
+                this.selectedSubCategoryId = null;
                 fetch(`/api/categories/${this.selectedCategoryId}`)
                     .then((res) => res.json())
                     .then((data) => {
-                        this.selectedSubCategoryId = null;
                         this.subCategories = data?.category?.children ?? [];
                     });
             },
@@ -132,12 +132,12 @@
                 <div class="flex flex-col mx-2 mt-4 border rounded-lg">
                     <div class="text-blue-900">
                         <div class="flex flex-row p-5 bg-gray-100">
-                            <p class="w-1/6 text-start font-semibold">Product</p>
-                            <p class="w-2/6 text-start font-semibold"></p>
-                            <p class="w-1/6 text-start font-semibold">Price</p>
-                            <p class="w-1/6 text-start font-semibold">Custom Price</p>
-                            <p class="w-1/6 text-start font-semibold">Quantity</p>
-                            <p class="w-1/6 text-start font-semibold">Subtotal</p>
+                            <p class="w-[15%] text-start font-semibold">Product</p>
+                            <p class="w-[40%] text-start font-semibold"></p>
+                            <p class="w-[15%] text-start font-semibold">Price</p>
+                            <p class="w-[15%] text-start font-semibold">Custom Price</p>
+                            <p class="w-[15%] text-start font-semibold">Quantity</p>
+                            <p class="w-[15%] text-start font-semibold">Subtotal</p>
                         </div>
                         @if($order->items->count() < 1) <div class="flex flex-row items-center p-5">
                             <div class="w-full text-center py-12">This order has no products</div>
@@ -156,22 +156,23 @@
                     <template x-for="(item, index) in selectedProducts">
                         <div class="flex flex-row items-center p-2 border bg-blue-50">
                             <input type="hidden" x-bind:name="'item_variant_0' + index" x-bind:value="item.variant.id">
-                            <p class="w-1/6">
+                            <p class="w-[15%] px-5">
                                 <img src="/images/product-dummy.jpeg" alt="Product Image" class="max-w-[60px] aspect-square">
                             </p>
 
-                            <div class="w-2/6" x-text="item.product.title + ' - ' + item.variant.name "></div>
+                            <div class="w-[40%] px-5" x-text="item.product.title + ' - ' + item.variant.name "></div>
 
-                            <div class="w-1/6" x-text="'$' + item.variant.price"></div>
+                            <div class="w-[15%] px-5" x-text="'$' + item.variant.price"></div>
 
-                            <div class="w-1/6 flex">
+                            <div class="w-[15%] px-5">
                                 $<input x-bind:name="'item_price_0' + index" type="number" x-bind:value="item.variant.price" class="max-w-[60px] ms-2">
                             </div>
 
-                            <div class="w-1/6">
+                            <div class="w-[15%] px-5">
                                 <input x-bind:name="'item_quantity_0' + index" type="number" x-bind:value="item.quantity" class="max-w-[60px] ms-2">
                             </div>
-                            <div class="w-1/6" x-text="'$' + (item.quantity * item.variant.price)"></div>
+                            <div class="w-[15%] px-5" x-text="'$' + (item.quantity * item.variant.price)"></div>
+                            <button type="button" x-on:click="delete selectedProducts[index]" class="right-10 fa fa-close me-4 text-red-800"></button>
                         </div>
                     </template>
                     @endif
@@ -281,7 +282,7 @@
                             <div class="flex items-center gap-2 w-full">
                                 <div class="flex flex-col gap-1 w-1/3" x-init="fetchCategories()">
                                     <label for="category">Category</label>
-                                    <select class="p-2 rounded-lg h-10 me-3 w-full" name="category" x-model="selectedCategoryId" x-on:change="fetchSubCategories()">
+                                    <select class="p-2 bg-gray-50 border-gray-300 border rounded-lg me-3 w-full disabled:bg-gray-200 disabled:border-gray-600" name="category" x-model="selectedCategoryId" x-on:change="() => {fetchSubCategories(); fetchProducts();}">
                                         <option value="">SELECT CATEGORY</option>
                                         <template x-for="category in categories">
                                             <option x-text="category.name" x-bind:value="category.id"></option>
@@ -291,7 +292,7 @@
 
                                 <div class="flex flex-col gap-1 w-1/3">
                                     <label for="sub_category">Sub Category</label>
-                                    <select class="p-2 rounded-lg h-10 me-3 w-full disabled:bg-gray-400" name="sub_category" x-model="selectedSubCategoryId" x-bind:disabled="subCategories.length === 0">
+                                    <select class="p-2 bg-gray-50 border-gray-300 border rounded-lg me-3 w-full disabled:bg-gray-200 disabled:border-gray-600" name="sub_category" x-model="selectedSubCategoryId" x-bind:disabled="subCategories.length === 0" x-on:change="fetchProducts()">
                                         <option value="">SELECT SUB CATEGORY</option>
                                         <template x-for="subCategory in subCategories">
                                             <option x-text="subCategory.name" x-bind:value="subCategory.id"></option>
@@ -301,7 +302,7 @@
 
                                 <div class="flex flex-col gap-1 w-1/3">
                                     <label for="search">Search</label>
-                                    <input class="p-2 rounded-lg h-10 border border-gray-500" x-model="searchQuery" id="search" @keyup.enter="fetchProducts()"/>
+                                    <input class="p-2 bg-gray-50 border-gray-300 rounded-lg h-10 border" x-model="searchQuery" id="search" @keyup.enter="fetchProducts()"/>
                                 </div>
                                 <button class="bg-gray-300 p-2 h-10 w-10 rounded-lg mt-auto fa fa-search" x-on:click="fetchProducts()"></button>
                             </div>
@@ -314,12 +315,12 @@
                                         alt="Product Image">
                                     <h3 class="w-3/12" x-text="product.title">Product Title</h3>
                                     <h3 class="w-3/12" x-text="product.category_name">Category</h3>
-                                    <select class="w-3/12" x-on:change="selectVariant(event.target.value, product)">
+                                    <select class="w-3/12 bg-transparent" x-on:change="selectVariant(event.target.value, product)">
                                         <template x-for="(variant, index) in product.variants">
                                             <option x-text="variant.name + ' - $' + variant.price" x-bind:value="index"></option>
                                         </template>
                                     </select>
-                                    <button class="h-10 w-10 rounded-lg bg-gray-600 text-white" x-on:click="addProduct(product)">Add</button>
+                                    <button class="h-10 w-10 rounded-lg transition-colors hover:bg-blue-100 hover:text-blue-600 bg-gray-50 border border-gray-300 text-gray-600" x-on:click="addProduct(product)">+</button>
                                 </div>
                             </template>
                             <div x-show="products.length === 0" class="flex flex-col justify-center items-center gap-3 h-full">
