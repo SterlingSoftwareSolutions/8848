@@ -157,7 +157,7 @@
                         <div class="flex flex-row items-center p-2 border bg-blue-50">
                             <input type="hidden" x-bind:name="'item_variant_0' + index" x-bind:value="item.variant.id">
                             <p class="w-[15%] px-5">
-                                <img src="/images/product-dummy.jpeg" alt="Product Image" class="max-w-[60px] aspect-square">
+                                <img x-bind:src="item.product.image_1" alt="Product Image" class="max-w-[60px] aspect-square">
                             </p>
 
                             <div class="w-[40%] px-5" x-text="item.product.title + ' - ' + item.variant.name "></div>
