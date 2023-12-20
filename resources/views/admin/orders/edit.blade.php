@@ -8,7 +8,7 @@
     function getData() {
         return {
             // Show Modal
-            showProductPicker: false,
+            showProductPicker: true,
 
             // Input
             searchQuery: null,
@@ -273,10 +273,10 @@
     <div class="relative z-10" role="dialog" x-show="showProductPicker" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 backdrop-blur-sm backdrop-contrast-125 bg-opacity-75 transition-opacity" x-show="showProductPicker" x-transition.opacity x-on:click="showProductPicker = false"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:my-8" x-on:click.outside="showProductPicker = false" x-show="showProductPicker" x-transition>
+            <div class="flex min-h-full justify-center text-center md:items-center items-stretch">
+                <div class="relative transform md:rounded-lg bg-white text-left shadow-xl transition-all" x-on:click.outside="showProductPicker = false" x-show="showProductPicker" x-transition>
                     <button class="absolute right-0 -translate-y-[20%] text-gray-400 font-thin text-4xl w-8 h-8" x-on:click="showProductPicker = false">×</button>
-                    <div class="flex flex-col p-5 gap-4 text-gray-800 w-[800px]">
+                    <div class="flex flex-col p-5 gap-4 text-gray-800 w-full h-full md:w-[800px]">
                         <h1 class="text-lg font-bold">Find Products</h1>
                         <div class="w-full flex justify-between">
                             <div class="flex items-center gap-2 w-full">
@@ -308,9 +308,9 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="flex flex-col gap-2 h-[425px] overflow-auto" x-init="$nextTick(() => { fetchProducts() })">
+                        <div class="flex flex-col gap-2 h-full md:h-[425px] overflow-auto" x-init="$nextTick(() => { fetchProducts() })">
                             <template x-for="product in products">                                
-                                <div class="w-full p-2 gap-4 bg-gray-200 rounded-lg flex items-center">
+                                <div class="w-full p-2 gap-4 bg-gray-100 rounded-lg flex items-center">
                                     <img class="w-1/12 rounded-lg bg-white aspect-square object-cover" x-bind:src="product.image_1"
                                         alt="Product Image">
                                     <h3 class="w-3/12" x-text="product.title">Product Title</h3>
