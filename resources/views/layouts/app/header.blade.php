@@ -112,6 +112,9 @@
               <button href="/orders" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:text-blue-500" role="menuitem" tabindex="-1" id="user-menu-item-1">Logout</button>
             </form>
           </div>
+          @auth
+            <p class="text-white">Hi, {{ auth()->user()->first_name }}</p>
+          @endauth
         </div>
       </div>
     </div>
