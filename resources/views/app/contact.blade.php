@@ -8,9 +8,7 @@
     <div>
         <p class="mt-8 text-4xl font-bold text-center text-blue-500">Contact Us</p>
         <p class="items-center justify-center text-center text-gray-500 md:mt-5">
-            Euismod adipiscing egestas ultrices id ad natoque quis adipiscing
-            nam eu a litora nibh ad ultrices ipsum quam curae dictum scelerisque
-            montes ullamcorper mi
+        Have questions or need assistance? We're here to help! Reach out to us for any inquiries or support. Your satisfaction is our priority, and we look forward to hearing from you.
         </p>
     </div>
 
@@ -20,21 +18,21 @@
         <div class="w-full md:w-3/12">
             <img class="mx-auto border-green-500 w-14 h-14" src="{{ asset('images/Group 204.png') }}" />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
-                1789 Street Name, City Name, Australia
+                Unit 3/1 Everaise Ct, Laverton North VIC 3026
             </p>
         </div>
 
         <div class="w-full md:w-3/12">
             <img class="mx-auto border-green-500 w-14 h-14" src="{{ asset('images/Group 205.png') }}" />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
-                0092 - 123 455 789 +123 958 789
+                (03) 7014 0663
             </p>
         </div>
 
         <div class="w-full md:w-3/12">
             <img class="mx-auto border-green-500 w-14 h-14" src="{{ asset('images/Group 206.png') }}" />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
-                support@gimigimi.com
+                info@8848supplies.com.au
             </p>
         </div>
 

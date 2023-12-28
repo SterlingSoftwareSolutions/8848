@@ -15,7 +15,6 @@
             <div class="py-5">
                 <h1 class="flex items-center justify-center ml-4 font-bold text-left text-black text-md">Edit User Details</h1>
             </div>
-
             <div>
                 <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
                     <div class="flex items-center justify-center">
@@ -201,7 +200,7 @@
                                 <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none" id="email" type="email" placeholder="Email" />
                             </div>
 
-                            <button class="p-2 font-semibold text-white bg-blue-500 rounded-md">
+                            <button class="p-2 font-bold text-white bg-blue-500 rounded-md">
                                 Save Changes
                             </button>
                         </form>

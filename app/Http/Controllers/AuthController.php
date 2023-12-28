@@ -149,8 +149,9 @@ class AuthController extends Controller
                 'user' => $user->load(['address_shipping', 'address_billing']),
             ], 200);
         } else {
-            return redirect()->intended('/profile');
+            return redirect('/profile')->withErrors(['success' => 'Profile updated successfully. Now you can shop with us!']);
         }
+        
     }
 
 

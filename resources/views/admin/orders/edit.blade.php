@@ -179,7 +179,7 @@
                 </div>
             </div>
 
-            {{-- Products --}}
+            {{-- Totals --}}
             <div class="flex flex-col mx-2  md:mt-5 border rounded-lg">
                 <div class="text-blue-900">
                     <div class="flex flex-row justify-between items-center p-5 bg-gray-100">
@@ -199,6 +199,16 @@
                             <p class="text-xl">${{$order->total()}}</p>
                         </div>
                         @endif
+                    </div>
+                </div>
+            </div>
+
+            {{-- Notes --}}
+            <div class="flex flex-col mx-2  md:mt-5 border rounded-lg">
+                <div class="text-blue-900">
+                    <div class="items-center p-5 bg-gray-100">
+                        <p class="font-bold">Notes:</p>
+                        <p>{{$order->notes}}</p>
                     </div>
                 </div>
             </div>

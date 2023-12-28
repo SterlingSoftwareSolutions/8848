@@ -13,6 +13,12 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            .active {
+                color: black;
+            }
+        </style>
     </head>
     
     <body class="font-sans antialiased text-gray-900">
@@ -26,10 +32,18 @@
                 <div class="absolute inset-0 bg-blue-700 bg-opacity-50" style="background-image: url('/images/image.jpg'); opacity: 0.1;"></div>
                 
                 <div class="relative w-full px-8 py-4 overflow-hidden bg-none sm:max-w-md sm:rounded-lg">
-                    <div class="flex justify-center mt-3 mb-5 text-2xl font-bold">
-                        <h1><a href="{{ route('login') }}" class="text-white hover:text-blue-300">Login</a></h1>
-                        <h1 class="ml-3"><a href="{{ route('register') }}" class="text-white hover:text-blue-300">Register</a></h1>
-                    </div>
+                <div class="flex justify-center mt-3 mb-5 text-2xl font-bold">
+                    <h1>
+                        <a href="{{ route('login') }}" class="text-white {{ request()->routeIs('login') ? 'active' : 'hover:text-blue-300' }}">
+                            Login
+                        </a>
+                    </h1>
+                    <h1 class="ml-3">
+                        <a href="{{ route('register') }}" class="text-white {{ request()->routeIs('register') ? 'active' : 'hover:text-blue-300' }}">
+                            Register
+                        </a>
+                    </h1>
+                </div>
                 
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -55,6 +69,7 @@
                                             placeholder="Password" />
     
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            
                         </div>
     
                         <!-- Remember Me -->
@@ -64,17 +79,17 @@
                                 <span class="ml-2 text-sm text-[#d9d9d9]">{{ __('Remember me') }}</span>
                             </label>
                         </div>
-    
-                        <!-- forgot password -->
-                        <div class="flex items-center justify-end mt-4">
-                                <a class="text-sm text-[#d9d9d9] underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="#">
-                                    {{ __('Forgot your password?') }}
-                                </a>
-                        </div>
                         
-                        <button type="submit" class="mt-4 md:mx-[110px] mx-[80px] inline-flex items-center px-4 py-2 bg-white border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-400 active:bg-white-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 hover:text-white">
+                        
+                        <button type="submit" class="mt-4 mx-[80px] inline-flex items-center px-4 py-2 bg-white border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-400 active:bg-white-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 hover:text-white md:w-5/12 justify-center items-center">
                             {{ __('Log in') }}
                         </button>
+
+                        <div class="flex items-center justify-end mt-4">
+                            <a href="{{ route('register') }}" class="text-sm text-[#d9d9d9] rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Don’t have an 8848supplies account? <u class="text-bold">Register now</u>
+                            </a>
+                        </div>
                     </form>
                 </div>
                 
