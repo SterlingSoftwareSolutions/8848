@@ -13,6 +13,12 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            .active {
+                color: black;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased text-gray-900">
         <!-- HEADER -->
@@ -26,8 +32,16 @@
                 
                 <div class="relative w-full px-8 py-4 overflow-hidden bg-none sm:max-w-md sm:rounded-lg">
                     <div class="flex justify-center mt-3 mb-5 text-2xl font-bold">
-                        <h1><a href="{{ route('login') }}" class="text-white hover:text-blue-300">Login</a></h1>
-                        <h1 class="ml-3"><a href="{{ route('register') }}" class="text-white hover:text-blue-300">Register</a></h1>
+                        <h1>
+                            <a href="{{ route('login') }}" class="text-white {{ request()->routeIs('login') ? 'active' : 'hover:text-blue-300' }}">
+                                Login
+                            </a>
+                        </h1>
+                        <h1 class="ml-3">
+                            <a href="{{ route('register') }}" class="text-white {{ request()->routeIs('register') ? 'active' : 'hover:text-blue-300' }}">
+                                Register
+                            </a>
+                        </h1>
                     </div>
                 
                     <!-- Session Status -->

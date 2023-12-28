@@ -42,7 +42,7 @@ Route::get('/contact', function () {
 
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
-Route::get('/categories', [CategoryController::class, 'index_client']);
+Route::get('/categories', [CategoryController::class, 'index_client'])->name('categories');
 Route::get('/categories/{category}', [CategoryController::class, 'show_client']);
 
 Route::middleware('auth')->group(function () {
