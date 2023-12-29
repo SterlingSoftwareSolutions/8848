@@ -7,14 +7,14 @@
 <div class="flex flex-row mb-4">
     <div class="mb-4 md:mr-2 md:mb-0" style="width: 50%">
         <label class="block mb-2 text-sm font-semibold text-gray-700" for="firstname">
-            First Name
+            First Name<span class="text-red-600">*</span>
         </label>
         <input class="w-full px-3 py-2 mr-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="{{$prefix}}first_name" value="{{old( $prefix . 'first_name', $address->first_name ?? null)}}" id="" placeholder="First name" />
         <x-input-error :messages="$errors->get( $prefix . 'first_name')" class="mt-2" />
     </div>
     <div class="md:ml-2" style="width: 50%">
         <label class="block mb-2 text-sm font-semibold text-gray-700" for="lastname">
-            Last Name
+            Last Name<span class="text-red-600">*</span>
         </label>
         <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" name="{{$prefix}}last_name" value="{{old( $prefix . 'last_name', $address->last_name ?? null)}}" id="lastname" placeholder="Last name" />
         <x-input-error :messages="$errors->get( $prefix . 'last_name')" class="mt-2" />
@@ -33,7 +33,7 @@
 {{-- state --}}
 <div class="mb-2">
     <label class="block mb-2 text-sm font-semibold text-gray-700" for="company_region">
-        State
+        State<span class="text-red-600">*</span>
     </label>
     <select class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="country" name="{{$prefix}}state">
         <option value="">Select</option>
@@ -52,7 +52,7 @@
 {{-- street Address --}}
 <div class="mb-2">
     <label class="block mb-2 text-sm font-semibold text-gray-700" for="street-address">
-        Street address
+        Street address<span class="text-red-600">*</span>
     </label>
     <input class="w-full px-3 py-2 mb-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" name="{{$prefix}}address_line_1" value="{{old( $prefix . 'address_line_1', $address->address_line_1 ?? null)}}" type="text" placeholder="House number and street name" />
     <x-input-error :messages="$errors->get( $prefix . 'address_line_1')" class="mt-2" />
@@ -63,7 +63,7 @@
 {{-- town/city --}}
 <div class="mb-2">
     <label class="block mb-2 text-sm font-semibold text-gray-700" for="towm-city">
-        Town/City
+        Town/City<span class="text-red-600">*</span>
     </label>
     <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" name="{{$prefix}}city" value="{{old( $prefix . 'city', $address->city ?? null)}}" type="text" placeholder="Town/City" />
     <x-input-error :messages="$errors->get( $prefix . 'city')" class="mt-2" />
@@ -73,7 +73,7 @@
 {{-- zip-code --}}
 <div class="mb-2">
     <label class="block mb-2 text-sm font-semibold text-gray-700" for="zip_code">
-        Postal Code
+        Postal Code<span class="text-red-600">*</span>
     </label>
     <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" name="{{$prefix}}zip" value="{{old( $prefix . 'zip', $address->zip ?? null)}}" type="text" placeholder="Postal Code" />
     <x-input-error :messages="$errors->get( $prefix . 'zip')" class="mt-2" />
@@ -82,7 +82,7 @@
 {{-- phone --}}
 <div class="mb-2">
     <label class="block mb-2 text-sm font-semibold text-gray-700" for="number">
-        Phone
+        Phone<span class="text-red-600">*</span>
     </label>
     <input class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="" name="{{$prefix}}phone" value="{{old( $prefix . 'phone', $address->phone ?? null)}}" type="number" placeholder="Phone" />
     <x-input-error :messages="$errors->get( $prefix . 'phone')" class="mt-2" />
