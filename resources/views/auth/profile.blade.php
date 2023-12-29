@@ -28,11 +28,11 @@
         </div>
         <div class="flex gap-5 mb-4">
             <div class="w-1/2 pr-4">
-                <input type="text" id="first_name" name="first_name" value="{{old('first_name', $user->first_name ?? null)}}"   class="w-full p-2 border border-gray-400 rounded">
+                <input type="text" id="first_name" name="first_name" value="{{old('first_name', $user->first_name ?? null)}}"   class="w-full p-2 border border-gray-400 rounded" required>
                 <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
             </div>
             <div class="w-1/2">
-                <input type="text" id="last_name" name="last_name" value="{{old('last_name', $user->last_name ?? null)}}"   class="w-full p-2 border border-gray-400 rounded">
+                <input type="text" id="last_name" name="last_name" value="{{old('last_name', $user->last_name ?? null)}}"   class="w-full p-2 border border-gray-400 rounded" required>
                 <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
             </div>
         </div>
@@ -48,11 +48,11 @@
         </div>
         <div class="flex gap-5 mb-3">
             <div class="w-1/2 pr-4">
-                <input type="text" id="phone" name="phone" value="{{old('phone', $user->phone ?? null)}}"    class="w-full p-2 border border-gray-400 rounded">
+                <input type="text" id="phone" name="phone" value="{{old('phone', $user->phone ?? null)}}"    class="w-full p-2 border border-gray-400 rounded" required>
                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
             </div>
             <div class="w-1/2">
-                <input type="text" id="email" name="email" value="{{old('email', $user->email ?? null)}}"   class="w-full p-2 border border-gray-400 rounded">
+                <input type="text" id="email" name="email" value="{{old('email', $user->email ?? null)}}"   class="w-full p-2 border border-gray-400 rounded" required>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
         </div>

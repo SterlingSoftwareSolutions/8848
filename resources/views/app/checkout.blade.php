@@ -45,7 +45,7 @@
                 <fieldset>
                     <div class="mt-4 space-y-2">
                         <div class="flex items-center ml-3 gap-x-3">
-                            <input disabled id="push-everything" name="push-notifications" type="radio"
+                            <input id="push-everything" name="push-notifications" type="radio"
                                 class="w-4 h-3 text-indigo-600 border-gray-300 focus:ring-indigo-600">
                             <label class="text-sm text-left text-gray-500">Direct bank transfer</label>
                         </div>
@@ -59,25 +59,20 @@
                                 class="w-4 h-3 text-indigo-600 border-gray-300 focus:ring-indigo-600">
                             <h1 class="text-sm text-left text-gray-500">Paypal</h1>
                         </div>
-                        <div class="flex items-center ml-3 gap-x-3">
-                            <input disabled id="push-nothing" name="push-notifications" type="radio"
-                                class="w-4 h-3 text-indigo-600 border-gray-300 focus:ring-indigo-600">
-                            <h1 class="text-sm text-left text-gray-500">None</h1>
-                        </div>
                     </div>
                 </fieldset>
                 <div class="p-3 ml-4 mr-4 text-[13px] text-gray-500 bg-gray-200 mt-4">
-                    Your personal data will be used to process your order, support your experience throughout this
-                    website, and for other purposes described in our <span class="text-blue-500">privacy policy.</span>
+                    Your personal data will be used to process your order, support your experience throughout this website.
+                    <!-- website, and for other purposes described in our <a href="" class="text-blue-500 underline">privacy policy.</a> -->
                 </div>
                 <div class="p-4">
                     <textarea class="w-full p-3 text-[13px] border border-gray-500" name="notes" placeholder="Order notes"></textarea>
                 </div>
-                <div class="mt-2 ml-4 text-[12px] text-gray-500 after:content-['*'] after:ml-0.5 after:text-red-500">
-                    <input disabled id="accept" name="accept" type="radio"
-                        class="w-4 h-3 text-indigo-600 border-gray-300 focus:ring-indigo-600">
+                <!-- <div class="mt-2 ml-4 text-[12px] text-gray-500 after:content-['*'] after:ml-0.5 after:text-red-500">
+                    <input id="accept" name="accept" type="checkbox"
+                        class="w-4 h-3 text-indigo-600 border-gray-300 focus:ring-indigo-600" required>
                     I have read and agree to the website terms and conditions
-                </div>
+                </div> -->
                 <div class="p-3">
                     <button type="submit"
                         class="px-10 py-3 mt-3 text-white border-2 rounded-lg bg-gradient-to-b from-[#166EB6] to-[#284297] text-1xl w-full">Place

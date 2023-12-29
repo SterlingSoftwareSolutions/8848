@@ -79,7 +79,13 @@
                                 <span class="ml-2 text-sm text-[#d9d9d9]">{{ __('Remember me') }}</span>
                             </label>
                         </div>
-                        
+
+                        <!-- forgot password -->
+                        <div class="flex items-center justify-end mt-4">
+                                <a class="text-sm text-[#d9d9d9] underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="#">
+                                    {{ __('Forgot your password?') }}
+                                </a>
+                        </div>
                         
                         <button type="submit" class="mt-4 mx-[80px] inline-flex items-center px-4 py-2 bg-white border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-400 active:bg-white-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 hover:text-white md:w-5/12 justify-center items-center">
                             {{ __('Log in') }}

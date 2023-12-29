@@ -6,7 +6,7 @@
             <option value="{{$category->id}}" @if(($_GET['category_id'] ?? null) == $category->id) selected @endif>{{$category->name}}</option>
             @endforeach
         </select>
-        <input name="q" value="{{$_GET['q'] ?? null}}" class=" w-[220px] px-2.5 py-2 bg-transparent text-white focus:outline-none" type="text" placeholder="" />
+        <input name="q" value="{{$_GET['q'] ?? null}}" class="w-[175px] px-2.5 py-2 bg-transparent text-white focus:outline-none" type="text" placeholder="" />
         <button type="submit" class="p-2 bg-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M9"/>
