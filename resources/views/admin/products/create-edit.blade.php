@@ -10,7 +10,9 @@
     <h1 class=" text-[#1670B7] font-bold text-lg">Add Product</h1>
     <div class="flex flex-row py-10"> @foreach(range(1,4) as $i) <div
         class="w-1/4 max-w-md p-4 mx-auto bg-white rounded-lg shadow-md">
-        <h1 class="mb-4 text-xl font-semibold">Product Image {{$i}}</h1>
+        <h1 class="mb-4 text-xl font-semibold">
+        Product Image {{$i}} @if($i === 1) <span style="color: red;">*</span> @endif
+        </h1>
         <div class="p-4 mb-4 border-2 border-gray-400 border-dashed">
         <input type="file" id="image_{{$i}}" name="image_{{$i}}" accept="image/*" class="hidden"
             onchange="loadPreview({{$i}})">
@@ -82,7 +84,7 @@
         <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
         </div>
         <div>
-            <label for="category" class="block mb-2 text-sm font-medium text-gray-900">Sub Category * :</label>
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Sub Category :</label>
             <select name="sub_category_id" type="text" id="subcategory" class="block w-full p-2 text-sm text-gray-900
             border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
             {{-- SUB CATEGORIES GO HERE --}}
@@ -90,17 +92,16 @@
             <x-input-error :messages="$errors->get('sub_category_id')" class="mt-2" />
         </div>
         <div>
-        <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Short Description * :</label>
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Short Description :</label>
         <textarea id="message" name="short_description" rows="4"
             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Write your thoughts here...">{{old('short_description', $product->short_description ?? null)}}</textarea>
         <x-input-error :messages="$errors->get('short_description')" class="mt-2" />
         </div>
         <div>
-            <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Features * :</label>
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 after:content-['*'] after:ml-0.5 after:text-red-500">Features :</label>
             <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900
-            bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write
-            your thoughts here...">{{old('description', $product->description ?? null)}}</textarea>
+            bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your thoughts here...">{{old('description', $product->description ?? null)}}</textarea>
             <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
             <div>

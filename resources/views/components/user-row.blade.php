@@ -1,3 +1,7 @@
+<head>
+    <!-- Include SweetAlert library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
 <div class="flex flex-row py-5 text-gray-500 border-b-2 border-gray-300 ">
 
 
@@ -33,11 +37,30 @@
             <a href="/admin/users/{{$user->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1></a>
         </div>
         <div class="w-40">
-            <form action="/admin/users/{{$user->id}}" method="post">
+            <form id="deleteForm" action="/admin/users/{{$user->id}}" method="post">
                 @csrf
                 @method('delete')
-                <button type="submit" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
+                <button type="submit" onclick="confirmDelete()" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function confirmDelete() {
+        Swal.fire({
+            title: 'Are You Sure ?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If confirmed, submit the form
+                document.getElementById('deleteForm').submit();
+            }
+        });
+    }
+</script>
