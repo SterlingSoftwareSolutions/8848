@@ -82,7 +82,7 @@
 
                         <!-- forgot password -->
                         <div class="flex items-center justify-end mt-4">
-                                <a class="text-sm text-[#d9d9d9] underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="#">
+                                <a class="text-sm text-[#d9d9d9] underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/forgot-password">
                                     {{ __('Forgot your password?') }}
                                 </a>
                         </div>

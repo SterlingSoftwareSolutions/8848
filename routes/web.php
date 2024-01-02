@@ -32,6 +32,8 @@ Route::get('/login', [AuthController::class, 'login_form'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'register_form'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/forgot-password', [AuthController::class, 'reset_passsword_form'])->name('forgot-password');
+Route::post('/forgot-password', [AuthController::class, 'reset_passsword']);
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index']);
