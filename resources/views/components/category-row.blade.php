@@ -34,7 +34,7 @@
             <a href="/admin/categories/{{$category->id}}/edit"><button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button></a>
         </div>
         <div class="w-40">
-            <form class="delete-form" action="/admin/categories/{{$category->id}}" method="post" onsubmit="confirmDelete()">
+            <form class="delete-form" action="/admin/categories/{{$category->id}}" method="post" onsubmit="return confirmDelete(event)">
                 @csrf
                 @method('delete')
                 <button type="submit" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
@@ -44,8 +44,10 @@
 </div>
 
 <script>
-    function confirmDelete() {
-        return Swal.fire({
+    function confirmDelete(event) {
+        event.preventDefault(); 
+
+        Swal.fire({
             title: 'Are you sure?',
             text: 'You won\'t be able to revert this!',
             icon: 'warning',
@@ -58,7 +60,6 @@
                 // If confirmed, submit the form
                 document.querySelector('.delete-form').submit();
             }
-            return false; // Prevent normal form submission
         });
     }
 </script>

@@ -37,19 +37,21 @@
             <a href="/admin/users/{{$user->id}}/edit"><h1 class="px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </h1></a>
         </div>
         <div class="w-40">
-            <form id="deleteForm" action="/admin/users/{{$user->id}}" method="post">
+            <form class="delete-form" action="/admin/users/{{$user->id}}" method="post" onsubmit="return confirmDelete(event)">
                 @csrf
                 @method('delete')
-                <button type="submit" onclick="confirmDelete()" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
+                <button type="submit" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
             </form>
         </div>
     </div>
 </div>
 
 <script>
-    function confirmDelete() {
+    function confirmDelete(event) {
+        event.preventDefault(); 
+
         Swal.fire({
-            title: 'Are You Sure ?',
+            title: 'Are you sure?',
             text: 'You won\'t be able to revert this!',
             icon: 'warning',
             showCancelButton: true,
@@ -59,7 +61,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // If confirmed, submit the form
-                document.getElementById('deleteForm').submit();
+                document.querySelector('.delete-form').submit();
             }
         });
     }
