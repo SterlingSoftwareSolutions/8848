@@ -61,8 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart/remove/{variant}', [CartController::class, 'remove']);
 
     // Checkout
-    Route::get('/checkout', [CheckoutController::class, 'checkout_form']);
-    Route::post('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/checkout', [CheckoutController::class, 'checkout_form'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::post('/place-order', [CheckoutController::class, 'checkout_wholesale']);
 
     // My List
