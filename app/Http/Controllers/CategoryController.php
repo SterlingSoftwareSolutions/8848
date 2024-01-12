@@ -67,7 +67,7 @@ class CategoryController extends Controller
             "name" => $request->name,
             "description" => $request->description ?? null,
             "icon_url" => $request->icon ? $request->icon->store('public/category_images') : null,
-            "background_image_url" => $request->icon ? $request->icon->store('public/category_images') : null
+            "background_image_url" => $request->background_image ? $request->background_image->store('public/category_images') : $category->background_image_url
         ]);
 
         if($request->wantsJson()){

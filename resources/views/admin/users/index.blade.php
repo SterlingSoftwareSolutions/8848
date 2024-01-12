@@ -45,7 +45,7 @@
                 <p class="w-[10%]">Phone</p>
                 <p class="w-[10%]">Customer Type</p>
                 <p class="w-[10%]">Priority Level</p>
-                <p class="w-[20%]">Action</p>
+                <p class="w-[20%] flex justify-center">Action</p>
             </div>
             <!-- Placeholder Content for Box 1 -->
             @foreach($users as $user)

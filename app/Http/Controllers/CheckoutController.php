@@ -6,9 +6,12 @@ use App\Models\Address;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\OrderLog;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Stripe\PaymentMethod;
+use Stripe\Stripe;
 
 class CheckoutController extends Controller
 {
@@ -31,7 +34,7 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
 
         // This route doesn't exist for wholesale users
         if($user->is_wholesale()){
@@ -48,7 +51,8 @@ class CheckoutController extends Controller
         $rules = [
             'save_billing' => 'nullable',
             'ship_elsewhere' => 'nullable',
-            'dont_clear_cart' => 'nullable'
+            'dont_clear_cart' => 'nullable',
+            'payment_method' => 'required'
         ];
 
         $billing_validations = Address::rules('billing_', true);
@@ -64,12 +68,39 @@ class CheckoutController extends Controller
             array_merge($rules, $billing_validations, $shipping_validations)
         );
 
+        $amount = $user->cart_total();
+
+        // Check if a payment should be made
+        if($amount > 0){
+            try{
+                // Handle payment
+                Stripe::setApiKey(env('STRIPE_SECRET'));
+                $paymentMethodObject = PaymentMethod::retrieve($request->payment_method);
+
+                $user->createOrGetStripeCustomer();
+                $user->addPaymentMethod($paymentMethodObject);
+                $charge = $user->charge(
+                    $amount * 100,
+                    $request->payment_method,
+                    [
+                        'return_url' => env('APP_URL')
+                    ]
+                );
+            } catch (\Exception $e){
+                return redirect()->route('checkout')->withInput()->with('error', 'Payment failed: ' . $e->getMessage());
+            }
+
+            if(!$charge){
+                return redirect()->route('checkout')->withInput()->with('error', 'Payment failed');
+            }
+        }
+
         $data = [
             'reference' => $this->generateRandomString(),
             'user_id' => $user->id,
             'order_type' => 'retail',
             'status' => 'pending',
-            'payment_status' => 'unpaid',
+            'payment_status' => isset($charge) ? 'paid' : 'unpaid',
             'discount' => 0,
             'notes' => $request->notes ?? ''
         ];
@@ -151,6 +182,14 @@ class CheckoutController extends Controller
         $order = Order::create(
             array_merge($data, $billing_address, $shipping_address)
         );
+
+        // Record the payment
+        Payment::create([
+            'order_id' => $order->id,
+            'amount' => $amount,
+            'payment_date' => today(),
+            'payment_method' => $request->payment_method,
+        ]);
 
         // Add items to the order
         foreach($cart_items as $item){

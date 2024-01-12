@@ -13,10 +13,11 @@
         <!--Slide 1-->
         <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
         <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/home-bg.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
+            <!-- content for slide 1 -->
             <div class=" w-[1150px]">
                 <div class="text-[30px] md:text-5xl text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 mb-8 text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore our diverse range of<br> <span class="text-[#166eb6]">Cleaning and Packaging </span> Solutions</div>
-                <a href="/login" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Sign up now</a>
+                <a href="{{ url('register') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Check out our products</a>
             </div>
         </div>
 
@@ -26,10 +27,11 @@
         <!--Slide 2-->
         <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
         <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/background.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
+            <!-- content for slide 2 -->
             <div class=" w-[1150px]">
                 <div class=" text-[30px] md:text-5xl text-[#166eb6] font-bold">Create an account with us today!</div>
                 <div class="mt-5 mb-8 text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">All your cleaning needs organised in a click</div>
-                <a href="/login" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Sign up now</a>
+                <a href="{{ url('categories') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Sign up now</a>
             </div>
         </div>
 
@@ -39,10 +41,11 @@
         <!--Slide 3-->
         <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
         <div class="absolute flex flex-col opacity-0 carousel-item h-[400px] md:h-[600px] w-full" style="background-image: url('images/food-packages-frame-delivery-concept.jpg'); background-size: 100% auto; background-repeat: no-repeat; display: flex; justify-content: center; align-items: center; background-position: 25%;">
+            <!-- content for slide 3 -->
             <div class=" w-[1150px]">
                 <div class=" text-[30px] md:text-5xl text-[#166eb6] font-bold">Eco-friendly Packaging Solutions</div>
                 <div class="mt-5 mb-8 text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Browse our innovative range of plastic-free packaging made from sugarcane bamboo</div>
-                <a href="/categories" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Check out our products</a>
+                <a href="{{ url('categories') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Check out our products</a>
             </div>
         </div>
         <label for="carousel-2" class="absolute inset-y-0 left-0 z-10 hidden w-10 h-10 my-auto ml-2 text-3xl font-bold leading-tight text-center text-black bg-white rounded-full cursor-pointer prev control-3 md:ml-10 hover:text-white hover:bg-blue-700">‹</label>
@@ -60,7 +63,6 @@
                 <label for="carousel-3" class="block text-4xl text-white cursor-pointer carousel-bullet hover:text-blue-700">•</label>
             </li>
         </ol>
-
     </div>
 </div>
 
@@ -89,7 +91,7 @@
         <div class="w-full md:w-7/12">
             <div class="flex flex-col justify-center gap-5 ml-10 md:flex-row md:ml-20 md:mr-10">
                 <!-- Product Boxes (Responsive Grid) -->
-                @foreach(array_chunk($categories->toArray(), 4) as $categoryGroup)
+                @foreach(array_chunk($categories->toArray(), 3) as $categoryGroup)
                 <div class="w-10/12 h-full rounded-md md:w-1/3">
                     @php $categoryCounter = 0 @endphp <!-- Initialize a counter -->
                     @foreach($categoryGroup as $category)

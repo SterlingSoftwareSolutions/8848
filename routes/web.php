@@ -32,6 +32,8 @@ Route::get('/login', [AuthController::class, 'login_form'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'register_form'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/forgot-password', [AuthController::class, 'reset_passsword_form'])->name('forgot-password');
+Route::post('/forgot-password', [AuthController::class, 'reset_passsword'])->name('password.reset');
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index']);
@@ -42,7 +44,7 @@ Route::get('/contact', function () {
 
 Route::get('/products', [ProductController::class, 'index_client']);
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
-Route::get('/categories', [CategoryController::class, 'index_client'])->name('categories');
+Route::get('/categories', [CategoryController::class, 'index_client'])->name('app.categories');
 Route::get('/categories/{category}', [CategoryController::class, 'show_client']);
 
 Route::middleware('auth')->group(function () {
@@ -59,8 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart/remove/{variant}', [CartController::class, 'remove']);
 
     // Checkout
-    Route::get('/checkout', [CheckoutController::class, 'checkout_form']);
-    Route::post('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/checkout', [CheckoutController::class, 'checkout_form'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::post('/place-order', [CheckoutController::class, 'checkout_wholesale']);
 
     // My List

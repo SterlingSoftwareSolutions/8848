@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Http\RedirectResponse;
+use App\Notifications\ResetPasswordLink;
 
 class AuthController extends Controller
 {
@@ -24,6 +27,14 @@ class AuthController extends Controller
     {
         if(!Auth::check()){
             return view('auth.login');
+        }
+        return redirect()->intended('/');
+    }
+
+    public function reset_passsword_form()
+    {
+        if(!Auth::check()){
+            return view('auth.forgot-password');
         }
         return redirect()->intended('/');
     }
@@ -395,5 +406,26 @@ class AuthController extends Controller
             Auth::logout();
             return redirect('/login')->withErrors(['success' => 'Logout successful.']);;
         }
+    }
+
+    public function reset_passsword(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        // Generate the token and send the reset link
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        // Check if the link was sent successfully
+        if ($status == Password::RESET_LINK_SENT) {
+            // Redirect with the success message
+            return back()->with('status', __('Password reset link sent to your email.'));
+        }
+
+        return back()->withInput($request->only('email'))
+            ->withErrors(['email' => __($status)]);
     }
 }

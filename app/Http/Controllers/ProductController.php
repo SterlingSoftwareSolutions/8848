@@ -189,18 +189,24 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'sub_category_id' => 'nullable|exists:categories,id',
             'in_stock' => 'nullable',
-
+        
             'image_1' => 'required|image|max:4096',
             'image_2' => 'nullable|image|max:4096',
             'image_3' => 'nullable|image|max:4096',
             'image_4' => 'nullable|image|max:4096',
             'pdf_file' => 'nullable|file|max:4096',
-
+            
             'variant_name_01' => 'required',
             'variant_price_01' => 'required',
             'variant_sku_01' => 'required',
             'variant_unit_01' => 'required'
-        ]);
+        ], [
+            'image_1.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'image_2.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'image_3.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'image_4.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'pdf_file.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+        ]);        
 
         $variants = $this->parse_variants($request);
 
@@ -305,6 +311,12 @@ class ProductController extends Controller
             'image_3' => 'nullable|file|max:4096',
             'image_4' => 'nullable|file|max:4096',
             'pdf_file' => 'nullable|file|max:4096',
+        ], [
+            'image_1.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'image_2.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'image_3.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'image_4.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
+            'pdf_file.max' => 'The :attribute must not be greater than 4 MB(4096 kilobytes).',
         ]);
 
 
@@ -317,7 +329,7 @@ class ProductController extends Controller
             'category_id' => $request->sub_category_id ?? $request->category_id,
             'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
-            'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,
+            'image_1_url' => $request->image_1 ? $request->image_1->store('storage/product_images') : $product->image_1_url,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : $product->image_2_url,
             'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : $product->image_3_url,
             'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : $product->image_4_url,
