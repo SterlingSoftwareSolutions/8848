@@ -28,6 +28,8 @@ jobs:
         sed -i "s%ACTIONS_MAIL_USERNAME%${{ secrets.mail_username }}%g" .env
         sed -i "s%ACTIONS_MAIL_PASSWORD%${{ secrets.mail_password }}%g" .env
         sed -i "s%ACTIONS_MAIL_FROM_ADDRESS%${{ secrets.mail_from_address }}%g" .env
+        sed -i "s%ACTIONS_STRIPE_KEY%${{ secrets.stripe_key }}%g" .env
+        sed -i "s%ACTIONS_STRIPE_SECRET%${{ secrets.stripe_secret }}%g" .env
 
     - name: Install vendor files
       run: composer install --no-dev --optimize-autoloader
