@@ -3,7 +3,7 @@
     <!-- Image -->
     <td scope="row"
         class="w-full md:w-3/12 px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center md:text-left">
-        <img src="{{$cartitem->variant->product->image_1_url}}" alt="Image Description"
+        <img src="{{$cartitem->variant->product->image_1}}" alt="Image Description"
             class="w-full sm:w-6/12 md:mx-auto md:w-full" />
     </td>
     <!-- Product Name -->
