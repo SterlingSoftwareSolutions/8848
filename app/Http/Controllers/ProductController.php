@@ -329,7 +329,7 @@ class ProductController extends Controller
             'category_id' => $request->sub_category_id ?? $request->category_id,
             'sku' => null,
             'in_stock' => $request->in_stock ? true : false,
-            'image_1_url' => $request->image_1 ? $request->image_1->store('storage/product_images') : $product->image_1_url,
+            'image_1_url' => $request->image_1 ? $request->image_1->store('public/product_images') : $product->image_1_url,
             'image_2_url' => $request->image_2 ? $request->image_2->store('public/product_images') : $product->image_2_url,
             'image_3_url' => $request->image_3 ? $request->image_3->store('public/product_images') : $product->image_3_url,
             'image_4_url' => $request->image_4 ? $request->image_4->store('public/product_images') : $product->image_4_url,
