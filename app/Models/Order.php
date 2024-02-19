@@ -55,7 +55,7 @@ class Order extends Model
             $pdf = Pdf::loadView('pdf.invoice', compact('order'))->setPaper('a4', 'portrait');
 
             // Send invoice to customer
-            Mail::send([], [], function($message) use($pdf, $order) {
+            Mail::queue([], [], function($message) use($pdf, $order) {
                 $message->to($order->user->email)
                     ->subject('Confirmation for order ' . $order->reference)
                     ->attachData($pdf->output(), $order->reference . '.pdf', [
@@ -65,7 +65,7 @@ class Order extends Model
 
             // Send invoice to admin
             $admin = User::where('role', 'admin')->first();
-            Mail::send([], [], function($message) use($pdf, $order, $admin) {
+            Mail::queue([], [], function($message) use($pdf, $order, $admin) {
                 $message->to($admin->email)
                     ->subject('Confirmation for order ' . $order->reference)
                     ->attachData($pdf->output(), $order->reference . '.pdf', [
