@@ -18,4 +18,9 @@ class MyList extends Model
     {
         return $this->belongsTo(Variant::class);
     }
+
+    public function product()
+    {
+        return $this->variant->product;
+    }
 }
