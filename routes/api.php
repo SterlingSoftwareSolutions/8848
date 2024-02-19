@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // MyList routes
     Route::get('/mylist', [MyListController::class, 'index']);
-    Route::post('/mylist/{product}', [MyListController::class, 'add']);
-    Route::delete('/mylist/{product}', [MyListController::class, 'remove']);
+    Route::post('/mylist/{variant}', [MyListController::class, 'add']);
+    Route::delete('/mylist/{variant}', [MyListController::class, 'remove']);
 
 });
