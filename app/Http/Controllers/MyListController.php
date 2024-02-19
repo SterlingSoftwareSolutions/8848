@@ -22,7 +22,7 @@ class MyListController extends Controller
         if($request->wantsJson()){
             return response()->json([
                 'success' => true,
-                'mylist' => $user->my_list->load('variant', 'product')
+                'mylist' => $user->my_list
             ]);
         }
 
