@@ -14,12 +14,14 @@ class MyList extends Model
         'variant_id',
     ];
 
+    protected $appends = ['product'];
+
     public function variant()
     {
         return $this->belongsTo(Variant::class);
     }
 
-    public function product()
+    public function getProductAttribute()
     {
         return $this->variant->product;
     }
