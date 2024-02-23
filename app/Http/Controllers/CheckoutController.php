@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderCreated;
+use App\Jobs\ConfirmationEmailJob;
 use App\Models\Address;
 use App\Models\Order;
 use App\Models\OrderItems;
@@ -215,7 +216,7 @@ class CheckoutController extends Controller
             $user->cart_empty();
         }
 
-        event(new OrderCreated($order));
+        dispatch(new ConfirmationEmailJob($order));
 
         if($request->wantsJson()){
             return response()->json([
@@ -341,7 +342,7 @@ class CheckoutController extends Controller
 
         // Clear the user's cart
         $user->cart_empty();
-        event(new OrderCreated($order));
+        dispatch(new ConfirmationEmailJob($order));
 
         if($request->wantsJson()){
             return response()->json([
@@ -405,7 +406,7 @@ class CheckoutController extends Controller
             ]);
         }
 
-        event(new OrderCreated($order));
+        dispatch(new ConfirmationEmailJob($order));
 
         if($request->wantsJson()){
             return response()->json([
