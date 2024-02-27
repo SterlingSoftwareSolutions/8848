@@ -8,6 +8,7 @@
 ])
 
 @section('content')
+
 <div class="relative bg-white shadow-2xl carousel">
     <div class="relative w-full overflow-hidden carousel-inner">
         <!--Slide 1-->
@@ -17,7 +18,7 @@
             <div class=" w-[1150px]">
                 <div class="text-[30px] md:text-5xl text-[#166eb6] font-bold">Clean, Protect, Plan</div>
                 <div class="mt-5 mb-8 text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">Explore our diverse range of<br> <span class="text-[#166eb6]">Cleaning and Packaging </span> Solutions</div>
-                <a href="{{ url('register') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Check out our products</a>
+                <a href="{{ url('categories') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Check out our products</a>
             </div>
         </div>
 
@@ -31,7 +32,7 @@
             <div class=" w-[1150px]">
                 <div class=" text-[30px] md:text-5xl text-[#166eb6] font-bold">Create an account with us today!</div>
                 <div class="mt-5 mb-8 text-[18px] md:text-4xl text-xl text-gray-600 text-center md:text-left font-bold">All your cleaning needs organised in a click</div>
-                <a href="{{ url('categories') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Sign up now</a>
+                <a href="{{ url('register') }}" class="p-3 mt-5 justify-start bg-gradient-to-b from-[#166EB6] to-[#284297] text-white">Sign up now</a>
             </div>
         </div>
 
@@ -65,7 +66,6 @@
         </ol>
     </div>
 </div>
-
 
 
 <!-- Category Section -->
@@ -137,6 +137,7 @@
     </div>
 </div>
 
+
 <!-- End Section -->
 <div class="flex flex-col bg-white">
     <!-- Text -->
@@ -185,7 +186,8 @@
                     <h1 class=" text-[20px] md:text-[30px] text-blue-700 md:w-full">Best Quality</h1>
                 </div>
             </div>
-
         </div>
     </div>
-    @endsection
+</div>
+
+@endsection

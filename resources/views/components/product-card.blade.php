@@ -57,9 +57,15 @@
 
     <!-- Product Buttons -->
     <div class="flex items-center justify-center flex-col-2 gap-2">
+        @auth
         <button type="button" data-favourite="{{$product->id}}" class="w-1/3 p-2 text-white rounded-sm bg-gradient-to-b truncate {{$product->available_on_favourite ? 'fav_available' : 'favourite_btn'}} {{$product->available_on_favourite ? 'from-[#6E6E6E] to-[#424242]' : 'from-[#166EB6] to-[#284297]'}}" {{$product->available_on_favourite ? 'disabled' : ''}}>
             MY LIST
         </button>
+        @else 
+        <button type="button" class="w-1/3 p-2 text-white rounded-sm bg-gradient-to-b truncate fav_available from-[#6E6E6E] to-[#424242]" disabled>
+            MY LIST
+        </button>
+        @endauth
         @if($product->in_stock)
         <button type="submit" class="w-2/3 p-2 bg-gradient-to-b from-[#166EB6] to-[#284297] rounded-sm text-white truncate">
             ADD TO CART
