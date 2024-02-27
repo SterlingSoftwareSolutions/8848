@@ -42,7 +42,7 @@ Route::get('/contact', function () {
     return view('app.contact');
 });
 
-Route::get('/products', [ProductController::class, 'index_client']);
+Route::get('/products', [ProductController::class, 'index_client'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
 Route::get('/categories', [CategoryController::class, 'index_client'])->name('app.categories');
 Route::get('/categories/{category}', [CategoryController::class, 'show_client']);
