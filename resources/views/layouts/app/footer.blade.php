@@ -1,4 +1,4 @@
-<footer class="bg-white shadow-inner md:mt-8" style="z-index: -999;">
+<footer class="bg-white shadow-inner" style="z-index: -999;">
     <div class="w-full p-4 py-8 mx-auto max-w-screen-3xl lg:py-16 md:ml-20">
 
         <div class="md:flex md:justify-between">

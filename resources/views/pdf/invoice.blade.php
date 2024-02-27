@@ -106,7 +106,7 @@
 					</td>
 					<td style="text-align: center;">
 						......................................<br>
-						Singature
+						Signature
 					</td>
 				</tr>
 			</table>
