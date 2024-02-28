@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -40,9 +41,8 @@ Route::post('/reset-password', [AuthController::class, 'reset_passsword'])->name
 // Public Routes
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/contact', function () {
-    return view('app.contact');
-});
+Route::view('/contact', 'app.contact')->name('contact');
+Route::post('/contact', [ContactController::class, 'contact'])->name('contact.post');
 
 Route::get('/products', [ProductController::class, 'index_client'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show_client']);
