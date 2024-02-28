@@ -203,41 +203,43 @@
         </div>
 
         {{-- FORM --}}
-        <form class="w-full md:mt-10">
+        <form class="w-full md:mt-10" method="POST">
+            @csrf
             <div class="flex flex-row gap-2 md:mt-2">
                 <div class="w-1/2">
                     <label>Name: <span class="text-red-500"> *</span></label>
-                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" id="username" type="text" placeholder="" />
+                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" name="name" id="username" type="text" placeholder="" />
+                    @error('name')<p class="text-red-500">{{$message}}</p>@enderror
                 </div>
 
                 <div class="w-1/2">
                     <label>Email: <span class="text-red-500"> *</span></label>
-                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" id="email" type="text" placeholder="" />
+                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" name="email" id="email" type="text" placeholder="" />
+                    @error('email')<p class="text-red-500">{{$message}}</p>@enderror
                 </div>
             </div>
 
             <div class="flex flex-row gap-2">
                 <div class="w-1/2 md:mt-5">
                     <label>Phone: <span class="text-red-500"> *</span></label>
-                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" id="phone" type="text" placeholder="" />
+                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" name="phone" id="phone" type="text" placeholder="" />
+                    @error('phone')<p class="text-red-500">{{$message}}</p>@enderror
                 </div>
 
                 <div class="w-1/2 md:mt-5">
-                    <label>Company:
-                        <span class="text-red-500"> *</span></label>
-                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" id="company" type="text" placeholder="" />
+                    <label>Company: <span class="text-red-500"> *</span></label>
+                    <input class="w-full px-3 py-2 text-gray-700 border border-black rounded-md" name="company" id="company" type="text" placeholder="" />
+                    @error('company')<p class="text-red-500">{{$message}}</p>@enderror
                 </div>
             </div>
 
             <div class="flex flex-row md:mt-5">
                 <div class="w-full">
-                    <label>Message:
-                        <span class="text-red-500"> *</span></label>
-                        <textarea class="w-full h-32 px-3 py-2 text-gray-700 border border-black rounded-md" id="subject" name="subject" ></textarea>
+                    <label>Message:<span class="text-red-500"> *</span></label>
+                    <textarea class="w-full h-32 px-3 py-2 text-gray-700 border border-black rounded-md" id="subject" name="message" ></textarea>
+                    @error('message')<p class="text-red-500">{{$message}}</p>@enderror
                 </div>
-               
             </div>
-          
 
             <div class="mt-5 text-center md:mt-10 md:text-left">
                 <button class="bg-gradient-to-b from-[#166EB6] to-[#284297] text-white w-32 md:px-2 md:py-2 rounded-lg">Submit</button>
@@ -246,7 +248,6 @@
     </div>
     {{-- END GET IN TOUCH FORM --}}
 </div>
-
 
 <script>
     ...
