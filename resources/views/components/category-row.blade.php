@@ -9,7 +9,7 @@
 <div class="flex flex-row items-center py-5 text-gray-500 border-b-2 border-gray-300">
 
     <div class="w-1/6 p-6">
-        <img src="{{ $category->Background}}" alt="Image Description" class="w-full aspect-square bg-red-500 rounded">
+        <img src="{{ $category->Background}}" alt="Image Description" class="w-full aspect-square object-cover bg-red-500 rounded">
     </div>
     <div class="w-1/6 p-2">
         {{$category->name}}
