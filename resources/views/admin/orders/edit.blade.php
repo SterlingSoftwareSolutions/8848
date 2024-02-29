@@ -166,7 +166,7 @@
                             <div class="w-[15%] px-5" x-text="'$' + item.variant.price"></div>
 
                             <div class="w-[15%] px-5">
-                                $<input x-bind:name="'item_price_0' + index" type="number" x-bind:value="item.variant.price" class="max-w-[60px] ms-2">
+                                $<input x-bind:name="'item_price_0' + index" type="number" step="0.01" x-bind:value="item.variant.price" class="max-w-[60px] ms-2">
                             </div>
 
                             <div class="w-[15%] px-5">

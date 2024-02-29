@@ -24,7 +24,7 @@
 
     <div class="w-[15%] px-5 flex">
         @if($admin)
-        $<input name="item_price_{{$item->id}}" type="number" value="{{$item->price}}" class="max-w-[60px] ms-2">
+        $<input name="item_price_{{$item->id}}" type="number" step="0.01" value="{{$item->price}}" class="max-w-[60px] ms-2">
         @else
         ${{$item->price}}
         @endif
