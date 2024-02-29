@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-@if($order->status == 'unverified' && $order->order_type == 'wholesale')
+@if($order->items_editable())
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <script type="text/javascript">
@@ -74,7 +74,7 @@
 </script>
 @endif
 
-<div @if($order->status == 'unverified' && $order->order_type == 'wholesale') x-data="getData()" @endif>
+<div @if($order->items_editable()) x-data="getData()" @endif>
     {{-- EDIT ORDER FORM --}}
     <form class="p-8 ps-0" method="post" action="/admin/orders/{{$order->id}}">
         @csrf
@@ -94,7 +94,7 @@
                     <div class="text-start">
                         <div class="font-semibold mb-2">Status</div>
                         <select class="p-3 bg-blue-50 border-blue-300 w-40 border rounded-lg" name="status">
-                            <option value="unverified" @if($order->status == 'unverified' && $order->order_type == 'wholesale') selected @endif>Unverified</option>
+                            <option value="unverified" @if($order->items_editable()) selected @endif>Unverified</option>
                             <option value="pending" @if($order->status == 'pending') selected @endif>Pending</option>
                             <option value="processing" @if($order->status == 'processing') selected @endif>Processing</option>
                             <option value="shipped" @if($order->status == 'shipped') selected @endif>Shipped</option>
@@ -116,7 +116,7 @@
                         <x-input-error :messages="$errors->get('payment_status')" class="mt-2" />
                     </div>
                     <div class="text-start">
-                        <div class="font-semibold mb-2">Order Type {{$order->type }}</div>
+                        <div class="font-semibold mb-2">Order Type</div>
                         <select class="p-3 bg-blue-50 border-blue-300 w-40 border rounded-lg" name="order_type">
                             <option value="wholesale" @if($order->order_type == 'wholesale') selected @endif>Wholesale Order</option>
                             <option value="retail" @if($order->order_type == 'retail') selected @endif>Retail Order</option>
@@ -139,20 +139,18 @@
                             <p class="w-[15%] text-start font-semibold">Quantity</p>
                             <p class="w-[15%] text-start font-semibold">Subtotal</p>
                         </div>
-                        @if($order->items->count() < 1) <div class="flex flex-row items-center p-5">
+                    @if($order->items->count() < 1) 
+                        <div class="flex flex-row items-center p-5" x-show="Object.keys(selectedProducts).length < 1">
                             <div class="w-full text-center py-12">This order has no products</div>
-                    </div>
+                        </div>
                     @else
-                    @php
-                        $content_editable = ($order->status == 'unverified' && $order->order_type == 'wholesale' || $order->status == 'pending') && $order->order_type != 'retail';
-                    @endphp
                     <!-- Order items -->
                     @foreach($order->items as $item)
-                    <x-order-item-row :item="$item" :admin="$content_editable" />
+                        <x-order-item-row :item="$item" :admin="$order->items_editable()" />
                     @endforeach
                     @endif
 
-                    @if($order->status == 'unverified' && $order->order_type == 'wholesale')
+                    @if($order->items_editable())
                     <template x-for="(item, index) in selectedProducts">
                         <div class="flex flex-row items-center p-2 border bg-blue-50">
                             <input type="hidden" x-bind:name="'item_variant_0' + index" x-bind:value="item.variant.id">
@@ -165,7 +163,7 @@
                             <div class="w-[15%] px-5" x-text="'$' + item.variant.price"></div>
 
                             <div class="w-[15%] px-5">
-                                $<input x-bind:name="'item_price_0' + index" type="number" x-bind:value="item.variant.price" class="max-w-[60px] ms-2">
+                                $<input x-bind:name="'item_price_0' + index" type="number" step="0.01" x-bind:value="item.variant.price" class="max-w-[60px] ms-2">
                             </div>
 
                             <div class="w-[15%] px-5">
@@ -183,7 +181,7 @@
             <div class="flex flex-col mx-2  md:mt-5 border rounded-lg">
                 <div class="text-blue-900">
                     <div class="flex flex-row justify-between items-center p-5 bg-gray-100">
-                        <button class="bg-blue-200 disabled:bg-gray-200 disabled:text-gray-300 w-32 rounded h-10" @if($order->status == 'unverified' && $order->order_type == 'wholesale') x-on:click="showProductPicker = true" @else disabled @endif type="button">Add Item</button>
+                        <button class="bg-blue-200 disabled:bg-gray-200 disabled:text-gray-300 w-32 rounded h-10" @if($order->items_editable()) x-on:click="showProductPicker = true" @else disabled @endif type="button">Add Item</button>
                         <p class="w-full text-start font-semibold"></p>
                         <div class="w-1/6 text-start font-semibold">
                             Products: <br>
@@ -278,7 +276,7 @@
         </div>
     </form>
 
-    @if($order->status == 'unverified' && $order->order_type == 'wholesale')
+    @if($order->items_editable())
     {{-- FIND PRODUCT --}}
     <div class="relative z-10" role="dialog" x-show="showProductPicker" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 backdrop-blur-sm backdrop-contrast-125 bg-opacity-75 transition-opacity" x-show="showProductPicker" x-transition.opacity x-on:click="showProductPicker = false"></div>
