@@ -177,8 +177,8 @@ class OrderController extends Controller
             $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();
             if($orderItem){
                 $orderItem->update([
-                    'price' => $item['price'],
-                    'quantity' => $item['quantity'],
+                    'price' => $item['price'] ?? 0,
+                    'quantity' => $item['quantity'] ?? 1,
                 ]);
             } else{
                 OrderItems::create([
