@@ -139,9 +139,10 @@
                             <p class="w-[15%] text-start font-semibold">Quantity</p>
                             <p class="w-[15%] text-start font-semibold">Subtotal</p>
                         </div>
-                        @if($order->items->count() < 1) <div class="flex flex-row items-center p-5">
+                    @if($order->items->count() < 1) 
+                        <div class="flex flex-row items-center p-5" x-show="Object.keys(selectedProducts).length < 1">
                             <div class="w-full text-center py-12">This order has no products</div>
-                    </div>
+                        </div>
                     @else
                     @php
                         $content_editable = ($order->status == 'unverified' && $order->order_type == 'wholesale' || $order->status == 'pending') && $order->order_type != 'retail';
