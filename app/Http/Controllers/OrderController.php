@@ -147,6 +147,7 @@ class OrderController extends Controller
             'order_type' => ['required', 'in:wholesale,retail'],
         ]);
 
+        // Log status change
         if($order->status != $request->status){
             OrderLog::create([
                 'order_id' => $order->id,
@@ -155,41 +156,44 @@ class OrderController extends Controller
             ]);
         }
 
+        // Update items (wholesale only)
+        if($order->items_editable()){            
+            $items = $this->parse_orderitems($request);
+            $item_ids = array_map(function ($item){
+                return $item['id'][0] == 0 ? null : $item['id'];
+            }, $items);
+
+            $existing_item_ids = $order->items->pluck('id')->toArray();
+            $items_to_delete = array_diff($existing_item_ids, $item_ids);
+
+            // Delete items
+            OrderItems::where('order_id', $order->id)->whereIn('id', $items_to_delete)->delete();
+
+            foreach($items as $item){
+                $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();
+                if($orderItem){
+                    $orderItem->update([
+                        'price' => $item['price'] ?? 0,
+                        'quantity' => $item['quantity'] ?? 1,
+                    ]);
+                } else{
+                    OrderItems::create([
+                        'order_id' => $order->id,
+                        'variant_id' => $item['variant'],
+                        'quantity' => $item['quantity'],
+                        'full_price' => Variant::find($item['variant'])->price,
+                        'price' => $item['price'],
+                    ]);
+                }
+            }
+        }
+
+        // Update order
         $order->update([
             'status' => $request->status,
             'payment_status' => $request->payment_status,
             'order_type' => $request->order_type
         ]);
-
-        $items = $this->parse_orderitems($request);
-        $item_ids = array_map(function ($item){
-            return $item['id'][0] == 0 ? null : $item['id'];
-        }, $items);
-
-        $existing_item_ids = $order->items->pluck('id')->toArray();
-        $items_to_delete = array_diff($existing_item_ids, $item_ids);
-        // dd($items, $item_ids, $existing_item_ids, $items_to_delete);
-
-        // Delete items
-        OrderItems::where('order_id', $order->id)->whereIn('id', $items_to_delete)->delete();
-
-        foreach($items as $item){
-            $orderItem = OrderItems::where('order_id', $order->id)->where('id', $item['id'])->first();
-            if($orderItem){
-                $orderItem->update([
-                    'price' => $item['price'] ?? 0,
-                    'quantity' => $item['quantity'] ?? 1,
-                ]);
-            } else{
-                OrderItems::create([
-                    'order_id' => $order->id,
-                    'variant_id' => $item['variant'],
-                    'quantity' => $item['quantity'],
-                    'full_price' => Variant::find($item['variant'])->price,
-                    'price' => $item['price'],
-                ]);
-            }
-        }
 
         return back();
     }

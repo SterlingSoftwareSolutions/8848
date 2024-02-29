@@ -97,4 +97,9 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function items_editable()
+    {
+        return ($this->status == 'unverified' || $this->status == 'pending') && $this->order_type == 'wholesale';
+    }
 }
