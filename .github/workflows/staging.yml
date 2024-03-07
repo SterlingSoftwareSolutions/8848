@@ -1,0 +1,54 @@
+on:
+  push:
+    branches:
+      - staging
+name: Deploy Staging
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v2
+
+    - name: Use production env
+      run: cp .env.prod .env
+
+    - name: Update .env
+      run: |
+        sed -i "s%ACTIONS_KEY%${{ secrets.key }}%g" .env
+        sed -i "s%ACTIONS_URL%${{ secrets.url }}%g" .env
+        sed -i "s%ACTIONS_DB_HOST%${{ secrets.db_host }}%g" .env
+        sed -i "s%ACTIONS_DB_PORT%${{ secrets.db_port }}%g" .env
+        sed -i "s%ACTIONS_DB_NAME%${{ secrets.db_name }}%g" .env
+        sed -i "s%ACTIONS_DB_USER%${{ secrets.db_user }}%g" .env
+        sed -i "s%ACTIONS_DB_PASSWORD%${{ secrets.db_password }}%g" .env
+        sed -i "s%ACTIONS_MAIL_HOST%${{ secrets.mail_host }}%g" .env
+        sed -i "s%ACTIONS_MAIL_PORT%${{ secrets.mail_port }}%g" .env
+        sed -i "s%ACTIONS_MAIL_USERNAME%${{ secrets.mail_username }}%g" .env
+        sed -i "s%ACTIONS_MAIL_PASSWORD%${{ secrets.mail_password }}%g" .env
+        sed -i "s%ACTIONS_MAIL_FROM_ADDRESS%${{ secrets.mail_from_address }}%g" .env
+        sed -i "s%ACTIONS_STRIPE_KEY%${{ secrets.stripe_key }}%g" .env
+        sed -i "s%ACTIONS_STRIPE_SECRET%${{ secrets.stripe_secret }}%g" .env
+
+    - name: Install vendor files
+      run: composer install --no-dev --optimize-autoloader
+
+    - name: Install node modules
+      run: npm install
+
+    - name: Build static assets
+      run: npm run build
+
+    - name: Delete cache
+      run: rm -rf /bootstrap/cache/*
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ${{ secrets.ftp_host }}
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+
+    - name: Check website status
+      run: curl -I ${{ secrets.url }}
