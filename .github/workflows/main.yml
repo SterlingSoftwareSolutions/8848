@@ -19,7 +19,7 @@ jobs:
         sed -i "s%ACTIONS_APP_NAME%${{ vars.app_name }}%g" .env
         sed -i "s%ACTIONS_APP_KEY%${{ secrets.app_key }}%g" .env
         sed -i "s%ACTIONS_APP_URL%${{ vars.app_url }}%g" .env
-        sed -i "s%ACTIONS_DB_NAME%${{ vars.db_name }}%g" .env
+        sed -i "s%ACTIONS_DB_DATABASE%${{ secrets.db_database }}%g" .env
         sed -i "s%ACTIONS_DB_USER%${{ secrets.db_user }}%g" .env
         sed -i "s%ACTIONS_DB_PASSWORD%${{ secrets.db_password }}%g" .env
         sed -i "s%ACTIONS_MAIL_HOST%${{ vars.mail_host }}%g" .env
