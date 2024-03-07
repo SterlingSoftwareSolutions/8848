@@ -1,8 +1,8 @@
 on:
   push:
     branches:
-      - staging
-name: Deploy Staging
+      - main
+name: Deploy
 jobs:
   web-deploy:
     name: Deploy
@@ -16,15 +16,14 @@ jobs:
 
     - name: Update .env
       run: |
-        sed -i "s%ACTIONS_KEY%${{ secrets.key }}%g" .env
-        sed -i "s%ACTIONS_URL%${{ secrets.url }}%g" .env
-        sed -i "s%ACTIONS_DB_HOST%${{ secrets.db_host }}%g" .env
-        sed -i "s%ACTIONS_DB_PORT%${{ secrets.db_port }}%g" .env
-        sed -i "s%ACTIONS_DB_NAME%${{ secrets.db_name }}%g" .env
+        sed -i "s%ACTIONS_APP_NAME%${{ vars.app_name }}%g" .env
+        sed -i "s%ACTIONS_APP_KEY%${{ secrets.app_key }}%g" .env
+        sed -i "s%ACTIONS_APP_URL%${{ vars.app_url }}%g" .env
+        sed -i "s%ACTIONS_DB_NAME%${{ vars.db_name }}%g" .env
         sed -i "s%ACTIONS_DB_USER%${{ secrets.db_user }}%g" .env
         sed -i "s%ACTIONS_DB_PASSWORD%${{ secrets.db_password }}%g" .env
-        sed -i "s%ACTIONS_MAIL_HOST%${{ secrets.mail_host }}%g" .env
-        sed -i "s%ACTIONS_MAIL_PORT%${{ secrets.mail_port }}%g" .env
+        sed -i "s%ACTIONS_MAIL_HOST%${{ vars.mail_host }}%g" .env
+        sed -i "s%ACTIONS_MAIL_PORT%${{ vars.mail_port }}%g" .env
         sed -i "s%ACTIONS_MAIL_USERNAME%${{ secrets.mail_username }}%g" .env
         sed -i "s%ACTIONS_MAIL_PASSWORD%${{ secrets.mail_password }}%g" .env
         sed -i "s%ACTIONS_MAIL_FROM_ADDRESS%${{ secrets.mail_from_address }}%g" .env
@@ -46,9 +45,9 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        server: ${{ secrets.ftp_host }}
+        server: ${{ vars.ftp_host }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
 
     - name: Check website status
-      run: curl -I ${{ secrets.url }}
+      run: curl -I ${{ vars.app_url }}
