@@ -40,7 +40,7 @@
                     <tbody>
                         <tr class="bg-white border-b ">
                             <th scope="row" class="px-6 py-4 font-medium text-blue-500 whitespace-nowrap">
-                                8848 Test Product 04
+                                ECOM Test Product 04
                                 <span class="text-gray-500">x</span>
                                 <span class="text-gray-500">1</span>
                             </th>
@@ -50,7 +50,7 @@
                         </tr>
                         <tr class="bg-white border-b ">
                             <th scope="row" class="px-6 py-4 font-medium text-blue-500 whitespace-nowrap">
-                                8848 Test Product 04
+                                ECOM Test Product 04
                                 <span class="text-gray-500">x</span>
                                 <span class="text-gray-500">1</span>
                             </th>
