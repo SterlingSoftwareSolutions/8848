@@ -5,7 +5,7 @@
 
             <div class="mb-6 md:mb-0 md:w-1/3">
                 <a href="" class="grid items-center justify-center text-center">
-                    <img class="mx-auto" src="{{ URL('images/logo.png')}}" alt="Logo Image">
+                    <p class="text-blue-600 font-bold text-[36px]">ECOM</p>
                     <p class="mt-4  text-center text-black">Your one stop shop for all<br> cleaning and packaging needs</p>
                 </a>
             </div>
@@ -15,8 +15,8 @@
 
                 <div class="flex flex-col ml-8 text-center md:text-left">
                     <h1 class="text-2xl font-bold">Download</h1>
-                    <h2 class="text-xl font-semibold">8848 Supplies Mobile App</h2>
-                    <p class="mt-2 text-black">Discover the 8848 Supplies App – your go-to hub for top-notch cleaning essentials and premium food packaging. Download now for a seamless shopping experience.</p>
+                    <h2 class="text-xl font-semibold">ECOM Supplies Mobile App</h2>
+                    <p class="mt-2 text-black">Discover the ECOM Supplies App – your go-to hub for top-notch cleaning essentials and premium food packaging. Download now for a seamless shopping experience.</p>
                     <img class="h-auto mx-auto mt-4 md:-ml-[2px] w-28 " src="{{ URL('images/Download-on-the-App-Store-1.png')}}">
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         </li>
                         <li class="flex mb-4 ml-12 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/email.png')}}">
-                            <a href="mailto:info@8848supplies.com.au" class="ml-2 hover:underline">info@8848supplies.com.au</a>
+                            <a href="mailto:info@ECOMsupplies.com.au" class="ml-2 hover:underline">info@ECOMsupplies.com.au</a>
                         </li>
                         <li class="flex mb-4 ml-20 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">
@@ -56,7 +56,7 @@
     </div>
 
     <div class="h-10 text-center text-black font-semibold bg-blue-200 sm:text-center flex justify-center items-center">
-        <span class="mt-2 text-sm">Copyright © 2023 <a href="#" class="hover:underline">8848 Supplies. All Rights Reserved</a></span>
+        <span class="mt-2 text-sm">Copyright © 2023 <a href="#" class="hover:underline">ECOM Supplies. All Rights Reserved</a></span>
     </div>
 
 </footer>

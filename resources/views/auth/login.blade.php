@@ -93,7 +93,7 @@
 
                         <div class="flex items-center justify-end mt-4">
                             <a href="{{ route('register') }}" class="text-sm text-[#d9d9d9] rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Don’t have an 8848supplies account? <u class="text-bold">Register now</u>
+                                Don’t have an ECOM account? <u class="text-bold">Register now</u>
                             </a>
                         </div>
                     </form>
