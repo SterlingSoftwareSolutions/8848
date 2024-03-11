@@ -32,7 +32,7 @@
         <div class="w-full md:w-3/12">
             <img class="mx-auto border-green-500 w-14 h-14" src="{{ asset('images/Group 206.png') }}" />
             <p class="text-sm font-bold text-center text-gray-500 md:mt-5">
-                info@8848supplies.com.au
+                info@ECOMsupplies.com.au
             </p>
         </div>
 
