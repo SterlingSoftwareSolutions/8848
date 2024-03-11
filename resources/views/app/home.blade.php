@@ -139,16 +139,16 @@
 
 
 <!-- End Section -->
-<div class="flex flex-col bg-white">
+<div class="flex flex-col bg-white w-full">
     <!-- Text -->
     <div class="text-center">
         <h1 class="my-5 text-2xl tracking-wide text-blue-500">Secure And Organize</h1>
-        <h1 class="my-5 text-3xl font-bold tracking-wide text-blue-500">We are 8848 Supplies</h1>
-        <p class="my-5 text-lg font-light tracking-wider text-gray-600 md:mx-12">With five years of excellence, 8848 Supplies is a leading provider in cleaning supplies and food packaging. Serving top names in hospitality, our commitment to quality and innovation ensures pristine environments and flawlessly packaged culinary experiences. Experience the pinnacle of excellence with 8848 Supplies</p>
+        <h1 class="my-5 text-3xl font-bold tracking-wide text-blue-500">We are ECOM Supplies</h1>
+        <p class="my-5 text-lg font-light tracking-wider text-gray-600 md:mx-12">With five years of excellence, ECOM Supplies is a leading provider in cleaning supplies and food packaging. Serving top names in hospitality, our commitment to quality and innovation ensures pristine environments and flawlessly packaged culinary experiences. Experience the pinnacle of excellence with ECOM Supplies</p>
     </div>
 
     <!-- Icons -->
-    <div class="py-4  w-9/12  mx-auto bg-[#4b98d82f] flex flex-col md:flex-row  justify-around md:py-10 md:px-10">
+    <div class="py-4 w-[1440px] mx-auto bg-[#4b98d82f] flex flex-col md:flex-row justify-around md:py-10 md:px-10">
         <div class="flex flex-col items-center justify-center md:flex-row">
             <div class="flex flex-col items-center w-1/3 ">
                 <div class="">
