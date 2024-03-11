@@ -37,6 +37,7 @@
           <div class="items-center justify-center flex-1">
             <a href="/">
               <p class="text-[20px] font-bold text-white">ECOM</p>
+
             </a>
           </div>
 

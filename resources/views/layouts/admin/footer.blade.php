@@ -6,6 +6,7 @@
             <div class="mb-6 md:mb-0 md:w-1/3">
                 <a href="" class="grid items-center justify-center text-center">
                     <p class="text-[25px] font-bold text-blue-600">ECOM</p>
+
                     <p class="mt-4  text-center text-black">Lorem Ipsum Dolor Sit<br> Amet, Consectetur</p>
                 </a>
             </div>
@@ -15,7 +16,7 @@
 
                 <div class="flex flex-col ml-8 text-center md:text-left">
                     <h1 class="text-2xl font-bold">Download</h1>
-                    <h2 class="text-xl font-semibold">ECOM Supplies Mobile App</h2>
+                    <h2 class="text-xl font-semibold">8848 Supplies Mobile App</h2>
                     <p class="mt-2 text-black">Lorem Ipsum Dolor Sit Amet, Consectetur<br>Adipiscing Elit. Sed Non Risus. Suspendisse<br>Lectus Tortor, Dignissim Sit Amet,</p>
                     <img class="h-auto mx-auto mt-4 md:-ml-[2px] w-28 " src="{{ URL('images/Download-on-the-App-Store-1.png')}}">
                 </div>
@@ -42,6 +43,7 @@
                         <li class="flex mb-4 ml-12 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/email.png')}}">
                             <a href="mailto:info@ECOMsupplies.com.au" class="ml-2 hover:underline">info@ECOMsupplies.com.au</a>
+
                         </li>
                         <li class="flex mb-4 ml-20 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">
@@ -56,7 +58,7 @@
     </div>
 
     <div class="h-10 text-center text-black font-semibold bg-blue-200 sm:text-center flex justify-center items-center">
-        <span class="mt-2 text-sm">Copyright © 2023 <a href="#" class="hover:underline">ECOM Supplies. All Rights Reserved</a></span>
+        <span class="mt-2 text-sm">Copyright © 2023 <a href="#" class="hover:underline">8848 Supplies. All Rights Reserved</a></span>
     </div>
 
 </footer>

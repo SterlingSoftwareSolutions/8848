@@ -28,6 +28,7 @@
       <div class="items-center justify-center flex-1 md:ml-0 ml-[80px] sm:items-stretch sm:justify-start">
         <a href="/">
           <p class="text-[25px] font-bold text-white">ECOM</p>
+
         </a>
       </div>
 
