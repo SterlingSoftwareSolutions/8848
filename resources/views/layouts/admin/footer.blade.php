@@ -16,7 +16,7 @@
 
                 <div class="flex flex-col ml-8 text-center md:text-left">
                     <h1 class="text-2xl font-bold">Download</h1>
-                    <h2 class="text-xl font-semibold">8848 Supplies Mobile App</h2>
+                    <h2 class="text-xl font-semibold">ECOM Supplies Mobile App</h2>
                     <p class="mt-2 text-black">Lorem Ipsum Dolor Sit Amet, Consectetur<br>Adipiscing Elit. Sed Non Risus. Suspendisse<br>Lectus Tortor, Dignissim Sit Amet,</p>
                     <img class="h-auto mx-auto mt-4 md:-ml-[2px] w-28 " src="{{ URL('images/Download-on-the-App-Store-1.png')}}">
                 </div>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="h-10 text-center text-black font-semibold bg-blue-200 sm:text-center flex justify-center items-center">
-        <span class="mt-2 text-sm">Copyright © 2023 <a href="#" class="hover:underline">8848 Supplies. All Rights Reserved</a></span>
+        <span class="mt-2 text-sm">Copyright © 2023 <a href="#" class="hover:underline">ECOM Supplies. All Rights Reserved</a></span>
     </div>
 
 </footer>
