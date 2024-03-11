@@ -143,8 +143,8 @@
     <!-- Text -->
     <div class="text-center">
         <h1 class="my-5 text-2xl tracking-wide text-blue-500">Secure And Organize</h1>
-        <h1 class="my-5 text-3xl font-bold tracking-wide text-blue-500">We are 8848 Supplies</h1>
-        <p class="my-5 text-lg font-light tracking-wider text-gray-600 md:mx-12">With five years of excellence, 8848 Supplies is a leading provider in cleaning supplies and food packaging. Serving top names in hospitality, our commitment to quality and innovation ensures pristine environments and flawlessly packaged culinary experiences. Experience the pinnacle of excellence with 8848 Supplies</p>
+        <h1 class="my-5 text-3xl font-bold tracking-wide text-blue-500">We are ECOM Supplies</h1>
+        <p class="my-5 text-lg font-light tracking-wider text-gray-600 md:mx-12">With five years of excellence, ECOM Supplies is a leading provider in cleaning supplies and food packaging. Serving top names in hospitality, our commitment to quality and innovation ensures pristine environments and flawlessly packaged culinary experiences. Experience the pinnacle of excellence with ECOM Supplies</p>
     </div>
 
     <!-- Icons -->

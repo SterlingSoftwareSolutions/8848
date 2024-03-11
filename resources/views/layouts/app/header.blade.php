@@ -36,7 +36,7 @@
           {{-- logo --}}
           <div class="items-center justify-center flex-1">
             <a href="/">
-              <img class="w-auto h-10" src="{{ URL('images/Logo-white.png')}}" alt="Company">
+              <p class="text-[20px] font-bold text-white">ECOM</p>
             </a>
           </div>
 
