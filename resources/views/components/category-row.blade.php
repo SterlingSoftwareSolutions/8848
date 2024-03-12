@@ -34,7 +34,7 @@
             <a href="/admin/categories/{{$category->id}}/edit"><button class="w-full px-2 py-2 mx-auto text-center text-white bg-black rounded-lg">Edit </button></a>
         </div>
         <div class="w-40">
-            <form class="delete-form" action="/admin/categories/{{$category->id}}" method="post" onsubmit="return confirmDelete(event)">
+            <form class="delete-form" action="/admin/categories/{{$category->id}}" method="post" onsubmit="confirmDelete(event, '{{$category->id}}')">
                 @csrf
                 @method('delete')
                 <button type="submit" class="px-2 w-full py-2 mx-auto text-center text-white bg-red-600 rounded-lg">Delete</button>
@@ -44,7 +44,7 @@
 </div>
 
 <script>
-    function confirmDelete(event) {
+    function confirmDelete(event, categoryId) {
         event.preventDefault(); 
 
         Swal.fire({
@@ -57,7 +57,8 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // If confirmed, submit the form
+                // If confirmed, update form action and submit the form
+                document.querySelector('.delete-form').action = "/admin/categories/" + categoryId;
                 document.querySelector('.delete-form').submit();
             }
         });

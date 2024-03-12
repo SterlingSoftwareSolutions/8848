@@ -4,25 +4,25 @@
     {{-- 4 ICONS --}}
     <div class="flex gap-4 mt-10 ">
 
-        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12">
+        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12 hover:bg-blue-300 hover:text-white">
             <img class="mx-auto border-green-500" src="{{ asset('images/customer.png') }}" />
             <p class="text-3xl text-center text-blue-500">{{number_format($customer_count)}}</p>
             <p class="text-center text-blue-500 text-md">Customers</p>
         </div>
 
-        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12">
+        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12 hover:bg-blue-300 hover:text-white">
             <img class="mx-auto border-green-500" src="{{ asset('images/package.png') }}" />
-            <p class="text-3xl text-center text-blue-500">{{ number_format($product_count)}}</p>
-            <p class="text-center text-blue-500 text-md">Products</p>
+            <p class="text-3xl text-center text-blue-500 ">{{ number_format($product_count)}}</p>
+            <p class="text-center text-blue-500 text-md ">Products</p>
         </div>
 
-        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12">
+        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12 hover:bg-blue-300">
             <img class="mx-auto border-green-500" src="{{ asset('images/delivery-truck.png') }}" />
             <p class="text-3xl text-center text-blue-500">{{number_format($order_count)}}</p>
             <p class="text-center text-blue-500 text-md">Orders</p>
         </div>
 
-        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12">
+        <div class="w-full border-2 border-blue-200 rounded-lg md:w-3/12 hover:bg-blue-300 hover:text-white">
             <img class="mx-auto border-green-500" src="{{ asset('images/data-analytics.png') }}" />
             <p class="text-3xl text-center text-blue-500">${{number_format($order_total)}}</p>
             <p class="text-center text-blue-500 text-md">Total Sales</p>

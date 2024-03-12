@@ -1,8 +1,8 @@
 <div class="w-64 h-full p-8 text-blue-500 shadow-inner">
     <!-- Sidebar content goes here -->
     <ul>
-        <li class="p-2 mb-4 bg-gray-200 rounded-md">
-            <a href="/admin/" class="flex text-blue-500 hover:text-gray-500">
+        <li class="p-1 mb-4 bg-gray-200 rounded-md">
+            <a href="/admin/" class="flex text-blue-500 hover:text-gray-500 {{ request()->is('admin') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
@@ -11,8 +11,8 @@
                 <span class="ml-4">Dashboard</span>
             </a>
         </li>
-        <li class="p-2 mb-4 bg-gray-200 rounded-md">
-            <a href="/admin/users" class="flex text-blue-500 hover:text-gray-500">
+        <li class="p-1 mb-4 bg-gray-200 rounded-md">
+            <a href="/admin/users" class="flex text-blue-500 hover:text-gray-500 {{ request()->is('admin/users') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -21,8 +21,8 @@
                 <span class="ml-4">Customers</span>
             </a>
         </li>
-        <li class="p-2 mb-4 bg-gray-200 rounded-md">
-            <a href="/admin/products" class="flex text-blue-500 hover:text-gray-500">
+        <li class="p-1 mb-4 bg-gray-200 rounded-md">
+            <a href="/admin/products" class="flex text-blue-500 hover:text-gray-500 {{ request()->is('admin/products') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -31,8 +31,8 @@
                 <span class="ml-4">Products</span>
             </a>
         </li>
-        <li class="p-2 mb-4 bg-gray-200 rounded-md">
-            <a href="/admin/orders" class="flex text-blue-500 hover:text-gray-500">
+        <li class="p-1 mb-4 bg-gray-200 rounded-md">
+            <a href="/admin/orders" class="flex text-blue-500 hover:text-gray-500 {{ request()->is('admin/orders') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -42,8 +42,8 @@
             </a>
         </li>
 
-        <li class="p-2 mb-4 bg-gray-200 rounded-md">
-            <a href="/admin/categories" class="flex text-blue-500 hover:text-gray-500">
+        <li class="p-1 mb-4 bg-gray-200 rounded-md">
+            <a href="/admin/categories" class="flex text-blue-500 hover:text-gray-500 {{ request()->is('admin/categories') ? 'active' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -54,3 +54,12 @@
         </li>
     </ul>
 </div>
+
+<style>
+    .active {
+    color: rgb(0, 26, 255); /* Change this to the color you want for the active link */
+    font-weight: bold;
+    background-color: rgb(178, 204, 243) /* Optional: Makes the text bold */
+}
+
+</style>
