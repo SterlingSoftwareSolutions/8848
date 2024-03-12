@@ -11,12 +11,12 @@
           {{-- mobile menu icon --}}
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <!-- Mobile menu button-->
-            <button type="button" class="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <button type="button" id="menu-button" class="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
               <span class="absolute -inset-0.5"></span>
               <span class="sr-only">Open main menu</span>
               <!--
               Icon when menu is closed.
-
+          
               Menu open: "hidden", Menu closed: "block"
             -->
               <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" id="menu-icon">
@@ -24,7 +24,7 @@
               </svg>
               <!--
               Icon when menu is open.
-
+          
               Menu open: "block", Menu closed: "hidden"
             -->
               <svg class="hidden w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -36,13 +36,15 @@
           {{-- logo --}}
           <div class="items-center justify-center flex-1">
             <a href="/">
-              <p class="text-[20px] font-bold text-white">ECOM</p>
+              <p class="text-[20px] font-bold text-white md:ml-0 ml-12">ECOM</p>
 
             </a>
           </div>
 
           {{-- search bar --}}
-          <x-product-search />
+          <div class="md:block hidden">
+            <x-product-search />
+          </div>
         </div>
 
         {{-- RIGHT --}}
@@ -94,7 +96,7 @@
           </div>
 
           @if(Auth::check())
-          <button id="user-icon-button" type="button" class="flex justify-center items-center gap-2 relative h-10 ml-4 px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">
+          <button id="user-icon-button" type="button" class="flex justify-center items-center gap-2 relative h-10  px-3 py-1.5 text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500 md:mr-0 mr-20">
             <p class="text-sm font-medium">{{ auth()->user()->first_name }}</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -117,10 +119,10 @@
       </div>
     </div>
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
+    <div id="mobile-menu" class="hidden">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <a href="/" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Home</a>
-        <a href="/category" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Shop</a>
+        <a href="/categories" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Shop</a>
         <a href="/contact" class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-blue-200 hover:text-blue-500">Contact</a>
       </div>
     </div>
@@ -167,4 +169,11 @@
     sideMenu.classList.remove('right-0');
     sideMenu.classList.add('right-[-350px]');
   }
+</script>
+<script>
+  document.getElementById('menu-button').addEventListener('click', function() {
+  var menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+});
+
 </script>
