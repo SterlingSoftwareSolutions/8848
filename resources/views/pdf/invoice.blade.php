@@ -24,7 +24,7 @@
 					<tr>
 						<td style="width: 60%">
 							@php
-								$path = public_path('/images/logo.png');
+								$path = public_path('/images/logoecom.png');
 								$type = pathinfo($path, PATHINFO_EXTENSION);
 								$data = file_get_contents($path);
 								$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
