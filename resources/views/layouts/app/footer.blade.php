@@ -4,7 +4,7 @@
         <div class="md:flex md:justify-between">
 
             <div class="mb-6 md:mb-0 md:w-1/3">
-                <a href="" class="grid items-center justify-center text-center">
+                <a href="{{url('/')}}" class="grid items-center justify-center text-center">
                     <p class="text-[25px] font-bold text-blue-600">ECOM</p>
                     <p class="mt-4  text-center text-black">Your one stop shop for all<br> cleaning and packaging needs</p>
                 </a>
@@ -35,18 +35,17 @@
                 <div class="text-center sm:text-left"> <!-- Center on mobile, left-align on screens bigger than mobile -->
                     <h2 class="mb-2 text-lg font-semibold text-blue-900 uppercase">Contact Info</h2>
                     <ul class="text-gray-500">
-                        <li class="flex mb-4">
+                        <li class="flex mb-4 text-center ml-4 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/location.png')}}">
-                            <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="ml-2 hover:underline  md:text-left text-center">Unit 3/1 Everaise Ct, Laverton North VIC 3026</a>
+                            <a href="https://www.google.com/maps/@-26.7738869,134.7806741,12.75z?entry=ttu" class="ml-2 hover:underline md:text-left text-center">Unit 3/1 Everaise Ct, Laverton North VIC 3026</a>
                         </li>
-                        <li class="flex mb-4 ml-12 md:ml-0">
+                        <li class="flex mb-4 ml-28 md:ml-0 ">
                             <img class="w-5 h-5" src="{{ URL('images/email.png')}}">
                             <a href="mailto:info@ECOM.com.au" class="ml-2 hover:underline">info@ECOM.com.au</a>
-
                         </li>
-                        <li class="flex mb-4 ml-20 md:ml-0">
+                        <li class="flex mb-4 ml-16 md:ml-0">
                             <img class="w-5 h-5" src="{{ URL('images/telephone.png')}}">
-                            <a href="tel:8801 738 5678 64" class="ml-2 hover:underline">(03) 7014 0663<br>61 1300 850 295</a>
+                            <a href="tel:8801 738 5678 64" class="ml-2 hover:underline">(03) 7014 0663 /61 1300 850 295</a>
                         </li>
                     </ul>
                 </div>
